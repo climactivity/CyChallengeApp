@@ -1,16 +1,25 @@
-<script>
+<script lang="ts">
 	import * as THREE from 'three';
 	import * as SC from 'svelte-cubed';
+	import { onMount } from 'svelte';
 
 	let skyColor = 0x87ceeb;
 	let groundColor = 0x99ff66;
+
+	let hS: number;
+	let vS: number;
+	let aS: number;
+
 	let width = 1,
 		height = 1,
 		depth = 1,
 		spin = 0;
-	SC.onFrame(() => {
-		spin += 0.01;
-	});
+
+	let fireMesh: any;
+
+	$: hS = Math.sqrt(3) * width;
+	$: vS = 2 * depth;
+	$: aS = height / 2;
 </script>
 
 <SC.Canvas
@@ -19,16 +28,73 @@
 	shadows
 	fog={new THREE.FogExp2(skyColor, 0.05)}
 >
-	<SC.Mesh
-		geometry={new THREE.BoxGeometry()}
-		material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
-		scale={[width, height, depth]}
-		position={[0, height / 2, 0]}
-		rotation={[0, spin, 0]}
-		castShadow
-	/>
+	<SC.Group position={[0, 0, 0]}>
+		<SC.Mesh
+			geometry={new THREE.BoxGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
+			scale={[width, height, depth]}
+			position={[hS / 2, aS, vS]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
 
-	<SC.Group position={[0, -0.5, 0]}>
+		<SC.Mesh
+			geometry={new THREE.BoxGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
+			scale={[width, height, depth]}
+			position={[-hS / 2, aS, vS]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
+
+		<SC.Mesh
+			geometry={new THREE.BoxGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
+			scale={[width, height, depth]}
+			position={[-hS, height / 2, 0]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
+
+		<SC.Mesh
+			geometry={new THREE.BoxGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
+			scale={[width, height, depth]}
+			position={[hS, height / 2, 0]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
+
+		<SC.Mesh
+			geometry={new THREE.BoxGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
+			scale={[width, height, depth]}
+			position={[hS / 2, aS, -vS]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
+
+		<SC.Mesh
+			geometry={new THREE.BoxGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xc026d3 })}
+			scale={[width, height, depth]}
+			position={[-hS / 2, aS, -vS]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
+
+		<SC.Mesh
+			on:click={(e) => console.error('hasdjkfhjksdfhjk')}
+			geometry={new THREE.ConeGeometry()}
+			material={new THREE.MeshStandardMaterial({ color: 0xf14400 })}
+			scale={[0.6, height, 0.6]}
+			position={[0, aS, 0]}
+			rotation={[0, spin, 0]}
+			castShadow
+		/>
+	</SC.Group>
+
+	<SC.Group position={[0, 0, 0]}>
 		<SC.Mesh
 			geometry={new THREE.PlaneGeometry(50, 50)}
 			material={new THREE.MeshStandardMaterial({ color: groundColor })}
@@ -38,7 +104,7 @@
 
 		<!-- <SC.Primitive object={new THREE.GridHelper(50, 50, 0x444444, 0x55555)} /> -->
 	</SC.Group>
-	<SC.PerspectiveCamera position={[1, 1, 7]} />
+	<SC.PerspectiveCamera position={[0, 10, 7]} />
 	<SC.OrbitControls />
 
 	<SC.AmbientLight intensity={0.5} />

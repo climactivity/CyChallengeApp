@@ -30,7 +30,7 @@
 		{/if}
 		<h1 class="text-2xl ">{title}</h1>
 	</div>
-	<div class="w-12 h-12 float-right">
+	<div class="w-12 h-12 flex items-center">
 		<slot name="action" />
 	</div>
 </div>
