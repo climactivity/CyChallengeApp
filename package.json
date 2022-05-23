@@ -32,6 +32,7 @@
     "@sveltejs/kit": "next",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
+    "@types/three": "^0.140.0",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.7",
@@ -58,11 +59,16 @@
     "@fontsource/loved-by-the-king": "^4.5.9",
     "@fontsource/montserrat": "^4.5.10",
     "@fontsource/roboto-condensed": "^4.5.8",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@heroiclabs/nakama-js": "^2.3.0",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-svelte-csf": "^2.0.4",
     "@sveltejs/adapter-netlify": "^1.0.0-next.58",
     "@sveltejs/adapter-static": "^1.0.0-next.31",
-    "capacitor-plugin-safe-area": "^0.0.3"
+    "capacitor-plugin-safe-area": "^0.0.3",
+    "svelte-cubed": "^0.2.1",
+    "svelte-fa": "^2.4.0",
+    "three": "^0.140.2"
   }
 }
