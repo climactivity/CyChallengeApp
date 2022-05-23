@@ -66,7 +66,7 @@
 					<a href="/imprint" class="overflow-menu-item-boring">Impressum</a>
 					<a href="/privacy" class="overflow-menu-item-boring">Datenschutzerklärung</a>
 
-					<hr class="my-4 border-0 border-black rounded-full" />
+					<hr class="my-2 border-0 border-black rounded-full" />
 					<div class="flex flex-col">
 						<span class="text-storm text-xs">Vernetz Dich mit uns</span>
 						<div class="flex felx-row gap-6 py-4">

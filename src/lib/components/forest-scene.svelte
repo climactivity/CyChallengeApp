@@ -1,7 +1,22 @@
 <script lang="ts">
-	import * as THREE from 'three';
-	import * as SC from 'svelte-cubed';
-	import { onMount } from 'svelte';
+	import {
+		Canvas,
+		Scene,
+		PerspectiveCamera,
+		Mesh,
+		DirectionalLight,
+		MeshStandardMaterial,
+		BoxBufferGeometry,
+		PlaneGeometry,
+		WebGLRenderer,
+		AmbientLight,
+		Vector3,
+		MathUtils,
+		FogExp2,
+		OrbitControls
+	} from 'svelthree';
+	import { browser } from '$app/env';
+	import { goto } from '$app/navigation';
 
 	let skyColor = 0x87ceeb;
 	let groundColor = 0x99ff66;
@@ -15,13 +30,168 @@
 		depth = 1,
 		spin = 0;
 
+	let clientWidth: number;
+	let clientHeight: number;
 	let fireMesh: any;
+
+	let cubeGeometry = new BoxBufferGeometry(1, 1, 1);
+
+	let planeGeometry = new PlaneGeometry(50, 50);
+	planeGeometry.rotateX(-Math.PI / 2, 0, 0);
+
+	function handleOnClick(e: Event) {
+		console.log("Hi, I was triggered from app's scope!");
+	}
+
+	let cubeMaterial0 = new MeshStandardMaterial();
+	let cubeMaterial1 = new MeshStandardMaterial();
+	let cubeMaterial2 = new MeshStandardMaterial();
+	let cubeMaterial3 = new MeshStandardMaterial();
+	let cubeMaterial4 = new MeshStandardMaterial();
+	let cubeMaterial5 = new MeshStandardMaterial();
+	let cubeMaterial6 = new MeshStandardMaterial();
+
+	let planeMaterial = new MeshStandardMaterial();
 
 	$: hS = Math.sqrt(3) * width;
 	$: vS = 2 * depth;
 	$: aS = height / 2;
 </script>
 
+{#if browser}
+	<div bind:clientWidth bind:clientHeight class="w-full h-screen">
+		{#if clientWidth}
+			<Canvas let:sti w={clientWidth} h={clientHeight} interactive>
+				<Scene
+					{sti}
+					let:scene
+					id="scene1"
+					props={{ background: skyColor, fog: new FogExp2(skyColor, 0.05) }}
+				>
+					<PerspectiveCamera
+						{scene}
+						id="cam1"
+						props={{ position: [0, 10, 7], lookAt: [0, 0, 0] }}
+					/>
+
+					<DirectionalLight
+						{scene}
+						props={{ position: [-2, 3, 2], intensity: 1.0 }}
+						receiveShadow
+						castShadow
+					/>
+
+					<AmbientLight {scene} props={{ color: 0xffffff, intensity: 0.2 }} />
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial0}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0xff3e00 }}
+						pos={[0, aS, 0]}
+						interact
+						on:click={handleOnClick}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial1}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0xe40045 }}
+						pos={[-hS / 2, aS, -vS]}
+						interact
+						on:click={() => goto('/sector/energy')}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial2}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0x5689a0 }}
+						pos={[hS / 2, aS, -vS]}
+						interact
+						on:click={() => goto('/sector/private-engagement')}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial3}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0x37647a }}
+						pos={[hS, height / 2, 0]}
+						interact
+						on:click={() => goto('/sector/public-engagement')}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial4}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0xf5af19 }}
+						pos={[-hS, height / 2, 0]}
+						interact
+						on:click={() => goto('/sector/mobility')}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial5}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0xa03c7d }}
+						pos={[-hS / 2, aS, vS]}
+						interact
+						on:click={() => goto('/sector/consumption')}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={cubeGeometry}
+						material={cubeMaterial6}
+						mat={{ roughness: 0.5, metalness: 0.0, color: 0x95c11e }}
+						pos={[hS / 2, aS, vS]}
+						interact
+						on:click={() => goto('/sector/food')}
+						receiveShadow
+						castShadow
+					/>
+
+					<Mesh
+						{scene}
+						geometry={planeGeometry}
+						material={planeMaterial}
+						mat={{ roughness: 0.5, metalness: 0.0, color: groundColor }}
+						pos={[0, 0, 0]}
+						receiveShadow
+						castShadow
+					/>
+
+					<OrbitControls {scene} enableDamping />
+				</Scene>
+
+				<WebGLRenderer
+					{sti}
+					sceneId="scene1"
+					camId="cam1"
+					config={{ antialias: true, alpha: false }}
+					enableShadowMap
+				/>
+			</Canvas>
+		{/if}
+	</div>
+{/if}
+<!--
 <SC.Canvas
 	antialias
 	background={new THREE.Color(skyColor)}
@@ -102,15 +272,13 @@
 			receiveShadow
 		/>
 
-		<!-- <SC.Primitive object={new THREE.GridHelper(50, 50, 0x444444, 0x55555)} /> -->
 	</SC.Group>
 	<SC.PerspectiveCamera position={[0, 10, 7]} />
 	<SC.OrbitControls />
 
 	<SC.AmbientLight intensity={0.5} />
 	<SC.DirectionalLight intensity={0.5} position={[-2, 3, 2]} shadow={{ mapSize: [2048, 2048] }} />
-</SC.Canvas>
-
+</SC.Canvas> -->
 <div class="controls">
 	<label><input type="range" bind:value={width} min={0.1} max={3.0} step={0.1} /> width</label>
 	<label><input type="range" bind:value={height} min={0.1} max={3.0} step={0.1} /> height</label>
