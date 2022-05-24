@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { SafeArea } from 'capacitor-plugin-safe-area';
+	import { Capacitor } from '@capacitor/core';
 	import { slide } from 'svelte/transition';
 	import Fa from 'svelte-fa';
 	import {
@@ -35,21 +36,32 @@
 	}
 </script>
 
-<div class="relative w-[100vw] h-[100vh] overflow-hidden bg-slate-100">
+<div
+	class="relative w-[100vw]    {Capacitor.getPlatform() === 'web' && // only apply when not running as an 'app'
+	iOSSafari && // and on an iOS device
+	window.innerWidth < 768 // that isn't an ipad
+		? `h-[calc(100vh-80px)]`
+		: 'h-[100vh]'} overflow-hidden bg-slate-100"
+>
 	<safe-area
-		class="absolute"
-		style="top: {insets.top}px; bottom: {insets.bottom
-			? insets.bottom
-			: iOSSafari
-			? 80
-			: 0}px; left: {insets.left}px; right: {insets.right}px;"
+		class="area"
+		style="
+        top: {insets.top}px;
+        left: {insets.left}px;
+        right: {insets.right}px;
+        {iOSSafari ? `` : 'h-[100vh]'}
+        "
 	>
-		<main class="h-full pb-12 ">
+		<main class=" pb-12 ">
 			<div class=" h-full">
 				<slot />
 			</div>
 		</main>
-		<nav class="absolute bottom-0  w-full ">
+		<nav
+			class="absolute
+                   bottom-0
+                   w-full "
+		>
 			<BottomNavbar />
 		</nav>
 
@@ -84,23 +96,27 @@
 					<hr class="my-2 border-0 border-black rounded-full" />
 					<div class="flex flex-col">
 						<span class="text-storm text-xs">Vernetz Dich mit uns</span>
-						<div class="flex felx-row gap-6 py-4">
-							<a href="https://www.instagram.com/climactivity/" class="social-link text-black"
+						<div class="flex flex-row gap-6 py-4 ">
+							<a
+								href="https://www.instagram.com/climactivity/"
+								class="text-3xl z-20 block  text-black hover:text-white"
 								><Fa icon={faInstagram} /></a
 							>
-							<a href="https://www.facebook.com/climactivity/" class="social-link text-[#3b5998]"
-								><Fa icon={faFacebook} /></a
+							<a
+								href="https://www.facebook.com/climactivity/"
+								class="text-3xl  z-20 text-[#3b5998] hover:text-white"><Fa icon={faFacebook} /></a
 							>
-							<a href="https://twitter.com/climactivity" class="social-link text-[#1da1f2]"
-								><Fa icon={faTwitter} /></a
+							<a
+								href="https://twitter.com/climactivity"
+								class="text-3xl  z-20 text-[#1da1f2] hover:text-white"><Fa icon={faTwitter} /></a
 							>
 							<a
 								href="https://www.linkedin.com/company/climactivity-gemeinsam-zum-klimaziel"
-								class="social-link text-[#0077b5]"><Fa icon={faLinkedin} /></a
+								class="text-3xl z-20 text-[#0077b5] hover:text-white"><Fa icon={faLinkedin} /></a
 							>
 							<a
 								href="https://www.youtube.com/channel/UCtvM1pUmM3KqXFxLanvoTQg"
-								class="social-link text-[#cd201f]"><Fa icon={faYoutube} /></a
+								class="text-3xl z-20 text-[#cd201f] hover:text-white"><Fa icon={faYoutube} /></a
 							>
 						</div>
 					</div>
@@ -126,7 +142,7 @@
 	}
 
 	.social-link {
-		@apply text-3xl z-20;
+		@apply text-3xl;
 		&:hover {
 			@apply text-white;
 		}
@@ -139,5 +155,12 @@
 
 	*::-webkit-scrollbar {
 		display: none;
+	}
+
+	@supports (-webkit-touch-callout: none) {
+		.area {
+			/* The hack for Safari */
+			height: -webkit-fill-available;
+		}
 	}
 </style>

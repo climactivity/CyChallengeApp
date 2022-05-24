@@ -37,7 +37,7 @@
 	let cubeGeometry = new BoxBufferGeometry(1, 1, 1);
 
 	let planeGeometry = new PlaneGeometry(50, 50);
-	planeGeometry.rotateX(-Math.PI / 2, 0, 0);
+	planeGeometry.rotateX(-Math.PI / 2);
 
 	function handleOnClick(e: Event) {
 		console.log("Hi, I was triggered from app's scope!");
@@ -184,7 +184,7 @@
 					{sti}
 					sceneId="scene1"
 					camId="cam1"
-					config={{ antialias: true, alpha: false }}
+					config={{ antialias: false, alpha: false }}
 					enableShadowMap
 				/>
 			</Canvas>

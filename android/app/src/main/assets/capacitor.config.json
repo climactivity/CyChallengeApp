@@ -1,0 +1,6 @@
+{
+	"appId": "de.climactivity.challenge",
+	"appName": "cychallengeapp",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

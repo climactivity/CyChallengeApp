@@ -2,16 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-
-    * {
+	* {
 		-ms-overflow-style: none; /* IE and Edge */
 		scrollbar-width: none; /* Firefox */
+		outline: none;
 	}
 
 	*::-webkit-scrollbar {
 		display: none;
 	}
-    
+
+	body {
+		max-height: -webkit-fill-available;
+	}
+	html {
+		height: calc(100vh - 60px);
+	}
 }

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">cychallengeapp</string>
+    <string name="title_activity_main">cychallengeapp</string>
+    <string name="package_name">de.climactivity.challenge</string>
+    <string name="custom_url_scheme">de.climactivity.challenge</string>
+</resources>

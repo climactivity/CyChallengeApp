@@ -18,7 +18,7 @@ const config = {
 		}),
 		vite: {
 			ssr: {
-				noExternal: ['@heroiclabs/nakama-js']
+				noExternal: ['@heroiclabs/nakama-js', '@fortawesome/free-brands-svg-icons', '@fortawesome/free-solid-svg-icons']
 			}
 
 		}

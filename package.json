@@ -56,6 +56,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@capacitor/android": "^3.5.1",
     "@capacitor/core": "^3.5.1",
     "@fontsource/loved-by-the-king": "^4.5.9",
     "@fontsource/montserrat": "^4.5.10",

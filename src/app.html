@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%svelte.assets%/favicon.png" />
@@ -7,6 +7,12 @@
 		%svelte.head%
 	</head>
 	<body>
-		<div>%svelte.body%</div>
+		<div id="svelte-body">%svelte.body%</div>
 	</body>
+
+	<style>
+		#svelte-body  {
+			overflow: hidden;
+		}
+	</style>
 </html>
