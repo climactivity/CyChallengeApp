@@ -13,6 +13,7 @@
 	import BottomNavbar from '$lib/components/bottom-navbar.svelte';
 	import { showMenu } from '$lib/stores/menu-store';
 	import { expoInOut } from 'svelte/easing';
+	import { browser } from '$app/env';
 	let insets = {
 		top: 0,
 		left: 0,
@@ -22,12 +23,26 @@
 	SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
 		insets = _insets;
 	});
+
+	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
+
+	let iOSSafari = false;
+	if (browser) {
+		let ua = window.navigator.userAgent;
+		let iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+		let webkit = !!ua.match(/WebKit/i);
+		iOSSafari = iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/FxiOS/i);
+	}
 </script>
 
 <div class="relative w-[100vw] h-[100vh] overflow-hidden bg-slate-100">
 	<safe-area
 		class="absolute"
-		style="top: {insets.top}px; bottom: {insets.bottom}px; left: {insets.left}px; right: {insets.right}px;"
+		style="top: {insets.top}px; bottom: {insets.bottom
+			? insets.bottom
+			: iOSSafari
+			? 80
+			: 0}px; left: {insets.left}px; right: {insets.right}px;"
 	>
 		<main class="h-full pb-12 ">
 			<div class=" h-full">
