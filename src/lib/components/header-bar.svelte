@@ -3,13 +3,32 @@
 
 	import type { SvelteComponent } from 'svelte';
 
-	import type { Writable } from 'svelte/store';
-
+	import { flip } from 'svelte/animate';
 	let backbutton = false;
 	let title = 'Title';
 	let action: SvelteComponent;
 	let hidden: boolean;
-	import { fly } from 'svelte/transition';
+	import { fly, slide } from 'svelte/transition';
+	import { crossfade } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+
+	const [send, receive] = crossfade({
+		duration: (d) => d,
+
+		fallback(node, params) {
+			const style = getComputedStyle(node);
+			const transform = style.transform === 'none' ? '' : style.transform;
+
+			return {
+				duration: 600,
+				easing: quintOut,
+				css: (t) => `
+					transform: ${transform} scale(${t});
+					opacity: ${t}
+				`
+			};
+		}
+	});
 
 	let onGoBack = () => {
 		history.back();
@@ -35,14 +54,11 @@
 
 {#if !hidden}
 	<!-- <div class="relative transition-all {hidden ? 'h-0' : 'h-16'}"> -->
-	<div transition:fly={{ y: -20, duration: 500 }} class="header pb-4 pt-4 px-6  bg-white shadow-md">
+	<div class="header pb-4 pt-4 px-6  bg-white shadow-md">
 		<div>
 			{#if backbutton}
-				<div
-					class="absolute flex flex-row content-center items-center gap-4"
-					transition:fly={{ x: -20, duration: 500 }}
-				>
-					<button on:click={back}>
+				<div class="absolute flex flex-row content-center items-center gap-4">
+					<button on:click={back} transition:fly={{ x: -200, duration: 200 }}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-6 w-6"
@@ -54,12 +70,22 @@
 							<path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
 						</svg>
 					</button>
-					<h1 class="text-2xl transition-transform">{title}</h1>
+
+					<h1
+						class="text-2xl transition-transform"
+						out:send={{ key: 'title' }}
+						in:receive={{ key: 'title' }}
+					>
+						{title}
+					</h1>
 				</div>
-			{:else}
+			{/if}
+
+			{#if !backbutton}
 				<h1
 					class=" absolute text-2xl transition-transform"
-					transition:fly={{ x: 20, duration: 500 }}
+					out:send={{ key: 'title' }}
+					in:receive={{ key: 'title' }}
 				>
 					{title}
 				</h1>

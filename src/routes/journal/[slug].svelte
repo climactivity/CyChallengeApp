@@ -57,7 +57,9 @@
 		{/each}
 	</div>
 	{#if browser}
-		<div class="absolute bottom-20 right-12">
+		<div
+			class="absolute bottom-20 right-12 transition-all animate-fade animation-delay-500 opacity-0"
+		>
 			<ShareButton
 				shareOptions={{
 					title: data.title,

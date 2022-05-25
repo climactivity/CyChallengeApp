@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="grid grid-flow-col px-2 gap-2 sm:gap-12 place-content-around sm:place-content-center select-none h-12 bg-white shadow-sm backdrop-blur-md"
+	class="relative grid grid-flow-col px-2 gap-2 sm:gap-12 place-content-around sm:place-content-center select-none h-12 bg-white shadow-sm backdrop-blur-md z-20"
 >
 	<HomeButton path="/" />
 	<JournalButton path="/journal" />
