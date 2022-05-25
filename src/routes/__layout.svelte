@@ -15,6 +15,7 @@
 	import { showMenu } from '$lib/stores/menu-store';
 	import { expoInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
+	import HeaderBar from '$lib/components/header-bar.svelte';
 	let insets = {
 		top: 0,
 		left: 0,
@@ -36,6 +37,21 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Climactivity Challenge App</title>
+	{#if import.meta.env.VITE_DISABLE_ZOOM}
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+	{:else}
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+		/>
+	{/if}
+</svelte:head>
+
 <div
 	class="relative w-[100vw]    {Capacitor.getPlatform() === 'web' && // only apply when not running as an 'app'
 	iOSSafari && // and on an iOS device
@@ -52,7 +68,8 @@
         {iOSSafari ? `` : 'h-[100vh]'}
         "
 	>
-		<main class=" pb-12 ">
+		<HeaderBar />
+		<main class=" pt-16 pb-12 ">
 			<div class=" h-full">
 				<slot />
 			</div>

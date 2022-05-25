@@ -1,10 +1,14 @@
 <script lang="ts">
-	import HeaderBar from '$lib/components/header-bar.svelte';
+	import { headerState } from '$lib/stores/header-store';
+	headerState.set({
+		backbutton: true,
+		title: 'Datenschutzerklärung',
+		hidden: false
+	});
 </script>
 
 <div class="bg-white">
-	<HeaderBar backbutton title="Datenschutzerklärung" />
-	<div class="prose h-screen overflow-scroll p-4 pb-40">
+	<div class="prose h-screen overflow-scroll p-4 pb-40 mx-auto">
 		<p>
 			Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen
 			der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und

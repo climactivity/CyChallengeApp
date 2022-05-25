@@ -1,7 +1,7 @@
 import AdapterStatic from '@sveltejs/adapter-static';
 import AdapterNetlify from '@sveltejs/adapter-netlify';
 import preprocess from 'svelte-preprocess';
-
+import path from "path";
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
@@ -19,7 +19,14 @@ const config = {
 		vite: {
 			ssr: {
 				noExternal: ['@heroiclabs/nakama-js', '@fortawesome/free-brands-svg-icons', '@fortawesome/free-solid-svg-icons']
+			},
+			resolve: {
+				alias: {
+					"$testData": path.resolve("./src/testData"),
+					"$lib": path.resolve("./src/lib")
+				}
 			}
+			
 
 		}
 	}

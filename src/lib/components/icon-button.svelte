@@ -7,18 +7,13 @@
 	export let label = 'IconButton';
 	export let showLabel = false;
 	let selected = false;
-	// const select = (_e: Event) => {
-	// 	selected = !selected;
-	// 	console.log(selected);
-	// };
 
 	if (browser) {
 		page.subscribe(({ routeId }) => {
-			// console.log(routeId, path, routeId?.startsWith(path), !!routeId?.startsWith(path.slice(1)));
 			if (path === '/') {
 				selected = routeId === '';
 			} else {
-				selected = !!routeId?.startsWith(path.slice(1));
+				selected = !!routeId?.startsWith(path.slice(1)); // routeId doesn't start with a leading '/'
 			}
 		});
 	}
@@ -43,8 +38,8 @@
 
 <style>
 	.selected {
-		fill: #2563eb;
-		color: #2563eb;
+		fill: #5689a0;
+		color: #5689a0;
 		animation: select 150ms ease forwards;
 	}
 

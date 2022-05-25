@@ -20,3 +20,9 @@
 		height: calc(100vh - 60px);
 	}
 }
+
+@layer utilities {
+	.card {
+		@apply bg-white rounded-md shadow-sm p-4 m-4;
+	}
+}

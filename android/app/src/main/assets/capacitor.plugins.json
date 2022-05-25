@@ -1,5 +1,9 @@
 [
 	{
+		"pkg": "@capacitor/share",
+		"classpath": "com.capacitorjs.plugins.share.SharePlugin"
+	},
+	{
 		"pkg": "capacitor-plugin-safe-area",
 		"classpath": "com.zhuxian.safearea.SafeAreaPlugin"
 	}

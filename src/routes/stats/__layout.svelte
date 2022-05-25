@@ -1,8 +1,13 @@
 <script>
-	import HeaderBar from '$lib/components/header-bar.svelte';
+	import { headerState } from '$lib/stores/header-store';
+
+	headerState.set({
+		backbutton: false,
+		title: 'Stats',
+		hidden: false
+	});
 </script>
 
 <div>
-	<HeaderBar title="Stats" backbutton={false} />
 	<slot />
 </div>

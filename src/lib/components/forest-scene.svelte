@@ -7,6 +7,8 @@
 		DirectionalLight,
 		MeshStandardMaterial,
 		BoxBufferGeometry,
+		ConeBufferGeometry,
+		CylinderBufferGeometry,
 		PlaneGeometry,
 		WebGLRenderer,
 		AmbientLight,
@@ -19,24 +21,28 @@
 	import { goto } from '$app/navigation';
 
 	let skyColor = 0x87ceeb;
-	let groundColor = 0x99ff66;
+	let groundColor = 0xa0cf21;
 
 	let hS: number;
 	let vS: number;
 	let aS: number;
 
-	let width = 1,
+	let width = 3,
 		height = 1,
-		depth = 1,
+		depth = 3,
 		spin = 0;
 
 	let clientWidth: number;
 	let clientHeight: number;
 	let fireMesh: any;
 
-	let cubeGeometry = new BoxBufferGeometry(1, 1, 1);
+	let cubeGeometry = new CylinderBufferGeometry(1, 1, 3, 3);
+	cubeGeometry.rotateX(-Math.PI / 2);
 
-	let planeGeometry = new PlaneGeometry(50, 50);
+	let fireGeometry = new ConeBufferGeometry(2, 4, 8, 3);
+	//fireGeometry.rotateX(-Math.PI / 2);
+
+	let planeGeometry = new PlaneGeometry(200, 200);
 	planeGeometry.rotateX(-Math.PI / 2);
 
 	function handleOnClick(e: Event) {
@@ -71,23 +77,18 @@
 					<PerspectiveCamera
 						{scene}
 						id="cam1"
-						props={{ position: [0, 10, 7], lookAt: [0, 0, 0] }}
+						props={{ position: [0, 30, 30], lookAt: [0, 0, 0] }}
 					/>
 
-					<DirectionalLight
-						{scene}
-						props={{ position: [-2, 3, 2], intensity: 1.0 }}
-						receiveShadow
-						castShadow
-					/>
+					<DirectionalLight {scene} props={{ position: [-2, 3, 2], intensity: 1.0 }} castShadow />
 
 					<AmbientLight {scene} props={{ color: 0xffffff, intensity: 0.2 }} />
 
 					<Mesh
 						{scene}
-						geometry={cubeGeometry}
+						geometry={fireGeometry}
 						material={cubeMaterial0}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0xff3e00 }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0xff3e00 }}
 						pos={[0, aS, 0]}
 						interact
 						on:click={handleOnClick}
@@ -99,8 +100,9 @@
 						{scene}
 						geometry={cubeGeometry}
 						material={cubeMaterial1}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0xe40045 }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0xe40045 }}
 						pos={[-hS / 2, aS, -vS]}
+						rot={[0, Math.PI / 6, 0]}
 						interact
 						on:click={() => goto('/sector/energy')}
 						receiveShadow
@@ -111,8 +113,9 @@
 						{scene}
 						geometry={cubeGeometry}
 						material={cubeMaterial2}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0x5689a0 }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0x5689a0 }}
 						pos={[hS / 2, aS, -vS]}
+						rot={[0, -Math.PI / 6, 0]}
 						interact
 						on:click={() => goto('/sector/private-engagement')}
 						receiveShadow
@@ -123,8 +126,9 @@
 						{scene}
 						geometry={cubeGeometry}
 						material={cubeMaterial3}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0x37647a }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0x37647a }}
 						pos={[hS, height / 2, 0]}
+						rot={[0, Math.PI / 2, 0]}
 						interact
 						on:click={() => goto('/sector/public-engagement')}
 						receiveShadow
@@ -135,8 +139,9 @@
 						{scene}
 						geometry={cubeGeometry}
 						material={cubeMaterial4}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0xf5af19 }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0xf5af19 }}
 						pos={[-hS, height / 2, 0]}
+						rot={[0, Math.PI / 2, 0]}
 						interact
 						on:click={() => goto('/sector/mobility')}
 						receiveShadow
@@ -147,8 +152,9 @@
 						{scene}
 						geometry={cubeGeometry}
 						material={cubeMaterial5}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0xa03c7d }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0xa03c7d }}
 						pos={[-hS / 2, aS, vS]}
+						rot={[0, -Math.PI / 6, 0]}
 						interact
 						on:click={() => goto('/sector/consumption')}
 						receiveShadow
@@ -159,8 +165,9 @@
 						{scene}
 						geometry={cubeGeometry}
 						material={cubeMaterial6}
-						mat={{ roughness: 0.5, metalness: 0.0, color: 0x95c11e }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: 0x95c11e }}
 						pos={[hS / 2, aS, vS]}
+						rot={[0, Math.PI / 6, 0]}
 						interact
 						on:click={() => goto('/sector/food')}
 						receiveShadow
@@ -171,7 +178,7 @@
 						{scene}
 						geometry={planeGeometry}
 						material={planeMaterial}
-						mat={{ roughness: 0.5, metalness: 0.0, color: groundColor }}
+						mat={{ roughness: 1.0, metalness: 0.0, color: groundColor }}
 						pos={[0, 0, 0]}
 						receiveShadow
 						castShadow
@@ -184,7 +191,7 @@
 					{sti}
 					sceneId="scene1"
 					camId="cam1"
-					config={{ antialias: false, alpha: false }}
+					config={{ antialias: true, alpha: false }}
 					enableShadowMap
 				/>
 			</Canvas>

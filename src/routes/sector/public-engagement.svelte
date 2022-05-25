@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
-	import type { Writable } from 'svelte/store';
-	const title: Writable<string> = getContext('title');
-	title.set('Öffentliches Engagement');
+	import { headerState } from '$lib/stores/header-store';
+
+	headerState.set({
+		backbutton: true,
+		title: 'Öffentliches Engagement',
+		hidden: false
+	});
 </script>
 
 <div>Öffentliches Engagement</div>

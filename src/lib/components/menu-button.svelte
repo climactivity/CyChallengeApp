@@ -63,17 +63,15 @@
 
 	svg {
 		stroke: #000;
-
-		:hover {
-			stroke: #fff;
-		}
 	}
 
 	.collapsed {
+		stroke: #000;
+
 		stroke-dashoffset: 136.9;
 	}
 	.expanded {
-		/* stroke: #2563eb; */
+		stroke: #5689a0;
 		stroke-dashoffset: 71.1;
 	}
 </style>

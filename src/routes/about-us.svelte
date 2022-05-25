@@ -1,8 +1,12 @@
 <script lang="ts">
-	import HeaderBar from '$lib/components/header-bar.svelte';
+	import { headerState } from '$lib/stores/header-store';
+	headerState.set({
+		backbutton: true,
+		title: 'Über uns',
+		hidden: false
+	});
 </script>
 
 <div>
-	<HeaderBar backbutton title="Über uns" />
 	<slot />
 </div>

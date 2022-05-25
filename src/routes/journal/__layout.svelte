@@ -1,10 +1,8 @@
-<script>
-	import HeaderBar from '$lib/components/header-bar.svelte';
+<script lang="ts">
 </script>
 
 <div class="">
-	<HeaderBar title="Journal" backbutton={false} />
-	<div class="py-4 overflow-scroll h-screen">
+	<div class="py-4 overflow-scroll h-screen pb-60">
 		<slot />
 	</div>
 </div>
