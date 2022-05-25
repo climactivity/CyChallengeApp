@@ -21,6 +21,15 @@
 	}
 }
 
+@layer components {
+	.button-primary {
+		@apply rounded-lg shadow-lg text-2xl text-white px-4 py-2 bg-heart;
+	}
+	.button-primary:hover {
+		@apply brightness-110;
+	}
+}
+
 @layer utilities {
 	.animation-delay-250 {
 		animation-delay: 0.25s;

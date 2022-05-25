@@ -7,9 +7,13 @@
 </script>
 
 <div
-	class="relative grid grid-flow-col px-2 gap-2 sm:gap-12 place-content-around sm:place-content-center select-none h-12 bg-white shadow-sm backdrop-blur-md z-20"
+	class="relative
+		grid grid-flow-col
+		px-2 gap-2 sm:gap-12
+		place-content-around sm:place-content-center
+		select-none h-12 bg-white  backdrop-blur-md z-20"
 >
-	<HomeButton path="/" />
+	<HomeButton path="/sector" />
 	<JournalButton path="/journal" />
 	<StatsButton path="/stats" />
 	<FriendsButton path="/social" />
