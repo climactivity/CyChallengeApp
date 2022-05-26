@@ -9,17 +9,22 @@
 	import MdMenu from '$lib/components/MdMenu.svelte';
 	import BottomNavbar from '$lib/components/bottom-navbar.svelte';
 	import HeaderBar from '$lib/components/header-bar.svelte';
+	import { setContext } from 'svelte';
+import { writable } from 'svelte/store';
 
-	let insets = {
+	let insets = writable({
 		top: 0,
 		left: 0,
 		right: 0,
 		bottom: 0
-	};
-	SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
-		insets = _insets;
 	});
+	setContext("insets", insets)
 
+	SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
+		insets.set( _insets);
+
+		console.log(_insets)
+	});
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
 
 	let iOSSafari = false;
@@ -66,14 +71,21 @@
 	<safe-area
 		class="area"
 		style="
-        top: {insets.top}px;
-        left: {insets.left}px;
-        right: {insets.right}px;
-        {iOSSafari ? `` : 'h-[100vh]'}
+        top: {$insets.top}px;
+        left: {$insets.left}px;
+        right: {$insets.right}px;
+        {iOSSafari ? `${$insets.bottom}px` : 'h-[100vh]'}
         "
 	>
+	<div 	class="absolute
+	top-0
+	w-full 
+	bg-water2-dark z-10"
+	style="padding-top: {$insets.top}px">
 		<HeaderBar />
-		<main class=" pt-16 pb-12 ">
+
+	</div>
+		<main class=" pt-16 pb-12">
 			<div class=" h-full">
 				<slot />
 			</div>
@@ -81,7 +93,9 @@
 		<nav
 			class="absolute
                    bottom-0
-                   w-full "
+                   w-full 
+				   bg-white z-10"
+				   style="padding-bottom: {$insets.bottom}px"
 		>
 			<BottomNavbar />
 		</nav>

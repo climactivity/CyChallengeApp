@@ -104,6 +104,6 @@
 	.header {
 		display: grid;
 		grid-template-columns: 1fr 3rem;
-		@apply fixed top-0 left-0 right-0 h-16;
+		@apply top-0 left-0 right-0 h-16;
 	}
 </style>

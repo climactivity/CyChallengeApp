@@ -60,6 +60,7 @@
     "@capacitor/android": "^3.5.1",
     "@capacitor/app": "^1.1.1",
     "@capacitor/core": "^3.5.1",
+    "@capacitor/ios": "^3.5.1",
     "@capacitor/push-notifications": "^1.0.9",
     "@capacitor/share": "^1.1.2",
     "@fontsource/loved-by-the-king": "^4.5.9",
