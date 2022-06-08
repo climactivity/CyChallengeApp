@@ -82,11 +82,10 @@ import { writable } from 'svelte/store';
 	w-full 
 	bg-water2-dark z-10"
 	style="padding-top: {$insets.top}px">
-		<HeaderBar />
 
 	</div>
-		<main class=" pt-16 pb-12">
-			<div class=" h-full">
+		<main class="pb-12">
+			<div class="overflow-y-auto h-full relative">
 				<slot />
 			</div>
 		</main>

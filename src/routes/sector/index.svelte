@@ -1,5 +1,5 @@
 <script>
-	import ForestScene from '$lib/components/forest-scene.svelte';
+	import ForestScene from '$lib/components/forest-scene-placeholder.svelte';
 	import { headerState } from '$lib/stores/header-store';
 
 	headerState.set({

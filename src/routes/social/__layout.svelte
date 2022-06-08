@@ -4,6 +4,7 @@
 	import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 	import { headerState } from '$lib/stores/header-store';
+	import { fly, slide } from 'svelte/transition';
 
 	headerState.set({
 		backbutton: false,
@@ -12,6 +13,7 @@
 	});
 </script>
 
-<div>
+<div transition:fly={{x: 200, duration: 1000}} class="absolute top-0 left-0 right-0">
+	<HeaderBar/>
 	<slot />
 </div>
