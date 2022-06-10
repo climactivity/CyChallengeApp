@@ -8,7 +8,7 @@
 
 <a href="/journal/{acceptedChallenge.slug}" class="">
 	<div class="shadow-md rounded-md bg-white mx-4 p-4">
-		<div class="text-2xl text-center font-serif py-4">{acceptedChallenge.title}</div>
+		<div class="text-2xl text-center font-serif font-bold py-4">{acceptedChallenge.title}</div>
 		<p class="font-sans-serif py-4">
 			{acceptedChallenge.frontMatter}
 		</p>

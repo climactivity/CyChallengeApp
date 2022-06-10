@@ -6,4 +6,5 @@ export type HeaderState = {
 	action?: SvelteComponent;
 	back?: () => void;
 	hidden: boolean;
+	transparent?: boolean;
 };

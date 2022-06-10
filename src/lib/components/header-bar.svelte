@@ -8,6 +8,7 @@
 	let title = 'Title';
 	let action: SvelteComponent;
 	let hidden: boolean;
+	let transparent: boolean;
 	import { fly, slide } from 'svelte/transition';
 	import { crossfade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
@@ -44,17 +45,23 @@
 	};
 
 	headerState.subscribe((state) => {
+		console.log(state);
 		backbutton = state.backbutton;
 		title = state.title;
 		action = state.action;
 		hidden = state.hidden;
 		onGoBack = state.back;
+		transparent = state.transparent ?? false;
 	});
 </script>
 
 {#if !hidden}
 	<!-- <div class="relative transition-all {hidden ? 'h-0' : 'h-16'}"> -->
-	<div class="header pb-4 pt-4 px-6  bg-white shadow-md">
+	<div
+		class="header pb-4 pt-4 px-6 transition-all  {transparent
+			? 'bg-opacity-0'
+			: 'bg-white shadow-md'} "
+	>
 		<div>
 			{#if backbutton}
 				<div class="absolute flex flex-row content-center items-center gap-4">
@@ -72,7 +79,7 @@
 					</button>
 
 					<h1
-						class="text-2xl transition-transform"
+						class="text-2xl transition-transform {transparent ? 'hidden' : ''}"
 						out:send={{ key: 'title' }}
 						in:receive={{ key: 'title' }}
 					>
@@ -83,7 +90,7 @@
 
 			{#if !backbutton}
 				<h1
-					class=" absolute text-2xl transition-transform"
+					class=" absolute text-2xl transition-transform {transparent ? 'hidden' : ''}"
 					out:send={{ key: 'title' }}
 					in:receive={{ key: 'title' }}
 				>

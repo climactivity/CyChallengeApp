@@ -28,18 +28,31 @@
 	headerState.set({
 		backbutton: true,
 		title: data.title,
-		hidden: false
+		hidden: false,
+		transparent: true
 	});
 </script>
 
-<div in:fly={{ x: 200, duration: 500 }} class="">
-	<p class="text-lg card">
+<div in:fly={{ x: 200, duration: 500 }} class="pt-9 ">
+	<div class="h-9">
+		{#if $headerState.transparent}
+			<h1
+				in:fly={{ y: -200, duration: 200 }}
+				out:fly={{ y: -200, duration: 200 }}
+				class="text-center mx-auto text-4xl font-bold font-sans"
+			>
+				{data.title}
+			</h1>
+		{/if}
+	</div>
+
+	<p class="text-lg p-4 m-4">
 		{data.content}
 	</p>
 
 	<div class="text-center mx-auto text-2xl">Todos</div>
 	<div
-		class="grid gap-x-6 gap-y-4 text-xl items-center  card"
+		class="grid gap-x-6 gap-y-4 text-xl items-center p-4 m-4"
 		style="grid-template-columns: 1fr 2rem;"
 	>
 		{#each data.completedSteps as completedStep}
@@ -57,9 +70,7 @@
 		{/each}
 	</div>
 	{#if browser}
-		<div
-			class="absolute bottom-20 right-12 transition-all animate-fade animation-delay-500 opacity-0"
-		>
+		<div class="bottom-0 right-12 transition-all animate-fade animation-delay-500 opacity-0">
 			<ShareButton
 				shareOptions={{
 					title: data.title,

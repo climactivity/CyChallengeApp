@@ -31,8 +31,8 @@ module.exports = {
           }
         },
         fontFamily: {
-          serif: ['Montserrat','Roboto Slab', 'serif'],
-          'sans-serif': ['SF UI Text', 'Roboto Condensed', 'sans-serif'],
+          serif: ['Poppins', 'Montserrat','Roboto Slab', 'serif'],
+          'sans-serif': ['Inter', 'SF UI Text', 'Roboto Condensed', 'sans-serif'],
           cursive: ['Loved by the King', 'cursive']
         },
         typography: {

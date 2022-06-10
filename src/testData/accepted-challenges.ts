@@ -1,7 +1,7 @@
 import type { AcceptedChallenge, Sector } from '$lib/types/challenges';
 export const acceptedChallenges: AcceptedChallenge[] = [
 	{
-		title: 'Challenge 1',
+		title: 'Challenge eins',
 		id: '128727z398172398',
 		slug: 'challenge-1',
 		frontMatter: 'a cool challenge',
