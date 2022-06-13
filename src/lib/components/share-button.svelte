@@ -4,6 +4,7 @@
 	import type { ShareOptions } from '@capacitor/share';
 	import { faShare, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
+	import ButtonSecondaryCta from './buttons/button-secondary-cta.svelte';
 
 	export let shareOptions: Partial<ShareOptions>;
 
@@ -20,20 +21,20 @@
 	});
 </script>
 
-<div
-	class="grid content-center text-white px-4 w-12 h-12 bg-nature rounded-full hover:bg-nature-dark active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none"
->
-	{#if canShare}
-		<div class="block" on:click={(_) => onShare()}>
-			<Fa icon={faShareNodes} />
+{#if canShare}
+	<ButtonSecondaryCta onClick={(e) => console.log(e)}>
+		<div class="flex flex-row place-content-center gap-4 items-center w-full">
+			<Fa icon={faShareNodes} /> Teilen
 		</div>
-	{:else}
-		<a
-			class="block"
-			href="mailto:?body={`${shareOptions.text} \n ${shareOptions.url}`}&subject={shareOptions.title}"
-			alt="share"
-		>
-			<Fa icon={faShare} />
-		</a>
-	{/if}
-</div>
+	</ButtonSecondaryCta>
+{:else}
+	<a
+		class="grid place-items-center w-full text-black border-2 border-nature-darkest font-bold font-serif text-lg bg-opacity-0 py-4 px-8 rounded"
+		href="mailto:?body={`${shareOptions.text} \n ${shareOptions.url}`}&subject={shareOptions.title}"
+		alt="share"
+	>
+		<div class="flex flex-row gap-4 items-center place-content-center">
+			<Fa icon={faShare} /> Teilen
+		</div>
+	</a>
+{/if}

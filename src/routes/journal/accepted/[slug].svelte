@@ -18,12 +18,16 @@
 	import ShareButton from '$lib/components/share-button.svelte';
 	import { fly } from 'svelte/transition';
 
-	import type { AcceptedChallenge } from '$lib/types/challenges';
+	import type { AcceptedChallenge, CompletedStep } from '$lib/types/challenges';
 
 	export let data: AcceptedChallenge;
 	import { headerState } from '$lib/stores/header-store';
 	import Fa from 'svelte-fa';
 	import { faCircleCheck, faCircleDot } from '@fortawesome/free-solid-svg-icons';
+	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
+	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
+
+	let completed;
 
 	headerState.set({
 		backbutton: true,
@@ -31,6 +35,21 @@
 		hidden: false,
 		transparent: true
 	});
+
+	const stepCompleted = (step) => {
+		return !!data.completedSteps.find((cs) => cs.name === step.name);
+	};
+	const completeStep = (step) => {
+		const completed: CompletedStep = {
+			...step,
+			completed: true,
+			completedAt: new Date()
+		};
+		data.completedSteps = [...data.completedSteps, completed];
+	};
+
+	const allStepsCompleted = () => data.completedSteps.length === data.steps.length;
+	$: completed = allStepsCompleted();
 </script>
 
 <div in:fly={{ x: 200, duration: 500 }} class="pt-9 ">
@@ -55,30 +74,28 @@
 		class="grid gap-x-6 gap-y-4 text-xl items-center p-4 m-4"
 		style="grid-template-columns: 1fr 2rem;"
 	>
-		{#each data.completedSteps as completedStep}
-			<p class="align-middle">
-				{completedStep.completedAt.toLocaleDateString()} - {completedStep.name}
-			</p>
-			<Fa icon={faCircleCheck} class="text-nature " />
-		{/each}
-
 		{#each data.steps as step}
 			<p class="align-middle">
 				{step.name}
 			</p>
-			<Fa icon={faCircleCheck} class="text-storm-light " />
+			<button on:click={() => completeStep(step)}>
+				<Fa icon={faCircleCheck} class={stepCompleted(step) ? 'text-nature' : 'text-storm-light'} />
+			</button>
 		{/each}
 	</div>
-	{#if browser}
-		<div class="bottom-0 right-12 transition-all animate-fade animation-delay-500 opacity-0">
-			<ShareButton
-				shareOptions={{
-					title: data.title,
-					text: 'Really awesome thing you need to see right meow',
-					url: window.location.href,
-					dialogTitle: 'Teile deine Challenge'
-				}}
-			/>
+	{#if allStepsCompleted}
+		<div class="p-4 m-4 space-y-4">
+			<ButtonPrimaryCta onClick={(e) => console.log(e)}>Challenge abschließen</ButtonPrimaryCta>
+			{#if browser}
+				<ShareButton
+					shareOptions={{
+						title: data.title,
+						text: 'Really awesome thing you need to see right meow',
+						url: window.location.href,
+						dialogTitle: 'Teile deine Challenge'
+					}}
+				/>
+			{/if}
 		</div>
 	{/if}
 </div>

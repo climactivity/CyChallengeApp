@@ -8,11 +8,14 @@
 </script>
 
 {#if $showMenu}
-	<div class="absolute inset-0 bg-slate-600 opacity-0 z-10" on:click={(e) => showMenu.set(false)} />
+	<div
+		class="absolute inset-0 bg-slate-600 opacity-0 z-[900]"
+		on:click={(e) => showMenu.set(false)}
+	/>
 	<div
 		transition:slide={{ duration: 450, easing: expoInOut }}
 		class="transition-all duration-300   grid grid-flow-row place-content-center absolute
-				 w-full h-[80vh] bottom-0 right-0 opacity-100
+				 w-full h-[80vh] bottom-0 right-0 opacity-100 z-[900]
 				 "
 	>
 		<div

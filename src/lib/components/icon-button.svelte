@@ -22,7 +22,7 @@
 <div
 	class="cursor-pointer  transition-all duration-500 {selected
 		? 'selected'
-		: 'unselected'} grid place-content-center grid-flow-col gap-2"
+		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button"
 >
 	<a href={path}>
 		<slot />
@@ -36,15 +36,19 @@
 	</a>
 </div>
 
-<style>
+<style lang="scss">
 	.selected {
 		fill: #5689a0;
 		color: #5689a0;
-		animation: select 150ms ease forwards;
+		// animation: select 150ms ease forwards;
 	}
 
 	.unselected {
 		fill: #000000;
+	}
+
+	.menu-button {
+		height: 100%;
 	}
 
 	@keyframes select {

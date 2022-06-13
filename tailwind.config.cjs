@@ -27,7 +27,8 @@ module.exports = {
           nature: {
             light: '#A0CF21',
             DEFAULT: '#95c11e',
-            dark: '#658215'
+            dark: '#658215',
+            darkest: '#41820E'
           }
         },
         fontFamily: {

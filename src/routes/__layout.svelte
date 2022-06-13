@@ -93,7 +93,7 @@
 			class="absolute
                    bottom-0
                    w-full 
-				   bg-white z-50"
+				   bg-white z-[999]"
 			style="padding-bottom: {$insets.bottom}px"
 		>
 			<BottomNavbar />

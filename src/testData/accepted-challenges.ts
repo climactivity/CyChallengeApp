@@ -12,6 +12,7 @@ export const acceptedChallenges: AcceptedChallenge[] = [
 		content:
 			'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde ex libero impedit! Fugiat animi architecto repellendus neque odio tempore ut. Repudiandae velit et veniam laboriosam dolore officia numquam odit excepturi.',
 		steps: [
+			{ name: 'Do thing 1', reward: undefined },
 			{ name: 'Do thing 2', reward: undefined },
 			{ name: 'Do thing 3', reward: undefined }
 		],
