@@ -1,7 +1,5 @@
 <div class="">
-	<div class="py-4 overflow-scroll h-screen">
-		<slot />
-	</div>
+	<slot />
 </div>
 
 <style lang="scss">

@@ -43,14 +43,14 @@
 
 <style lang="scss">
 	.overflow-menu-item {
-		@apply z-20 font-medium font-sans text-3xl;
+		@apply z-20 font-semibold font-serif text-3xl;
 		&:hover {
 			@apply text-white;
 		}
 	}
 
 	.overflow-menu-item-boring {
-		@apply z-20 font-medium font-sans text-xl;
+		@apply z-20 font-medium font-serif text-xl;
 		&:hover {
 			@apply text-white;
 		}

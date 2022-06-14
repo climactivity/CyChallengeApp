@@ -40,12 +40,16 @@
 		return !!data.completedSteps.find((cs) => cs.name === step.name);
 	};
 	const completeStep = (step) => {
-		const completed: CompletedStep = {
-			...step,
-			completed: true,
-			completedAt: new Date()
-		};
-		data.completedSteps = [...data.completedSteps, completed];
+		if (stepCompleted(step)) {
+			data.completedSteps = data.completedSteps.filter((cs) => cs.name !== step.name);
+		} else {
+			const completed: CompletedStep = {
+				...step,
+				completed: true,
+				completedAt: new Date()
+			};
+			data.completedSteps = [...data.completedSteps, completed];
+		}
 	};
 
 	const allStepsCompleted = () => data.completedSteps.length === data.steps.length;
@@ -53,7 +57,7 @@
 </script>
 
 <div in:fly={{ x: 200, duration: 500 }} class="pt-9 ">
-	<div class="h-9">
+	<div class="h-20">
 		{#if $headerState.transparent}
 			<h1
 				in:fly={{ y: -200, duration: 200 }}

@@ -17,9 +17,13 @@
 			// }
 		});
 	}
+
+	let xSize;
 </script>
 
 <div
+	bind:clientWidth={xSize}
+	style="--x-size: {xSize}px;"
 	class="relative
 		grid grid-flow-col
 		px-2 gap-2 sm:gap-12
@@ -30,43 +34,43 @@
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}
 >
-	<HomeButton path="/sector" />
-	<JournalButton path="/journal" />
-	<StatsButton path="/stats" />
-	<FriendsButton path="/social" />
-	<MenuButton />
+	<HomeButton path="/sector" aria-label="Wald" />
+	<JournalButton path="/journal" aria-label="Journal" />
+	<StatsButton path="/stats" aria-label="Stats" />
+	<FriendsButton path="/social" aria-label="Social" />
+	<MenuButton aria-label="Menu" />
 </div>
 
 <style lang="scss">
-	.menu::after {
-		--marker-width: 2.5rem;
-		content: '';
-		position: absolute;
-		margin: 0 0.5rem;
-		top: 0.15rem;
-		height: 0.25rem;
-		border-radius: 1rem;
-		background: #466f82;
-		transition: all 200ms;
-		width: var(--marker-width);
-		transition-timing-function: cubic-bezier(0.065, 1.65, 0.74, 0.845);
-	}
+	// .menu::after {
+	// 	--marker-width: 2rem;
+	// 	content: '';
+	// 	position: absolute;
+	// 	margin: 0 calc(1.5rem);
+	// 	top: 0.15rem;
+	// 	height: 0.25rem;
+	// 	border-radius: 1rem;
+	// 	background: #466f82;
+	// 	transition: all 200ms;
+	// 	width: var(--marker-width);
+	// 	transition-timing-function: cubic-bezier(0.065, 1.65, 0.74, 0.845);
+	// }
 
-	.menu.home::after {
-		left: calc(0% + 0.5rem);
-	}
+	// .menu.home::after {
+	// 	left: calc(0%);
+	// }
 
-	.menu.journal::after {
-		left: calc(20%);
-	}
+	// .menu.journal::after {
+	// 	left: calc(20%);
+	// }
 
-	.menu.stats::after {
-		left: calc(40%);
-	}
+	// .menu.stats::after {
+	// 	left: calc(40%);
+	// }
 
-	.menu.social::after {
-		left: calc(60%);
-	}
+	// .menu.social::after {
+	// 	left: calc(60%);
+	// }
 
 	@media (min-width: 640px) {
 		.menu.home::after {

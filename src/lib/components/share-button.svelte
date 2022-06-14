@@ -22,7 +22,7 @@
 </script>
 
 {#if canShare}
-	<ButtonSecondaryCta onClick={(e) => console.log(e)}>
+	<ButtonSecondaryCta onClick={(e) => onShare()}>
 		<div class="flex flex-row place-content-center gap-4 items-center w-full">
 			<Fa icon={faShareNodes} /> Teilen
 		</div>
