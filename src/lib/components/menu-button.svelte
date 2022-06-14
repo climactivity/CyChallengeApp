@@ -25,7 +25,11 @@
 <!--<label> dashOffset: {dashOffset}-->
 <!--    <input type="range" min="0" max="200" step="0.1" bind:value={dashOffset}/>-->
 <!--</label>-->
-<div class="flex justify-center align-middle cursor-pointer z-50 " on:click={expand}>
+<div
+	class="flex justify-center align-middle cursor-pointer z-50 "
+	on:click={expand}
+	aria-label="Menu"
+>
 	<svg
 		width={size}
 		height={size}

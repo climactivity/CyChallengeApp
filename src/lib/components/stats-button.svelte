@@ -3,7 +3,7 @@
 	export let path: string;
 </script>
 
-<IconButton bind:path>
+<IconButton bind:path label="Stats">
 	<svg
 		width={35}
 		height={35}

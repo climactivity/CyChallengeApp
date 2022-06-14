@@ -29,3 +29,9 @@ export interface AcceptedChallenge extends Challenge {
 	completed: boolean;
 	completedAt?: Date;
 }
+
+export function isAccepted(
+	challenge: Challenge | AcceptedChallenge
+): challenge is AcceptedChallenge {
+	return (<AcceptedChallenge>challenge).accepted !== undefined;
+}

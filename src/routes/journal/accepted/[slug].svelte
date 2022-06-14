@@ -14,6 +14,10 @@
 </script>
 
 <script lang="ts">
+	import ChallengeTodos from '$lib/components/ChallengeTodos.svelte';
+
+	import DynamicHeader from '../../../lib/components/DynamicHeader.svelte';
+
 	import { browser } from '$app/env';
 	import ShareButton from '$lib/components/share-button.svelte';
 	import { fly } from 'svelte/transition';
@@ -57,36 +61,16 @@
 </script>
 
 <div in:fly={{ x: 200, duration: 500 }} class="pt-9 ">
-	<div class="h-20">
-		{#if $headerState.transparent}
-			<h1
-				in:fly={{ y: -200, duration: 200 }}
-				out:fly={{ y: -200, duration: 200 }}
-				class="text-center mx-auto text-4xl font-bold font-sans"
-			>
-				{data.title}
-			</h1>
-		{/if}
-	</div>
+	<DynamicHeader>
+		{data.title}
+	</DynamicHeader>
 
-	<p class="text-lg p-4 m-4">
-		{data.content}
+	<p class="text-lg p-4 m-4 prose">
+		{data.frontMatter}
 	</p>
 
-	<div class="text-center mx-auto text-2xl">Todos</div>
-	<div
-		class="grid gap-x-6 gap-y-4 text-xl items-center p-4 m-4"
-		style="grid-template-columns: 1fr 2rem;"
-	>
-		{#each data.steps as step}
-			<p class="align-middle">
-				{step.name}
-			</p>
-			<button on:click={() => completeStep(step)}>
-				<Fa icon={faCircleCheck} class={stepCompleted(step) ? 'text-nature' : 'text-storm-light'} />
-			</button>
-		{/each}
-	</div>
+	<ChallengeTodos challenge={data} />
+
 	{#if allStepsCompleted}
 		<div class="p-4 m-4 space-y-4">
 			<ButtonPrimaryCta onClick={(e) => console.log(e)}>Challenge abschließen</ButtonPrimaryCta>

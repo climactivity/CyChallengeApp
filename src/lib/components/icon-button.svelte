@@ -24,7 +24,7 @@
 		? 'selected'
 		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button"
 >
-	<a href={path}>
+	<a href={path} aria-label={label}>
 		<slot />
 		{#if showLabel}
 			<div>
