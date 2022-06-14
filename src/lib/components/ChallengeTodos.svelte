@@ -14,13 +14,9 @@
 </script>
 
 <script lang="ts">
-	import {
-		isAccepted,
-		type AcceptedChallenge,
-		type Challenge,
-		type CompletedStep
-	} from '$lib/types/challenges';
+	import type { AcceptedChallenge, Challenge, CompletedStep } from '$lib/types/challenges';
 
+	import { isAccepted } from '$lib/types/challenges';
 	export let challenge: Challenge | AcceptedChallenge;
 	import { headerState } from '$lib/stores/header-store';
 	import Fa from 'svelte-fa';
@@ -28,6 +24,7 @@
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
 	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
 	import { challenges } from '$testData/challenges';
+	import ParticleSystem from './particle-system.svelte';
 
 	let completed;
 
@@ -64,16 +61,21 @@
 <div class="text-center mx-auto font-serif font-semibold text-2xl">Todos</div>
 <div class="grid grid-flow-row text-xl items-center p-4 m-4">
 	{#each challenge.steps as step}
-		<div
-			on:click={() => completeStep(step)}
-			class="flex items-center place-content-between select-none cursor-pointer py-4"
-		>
-			<p class="align-middle">
-				{step.name}
-			</p>
-			<button>
-				<Fa icon={faCircleCheck} class={stepCompleted(step) ? 'text-nature' : 'text-storm-light'} />
-			</button>
-		</div>
+		<ParticleSystem>
+			<div
+				on:click={() => completeStep(step)}
+				class="flex items-center place-content-between select-none cursor-pointer py-4"
+			>
+				<p class="align-middle">
+					{step.name}
+				</p>
+				<button>
+					<Fa
+						icon={faCircleCheck}
+						class={stepCompleted(step) ? 'text-nature' : 'text-storm-light'}
+					/>
+				</button>
+			</div>
+		</ParticleSystem>
 	{/each}
 </div>
