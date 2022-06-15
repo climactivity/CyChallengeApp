@@ -75,7 +75,12 @@
     "@sveltejs/adapter-static": "^1.0.0-next.31",
     "capacitor-plugin-safe-area": "^0.0.3",
     "svelte-fa": "^2.4.0",
+    "svelte-particles": "^2.0.6",
     "three": "^0.140.2",
+    "tsparticles": "^2.0.6",
+    "tsparticles-engine": "^2.0.6",
+    "tsparticles-preset-confetti": "^2.0.6",
+    "tsparticles-preset-fireworks": "^2.0.6",
     "uuid": "^8.3.2"
   }
 }

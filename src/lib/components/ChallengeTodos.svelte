@@ -24,7 +24,7 @@
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
 	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
 	import { challenges } from '$testData/challenges';
-	import ParticleSystem from './particle-system.svelte';
+	import Confetti from './particles/confetti.svelte';
 
 	let completed;
 
@@ -40,9 +40,10 @@
 			return !!challenge.completedSteps.find((cs) => cs.name === step.name);
 	};
 	const completeStep = (step) => {
-		if (!isAccepted(challenge)) return;
+		if (!isAccepted(challenge)) return false;
 		if (stepCompleted(step)) {
 			challenge.completedSteps = challenge.completedSteps.filter((cs) => cs.name !== step.name);
+			return false;
 		} else {
 			const completed: CompletedStep = {
 				...step,
@@ -50,32 +51,37 @@
 				completedAt: new Date()
 			};
 			challenge.completedSteps = [...challenge.completedSteps, completed];
+			return true;
 		}
 	};
 
 	const allStepsCompleted = () =>
 		isAccepted(challenge) && challenge.completedSteps.length === challenge.steps.length;
 	$: completed = allStepsCompleted();
+
+	let playAt;
 </script>
 
 <div class="text-center mx-auto font-serif font-semibold text-2xl">Todos</div>
 <div class="grid grid-flow-row text-xl items-center p-4 m-4">
+	<Confetti bind:playAt />
+
 	{#each challenge.steps as step}
-		<ParticleSystem>
-			<div
-				on:click={() => completeStep(step)}
-				class="flex items-center place-content-between select-none cursor-pointer py-4"
-			>
-				<p class="align-middle">
-					{step.name}
-				</p>
-				<button>
-					<Fa
-						icon={faCircleCheck}
-						class={stepCompleted(step) ? 'text-nature' : 'text-storm-light'}
-					/>
-				</button>
-			</div>
-		</ParticleSystem>
+		<div
+			on:click={(e) => {
+				let completed = completeStep(step);
+				if (completed) {
+					playAt(e);
+				}
+			}}
+			class="flex items-center place-content-between select-none cursor-pointer py-4"
+		>
+			<p class="align-middle">
+				{step.name}
+			</p>
+			<button>
+				<Fa icon={faCircleCheck} class={stepCompleted(step) ? 'text-nature' : 'text-storm-light'} />
+			</button>
+		</div>
 	{/each}
 </div>
