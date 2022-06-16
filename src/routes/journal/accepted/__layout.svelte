@@ -25,14 +25,14 @@
 
 <div
 	transition:fly={{ x: 200, duration: 1000 }}
-	class="relative "
+	class="relative bg-sector-food bg-sector z-20"
 	style="margin-top: {$insets.top}px"
 >
 	<div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div>
 	<div
-		class="py-4 overflow-x-hidden  h-screen pb-60 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
+		class="py-4 overflow-x-hidden  h-screen pb-60 relative top-0 left-0 right-0    z-20 max-w-4xl mx-auto"
 		on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
 	>
 		<slot />
