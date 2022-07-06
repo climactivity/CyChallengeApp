@@ -19,7 +19,7 @@
 	import { headerState } from '$lib/stores/header-store';
 	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import Confetti from '$lib/components/particles/confetti.svelte';
 
@@ -52,14 +52,12 @@
 	$: console.log(filter);
 
 	let playAt;
+
+	let _navIndex = 100;
+	let offset = 200;
 </script>
 
-<div
-	in:fly={{ x: 200, duration: 400 }}
-	out:fly={{ x: -200, duration: 400 }}
-	class="relative "
-	style="margin-top: {$insets.top}px"
->
+<div class="relative " style="margin-top: {$insets.top}px">
 	<div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div>
@@ -98,7 +96,11 @@
 					<span>{availableChallenge.title}</span>
 					<div class="flex flex-row flex-wrap">
 						{#each availableChallenge.tags as tag}
-							<div class="card_tag ">{getTagName(tag)}</div>
+							{#if availableChallenge.tags.includes('big_point')}
+								<div class="card_tag_inverted ">{getTagName(tag)}</div>
+							{:else}
+								<div class="card_tag ">{getTagName(tag)}</div>
+							{/if}
 						{/each}
 					</div>
 
@@ -152,6 +154,7 @@
 		animation-duration: 500ms;
 		animation-delay: calc(var(--position) * 75ms);
 		animation-name: fadedownin;
+		animation-fill-mode: both;
 	}
 
 	@keyframes fadedownin {
@@ -197,6 +200,12 @@
 		white-space: nowrap;
 		font-weight: 300;
 		@apply text-xs text-gray-600 bg-gray-100 rounded-full my-1 mx-1 px-1;
+	}
+
+	.card_tag_inverted {
+		white-space: nowrap;
+		font-weight: 300;
+		@apply text-xs text-gray-600 bg-gray-100 rounded-full my-1 mx-1 px-2 py-1;
 	}
 
 	.card_tag_selected {

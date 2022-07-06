@@ -20,7 +20,7 @@
 	import { headerState } from '$lib/stores/header-store';
 	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
-	import { getContext } from 'svelte';
+	import { getContext, onMount } from 'svelte';
 
 	headerState.set({
 		backbutton: false,
@@ -31,17 +31,12 @@
 	export let data: AcceptedChallenge[];
 </script>
 
-<div
-	in:fly={{ x: 200, duration: 400 }}
-	out:fly={{ x: -200, duration: 400 }}
-	class="relative "
-	style="margin-top: {$insets.top}px"
->
+<div class="relative " style="margin-top: {$insets.top}px; --offset: 200px;">
 	<div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div>
 	<div
-		class=" pt-16 py-4 overflow-x-hidden  h-screen pb-16 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
+		class=" pt-16 py-4 overflow-x-hidden h-screen pb-16 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
 	>
 		<div class="grid grid-flow-row gap-4 overflow-y-auto">
 			{#each data as acceptedChallenge}
@@ -50,3 +45,6 @@
 		</div>
 	</div>
 </div>
+
+<style lang="scss">
+</style>

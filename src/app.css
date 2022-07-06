@@ -50,4 +50,27 @@
 	.card {
 		@apply bg-white rounded-md shadow-sm p-4 m-4;
 	}
+
+	.page {
+	}
+
+	.slideIn {
+		animation-duration: 500ms;
+		animation-delay: 400ms;
+		animation-name: slideIn;
+		animation-fill-mode: both;
+		animation-iteration-count: 1;
+	}
+	@keyframes slideIn {
+		from {
+			opacity: 0;
+
+			transform: translateX(var(--offset, 200px));
+		}
+		to {
+			opacity: 1;
+
+			transform: translateX(0px);
+		}
+	}
 }
