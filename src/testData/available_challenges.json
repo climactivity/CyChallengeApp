@@ -1,0 +1,217 @@
+[
+ {
+  "title":"Iss mehr Pflanzen!",
+  "topic":"Ernährung",
+  "tags":[
+   "big_point"
+  ],
+  "frontMatter":"Wusstest du, dass du mit der Umstellung auf eine pflanzlichere Ernährung ca. 35% CO2 einsparen kannst? Definitiv ein Grund das mal auszuprobieren.",
+  "content":"Ein Großteil der Treibhausgasemissionen aus der Landwirtschaft ist biologischen Prozessen zuzuschreiben. Dazu zählt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren. Lachgas entsteht vor allem als Folge einer viel zu hohen Tierhaltungsdichte und der damit verbundenen Überdüngung. Durch die Verdauungsprozesse von Wiederkäuern (Rindern, Schafen, Ziegen) kommt es zur Freisetzung von Methan. Lachgas und Methan sind deshalb besonders klimarelevant, weil sie in großen Mengen entstehen und beide Gase deutlich klimaschädlicher sind als das bekannte CO2. Für Methan und Lachgas gilt die Landwirtschaft mit einem Anteil von ca. 50 bzw. 60% als Hauptverursacher in Deutschland.\n",
+  "difficulties":{
+   "Einfach":{
+    "taskDescription":"Ich esse an zwei Tagen in der Woche kein Fleisch.",
+    "todos":[
+     {
+      "name":"Vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
+      "reward":null
+     },
+     {
+      "name":"Einkaufen gehen",
+      "reward":null
+     },
+     {
+      "name":"Zubereiten & Ausprobieren",
+      "reward":null
+     }
+    ]
+   },
+   "Mittelschwer":{
+    "taskDescription":"Ich esse an zwei Tagen in der Woche keine tierischen Produkte.",
+    "todos":[
+     {
+      "name":"Vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
+      "reward":null
+     },
+     {
+      "name":"Einkaufen gehen",
+      "reward":null
+     },
+     {
+      "name":"Zubereiten & Ausprobieren",
+      "reward":null
+     }
+    ]
+   },
+   "Schwer ":{
+    "taskDescription":"Ich esse an vier Tagen keine tierischen Produkte.",
+    "todos":[
+     {
+      "name":"Über die Nährstoffversorgung in einer rein pflanzlichen Ernährung indormieren, z.B. über Youtube bei dem Ernährungswissenschaftler Niko Ritenau",
+      "reward":null
+     },
+     {
+      "name":"Vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
+      "reward":null
+     },
+     {
+      "name":"Einkaufen gehen",
+      "reward":null
+     },
+     {
+      "name":"Zubereiten & Ausprobieren",
+      "reward":null
+     }
+    ]
+   },
+   "Plus":{
+    "taskDescription":"Ich lade Freunde und/oder Familie zu einem rein pflanzlichen Dinner ein. ",
+    "todos":[
+     {
+      "name":"Vegane Rezepte suchen, z.B. hier: https://biancazapatka.com/de/rezepte/",
+      "reward":null
+     },
+     {
+      "name":"Freunde/ Familie einladen und Termin finden",
+      "reward":null
+     },
+     {
+      "name":"Einkaufen gehen",
+      "reward":null
+     },
+     {
+      "name":"Zubereiten & Ausprobieren",
+      "reward":null
+     },
+     {
+      "name":"Feedback einholen und Termin für das nächste pflanzliche Dinner vereinabaren",
+      "reward":null
+     }
+    ]
+   }
+  },
+  "slug":"iss_mehr_pflanzen"
+ },
+ {
+  "title":"Wechsel zu Ökostrom!",
+  "topic":"Energie",
+  "tags":[
+   "big_point",
+   "save_money"
+  ],
+  "frontMatter":"Mit einem durchschnittlichen Verbrauch kannst du mit einem Wechsel zu echtem Ökostrom etwa 650 kg CO2 bei deinem Fußabdruck mit einem Schlag einsparen. Das lohnt sich und ist auch noch superschnell erledigt.",
+  "content":" In Deutschland ist die Stromversorgung in den letzten Jahren für etwa ein Drittel der Treibhausgas-Emissionen verantwortlich gewesen. Denn unser Strom kommt ja nicht einfach aus der Steckdose, sondern muss erst auf die eine oder andere Weise produziert werden. In Deutschland passiert das zu einem großen Teil immer noch mithilfe fossiler Energieträger (Öl, Kohle, Gas). Die fossilen Energieträger kommen nicht nur bei der Stromproduktion, sondern auch z.B. als Treibstoff oder bei der Wärmeversorgung zum Einsatz. Ob wir es schaffen werden, unsere CO2-Emissionen wirksam und schnell zu reduzieren, hängt deswegen ganz wesentlich von der Frage ab, wie wir in Zukunft anders Strom produzieren. Mit dem Wechsel zu einem Ökostromanbieter können wir die Sache selbst in die Hand nehmen und den Zubau bei den erneuerbaren Energien beschleunigen. Ökostrom ist dabei nicht teuer! Im Gegenteil, in den meisten Fällen kannst du gegenüber dem Tarif deines Grundversorgers sogar noch sparen. ",
+  "difficulties":{
+   "Einfach":{
+    "taskDescription":"Ich wechsle zu einem Stromanbieter mit Labeln aus der Utopia-Bestenliste oder anderen Vergleichsportalen.",
+    "todos":[
+     {
+      "name":"Jahresverbrauch von der letzten Stromrechnung ablesen",
+      "reward":null
+     },
+     {
+      "name":"Vergleichsportale nutzen oder gleich die Utopia-Bestenliste: https://utopia.de/bestenlisten/die-besten-oekostrom-anbieter/",
+      "reward":null
+     },
+     {
+      "name":"Stromvertrag direkt online ausfüllen und deinen alten Vertrag kündigen (lassen)",
+      "reward":null
+     },
+     {
+      "name":"Kündigungsbestätigung und Abschlussrechnung vom alten Versorger erhalten",
+      "reward":null
+     },
+     {
+      "name":"Aktuellen Zählerstand zum Wechseldatum deinem neuen Ökostrom-Anbieter mitteilen",
+      "reward":null
+     }
+    ]
+   },
+   "Plus":{
+    "taskDescription":"Ich überzeuge mindestens zwei Menschen davon ebenfalls zu Ökostrom zu wechseln.",
+    "todos":[
+     {
+      "name":"Mit zwei ver. Menschen über das Thema Strom reden",
+      "reward":null
+     },
+     {
+      "name":"Zuhören & Hemmnisse verstehen",
+      "reward":null
+     },
+     {
+      "name":"Die Wichtigkeit der Stromerzeugung deutlich machen",
+      "reward":null
+     },
+     {
+      "name":"Die Utopia-Liste oder andere Vergleichsportale an die Hand geben",
+      "reward":null
+     },
+     {
+      "name":"Wertschätzung dafür geben, dass sie sich mit dem Thema auseinandergesetzt haben",
+      "reward":null
+     }
+    ]
+   }
+  },
+  "slug":"wechsel_zu_oekostrom"
+ },
+ {
+  "title":"Wünsch dir was!",
+  "topic":"Bewusster Konsum",
+  "tags":[
+   "easy_action",
+   "save_money"
+  ],
+  "frontMatter":"Etwa die Hälfte dessen, was in Deutschland eingekauft wird, wird aus einem Impuls heraus gekauft. Im durchschnittlichen deutschen CO2-Fußabdruck macht der sonstige Konsum immerhin ein Drittel des Gesamtwertes aus. Ein Grund, mal nur das zu kaufen, was wir uns wirkliche wünschen.",
+  "content":"Wir im globalen Norden müssen uns im Regelfall kaum Sorgen über unsere Grundversorgung machen. Wir können alles und fast immer haben. Das gilt neben Lebensmitteln ebenso wie für die meisten anderen Dingen, die sich im Leben so gerne anhäufen. \nBei dem Thema „Bewusst Konsumieren“ geht es darum, vor dem Einkaufen zu überlegen, ob das Gewünschte wirklich zu den Dingen gehört, die nötig sind oder glücklich machen. Eine Wunschliste kann dabei helfen, zu erkennen was echt Wünsche und was eher kurzfristige Verlangen sind. Wir können in der Liste beispielsweise notieren, was wir kaufen möchten, wie teuer es ist und wofür wir es brauchen. Wenn Dinge länger drauf stehen, können wir diese voller Vorfreude kaufen und bei einigen Dingen werden wir feststellen, dass wir doch nicht brauchen/ wollen.  ",
+  "difficulties":{
+   "Einfach":{
+    "taskDescription":"Ich führe eine Woche lang eine Wunschliste und kaufe nur Dinge, die mindestens 24 Stunden auf der Wunschliste gestanden haben. *Lebensnotwendige Dinge wie Grundnahrungsmittel natürlich ausgeschlossen.",
+    "todos":[
+     {
+      "name":"Wunschliste machen (Was will ich mir kaufen? Wie teuer ist es? Wofür brauche ich es? Macht es mich (lange) glücklich?",
+      "reward":null
+     },
+     {
+      "name":"Dinge, die ich haben möchte, kommen auf die Wunschliste",
+      "reward":null
+     },
+     {
+      "name":"Ich lasse alles mindestens 24 Stunden stehen, bevor ich sie mir kaufe",
+      "reward":null
+     }
+    ]
+   },
+   "Mittelschwer":{
+    "taskDescription":"Ich führe mindestens vier Wochen lang eine Wunschliste und kaufe nur Dinge, die mindestens 48 Stunden auf der Wunschliste gestanden haben. ",
+    "todos":[
+     {
+      "name":"Wunschliste machen",
+      "reward":null
+     },
+     {
+      "name":"Dinge, die ich haben möchte, kommen auf die Wunschliste",
+      "reward":null
+     },
+     {
+      "name":"Ich lasse alles mindestens 48 Stunden stehen, bevor ich sie mir kaufe",
+      "reward":null
+     }
+    ]
+   },
+   "Plus":{
+    "taskDescription":"Ich erzähle mindestens zwei Personen von meiner Wunschliste und was sie gebracht hat.",
+    "todos":[
+     {
+      "name":"In einem passenden Gespräch deine Wunschliste zeigen",
+      "reward":null
+     },
+     {
+      "name":"Erklären wozu die Wunschliste gut ist",
+      "reward":null
+     }
+    ]
+   }
+  },
+  "slug":"wuensch_dir_was"
+ }
+]

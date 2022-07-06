@@ -1,4 +1,6 @@
-import type { Challenge } from '$lib/types/challenges';
+import type { Challenge, ChallengeV2 } from '$lib/types/challenges';
+
+import * as available_challenges from './available_challenges.json';
 
 export const challenges: Challenge[] = [
 	{
@@ -21,3 +23,7 @@ export const challenges: Challenge[] = [
 		]
 	}
 ];
+
+export const availableChallenges: ChallengeV2[] = available_challenges.default;
+
+//export const availableChallenges: ChallengeV2[] =

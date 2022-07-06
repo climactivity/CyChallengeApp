@@ -29,12 +29,12 @@
 		px-2 gap-2 sm:gap-12
 		place-content-around sm:place-content-center
 		select-none h-12 bg-white  backdrop-blur-md z-50 menu"
-	class:home={!!$page.routeId?.startsWith('sector')}
+	class:home={!!$page.routeId?.startsWith('challenges')}
 	class:journal={!!$page.routeId?.startsWith('journal')}
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}
 >
-	<HomeButton path="/sector" aria-label="Wald" />
+	<HomeButton path="/challenges" aria-label="Wald" />
 	<JournalButton path="/journal" aria-label="Journal" />
 	<StatsButton path="/stats" aria-label="Stats" />
 	<FriendsButton path="/social" aria-label="Social" />

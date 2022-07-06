@@ -22,6 +22,30 @@ export interface Challenge {
 	prerequisites: any[];
 }
 
+export interface ChallengeV2 {
+	title: string;
+	topic: string;
+	tags: string[];
+	frontMatter: string;
+	content: string;
+	difficulties: Difficulties;
+	slug: string;
+}
+
+export interface Difficulties {
+	[difficulties: string]: Difficulty;
+}
+
+export interface Difficulty {
+	taskDescription: string;
+	todos: Todo[];
+}
+
+export interface Todo {
+	name: string;
+	reward?: any;
+}
+
 export interface AcceptedChallenge extends Challenge {
 	completedSteps: CompletedStep[];
 	accepted: boolean;

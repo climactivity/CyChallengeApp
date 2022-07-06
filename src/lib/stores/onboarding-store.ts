@@ -26,8 +26,8 @@ export const onboardingGuard = async () => {
 	if (onboardingOverride === 'always') {
 		goto('/welcome');
 	} else if (onboardingOverride === 'skip' || currentValue.hasOnboarded) {
-		await prefetch('/sector');
-		goto('/sector');
+		await prefetch('/challenges');
+		goto('/challenges');
 	} else {
 		goto('/welcome');
 	}

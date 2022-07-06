@@ -4,7 +4,7 @@
 	import { loadFull } from 'tsparticles';
 	import { loadConfettiPreset } from 'tsparticles-preset-confetti';
 	let ParticlesComponent;
-
+	import ParticlesContainer from 'svelte-particles';
 	let confettiConfig = {
 		particles: {
 			number: {
@@ -58,7 +58,7 @@
 				direction: 'none',
 				straight: false,
 				outModes: {
-					default: 'destroy',
+					default: 'none',
 					top: 'none'
 				}
 			},
@@ -134,20 +134,22 @@
 			}
 		}
 	};
-	onMount(async () => {
-		const module = await import('svelte-particles');
+	// onMount(async () => {
+	// 	const module = await import('svelte-particles');
 
-		ParticlesComponent = module.default;
-	});
+	// 	console.log('imported confetti');
+	// 	ParticlesComponent = module.default;
+	// });
 
 	let particlesContainer;
 	let onParticlesLoaded = (event) => {
 		particlesContainer = event.detail.particles;
-
+		console.log('loaded');
 		// you can use particlesContainer to call all the Container class
 		// (from the core library) methods like play, pause, refresh, start, stop
 	};
 
+	export let id = 'tsParticles';
 	export const playAt = (e: MouseEvent) => {
 		let y = (100 * e.clientY) / window.innerHeight;
 		console.log(e, e.clientY, window.innerHeight, y);
@@ -155,6 +157,7 @@
 	};
 
 	export const play = (position) => {
+		// particlesContainer.start();
 		particlesContainer.addEmitter({
 			life: {
 				count: 1,
@@ -179,10 +182,8 @@
 		// you can use main to customize the tsParticles instance adding presets or custom shapes
 		// this loads the tsparticles package bundle, it's the easiest method for getting everything ready
 		// starting from v2 you can add only the features you need reducing the bundle size
-		console.log(main);
 
 		await loadConfettiPreset(main);
-		console.log(loadFull);
 	};
 </script>
 
@@ -190,12 +191,18 @@
 	<div class="container z-10">
 		<slot />
 	</div>
-	<svelte:component
+	<!-- <svelte:component
 		this={ParticlesComponent}
 		id="tsparticles"
 		options={confettiConfig}
 		on:particlesLoaded={onParticlesLoaded}
 		{particlesInit}
+	/> -->
+	<ParticlesContainer
+		{id}
+		options={confettiConfig}
+		on:particlesLoaded={onParticlesLoaded}
+		on:particlesInit={particlesInit}
 	/>
 </div>
 
