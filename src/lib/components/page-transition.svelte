@@ -1,12 +1,16 @@
 <script lang="ts">
+	import { getContext, onMount } from 'svelte';
+	import type { Writable } from 'svelte/store';
+
 	import { fly } from 'svelte/transition';
-	export let url: URL;
+	export let url: string;
 
 	let direction = -1;
 	let baseOffset = 200;
 	let offset = 200;
 	let lastUrlLenght = 0;
 	let lastUrl;
+	const pageTransitionDuration = 500;
 
 	let navigationIndices = {
 		home: 100,
@@ -19,32 +23,30 @@
 		welcome: 700
 	};
 
-	$: {
-		let currentUrlLength = url.pathname.split('/').length;
-		console.log(url.pathname, currentUrlLength, url.pathname.split('/'));
+	let insets: Writable<any> = getContext('insets');
 
-		if (currentUrlLength !== lastUrlLenght) {
-			console.log(url, currentUrlLength, lastUrlLenght);
-			direction = currentUrlLength > lastUrlLenght ? 1 : -1;
-		} else {
-			direction =
-				navigationIndices[url.pathname.split('/')[1]] >
-				navigationIndices[lastUrl.pathname.split('/')[1]]
-					? 1
-					: -1;
+	onMount(() => {
+		console.log(url);
+	});
+	$: {
+		if (!url === null || !url === undefined) {
+			let currentUrlLength = url.split('/').length;
+
+			if (currentUrlLength !== lastUrlLenght) {
+				console.log(url, currentUrlLength, lastUrlLenght);
+				direction = currentUrlLength > lastUrlLenght ? 1 : -1;
+			} else {
+				direction =
+					navigationIndices[url.split('/')[0]] > navigationIndices[lastUrl.split('/')[0]] ? 1 : -1;
+			}
+			offset = direction * baseOffset;
+			lastUrlLenght = currentUrlLength;
+			lastUrl = url;
+			console.log(url, currentUrlLength, url.split('/'));
 		}
-		offset = direction * baseOffset;
-		lastUrlLenght = currentUrlLength;
-		lastUrl = url;
 	}
-	const pageTransitionDuration = 500;
 </script>
 
-{#key url}
-	<div
-		in:fly={{ x: offset, duration: pageTransitionDuration, delay: pageTransitionDuration }}
-		out:fly={{ x: -offset, duration: pageTransitionDuration }}
-	>
-		<slot />
-	</div>
-{/key}
+<div>
+	<slot />
+</div>

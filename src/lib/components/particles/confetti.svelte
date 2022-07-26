@@ -134,12 +134,12 @@
 			}
 		}
 	};
-	// onMount(async () => {
-	// 	const module = await import('svelte-particles');
+	onMount(async () => {
+		const module = await import('svelte-particles');
 
-	// 	console.log('imported confetti');
-	// 	ParticlesComponent = module.default;
-	// });
+		console.log('imported confetti');
+		ParticlesComponent = module.default;
+	});
 
 	let particlesContainer;
 	let onParticlesLoaded = (event) => {
@@ -157,6 +157,11 @@
 	};
 
 	export const play = (position) => {
+		console.log(particlesContainer);
+		if (!particlesContainer) {
+			console.error('ParticlesComponent not initialized');
+			return;
+		}
 		// particlesContainer.start();
 		particlesContainer.addEmitter({
 			life: {
@@ -191,19 +196,19 @@
 	<div class="container z-10">
 		<slot />
 	</div>
-	<!-- <svelte:component
+	<svelte:component
 		this={ParticlesComponent}
 		id="tsparticles"
 		options={confettiConfig}
 		on:particlesLoaded={onParticlesLoaded}
 		{particlesInit}
-	/> -->
-	<ParticlesContainer
+	/>
+	<!-- <ParticlesContainer
 		{id}
 		options={confettiConfig}
 		on:particlesLoaded={onParticlesLoaded}
 		on:particlesInit={particlesInit}
-	/>
+	/> -->
 </div>
 
 <style lang="scss">

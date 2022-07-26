@@ -67,13 +67,13 @@
 	<p class="align-middle text-lg pb-2">
 		{difficulty.taskDescription}
 	</p>
-	<!-- <ul class="list-disc px-5">
+	<ul class="list-disc px-5">
 		{#each difficulty.todos as todo}
 			<li class="align-middle text-base prose">
 				{@html detectLinks(todo.name)}
 			</li>
 		{/each}
-	</ul> -->
+	</ul>
 </div>
 
 <style lang="scss">

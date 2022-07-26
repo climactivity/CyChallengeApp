@@ -4,3 +4,7 @@ export const detectLinks = (text: string): string => {
 		return `<a href="${match}" target="_blank">${match}</a>`;
 	});
 };
+
+export const randomIntBetween = (min: number, max: number): number => {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};

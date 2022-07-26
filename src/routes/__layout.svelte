@@ -1,8 +1,3 @@
-<script context="module">
-	/** @type {import('@sveltejs/kit').Load} */
-	export const load = async ({ url }) => ({ props: { url } });
-</script>
-
 <script lang="ts">
 	import '../app.css';
 
@@ -33,7 +28,8 @@
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
 
 	import PageTransition from '$lib/components/page-transition.svelte';
-	export let url;
+	import { page } from '$app/stores';
+	let url = $page.routeId;
 	let iOSSafari = false;
 	if (browser) {
 		let ua = window.navigator.userAgent;
@@ -93,7 +89,7 @@
 		/>
 		<main class="pb-12">
 			<div class="h-full relative">
-				<PageTransition {url}>
+				<PageTransition url={$page.routeId}>
 					<slot />
 				</PageTransition>
 			</div>

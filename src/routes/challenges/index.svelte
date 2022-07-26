@@ -22,7 +22,8 @@
 	import { getContext, onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import Confetti from '$lib/components/particles/confetti.svelte';
-
+	import FilterIcon from '$lib/components/icons/filter-icon.svelte';
+	import { randomIntBetween } from '$lib/util';
 	headerState.set({
 		backbutton: false,
 		title: 'Card Demo',
@@ -68,6 +69,12 @@
 		<div
 			class=" select-none flex flex-row justify-start gap-4 items-center my-4  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-auto "
 		>
+			<div
+				class="  rounded-full {filter.length ? 'text-storm-dark' : 'text-storm-light'}"
+				on:click={() => (filter = [])}
+			>
+				<FilterIcon filled={!!filter.length} />
+			</div>
 			{#each Object.keys(tags) as tag}
 				<div
 					on:click={() => addFilterTag(tag)}
@@ -75,9 +82,9 @@
 						tag
 					)
 						? 'bg-water border-0 text-white font-bold'
-						: 'bg-gray-200 border border-gray-400 text-gray-600'}"
+						: 'bg-gray-200 border border-storm-light text-storm'}"
 				>
-					{getTagName(tag)}
+					{tags[tag]}
 				</div>
 			{/each}
 		</div>
@@ -87,8 +94,11 @@
 					class:hidden={filter.length > 0 &&
 						!filter.every((r) => availableChallenge.tags.includes(r))}
 					class="ch_card fadedownin flex {availableChallenge.tags.includes('big_point')
-						? 'card-2x1 bg-image'
-						: ''}"
+						? 'card-2x2 bg-image'
+						: 'card-1x2 '}"
+					style={availableChallenge.tags.includes('big_point')
+						? `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`
+						: ''}
 					on:click={() => {
 						goto(`/challenge/${availableChallenge.slug}`);
 					}}
@@ -127,7 +137,6 @@
 	.ch_card {
 		background: white;
 		border-radius: 20px;
-		// box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 		transition: all 0.2s ease-in-out;
 		// display: flex;
 		flex-direction: column;
@@ -138,15 +147,15 @@
 		counter-increment: card;
 		opacity: 0;
 		animation-fill-mode: both;
+		@apply shadow-sm;
 	}
 
 	.bg-image {
 		font-weight: bold;
 		color: white;
 		font-family: 'poppins';
-
 		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
-			url('https://picsum.photos/400');
+			var(--bg-image, url('https://picsum.photos/400'));
 		background-blend-mode: multiply;
 	}
 
@@ -176,6 +185,8 @@
 	.card-2x2 {
 		grid-column: span 2 / span 2;
 		grid-row: span 2 / span 2;
+		justify-content: space-evenly;
+		@apply text-4xl;
 	}
 
 	.card-4x2 {
@@ -194,6 +205,7 @@
 
 	.card-1x2 {
 		grid-row: span 2 / span 2;
+		min-height: 200px;
 	}
 
 	.card_tag {
