@@ -24,6 +24,16 @@ export const challenges: Challenge[] = [
 	}
 ];
 
-export const availableChallenges: ChallengeV2[] = available_challenges.default;
+const flattenChallenges = (challenges: { [key: string]: ChallengeV2[] }): ChallengeV2[] => {
+	return Object.values(challenges).flatMap((challenge) => challenge);
+};
 
+export const availableChallenges: ChallengeV2[] = flattenChallenges(
+	available_challenges.challenges
+);
+
+export const availableTags = available_challenges.tags;
+export const availableTopics = available_challenges.topics;
+export const availableChallengesByTopic: { [key: string]: ChallengeV2[] } =
+	available_challenges.challenges;
 //export const availableChallenges: ChallengeV2[] =

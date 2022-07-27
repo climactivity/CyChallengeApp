@@ -1,10 +1,12 @@
 <script lang="ts" context="module">
-	import { availableChallenges } from '$testData/challenges';
+	import { availableChallenges, availableTags, availableTopics } from '$testData/challenges';
 	export async function load({ params, fetch, session, stuff }) {
 		return {
 			status: 200,
 			props: {
-				data: availableChallenges
+				data: availableChallenges,
+				tags: availableTags,
+				topics: availableTopics
 			}
 		};
 	}
@@ -37,7 +39,7 @@
 
 	let filter = [];
 
-	let tags = {
+	export let tags = {
 		big_point: 'Big Point',
 		easy_action: 'Easy Action',
 		save_money: 'Save Money',
