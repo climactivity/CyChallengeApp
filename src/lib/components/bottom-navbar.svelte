@@ -1,11 +1,12 @@
 <script lang="ts">
-	import StatsButton from './stats-button.svelte';
-	import MenuButton from './menu-button.svelte';
-	import HomeButton from './home-button.svelte';
-	import FriendsButton from './friends-button.svelte';
-	import JournalButton from './journal-button.svelte';
+	import StatsButton from './buttons/stats-button.svelte';
+	import MenuButton from './buttons/menu-button.svelte';
+	import HomeButton from './buttons/home-button.svelte';
+	import FriendsButton from './buttons/friends-button.svelte';
+	import JournalButton from './buttons/journal-button.svelte';
 	import { browser } from '$app/env';
 	import { page } from '$app/stores';
+	import ChallengesButton from './buttons/challenges-button.svelte';
 
 	if (browser) {
 		page.subscribe(({ routeId }) => {
@@ -34,9 +35,9 @@
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}
 >
-	<HomeButton path="/challenges" aria-label="Wald" />
+	<HomeButton path="/home" aria-label="Wald" />
 	<JournalButton path="/journal" aria-label="Journal" />
-	<StatsButton path="/stats" aria-label="Stats" />
+	<ChallengesButton path="/challenges" aria-label="Challenges" />
 	<FriendsButton path="/social" aria-label="Social" />
 	<MenuButton aria-label="Menu" />
 </div>

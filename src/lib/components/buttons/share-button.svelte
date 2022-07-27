@@ -4,7 +4,7 @@
 	import type { ShareOptions } from '@capacitor/share';
 	import { faShare, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 	import { onMount } from 'svelte';
-	import ButtonSecondaryCta from './buttons/button-secondary-cta.svelte';
+	import ButtonSecondaryCta from './button-secondary-cta.svelte';
 
 	export let shareOptions: Partial<ShareOptions>;
 

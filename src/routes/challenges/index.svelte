@@ -24,6 +24,9 @@
 	import Confetti from '$lib/components/particles/confetti.svelte';
 	import FilterIcon from '$lib/components/icons/filter-icon.svelte';
 	import { randomIntBetween } from '$lib/util';
+	import SearchButton from '$lib/components/buttons/search-button.svelte';
+	import HeroCard from '$lib/components/challenge/hero-card.svelte';
+	import ChallengeCard from '$lib/components/challenge/challenge-card.svelte';
 	headerState.set({
 		backbutton: false,
 		title: 'Card Demo',
@@ -56,66 +59,84 @@
 
 	let _navIndex = 100;
 	let offset = 200;
+
+	let scrollY = 0;
+	let filterShadow = 0,
+		titleShadow = 0;
+	$: titleShadow = Math.min(Math.max(0, scrollY), 20) / 20;
+	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
+	$: console.log(filterShadow, scrollY);
+	const isSticky = (offset) => {
+		return scrollY > offset;
+	};
 </script>
 
-<div class="relative " style="margin-top: {$insets.top}px">
-	<div class="absolute top-0 left-0 right-0 z-30">
+<div class="relative" style="margin-top: {$insets.top}px">
+	<!-- <div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
-	</div>
+	</div> -->
 
 	<div
-		class=" pt-16 py-4 overflow-x-hidden  h-screen pb-16 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
+		class=" overflow-y-auto overflow-x-hidden  md:mx-auto md:max-w-3xl h-screen pb-16 relative  z-20 "
+		on:scroll={(e) => {
+			scrollY = e.currentTarget.scrollTop;
+		}}
 	>
 		<div
-			class=" select-none flex flex-row justify-start gap-4 items-center my-4  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-auto "
+			class="p-4 flex flex-row justify-between sticky top-0 z-30 bg-slate-100 "
+			style="
+					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * titleShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
+				titleShadow});
+					--tw-bg-opacity: {titleShadow}
+				"
 		>
-			<div
-				class="  rounded-full {filter.length ? 'text-storm-dark' : 'text-storm-light'}"
-				on:click={() => (filter = [])}
-			>
-				<FilterIcon filled={!!filter.length} />
-			</div>
-			{#each Object.keys(tags) as tag}
-				<div
-					on:click={() => addFilterTag(tag)}
-					class="text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
-						tag
-					)
-						? 'bg-water border-0 text-white font-bold'
-						: 'bg-gray-200 border border-storm-light text-storm'}"
-				>
-					{tags[tag]}
-				</div>
-			{/each}
-		</div>
-		<div class="container">
-			{#each data as availableChallenge}
-				<div
-					class:hidden={filter.length > 0 &&
-						!filter.every((r) => availableChallenge.tags.includes(r))}
-					class="ch_card fadedownin flex {availableChallenge.tags.includes('big_point')
-						? 'card-2x2 bg-image'
-						: 'card-1x2 '}"
-					style={availableChallenge.tags.includes('big_point')
-						? `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`
-						: ''}
-					on:click={() => {
-						goto(`/challenge/${availableChallenge.slug}`);
+			<div class="font-semibold text-xl font-serif">Challenges</div>
+			<div>
+				<SearchButton
+					path="#"
+					onClick={(e) => {
+						console.log('search');
 					}}
+				/>
+			</div>
+		</div>
+		<div class="px-4">
+			<HeroCard />
+		</div>
+		<!-- Filter -->
+		<div class="sticky top-12 z-30">
+			<div
+				class=" select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-auto bg-slate-100 ring-opacity-100 "
+				style="
+					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
+					filterShadow});
+					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
+				"
+			>
+				<div
+					class="  rounded-full {filter.length ? 'text-storm-dark' : 'text-storm-light'}"
+					on:click={() => (filter = [])}
 				>
-					<span>{availableChallenge.title}</span>
-					<div class="flex flex-row flex-wrap">
-						{#each availableChallenge.tags as tag}
-							{#if availableChallenge.tags.includes('big_point')}
-								<div class="card_tag_inverted ">{getTagName(tag)}</div>
-							{:else}
-								<div class="card_tag ">{getTagName(tag)}</div>
-							{/if}
-						{/each}
-					</div>
-
-					<!-- {JSON.stringify(availableChallenge)} -->
+					<FilterIcon filled={!!filter.length} />
 				</div>
+				{#each Object.keys(tags) as tag}
+					<div
+						on:click={() => addFilterTag(tag)}
+						class="text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
+							tag
+						)
+							? 'bg-water border-0 text-white font-bold'
+							: 'bg-gray-200 border border-storm-light text-storm'}"
+					>
+						{tags[tag]}
+					</div>
+				{/each}
+			</div>
+		</div>
+		<!-- Challenges -->
+		<div class="container min-h-screen">
+			{#each data as challenge}
+				<ChallengeCard {challenge} {tags} {filter} />
 			{/each}
 		</div>
 	</div>
@@ -129,98 +150,11 @@
 		grid-auto-flow: row dense;
 		grid-auto-rows: minmax(100px, max-content);
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		overflow-y: auto;
+		// overflow-y: auto;
 		padding: 1rem;
 		gap: 1rem;
 	}
-
-	.ch_card {
-		background: white;
-		border-radius: 20px;
-		transition: all 0.2s ease-in-out;
-		// display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: flex-start;
-		padding: 16px;
-		cursor: pointer;
-		counter-increment: card;
-		opacity: 0;
-		animation-fill-mode: both;
-		@apply shadow-sm;
-	}
-
-	.bg-image {
-		font-weight: bold;
-		color: white;
-		font-family: 'poppins';
-		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
-			var(--bg-image, url('https://picsum.photos/400'));
-		background-blend-mode: multiply;
-	}
-
-	.fadedownin {
-		animation-duration: 500ms;
-		animation-delay: calc(var(--position) * 75ms);
-		animation-name: fadedownin;
-		animation-fill-mode: both;
-	}
-
-	@keyframes fadedownin {
-		from {
-			opacity: 0;
-			transform: translateY(-10px);
-		}
-
-		to {
-			opacity: 1;
-			transform: translateY(0px);
-		}
-	}
-
-	.card .card-title::before {
-		content: counter(card) '. ';
-	}
-
-	.card-2x2 {
-		grid-column: span 2 / span 2;
-		grid-row: span 2 / span 2;
-		justify-content: space-evenly;
-		@apply text-4xl;
-	}
-
-	.card-4x2 {
-		grid-column: span 4 / span 4;
-		grid-row: span 2 / span 2;
-	}
-
-	.card-4x4 {
-		grid-column: span 4 / span 4;
-		grid-row: span 4 / span 4;
-	}
-
-	.card-2x1 {
-		grid-column: span 2 / span 2;
-	}
-
-	.card-1x2 {
-		grid-row: span 2 / span 2;
-		min-height: 200px;
-	}
-
-	.card_tag {
-		white-space: nowrap;
-		font-weight: 300;
-		@apply text-xs text-gray-600 bg-gray-100 rounded-full my-1 mx-1 px-1;
-	}
-
-	.card_tag_inverted {
-		white-space: nowrap;
-		font-weight: 300;
-		@apply text-xs text-gray-600 bg-gray-100 rounded-full my-1 mx-1 px-2 py-1;
-	}
-
-	.card_tag_selected {
-		@apply text-gray-900 bg-gray-200;
-	}
+	// .stuck {
+	// 	@apply bg-slate-100;
+	// }
 </style>

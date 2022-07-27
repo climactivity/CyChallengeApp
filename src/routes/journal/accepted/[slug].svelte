@@ -19,7 +19,7 @@
 	import DynamicHeader from '../../../lib/components/DynamicHeader.svelte';
 
 	import { browser } from '$app/env';
-	import ShareButton from '$lib/components/share-button.svelte';
+	import ShareButton from '$lib/components/buttons/share-button.svelte';
 	import { fly } from 'svelte/transition';
 
 	import type { AcceptedChallenge, CompletedStep } from '$lib/types/challenges';
