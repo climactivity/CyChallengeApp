@@ -32,8 +32,8 @@ export const availableChallenges: ChallengeV2[] = flattenChallenges(
 	available_challenges.challenges
 );
 
-export const availableTags = available_challenges.tags;
-export const availableTopics = available_challenges.topics;
+export const availableTags: { [key: string]: string } = available_challenges.topics;
+export const availableTopics: { [key: string]: string } = available_challenges.tags;
 export const availableChallengesByTopic: { [key: string]: ChallengeV2[] } =
 	available_challenges.challenges;
 //export const availableChallenges: ChallengeV2[] =

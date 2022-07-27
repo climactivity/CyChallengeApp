@@ -6,7 +6,9 @@
 			props: {
 				data: availableChallenges,
 				tags: availableTags,
-				topics: availableTopics
+				tagList: Object.keys(availableTags),
+				topics: availableTopics,
+				topicList: Object.keys(availableTopics)
 			}
 		};
 	}
@@ -36,7 +38,8 @@
 	});
 
 	export let data: ChallengeV2[];
-
+	export let topics;
+	export let topicList;
 	let filter = [];
 
 	export let tags = {
@@ -45,29 +48,20 @@
 		save_money: 'Save Money',
 		empty_tag: 'Empty Tag'
 	};
-
-	// get tag name from tags
-	const getTagName = (tag: string) => {
-		return tags[tag];
-	};
+	export let tagList;
 
 	const addFilterTag = (tag: string) => {
-		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [...filter, tag];
+		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
 	};
 
 	$: console.log(filter);
-
-	let playAt;
-
-	let _navIndex = 100;
-	let offset = 200;
 
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
 	$: titleShadow = Math.min(Math.max(0, scrollY), 20) / 20;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
-	$: console.log(filterShadow, scrollY);
+	// $: console.log(filterShadow, scrollY);
 	const isSticky = (offset) => {
 		return scrollY > offset;
 	};
@@ -121,7 +115,7 @@
 				>
 					<FilterIcon filled={!!filter.length} />
 				</div>
-				{#each Object.keys(tags) as tag}
+				{#each tagList as tag}
 					<div
 						on:click={() => addFilterTag(tag)}
 						class="text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
@@ -136,16 +130,57 @@
 			</div>
 		</div>
 		<!-- Challenges -->
-		<div class="container min-h-screen">
-			{#each data as challenge}
-				<ChallengeCard {challenge} {tags} {filter} />
-			{/each}
-		</div>
+
+		{#if filter.length > 0}
+			<div class="container__filter min-h-content ">
+				{#each data as challenge}
+					<ChallengeCard {challenge} topics={tags} tags={topics} {filter} />
+				{/each}
+			</div>
+		{:else}
+			<div class="container min-h-content overflow-visible">
+				{#each topicList as topic}
+					<div class="">
+						<!-- get the nice, readable topic title-->
+						<div class="text-lg font-light font-serif px-4">{topics[topic]}</div>
+						<div
+							class="py-2 grid grid-flow-col gap-4 overflow-x-scroll px-4 h-scroller snaps-inline"
+							style="
+								grid-auto-columns: 6rem;
+								grid-template-rows: 8rem;
+							"
+						>
+							{#each data as challenge}
+								{#if challenge.tags.includes(topic)}
+									<ChallengeCard {challenge} topics={tags} tags={topics} {filter} />
+								{/if}
+							{/each}
+						</div>
+					</div>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>
 
 <style lang="scss">
+	.overflow-inherit {
+		overflow: inherit;
+	}
 	.container {
+		max-width: 768px;
+		margin: auto;
+		display: grid;
+		grid-auto-flow: row dense;
+		grid-auto-rows: minmax(100px, max-content);
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		// overflow-y: auto;
+		padding: 0rem 0rem 0rem 0rem;
+		// : 1rem;
+		gap: 1rem;
+	}
+
+	.container__filter {
 		max-width: 768px;
 		margin: auto;
 		display: grid;
@@ -156,6 +191,20 @@
 		padding: 1rem;
 		gap: 1rem;
 	}
+
+	.h-scroller {
+		overscroll-behaviour-inline: contain;
+	}
+
+	.snaps-inline {
+		scroll-snap-type: inline mandatory;
+		scroll-padding-inline: 1rem;
+	}
+
+	.snaps-inline > * {
+		scroll-snap-align: start;
+	}
+
 	// .stuck {
 	// 	@apply bg-slate-100;
 	// }

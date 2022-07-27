@@ -15,18 +15,17 @@
 		empty_tag: 'Empty Tag'
 	};
 
+	export let topics;
 	// get tag name from tags
 	const getTagName = (tag: string) => {
-		return tags[tag];
+		return topics[tag];
 	};
 </script>
 
 <div
-	class:hidden={filter.length > 0 && !filter.every((r) => challenge.tags.includes(r))}
-	class="ch_card fadedownin flex {challenge.tags.includes('big_point')
-		? 'card-2x2 bg-image'
-		: 'card-1x2 '}"
-	style={challenge.tags.includes('big_point')
+	class:hidden={filter.length > 0 && !filter.every((r) => challenge.topic.includes(r))}
+	class="ch_card fadedownin flex card-2x2  {challenge.impact === 'Big Point' ? 'bg-image' : ''}"
+	style={challenge.impact === 'Big Point'
 		? `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`
 		: ''}
 	on:click={() => {
@@ -35,34 +34,34 @@
 >
 	<span>{challenge.title}</span>
 	<div class="flex flex-row flex-wrap">
-		{#each challenge.tags as tag}
-			{#if challenge.tags.includes('big_point')}
-				<div class="card_tag_inverted ">{getTagName(tag)}</div>
-			{:else}
-				<div class="card_tag ">{getTagName(tag)}</div>
-			{/if}
-		{/each}
+		<!-- {#each challenge.topic as topic} -->
+		{#if challenge.impact === 'Big Point'}
+			<div class="card_tag_inverted ">{topics[challenge.topic]}</div>
+		{:else}
+			<div class="card_tag ">{topics[challenge.topic]}</div>
+		{/if}
+		<!-- {/each} -->
 	</div>
 
-	<!-- {JSON.stringify(availableChallenge)} -->
+	<!-- {JSON.stringify(tags)} -->
 </div>
 
 <style lang="scss">
-	.container {
-		max-width: 768px;
-		margin: auto;
-		display: grid;
-		grid-auto-flow: row dense;
-		grid-auto-rows: minmax(100px, max-content);
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		// overflow-y: auto;
-		padding: 1rem;
-		gap: 1rem;
-	}
+	// .container {
+	// 	max-width: 768px;
+	// 	margin: auto;
+	// 	display: grid;
+	// 	grid-auto-flow: row dense;
+	// 	grid-auto-rows: minmax(100px, max-content);
+	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	// 	// overflow-y: auto;
+	// 	padding: 1rem;
+	// 	gap: 1rem;
+	// }
 
 	.ch_card {
 		background: white;
-		border-radius: 20px;
+		border-radius: 4px 4px 4px 4rem;
 		transition: all 0.2s ease-in-out;
 		// display: flex;
 		flex-direction: column;
@@ -73,7 +72,10 @@
 		counter-increment: card;
 		opacity: 0;
 		animation-fill-mode: both;
-		@apply shadow-sm;
+		box-shadow: 0px 5px 0px 0px green;
+		scroll-snap-align: start;
+
+		// @apply shadow-sm;;
 	}
 
 	.bg-image {
@@ -112,7 +114,7 @@
 		grid-column: span 2 / span 2;
 		grid-row: span 2 / span 2;
 		justify-content: space-evenly;
-		@apply text-4xl;
+		@apply text-xl;
 	}
 
 	.card-4x2 {
