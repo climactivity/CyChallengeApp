@@ -1,10 +1,16 @@
 <script lang="ts">
 	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
-
+	import { customFlyIn, customFlyOut } from '$lib/better-animation';
 	import { fly } from 'svelte/transition';
 	export let url: string;
+	import { crossfade, scale, slide } from 'svelte/transition';
 
+	const [send, receive] = crossfade({
+		duration: 200,
+		delay: 200,
+		fallback: slide
+	});
 	let direction = -1;
 	let baseOffset = 200;
 	let offset = 200;
@@ -47,6 +53,8 @@
 	}
 </script>
 
-<div>
-	<slot />
-</div>
+{#key url}
+	<div class="flex flex-row">
+		<slot />
+	</div>
+{/key}

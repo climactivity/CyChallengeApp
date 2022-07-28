@@ -7,6 +7,7 @@
 
 	let insets: Writable<any> = getContext('insets');
 	import { headerState } from '$lib/stores/header-store';
+	import { slideOver } from '$lib/animations/page-transition-anim';
 
 	let y = 0;
 	let headerTransparent;
@@ -22,7 +23,8 @@
 	$: headerTransparent = updateHeader(y);
 </script>
 
-<div class="relative " style="margin-top: {$insets.top}px">
+<!-- <div class="relative " style="margin-top: {$insets.top}px" in:fly={{ duration: 1000, x: 200 }}> -->
+<div class="relative " style="margin-top: {$insets.top}px" transition:slideOver>
 	<div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div>

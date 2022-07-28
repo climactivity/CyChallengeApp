@@ -59,7 +59,7 @@
 	<div
 		class="header pb-4 pt-4 px-6 transition-all  {transparent
 			? 'bg-opacity-0'
-			: 'bg-white shadow-md'} "
+			: 'bg-slate-100 shadow-md'} "
 	>
 		<div>
 			{#if backbutton}
@@ -69,7 +69,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-6 w-6"
 							fill="none"
-							viewBox="0 -2 24 24"
+							viewBox="0 0 24 24"
 							stroke="currentColor"
 							stroke-width="2"
 						>
@@ -78,7 +78,7 @@
 					</button>
 
 					<h1
-						class="text-2xl transition-transform {transparent ? 'hidden' : ''}"
+						class="font-semibold text-xl font-serif transition-transform"
 						out:send={{ key: 'title' }}
 						in:receive={{ key: 'title' }}
 					>
@@ -89,7 +89,9 @@
 
 			{#if !backbutton}
 				<h1
-					class=" absolute text-2xl transition-transform {transparent ? 'hidden' : ''}"
+					class=" absolute font-semibold text-xl font-serif transition-transform {transparent
+						? 'hidden'
+						: ''}"
 					out:send={{ key: 'title' }}
 					in:receive={{ key: 'title' }}
 				>

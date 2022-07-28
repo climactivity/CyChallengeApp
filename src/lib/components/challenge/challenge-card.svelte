@@ -24,7 +24,9 @@
 
 <div
 	class:hidden={filter.length > 0 && !filter.every((r) => challenge.topic.includes(r))}
-	class="ch_card fadedownin flex card-2x2  {challenge.impact === 'Big Point' ? 'bg-image' : ''}"
+	class="ch-card shadow-nature fadedownin flex card-2x2  {challenge.impact === 'Big Point'
+		? 'bg-image'
+		: ''}"
 	style={challenge.impact === 'Big Point'
 		? `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`
 		: ''}
@@ -47,46 +49,6 @@
 </div>
 
 <style lang="scss">
-	// .container {
-	// 	max-width: 768px;
-	// 	margin: auto;
-	// 	display: grid;
-	// 	grid-auto-flow: row dense;
-	// 	grid-auto-rows: minmax(100px, max-content);
-	// 	grid-template-columns: repeat(2, minmax(0, 1fr));
-	// 	// overflow-y: auto;
-	// 	padding: 1rem;
-	// 	gap: 1rem;
-	// }
-
-	.ch_card {
-		background: white;
-		border-radius: 4px 4px 4px 4rem;
-		transition: all 0.2s ease-in-out;
-		// display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: flex-start;
-		padding: 16px;
-		cursor: pointer;
-		counter-increment: card;
-		opacity: 0;
-		animation-fill-mode: both;
-		box-shadow: 0px 5px 0px 0px green;
-		scroll-snap-align: start;
-
-		// @apply shadow-sm;;
-	}
-
-	.bg-image {
-		font-weight: bold;
-		color: white;
-		font-family: 'poppins';
-		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
-			var(--bg-image, url('https://picsum.photos/400'));
-		background-blend-mode: multiply;
-	}
-
 	.fadedownin {
 		animation-duration: 500ms;
 		animation-delay: calc(var(--position) * 75ms);
