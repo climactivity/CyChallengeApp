@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class="cursor-pointer  transition-all duration-500 {selected
+	class="focus:outline-none cursor-pointer  transition-all duration-500 {selected
 		? 'selected'
 		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button"
 >
@@ -42,7 +42,7 @@
 		<button aria-label={label} class="grid place-items-center" on:click={(e) => onClick(e)}>
 			<slot />
 			{#if showLabel}
-				<div class="text-xs text-storm-dark">
+				<div class="text-md text-storm-darkest">
 					<span>
 						{label}
 					</span>

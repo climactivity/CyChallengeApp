@@ -58,7 +58,6 @@
 		onSelected(name);
 	}}
 	class="base"
-	class:selected
 	style="--color: {color};"
 >
 	<p class="text-center font-bold text-xl pb-2">
@@ -83,9 +82,9 @@
 	}
 
 	.base {
-		@apply rounded p-2;
+		@apply rounded-xl p-2 bg-white;
 		cursor: pointer;
 		transition: all 500ms;
-		border: 1px solid #dadada;
+		// border: 1px solid #dadada;
 	}
 </style>

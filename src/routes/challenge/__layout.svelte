@@ -29,7 +29,7 @@
 		<HeaderBar />
 	</div>
 	<div
-		class="py-4 overflow-x-hidden  h-screen pb-60 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
+		class="py-4 overflow-x-hidden  h-screen pb-60 relative top-0 left-0 right-0 bg-slate-100   z-20 "
 		on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
 	>
 		<slot />

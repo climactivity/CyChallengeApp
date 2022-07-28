@@ -32,6 +32,9 @@
 	import { detectLinks } from '$lib/util';
 	import Confetti from '$lib/components/particles/confetti.svelte';
 	import AcceptButton from '$lib/components/buttons/accept-button.svelte';
+	import BookmarkButton from '$lib/components/buttons/bookmark-button.svelte';
+	import AlreadyDoingItButton from '$lib/components/buttons/already-doing-it-button.svelte';
+	import RejectButton from '$lib/components/buttons/reject-button.svelte';
 
 	let showMore = false;
 
@@ -68,12 +71,20 @@
 	let playAt;
 </script>
 
-<div class="pt-9 ">
-	<div class="p-4 m-4 space-y-4">
-		<Confetti id="challenge_accept_particles" bind:playAt />
+<div class="pt-16 ">
+	<Confetti id="challenge_accept_particles" bind:playAt />
 
-		<!-- header image-->
-		<div />
+	<!-- header image-->
+	<div
+		class=" h-64 bg-red-500 w-full ch-card "
+		style="background: url('https://via.placeholder.com/600x400'); background-size: cover;"
+	/>
+	<div class="p-4 m-4 space-y-8">
+		<!-- title -->
+
+		<div class="text-xl font-bold font-serif">
+			{data.title}
+		</div>
 
 		<!-- front matter -->
 		<p class="text-lg  prose">
@@ -82,61 +93,50 @@
 
 		<!-- actions -->
 
-		<div class="flex flex-row">
+		<div class="grid grid-flow-col actions " style="place-items: baseline;">
 			<!-- accept button -->
-			<AcceptButton onClick="" />
+			<AcceptButton onClick={(e) => console.log('accept challenge')} />
 			<!-- save button -->
+			<BookmarkButton onClick={(e) => console.log('bookmark challenge')} />
+
 			<!-- already doing it button -->
+			<AlreadyDoingItButton onClick={(e) => console.log('already doing challenge')} />
+
 			<!-- reject challenge button -->
+			<RejectButton onClick={(e) => console.log('reject challenge')} />
 		</div>
 
 		<!-- steps -->
-
+		<div class="">
+			<DifficultyCard
+				difficulty={data.difficulties['easy']}
+				name="Todos"
+				onSelected={() => {}}
+				selected
+			/>
+		</div>
 		<!-- more infos -->
 
+		<div class=" rounded-xl p-2 bg-white">
+			<p class="text-center font-bold text-xl pb-2">Mehr</p>
+			<p class="align-middle text-lg pb-2">
+				{data.content}
+			</p>
+		</div>
+
 		<!-- related challenges -->
+		<div>related challenges</div>
 		<!-- share to social media -->
-
-		<div class="py-4 my-4">
-			<ButtonSecondaryCta onClick={() => goto(`#more`)}>Mehr Informationen</ButtonSecondaryCta>
-		</div>
-		<!-- <div class="text-center mx-auto text-2xl">Todos</div> -->
-		<div
-			class="grid gap-x-6 gap-y-4 text-xl items-center py-4 my-4"
-			style="grid-template-columns: 1fr;"
-		>
-			{#each Object.keys(data.difficulties).filter((s) => s !== 'Plus') as difficulty}
-				<DifficultyCard
-					name={difficulty}
-					difficulty={data.difficulties[difficulty]}
-					onSelected={selectDifficulty}
-					selected={selectedDifficulty === difficulty}
-				/>
-			{/each}
-
-			{#if data.difficulties.Plus}
-				<DifficultyCard
-					name="Plus"
-					difficulty={data.difficulties.Plus}
-					onSelected={addPlus}
-					selected={addedPlus}
-				/>
-			{/if}
-		</div>
-		<div class="py-4 my-4 space-y-4">
-			<ButtonPrimaryCta disabled={selectedDifficulty === undefined} onClick={(e) => playAt(e)}
-				>Challenge annehmen</ButtonPrimaryCta
-			>
-			{#if browser}
-				<ShareButton
-					shareOptions={{
-						title: data.title,
-						text: 'Really awesome thing you need to see right meow',
-						url: window.location.href,
-						dialogTitle: 'Teile deine Challenge'
-					}}
-				/>
-			{/if}
-		</div>
+		<div>share thing</div>
 	</div>
 </div>
+
+<style lang="scss">
+	.actions > * {
+		align-self: start;
+		:hover,
+		:focus {
+			outline: none;
+		}
+	}
+</style>

@@ -54,6 +54,7 @@
 		animation-delay: calc(var(--position) * 75ms);
 		animation-name: fadedownin;
 		animation-fill-mode: both;
+		opacity: 0;
 	}
 
 	@keyframes fadedownin {
