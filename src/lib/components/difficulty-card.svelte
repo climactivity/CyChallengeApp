@@ -63,9 +63,9 @@
 	<p class="text-center font-bold text-xl pb-2">
 		{name}
 	</p>
-	<p class="align-middle text-lg pb-2">
+	<!-- <p class="align-middle text-lg pb-2">
 		{difficulty.taskDescription}
-	</p>
+	</p> -->
 	<ul class="list-disc px-5">
 		{#each difficulty.todos as todo}
 			<li class="align-middle text-base prose">

@@ -76,8 +76,8 @@
 
 	<!-- header image-->
 	<div
-		class=" h-64 bg-red-500 w-full ch-card "
-		style="background: url('https://via.placeholder.com/600x400'); background-size: cover;"
+		class=" h-64 bg-red-500 w-full ch-card shadow-nature "
+		style="background: url('https://picsum.photos/1000'); background-size: cover;"
 	/>
 	<div class="p-4 m-4 space-y-8">
 		<!-- title -->
@@ -107,19 +107,39 @@
 		</div>
 
 		<!-- steps -->
-		<div class="">
-			<DifficultyCard
-				difficulty={data.difficulties['easy']}
-				name="Todos"
-				onSelected={() => {}}
-				selected
-			/>
-		</div>
+		{#if data.difficulties['easy']}
+			<div class="">
+				<DifficultyCard
+					difficulty={data.difficulties['easy']}
+					name="Todos"
+					onSelected={() => {}}
+					selected
+				/>
+			</div>
+		{:else if data.difficulties['medium']}
+			<div class="">
+				<DifficultyCard
+					difficulty={data.difficulties['medium']}
+					name="Todos"
+					onSelected={() => {}}
+					selected
+				/>
+			</div>
+		{:else if data.difficulties['hard']}
+			<div class="">
+				<DifficultyCard
+					difficulty={data.difficulties['hard']}
+					name="Todos"
+					onSelected={() => {}}
+					selected
+				/>
+			</div>
+		{/if}
 		<!-- more infos -->
 
 		<div class=" rounded-xl p-2 bg-white">
 			<p class="text-center font-bold text-xl pb-2">Mehr</p>
-			<p class="align-middle text-lg pb-2">
+			<p class="align-middle text-md pb-2">
 				{data.content}
 			</p>
 		</div>
