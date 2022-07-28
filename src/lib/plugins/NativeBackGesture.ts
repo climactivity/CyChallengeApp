@@ -1,8 +1,8 @@
 import { registerPlugin } from '@capacitor/core';
 
 export interface NativeBackGesturePlugin {
-    enable(): Promise<void>
-    disable(): Promise<void>
+    enable(): Promise<{error: number}>
+    disable(): Promise<{error: number}>
 }
 
 const NativeBackGesturePlugin = registerPlugin<NativeBackGesturePlugin>('NativeBackGesture')
