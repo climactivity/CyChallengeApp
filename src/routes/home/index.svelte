@@ -1,1 +1,5 @@
-<h1>HomeScreen</h1>
+<script>
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
+</script>
+
+<MainScreenLayoutBase>Hello</MainScreenLayoutBase>

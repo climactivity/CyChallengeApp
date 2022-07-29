@@ -21,30 +21,30 @@
 	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
 	import { getContext, onMount } from 'svelte';
+	import { slideLeft } from '$lib/animations/page-transition-anim';
+	import { cubicOut } from 'svelte/easing';
+	import { navigating } from '$app/stores';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 
 	headerState.set({
 		backbutton: false,
 		title: 'Journal',
 		hidden: false
 	});
-
 	export let data: AcceptedChallenge[];
 </script>
 
-<div class="relative " style="margin-top: {$insets.top}px; --offset: 200px;">
-	<div class="absolute top-0 left-0 right-0 z-30">
+<MainScreenLayoutBase>
+	<div slot="header" class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div>
-	<div
-		class=" pt-16 py-4 overflow-x-hidden h-screen pb-16 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
-	>
-		<div class="grid grid-flow-row gap-4 overflow-y-auto">
-			{#each data as acceptedChallenge}
-				<JournalChallengeCard {acceptedChallenge} />
-			{/each}
-		</div>
+
+	<div class="grid grid-flow-row gap-4 overflow-y-auto">
+		{#each data as acceptedChallenge}
+			<JournalChallengeCard {acceptedChallenge} />
+		{/each}
 	</div>
-</div>
+</MainScreenLayoutBase>
 
 <style lang="scss">
 </style>

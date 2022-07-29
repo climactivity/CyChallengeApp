@@ -30,7 +30,7 @@
 		px-2 gap-2 sm:gap-12
 		place-content-around sm:place-content-center
 		select-none h-12 bg-white  backdrop-blur-md z-50 menu"
-	class:home={!!$page.routeId?.startsWith('challenges')}
+	class:home={!!$page.routeId?.startsWith('challenge')}
 	class:journal={!!$page.routeId?.startsWith('journal')}
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}

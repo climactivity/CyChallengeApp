@@ -15,7 +15,12 @@
 				if (path === '/') {
 					selected = routeId === '';
 				} else {
-					selected = !!routeId?.startsWith(path.slice(1)); // routeId doesn't start with a leading '/'
+					// ugly hack to have challenges button selected even if we're on the challenge page
+					if (path.slice(1) === 'challenges') {
+						selected = !!routeId.match(/^challenge.*$/);
+					} else {
+						selected = !!routeId?.startsWith(path.slice(1)); // routeId doesn't start with a leading '/'
+					}
 				}
 			});
 		}
@@ -57,10 +62,12 @@
 		fill: #5689a0;
 		color: #5689a0;
 		// animation: select 150ms ease forwards;
+		--fill: #5689a0;
 	}
 
 	.unselected {
 		fill: #000000;
+		// --fill: #000000;
 	}
 
 	.menu-button {

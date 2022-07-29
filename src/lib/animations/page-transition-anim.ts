@@ -1,6 +1,10 @@
+import { navigating } from '$app/stores';
 import { cubicOut, cubicIn, linear } from 'svelte/easing';
 
-export function slideLeft(node, { delay = 0, duration = 1000, easing = linear } = {}) {
+export function slideLeft(
+	node,
+	{ delay = 0, duration = 1000, easing = linear, navigation = null } = {}
+) {
 	const style = getComputedStyle(node);
 	const opacity = +style.opacity;
 	const height = parseFloat(style.height);
@@ -19,6 +23,8 @@ export function slideLeft(node, { delay = 0, duration = 1000, easing = linear } 
 	// const margin_bottom = parseFloat(style.marginBottom);
 	// const border_top_width = parseFloat(style.borderTopWidth);
 	// const border_bottom_width = parseFloat(style.borderBottomWidth);
+
+	console.log('navigation', navigation);
 	return {
 		delay,
 		duration,

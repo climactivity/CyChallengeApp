@@ -33,6 +33,7 @@
 	import ChallengeCard from '$lib/components/challenge/challenge-card.svelte';
 	import { slideLeft } from '$lib/animations/page-transition-anim';
 	import { linear, cubicIn, cubicOut } from 'svelte/easing';
+	import { navigating } from '$app/stores';
 	headerState.set({
 		backbutton: false,
 		title: 'Card Demo',
@@ -72,8 +73,8 @@
 <div
 	class="relative bg-slate-100"
 	style="margin-top: {$insets.top}px"
-	in:slideLeft={{ duration: 500, easing: cubicOut }}
-	out:slideLeft
+	in:slideLeft={{ duration: 500, easing: cubicOut, navigation: $navigating }}
+	out:slideLeft={{ navigation: $navigating }}
 >
 	<!-- <div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />

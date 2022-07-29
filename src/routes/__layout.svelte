@@ -28,7 +28,7 @@
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
 
 	import PageTransition from '$lib/components/page-transition.svelte';
-	import { page } from '$app/stores';
+	import { getStores, navigating, page, session, updated } from '$app/stores';
 	let url = $page.routeId;
 	let iOSSafari = false;
 	if (browser) {
