@@ -30,6 +30,7 @@ export interface ChallengeV2 {
 	content: string;
 	difficulties: Difficulties;
 	slug: string;
+	impact: string;
 }
 
 export interface Difficulties {

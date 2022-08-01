@@ -1,5 +1,8 @@
 <script>
+	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 </script>
 
-<MainScreenLayoutBase>Hello</MainScreenLayoutBase>
+<MainScreenLayoutBase>
+	<MainContentContainer>Hello</MainContentContainer>
+</MainScreenLayoutBase>

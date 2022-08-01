@@ -36,7 +36,8 @@
 	};
 
 	const back = (e: Event) => {
-		console.log('went back');
+		// console.log('went back');
+
 		if (onGoBack !== undefined) {
 			onGoBack();
 		} else {

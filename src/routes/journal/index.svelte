@@ -21,10 +21,10 @@
 	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
 	import { getContext, onMount } from 'svelte';
-	import { slideLeft } from '$lib/animations/page-transition-anim';
 	import { cubicOut } from 'svelte/easing';
 	import { navigating } from '$app/stores';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
+	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 
 	headerState.set({
 		backbutton: false,
@@ -39,11 +39,13 @@
 		<HeaderBar />
 	</div>
 
-	<div class="grid grid-flow-row gap-4 overflow-y-auto">
-		{#each data as acceptedChallenge}
-			<JournalChallengeCard {acceptedChallenge} />
-		{/each}
-	</div>
+	<MainContentContainer>
+		<div class="grid grid-flow-row gap-4 overflow-y-auto">
+			{#each data as acceptedChallenge}
+				<JournalChallengeCard {acceptedChallenge} />
+			{/each}
+		</div>
+	</MainContentContainer>
 </MainScreenLayoutBase>
 
 <style lang="scss">

@@ -10,3 +10,4 @@ export const headerState: Writable<HeaderState> = writable({
     transparent: false,
 });
 
+ 

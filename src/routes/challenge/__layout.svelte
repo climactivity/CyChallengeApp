@@ -7,7 +7,10 @@
 
 	let insets: Writable<any> = getContext('insets');
 	import { headerState } from '$lib/stores/header-store';
-	import { slideOver } from '$lib/animations/page-transition-anim';
+	import { navigating } from '$app/stores';
+
+	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
+	import { cubicOut } from 'svelte/easing';
 
 	let y = 0;
 	let headerTransparent;
@@ -24,7 +27,17 @@
 </script>
 
 <!-- <div class="relative " style="margin-top: {$insets.top}px" in:fly={{ duration: 1000, x: 200 }}> -->
-<div class="relative " style="margin-top: {$insets.top}px" transition:slideOver>
+<div
+	class="relative "
+	style="margin-top: {$insets.top}px"
+	in:mainScreenAnim={{
+		duration: 500,
+		easing: cubicOut,
+		navigation: $navigating,
+		role: AnimationRole.to
+	}}
+	out:mainScreenAnim={{ navigation: $navigating, role: AnimationRole.from }}
+>
 	<div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div>
