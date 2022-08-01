@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-	import DifficultyCard from '../../lib/components/difficulty-card.svelte';
+	import DifficultyCard from '$lib/components/difficulty-card.svelte';
 
 	import { browser } from '$app/env';
 	import ShareButton from '$lib/components/buttons/share-button.svelte';
@@ -27,7 +27,7 @@
 	import { faCircleCheck, faCircleDot } from '@fortawesome/free-solid-svg-icons';
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
 	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
-	import { goto } from '$app/navigation';
+	import { goto, prefetch } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { detectLinks } from '$lib/util';
 	import Confetti from '$lib/components/particles/confetti.svelte';
@@ -68,21 +68,27 @@
 		addedPlus = !!!addedPlus;
 	};
 
+	const action = async (nextRoute) => {
+		const route = `/challenge/${data.slug}/${nextRoute}`;
+		await prefetch(route);
+		goto(route, { noscroll: true });
+	};
+
 	let playAt;
 </script>
 
 <div class=" ">
-	<Confetti id="challenge_accept_particles" bind:playAt />
+	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
 
 	<!-- header image-->
-	<div
+	<!-- <div
 		class=" h-64 bg-red-500 w-full ch-card shadow-nature "
 		style={`background: url( ${
 			data.image?.file?.path
 				? $page.url.origin + '/' + data.image?.file?.path
 				: 'https://picsum.photos/1000'
 		}); background-size: cover;`}
-	/>
+	/> -->
 	<div class="p-4 m-4 space-y-8">
 		<!-- title -->
 
@@ -99,15 +105,35 @@
 
 		<div class="grid grid-flow-col actions " style="place-items: baseline;">
 			<!-- accept button -->
-			<AcceptButton onClick={(e) => console.log('accept challenge')} />
+			<AcceptButton
+				onClick={async (e) => {
+					console.log('accept challenge');
+					action('accept');
+				}}
+			/>
 			<!-- save button -->
-			<BookmarkButton onClick={(e) => console.log('bookmark challenge')} />
+			<BookmarkButton
+				onClick={async (e) => {
+					console.log('bookmark challenge');
+					action('bookmark');
+				}}
+			/>
 
 			<!-- already doing it button -->
-			<AlreadyDoingItButton onClick={(e) => console.log('already doing challenge')} />
+			<AlreadyDoingItButton
+				onClick={(e) => {
+					console.log('already doing challenge');
+					action('way-ahead-of-you');
+				}}
+			/>
 
 			<!-- reject challenge button -->
-			<RejectButton onClick={(e) => console.log('reject challenge')} />
+			<RejectButton
+				onClick={(e) => {
+					console.log('reject challenge');
+					action('reject');
+				}}
+			/>
 		</div>
 
 		<!-- steps -->
