@@ -1,3 +1,4 @@
+<!-- abandon all hope, ye who enter here -->
 <script lang="ts">
 	import { headerState } from '$lib/stores/header-store';
 
