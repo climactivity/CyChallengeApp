@@ -51,6 +51,7 @@
 		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
 			var(--bg-image, url('https://picsum.photos/400'));
 		background-blend-mode: multiply;
+		background-size: cover;
 	}
 }
 

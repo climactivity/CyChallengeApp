@@ -77,7 +77,9 @@
 	<!-- header image-->
 	<div
 		class=" h-64 bg-red-500 w-full ch-card shadow-nature "
-		style="background: url('https://picsum.photos/1000'); background-size: cover;"
+		style={`background: url( ${
+			data.image?.file?.path ? '/' + data.image.file.path : 'https://picsum.photos/1000'
+		}); background-size: cover;`}
 	/>
 	<div class="p-4 m-4 space-y-8">
 		<!-- title -->

@@ -11,11 +11,12 @@
 
 	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
 	import { cubicOut } from 'svelte/easing';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 
 	let y = 0;
 	let headerTransparent;
 
-	const HEADER_TRANSPARENT_OFFSET = 40;
+	const HEADER_TRANSPARENT_OFFSET = 5;
 
 	const updateHeader = (offset) => {
 		const transparent = offset < HEADER_TRANSPARENT_OFFSET;
@@ -27,18 +28,8 @@
 </script>
 
 <!-- <div class="relative " style="margin-top: {$insets.top}px" in:fly={{ duration: 1000, x: 200 }}> -->
-<div
-	class="relative "
-	style="margin-top: {$insets.top}px"
-	in:mainScreenAnim={{
-		duration: 500,
-		easing: cubicOut,
-		navigation: $navigating,
-		role: AnimationRole.to
-	}}
-	out:mainScreenAnim={{ navigation: $navigating, role: AnimationRole.from }}
->
-	<div class="absolute top-0 left-0 right-0 z-30">
+<MainScreenLayoutBase>
+	<div class="absolute top-0 left-0 right-0 z-30" slot="header">
 		<HeaderBar />
 	</div>
 	<div
@@ -47,7 +38,7 @@
 	>
 		<slot />
 	</div>
-</div>
+</MainScreenLayoutBase>
 
 <style lang="scss">
 	.bg-sector:before {

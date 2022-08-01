@@ -34,6 +34,7 @@
 	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
 	import { linear, cubicIn, cubicOut } from 'svelte/easing';
 	import { navigating } from '$app/stores';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	headerState.set({
 		backbutton: false,
 		title: 'Card Demo',
@@ -70,17 +71,7 @@
 	};
 </script>
 
-<div
-	class="relative bg-slate-100 bg-opacity-100"
-	style="margin-top: {$insets.top}px"
-	in:mainScreenAnim={{
-		duration: 500,
-		easing: cubicOut,
-		navigation: $navigating,
-		role: AnimationRole.to
-	}}
-	out:mainScreenAnim={{ navigation: $navigating, role: AnimationRole.from }}
->
+<MainScreenLayoutBase>
 	<!-- <div class="absolute top-0 left-0 right-0 z-30">
 		<HeaderBar />
 	</div> -->
@@ -174,7 +165,7 @@
 			</div>
 		{/if}
 	</div>
-</div>
+</MainScreenLayoutBase>
 
 <style lang="scss">
 	.overflow-inherit {

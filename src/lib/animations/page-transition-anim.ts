@@ -70,7 +70,7 @@ const css = (
 	currentRole: AnimationRole,
 	computedStyle: CSSStyleDeclaration
 ) => (t, s) => {
-	const opacity = +computedStyle.opacity;
+	const opacity = parseFloat(computedStyle.opacity);
 	const height = parseFloat(computedStyle.height);
 	const width = parseFloat(computedStyle.width);
 
@@ -117,7 +117,7 @@ export function mainScreenAnim(
 	const animationDirection = currentAnimDirection(navigation);
 	duration =
 		duration ?? (animationDirection === AnimationDirection.up && role === AnimationRole.from)
-			? ANIMATION_BASE_SPEED * 2
+			? ANIMATION_BASE_SPEED * 1
 			: animationDirection === AnimationDirection.up ||
 			  (animationDirection === AnimationDirection.down && role === AnimationRole.to)
 			? ANIMATION_BASE_SPEED * 2

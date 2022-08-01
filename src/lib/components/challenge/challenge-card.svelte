@@ -15,6 +15,12 @@
 		empty_tag: 'Empty Tag'
 	};
 
+	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
+	$: {
+		imageUrl = challenge.image?.file?.path ?? imageUrl;
+		console.log('image', challenge.image?.file?.path);
+	}
+
 	export let topics;
 	// get tag name from tags
 	const getTagName = (tag: string) => {
@@ -24,12 +30,10 @@
 
 <div
 	class:hidden={filter.length > 0 && !filter.every((r) => challenge.topic.includes(r))}
-	class="ch-card shadow-nature fadedownin flex card-2x2  {challenge.impact === 'Big Point'
-		? 'bg-image'
-		: ''}"
-	style={challenge.impact === 'Big Point'
-		? `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`
-		: ''}
+	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image"
+	style={imageUrl
+		? `--bg-image: url(${imageUrl})`
+		: `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`}
 	on:click={() => {
 		goto(`/challenge/${challenge.slug}`);
 	}}

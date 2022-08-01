@@ -1,16 +1,16 @@
 <script lang="ts">
 	import '../app.css';
 
-	import { SafeArea } from 'capacitor-plugin-safe-area';
-	import { Capacitor } from '@capacitor/core';
-	import { browser } from '$app/env';
-	import { App as CapacitorApp } from '@capacitor/app';
+	import {SafeArea} from 'capacitor-plugin-safe-area';
+	import {Capacitor} from '@capacitor/core';
+	import {browser} from '$app/env';
+	import {App as CapacitorApp} from '@capacitor/app';
 
 	import MdMenu from '$lib/components/MdMenu.svelte';
 	import BottomNavbar from '$lib/components/bottom-navbar.svelte';
-	import HeaderBar from '$lib/components/header-bar.svelte';
-	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
+	import {setContext} from 'svelte';
+	import {writable} from 'svelte/store';
+	import {page} from '$app/stores';
 
 	let insets = writable({
 		top: 0,
@@ -26,9 +26,6 @@
 		console.log(_insets);
 	});
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
-
-	import PageTransition from '$lib/components/page-transition.svelte';
-	import { getStores, navigating, page, session, updated } from '$app/stores';
 	let url = $page.routeId;
 	let iOSSafari = false;
 	if (browser) {

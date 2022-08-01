@@ -32,7 +32,13 @@
                 ],
                 "frontMatter": "Wusstest du, dass du mit der Umstellung auf eine pflanzlichere Ernährung ca. 35% CO2 einsparen kannst? Definitiv ein Grund das mal auszuprobieren.",
                 "image": {
-                    "file": "E1",
+                    "file": {
+                        "path": "images/E1.webp",
+                        "size": {
+                            "x": 1279,
+                            "y": 1920
+                        }
+                    },
                     "url": "https://unsplash.com/photos/Faf6gzEI3Do"
                 },
                 "points": "",
