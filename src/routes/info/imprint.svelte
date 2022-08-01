@@ -1,4 +1,6 @@
 <script lang="ts">
+	import HeaderBar from '$lib/components/header-bar.svelte';
+
 	import { headerState } from '$lib/stores/header-store';
 	headerState.set({
 		backbutton: true,
@@ -8,7 +10,10 @@
 </script>
 
 <div class="bg-white ">
-	<div class="prose h-screen overflow-scroll p-4 pb-40 mx-auto">
+	<div class="absolute top-0 left-0 right-0 z-30">
+		<HeaderBar />
+	</div>
+	<div class="pt-20 prose h-screen overflow-scroll p-4 pb-40 mx-auto">
 		<h2>Angaben gemäß § 5 TMG</h2>
 
 		<p>

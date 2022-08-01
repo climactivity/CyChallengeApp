@@ -12,19 +12,7 @@
 	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
 	import { cubicOut } from 'svelte/easing';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
-
-	let y = 0;
-	let headerTransparent;
-
-	const HEADER_TRANSPARENT_OFFSET = 5;
-
-	const updateHeader = (offset) => {
-		const transparent = offset < HEADER_TRANSPARENT_OFFSET;
-		headerState.update((outgoing) => ({ ...outgoing, transparent }));
-		return headerTransparent;
-	};
-
-	$: headerTransparent = updateHeader(y);
+	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 </script>
 
 <!-- <div class="relative " style="margin-top: {$insets.top}px" in:fly={{ duration: 1000, x: 200 }}> -->
@@ -32,12 +20,9 @@
 	<div class="absolute top-0 left-0 right-0 z-30" slot="header">
 		<HeaderBar />
 	</div>
-	<div
-		class="py-4 overflow-x-hidden  h-screen pb-60 relative top-0 left-0 right-0 bg-slate-100   z-20 "
-		on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
-	>
+	<MainContentContainer>
 		<slot />
-	</div>
+	</MainContentContainer>
 </MainScreenLayoutBase>
 
 <style lang="scss">

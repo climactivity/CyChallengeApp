@@ -3,6 +3,7 @@
 	import type { Writable } from 'svelte/store';
 	import { randomIntBetween } from '$lib/util';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let challenge: ChallengeV2;
 
@@ -17,8 +18,8 @@
 
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
 	$: {
-		imageUrl = challenge.image?.file?.path ?? imageUrl;
-		console.log('image', challenge.image?.file?.path);
+		imageUrl = challenge.image?.file?.path ?? undefined;
+		// console.log('image', challenge.image?.file?.path, $page.url);
 	}
 
 	export let topics;
@@ -32,7 +33,7 @@
 	class:hidden={filter.length > 0 && !filter.every((r) => challenge.topic.includes(r))}
 	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image"
 	style={imageUrl
-		? `--bg-image: url(${imageUrl})`
+		? `--bg-image: url(${$page.url.origin + '/' + imageUrl})`
 		: `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`}
 	on:click={() => {
 		goto(`/challenge/${challenge.slug}`);
