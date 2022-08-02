@@ -35,6 +35,7 @@
 	import { navigating } from '$app/stores';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -57,6 +58,9 @@
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
 	};
+
+	const isHidden = (challenge) =>
+		filter.length > 0 && !filter.every((r) => challenge.topic.includes(r));
 
 	$: console.log(filter);
 
@@ -126,29 +130,19 @@
 		{#if filter.length > 0}
 			<div class="container__filter min-h-content ">
 				{#each data as challenge}
-					<ChallengeCard {challenge} topics={tags} tags={topics} {filter} />
+					<ChallengeCard {challenge} {tags} {isHidden} />
 				{/each}
 			</div>
 		{:else}
 			<div class="container min-h-content overflow-visible">
 				{#each topicList as topic}
-					<div class="">
-						<!-- get the nice, readable topic title-->
-						<div class="text-lg font-light font-serif px-4">{topics[topic]}</div>
-						<div
-							class="py-2 grid grid-flow-col gap-4 overflow-x-scroll px-4 h-scroller snaps-inline"
-							style="
-								grid-auto-columns: 6rem;
-								grid-template-rows: 8rem;
-							"
-						>
-							{#each data as challenge}
-								{#if challenge.tags.includes(topic)}
-									<ChallengeCard {challenge} topics={tags} tags={topics} {filter} />
-								{/if}
-							{/each}
-						</div>
-					</div>
+					<ChallengeScroller
+						challenges={data.filter((challenge) => challenge.tags.includes(topic))}
+						title={topics[topic]}
+						{tags}
+						challengeHidden={(_) => false}
+						pad
+					/>
 				{/each}
 			</div>
 		{/if}

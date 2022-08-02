@@ -37,6 +37,7 @@
 	import RejectButton from '$lib/components/buttons/reject-button.svelte';
 	import { buttonAlerts } from '$lib/stores/button-alerts';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
+	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 
 	let showMore = false;
 
@@ -187,7 +188,7 @@
 	<RecommendedChallengesSection challenge={data} />
 
 	<!-- share to social media -->
-	<div>share thing</div>
+	<ShareToSocialMediaSection challenge={data} last />
 </div>
 
 <style lang="scss">

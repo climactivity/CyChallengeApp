@@ -19,11 +19,12 @@
 	import BackToChallengesPageSection from '$lib/components/challenge/back-to-challenges-page-section.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
+import ScoreSection from '$lib/components/challenge/score-section.svelte';
 	export let challenge: ChallengeV2;
 </script>
 
 <div class="flex flex-col pt-8">
-	<ActionHeroSection {challenge} index={0}>
+	<ScoreSection {challenge} index={0}>
 		<div slot="title">
 			{challenge.title}
 		</div>
@@ -40,7 +41,7 @@
 				/>
 			</svg>
 		</div>
-	</ActionHeroSection>
+	</ScoreSection>
 	<RecommendedChallengesSection {challenge} index={1} />
 	<ShareToSocialMediaSection {challenge} index={3} />
 	<BackToChallengesPageSection last={true} index={3} />

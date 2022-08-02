@@ -7,30 +7,17 @@
 
 	export let challenge: ChallengeV2;
 
-	export let filter = [];
-
-	export let tags = {
-		big_point: 'Big Point',
-		easy_action: 'Easy Action',
-		save_money: 'Save Money',
-		empty_tag: 'Empty Tag'
-	};
-
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
 	$: {
 		imageUrl = challenge.image?.file?.path ?? undefined;
 		// console.log('image', challenge.image?.file?.path, $page.url);
 	}
-
-	export let topics;
-	// get tag name from tags
-	const getTagName = (tag: string) => {
-		return topics[tag];
-	};
+	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
+	export let tags;
 </script>
 
 <div
-	class:hidden={filter.length > 0 && !filter.every((r) => challenge.topic.includes(r))}
+	class:hidden={isHidden(challenge)}
 	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image"
 	style={imageUrl
 		? `--bg-image: url(${$page.url.origin + '/' + imageUrl})`
@@ -43,9 +30,9 @@
 	<div class="flex flex-row flex-wrap">
 		<!-- {#each challenge.topic as topic} -->
 		{#if challenge.impact === 'Big Point'}
-			<div class="card_tag_inverted ">{topics[challenge.topic]}</div>
+			<div class="card_tag_inverted ">{tags[challenge.topic]}</div>
 		{:else}
-			<div class="card_tag ">{topics[challenge.topic]}</div>
+			<div class="card_tag ">{tags[challenge.topic]}</div>
 		{/if}
 		<!-- {/each} -->
 	</div>

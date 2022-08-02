@@ -19,6 +19,7 @@
 	import BackToChallengesPageSection from '$lib/components/challenge/back-to-challenges-page-section.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 	import ActionHeroSectionNoicon from '$lib/components/challenge/action-hero-section-noicon.svelte';
+	import RejectedReasonFormSection from '$lib/components/challenge/rejected-reason-form-section.svelte';
 	export let challenge: ChallengeV2;
 </script>
 
@@ -39,6 +40,7 @@
 			</svg>
 		</div>
 	</ActionHeroSectionNoicon>
-	<RecommendedChallengesSection {challenge} rejected index={1} />
-	<BackToChallengesPageSection last={true} rejected index={2} />
+	<RejectedReasonFormSection {challenge} index={1} />
+	<RecommendedChallengesSection {challenge} rejected index={2} />
+	<BackToChallengesPageSection last={true} rejected index={3} />
 </div>
