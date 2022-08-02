@@ -68,9 +68,36 @@ module.exports = {
           cheer: "cheer 1.5s forwards ease",
           fadeInDown: "fadeInDown 0.5s forwards ease",
           fadeInUp: "fadeInUp 0.5s forwards ease",
-
+          grabAttention: "grabAttention 1.35s forwards ease-in-out",
+          
         },
         keyframes: {
+          grabAttention: {
+            "0%": {
+              transform: "rotateZ(0deg)",
+              color: "inherit",
+            },
+            "15%": {
+              transform: "rotateZ(0deg)",
+              color: "var(--highlight-color,  #e8b50d)"
+            },
+            "33%": {
+              transform: "rotateZ(10deg)",
+              color: "var(--highlight-color,  #e8b50d)"
+            },
+            "66%": {
+              transform: "rotateZ(-10deg)",
+              color: "var(--highlight-color,  #e8b50d)"
+            },
+            "85%": {
+              transform: "rotateZ(0deg)",
+              color: "var(--highlight-color,  #e8b50d)"
+            },
+            "100%": {
+              transform: "rotateZ(0deg)",
+              color: "inherit"
+            }
+          },
           blob: {
             "0%": {
               transform: "translate(0px, 0px) scale(1)"

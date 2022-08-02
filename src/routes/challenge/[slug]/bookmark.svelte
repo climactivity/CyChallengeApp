@@ -22,7 +22,7 @@
 </script>
 
 <div class="flex flex-col pt-8">
-	<ActionHeroSection {challenge}>
+	<ActionHeroSection {challenge} index={0}>
 		<div slot="title">
 			{challenge.title}
 		</div>
@@ -46,6 +46,6 @@
 			</svg>
 		</div>
 	</ActionHeroSection>
-	<RecommendedChallengesSection {challenge} />
-	<BackToChallengesPageSection last={true} />
+	<RecommendedChallengesSection {challenge} index={1} />
+	<BackToChallengesPageSection last={true} index={2} />
 </div>

@@ -1,6 +1,30 @@
 <script lang="ts">
+	import { buttonAlerts, type ButtonAlert } from '$lib/stores/button-alerts';
+
 	import IconButton from './icon-button.svelte';
 	export let path: string;
+
+	let attention;
+	const processAlert = (alert: ButtonAlert) => {
+		console.log('processAlert', alert);
+		if (alert.type === 'attention') {
+			attention = true;
+		}
+
+		setTimeout(() => {
+			attention = false;
+		}, 1350);
+	};
+	buttonAlerts.subscribe((alerts) => {
+		let alertIndex = alerts.findIndex((alert) => alert.path === path);
+		if (alertIndex !== -1) {
+			let alert = alerts[alertIndex];
+			processAlert(alert);
+			buttonAlerts.update((alerts) => {
+				return alerts.filter((alert) => alert.path !== path);
+			});
+		}
+	});
 </script>
 
 <IconButton bind:path label="Journal">
@@ -12,6 +36,7 @@
 		viewBox="0 0 24 24"
 		stroke="currentColor"
 		stroke-width="2"
+		class:attention
 	>
 		<path
 			stroke-linecap="round"
@@ -20,3 +45,9 @@
 		/>
 	</svg>
 </IconButton>
+
+<style lang="scss">
+	.attention {
+		@apply animate-grabAttention;
+	}
+</style>

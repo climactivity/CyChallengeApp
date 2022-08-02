@@ -17,7 +17,7 @@
 
 	import { browser } from '$app/env';
 	import ShareButton from '$lib/components/buttons/share-button.svelte';
-	import { fly } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	import type { AcceptedChallenge, ChallengeV2, CompletedStep } from '$lib/types/challenges';
 
@@ -35,6 +35,7 @@
 	import BookmarkButton from '$lib/components/buttons/bookmark-button.svelte';
 	import AlreadyDoingItButton from '$lib/components/buttons/already-doing-it-button.svelte';
 	import RejectButton from '$lib/components/buttons/reject-button.svelte';
+	import { buttonAlerts } from '$lib/stores/button-alerts';
 
 	let showMore = false;
 
@@ -77,18 +78,18 @@
 	let playAt;
 </script>
 
-<div class=" ">
+<div class="" transition:fade={{ duration: 250 }}>
 	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
 
 	<!-- header image-->
-	<!-- <div
+	<div
 		class=" h-64 bg-red-500 w-full ch-card shadow-nature "
 		style={`background: url( ${
 			data.image?.file?.path
 				? $page.url.origin + '/' + data.image?.file?.path
 				: 'https://picsum.photos/1000'
 		}); background-size: cover;`}
-	/> -->
+	/>
 	<div class="p-4 m-4 space-y-8">
 		<!-- title -->
 
@@ -115,6 +116,13 @@
 			<BookmarkButton
 				onClick={async (e) => {
 					console.log('bookmark challenge');
+					buttonAlerts.update((alerts) => [
+						...alerts,
+						{
+							path: '/journal',
+							type: 'attention'
+						}
+					]);
 					action('bookmark');
 				}}
 			/>

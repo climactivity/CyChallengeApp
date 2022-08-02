@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import { customFlyIn, customFlyOut } from '$lib/better-animation';
+	import { customFlyIn, customFlyOut } from '$lib/animations/better-animation';
 	import { fly } from 'svelte/transition';
 	export let url: string;
 	import { crossfade, scale, slide } from 'svelte/transition';

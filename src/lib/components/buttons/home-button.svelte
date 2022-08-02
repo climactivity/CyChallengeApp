@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { buttonAlerts } from '$lib/stores/button-alerts';
+
 	import IconButton from './icon-button.svelte';
 	export let path: string;
 </script>
