@@ -71,7 +71,7 @@
 	// }
 
 	.menu {
-		box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, var(--show-shadow, 0.05));
+		box-shadow: 0px -3px 3px 0px rgba(0, 0, 0, var(--show-shadow, 0.05));
 	}
 
 	@media (min-width: 640px) {

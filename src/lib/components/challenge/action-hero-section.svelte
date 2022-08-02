@@ -5,12 +5,16 @@
 </script>
 
 <VSection {...$$props}>
-	<div class="flex flex-row">
+	<div class="grid grid-flow-col" style="grid-template-columns: 4fr 1fr;">
 		<div class="flex flex-col">
-			<slot name="title" />
-			<slot name="description" />
+			<div class="text-4xl font-serif font-semibold text-storm-dark">
+				<slot name="title" />
+			</div>
+			<div class="text-md font-serif font-normal text-storm-dark">
+				<slot name="description" />
+			</div>
 		</div>
-		<div>
+		<div class=" text-storm-dark">
 			<slot name="icon" />
 		</div>
 	</div>
