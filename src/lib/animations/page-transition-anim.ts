@@ -38,7 +38,7 @@ export let screenOrder = screenOrderLtR;
 
 const screenOrderIndex = (string): number => {
 	const screen = string.split('/')[1];
-	console.log('animationDirection', string.split('/').slice(1));
+	// console.log('animationDirection', string.split('/').slice(1));
 	return screenOrder[screen] ?? 0;
 };
 
@@ -147,7 +147,7 @@ export function mainScreenAnim(
 	// making the leaving page ease gives the animation a janky feel, so set it to linear
 	easing = role === AnimationRole.to ? cubicOut : linear;
 
-	console.log('mainScreenAnim', role, navigation);
+	// console.log('mainScreenAnim', role, navigation);
 	return {
 		delay,
 		duration: duration,

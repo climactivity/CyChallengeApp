@@ -8,29 +8,23 @@
 	import { page } from '$app/stores';
 	import ChallengesButton from './buttons/challenges-button.svelte';
 	import FeedButton from './buttons/feed-button.svelte';
-
-	if (browser) {
-		page.subscribe(({ routeId }) => {
-			console.log(routeId);
-			// if (path === '/') {
-			// 	selected = routeId === '';
-			// } else {
-			// 	selected = !!routeId?.startsWith(path.slice(1)); // routeId doesn't start with a leading '/'
-			// }
-		});
-	}
+	import { showMenu } from '$lib/stores/menu-store';
 
 	let xSize;
+	let shadow = true;
+	showMenu.subscribe((state) => {
+		shadow = !state;
+	});
 </script>
 
 <div
 	bind:clientWidth={xSize}
-	style="--x-size: {xSize}px;"
+	style="--x-size: {xSize}px; --show-shadow: {shadow ? 0.05 : 0};"
 	class="relative
 		grid grid-flow-col
 		px-2 gap-2 sm:gap-12
 		place-content-around sm:place-content-center
-		select-none h-12 bg-white  backdrop-blur-md z-50 menu"
+		select-none h-12 bg-white  backdrop-blur-md z-50 menu transition-shadow"
 	class:home={!!$page.routeId?.startsWith('challenge')}
 	class:journal={!!$page.routeId?.startsWith('journal')}
 	class:stats={!!$page.routeId?.startsWith('stats')}
@@ -75,6 +69,10 @@
 	// .menu.social::after {
 	// 	left: calc(60%);
 	// }
+
+	.menu {
+		box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, var(--show-shadow, 0.05));
+	}
 
 	@media (min-width: 640px) {
 		.menu.home::after {

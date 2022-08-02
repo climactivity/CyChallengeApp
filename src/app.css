@@ -79,6 +79,10 @@
 	.page {
 	}
 
+	.pressed {
+		transition: transform;
+		transform: translateY(3%);
+	}
 	.slideIn {
 		animation-duration: 500ms;
 		animation-delay: 400ms;

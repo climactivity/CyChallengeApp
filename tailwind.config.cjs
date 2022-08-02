@@ -63,15 +63,68 @@ module.exports = {
           }
         },
         animation: {
-          fade: "fade 0.5s forwards ease"
+          fade: "fade 0.5s forwards ease",
+          blob: "blob 7s infinite",
+          cheer: "cheer 1.5s forwards ease",
+          fadeInDown: "fadeInDown 0.5s forwards ease",
+          fadeInUp: "fadeInUp 0.5s forwards ease",
+
         },
         keyframes: {
+          blob: {
+            "0%": {
+              transform: "translate(0px, 0px) scale(1)"
+            },
+            "33%": {
+              transform: "translate(15px, -30px) scale(1.15)"
+            },
+            "66%": {
+              transform: "translate(-10px, 20px) scale(0.85)"
+            },
+            "100%": {
+              transform: "translate(0px, 0px) scale(1)"
+            },
+          },
+          cheer: {
+            "0%": {
+              opacity: "0",
+              transform: "translate(0px, 200px) scale(0.85) "
+            },
+            "100%": {
+              opacity: "1",
+              transform: "translate(0px, 0px) scale(1)"
+            },
+          },
           fade: {
             "0%": {
               opacity: "0"
             },
             "100%": {
               opacity: "1"
+            }
+          },
+          fadeInDown: {
+            "0%": {
+              opacity: "0",
+              transform: "translateY(-20%)"
+
+            },
+            "100%": {
+              opacity: "1",
+              transform: "translateY(0%)"
+            }
+          },
+          fadeInUp: {
+            "0%": {
+              opacity: "0",
+              transform: "translateY(20%)"
+
+            },
+            "100%": {
+              opacity: "1",
+              transform: "translateY(0%)"
+
+
             }
           }
         }

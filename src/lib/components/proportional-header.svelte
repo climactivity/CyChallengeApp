@@ -1,8 +1,5 @@
 <script lang="ts">
 	import { headerState } from '$lib/stores/header-store';
-	import type { Writable } from 'svelte/store';
-	import { getContext, onMount } from 'svelte';
-	import SearchButton from '$lib/components/buttons/search-button.svelte';
 
 	export let title = 'HEADER TEXT MISSING!';
 	export let backbutton = false;
