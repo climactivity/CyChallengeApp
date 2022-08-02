@@ -68,6 +68,10 @@
 		background-blend-mode: multiply;
 		background-size: cover;
 	}
+
+	.h-safe {
+		height: var(--save-h-max, 100vh);
+	}
 }
 
 @layer utilities {

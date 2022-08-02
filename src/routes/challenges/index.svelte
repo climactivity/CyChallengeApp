@@ -72,7 +72,7 @@
 
 <MainScreenLayoutBase>
 	<div
-		class=" overflow-y-auto overflow-x-hidden  md:mx-auto md:max-w-3xl h-screen pb-16 relative  z-20 "
+		class=" overflow-y-auto overflow-x-hidden  md:mx-auto md:max-w-3xl h-safe pb-16 relative  z-20 "
 		on:scroll={(e) => {
 			scrollY = e.currentTarget.scrollTop;
 		}}

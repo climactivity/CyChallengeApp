@@ -1,16 +1,18 @@
 <script lang="ts">
 	import '../app.css';
 
-	import {SafeArea} from 'capacitor-plugin-safe-area';
-	import {Capacitor} from '@capacitor/core';
-	import {browser} from '$app/env';
-	import {App as CapacitorApp} from '@capacitor/app';
+	import { SafeArea } from 'capacitor-plugin-safe-area';
+	import { Capacitor } from '@capacitor/core';
+	import { browser } from '$app/env';
+	import { App as CapacitorApp } from '@capacitor/app';
 
 	import MdMenu from '$lib/components/MdMenu.svelte';
 	import BottomNavbar from '$lib/components/bottom-navbar.svelte';
-	import {setContext} from 'svelte';
-	import {writable} from 'svelte/store';
-	import {page} from '$app/stores';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { page } from '$app/stores';
+	import { root } from 'postcss';
+	import { onMount } from 'svelte';
 
 	let insets = writable({
 		top: 0,
@@ -44,6 +46,14 @@
 			}
 		});
 	}
+
+	onMount(() => {
+		console.log('hi');
+		if (Capacitor.getPlatform() === 'ios') {
+			let root = document.documentElement;
+			root.style.setProperty('--save-h-max', '92vh');
+		}
+	});
 </script>
 
 <svelte:head>

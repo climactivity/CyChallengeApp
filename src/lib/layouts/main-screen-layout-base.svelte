@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { navigating } from '$app/stores';
 	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
+	import { Capacitor } from '@capacitor/core';
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
 	let insets: Writable<any> = getContext('insets');

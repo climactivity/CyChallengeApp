@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { headerState } from '$lib/stores/header-store';
+	import { Capacitor } from '@capacitor/core';
 
 	export let y = 0;
 	let headerTransparent;
@@ -17,8 +18,26 @@
 </script>
 
 <div
-	class="  overflow-x-hidden h-screen pb-16 relative top-0 left-0 right-0  z-20 "
+	class="  overflow-x-hidden h-[82vh] pb-16 relative top-0 left-0 right-0  z-20 "
 	on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
 >
 	<slot />
 </div>
+
+{#if Capacitor.getPlatform() === 'ios'}
+	<div class="h-20 findme">
+		<pre>
+*meow* *meow*
+,_     _
+|\\_,-~/
+/ _  _ |    ,--.
+(  @  @ )   / ,-'
+\  _T_/-._( (
+/         `. \
+|         _  \ |
+\ \ ,  /      |
+|| |-_\__   /
+((_/`(____,-'
+</pre>
+	</div>
+{/if}
