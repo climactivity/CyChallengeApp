@@ -36,6 +36,7 @@
 	import AlreadyDoingItButton from '$lib/components/buttons/already-doing-it-button.svelte';
 	import RejectButton from '$lib/components/buttons/reject-button.svelte';
 	import { buttonAlerts } from '$lib/stores/button-alerts';
+	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 
 	let showMore = false;
 
@@ -78,7 +79,7 @@
 	let playAt;
 </script>
 
-<div class="" transition:fade={{ duration: 250 }}>
+<div class="pb-16" transition:fade={{ duration: 250 }}>
 	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
 
 	<!-- header image-->
@@ -181,12 +182,12 @@
 				{data.content}
 			</p>
 		</div>
-
-		<!-- related challenges -->
-		<div>related challenges</div>
-		<!-- share to social media -->
-		<div>share thing</div>
 	</div>
+	<!-- related challenges -->
+	<RecommendedChallengesSection challenge={data} />
+
+	<!-- share to social media -->
+	<div>share thing</div>
 </div>
 
 <style lang="scss">

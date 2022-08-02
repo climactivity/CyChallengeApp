@@ -4,5 +4,11 @@
 </script>
 
 <MainScreenLayoutBase>
-	<MainContentContainer>Index</MainContentContainer>
+	<MainContentContainer>
+		<ul>
+			<li>hier eine Übersicht über die Bigpoints einfügen</li>
+			<li>nur über die Fußabruck dinge</li>
+			<li>anzeigen wenn geschätze Halbierung geschaft ist</li>
+		</ul>
+	</MainContentContainer>
 </MainScreenLayoutBase>
