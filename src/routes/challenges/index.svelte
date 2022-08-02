@@ -21,7 +21,6 @@
 	let insets: Writable<any> = getContext('insets');
 
 	import { headerState } from '$lib/stores/header-store';
-	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
 	import { getContext, onMount } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -35,9 +34,10 @@
 	import { linear, cubicIn, cubicOut } from 'svelte/easing';
 	import { navigating } from '$app/stores';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
+	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 	headerState.set({
 		backbutton: false,
-		title: 'Card Demo',
+		title: 'Challenges',
 		hidden: false
 	});
 
@@ -63,43 +63,31 @@
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
-	$: titleShadow = Math.min(Math.max(0, scrollY), 20) / 20;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
-	// $: console.log(filterShadow, scrollY);
-	const isSticky = (offset) => {
-		return scrollY > offset;
-	};
 </script>
 
 <MainScreenLayoutBase>
-	<!-- <div class="absolute top-0 left-0 right-0 z-30">
-		<HeaderBar />
-	</div> -->
-
 	<div
 		class=" overflow-y-auto overflow-x-hidden  md:mx-auto md:max-w-3xl h-screen pb-16 relative  z-20 "
 		on:scroll={(e) => {
 			scrollY = e.currentTarget.scrollTop;
 		}}
 	>
-		<div
-			class="p-4 flex flex-row justify-between sticky top-0 z-30 bg-slate-100 "
-			style="
-					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * titleShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
-				titleShadow});
-					--tw-bg-opacity: {titleShadow}
-				"
+		<ProportionalHeader
+			backbutton={false}
+			shadowOffsetStart={0}
+			shadowOffsetEnd={20}
+			title="Challenges"
+			bind:scrollPosition={scrollY}
 		>
-			<div class="font-semibold text-xl font-serif">Challenges</div>
-			<div>
-				<SearchButton
-					path="#"
-					onClick={(e) => {
-						console.log('search');
-					}}
-				/>
-			</div>
-		</div>
+			<SearchButton
+				slot="action"
+				path="#"
+				onClick={(e) => {
+					console.log('search');
+				}}
+			/>
+		</ProportionalHeader>
 		<div class="px-4">
 			<HeroCard />
 		</div>

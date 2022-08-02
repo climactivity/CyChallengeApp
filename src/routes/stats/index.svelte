@@ -16,7 +16,6 @@
 	let insets: Writable<any> = getContext('insets');
 
 	import { headerState } from '$lib/stores/header-store';
-	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
 	import { getContext } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -34,9 +33,6 @@
 	class="relative "
 	style="margin-top: {$insets.top}px"
 >
-	<div class="absolute top-0 left-0 right-0 z-30">
-		<HeaderBar />
-	</div>
 	<div
 		class=" pt-16 py-4 overflow-x-hidden  h-screen pb-16 relative top-0 left-0 right-0  bg-sector-food bg-sector  z-20 "
 		style=""

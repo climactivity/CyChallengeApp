@@ -1,5 +1,4 @@
 <script lang="ts">
-	import HeaderBar from '$lib/components/header-bar.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 
 	import { headerState } from '$lib/stores/header-store';
@@ -11,10 +10,7 @@
 </script>
 
 <div class="bg-white">
-	<div class="absolute top-0 left-0 right-0 z-30">
-		<HeaderBar />
-	</div>
-	<div class="pt-20 prose h-screen overflow-scroll p-4 pb-40 mx-auto">
+	<div class="prose mb-20 mx-auto">
 		<p>
 			Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen
 			der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und

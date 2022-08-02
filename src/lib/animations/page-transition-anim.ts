@@ -7,7 +7,8 @@ export enum AnimationDirection {
 	left = 'left',
 	right = 'right',
 	up = 'up',
-	down = 'down'
+	down = 'down',
+	neutral = 'neutral'
 }
 
 export enum AnimationRole {
@@ -17,20 +18,20 @@ export enum AnimationRole {
 
 const screenOrderLtR = {
 	home: 0,
-	journal: 1,
-	challenges: 2,
-	challenge: 2,
-	quiz: 3,
-	feed: 4,
-	info: 5
+	journal: 10,
+	challenges: 20,
+	challenge: 25,
+	quiz: 30,
+	feed: 40,
+	info: 50
 };
 const screenOrderRtL = {
-	home: 5,
-	journal: 4,
-	challenges: 3,
-	challenge: 3,
-	quiz: 2,
-	feed: 1,
+	home: 50,
+	journal: 40,
+	challenges: 35,
+	challenge: 30,
+	quiz: 20,
+	feed: 10,
 	info: 0
 };
 export let screenOrder = screenOrderLtR;
@@ -50,6 +51,12 @@ const currentAnimDirection = (naviation): AnimationDirection => {
 	const originPathDepth = originPath.split('/').length;
 	const targetPathDepth = targetPath.split('/').length;
 
+	if (originPathBase === screenOrder.challenge && targetPathBase === screenOrder.challenge) {
+		if (originPathDepth === 3 || targetPathDepth === 3) {
+			return AnimationDirection.neutral;
+		}
+	}
+
 	if (originPathBase !== targetPathBase) {
 		if (originPathBase > targetPathBase) {
 			return AnimationDirection.left;
@@ -65,6 +72,7 @@ const currentAnimDirection = (naviation): AnimationDirection => {
 	}
 };
 
+// yes this is curried, no im not sorry
 const css = (
 	currentAnimDirection: AnimationDirection,
 	currentRole: AnimationRole,
@@ -115,6 +123,19 @@ export function mainScreenAnim(
 ) {
 	const style = getComputedStyle(node);
 	const animationDirection = currentAnimDirection(navigation);
+
+	// if moving between action pages on a challenge skip main animation
+	if (animationDirection === AnimationDirection.neutral) {
+		console.log('skipping main screen animation');
+		return {
+			delay: 0,
+			duration: 0,
+			easing: linear,
+			css: (t, s) => ''
+		};
+	}
+
+	// the outgoing page is slower to create sell the illusion of depth
 	duration =
 		duration ?? (animationDirection === AnimationDirection.up && role === AnimationRole.from)
 			? ANIMATION_BASE_SPEED * 1
@@ -123,7 +144,9 @@ export function mainScreenAnim(
 			? ANIMATION_BASE_SPEED * 2
 			: ANIMATION_BASE_SPEED * 4;
 
+	// making the leaving page ease gives the animation a janky feel, so set it to linear
 	easing = role === AnimationRole.to ? cubicOut : linear;
+
 	console.log('mainScreenAnim', role, navigation);
 	return {
 		delay,

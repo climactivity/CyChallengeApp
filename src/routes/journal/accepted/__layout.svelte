@@ -1,12 +1,12 @@
 <script lang="ts">
-	import HeaderBar from '$lib/components/header-bar.svelte';
-
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
 	import { fly, slide } from 'svelte/transition';
 
 	let insets: Writable<any> = getContext('insets');
 	import { headerState } from '$lib/stores/header-store';
+	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 
 	let y = 0;
 	let headerTransparent;
@@ -23,21 +23,15 @@
 	$: headerTransparent = updateHeader(y);
 </script>
 
-<div
-	transition:fly={{ x: 200, duration: 1000 }}
-	class="relative bg-sector-food bg-sector z-20"
-	style="margin-top: {$insets.top}px"
->
-	<div class="absolute top-0 left-0 right-0 z-30">
-		<HeaderBar />
-	</div>
+<MainScreenLayoutBase>
+	<ProportionalHeader />
 	<div
 		class="py-4 overflow-x-hidden  h-screen pb-60 relative top-0 left-0 right-0    z-20 max-w-4xl mx-auto"
 		on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
 	>
 		<slot />
 	</div>
-</div>
+</MainScreenLayoutBase>
 
 <style lang="scss">
 	.bg-sector:before {

@@ -4,5 +4,5 @@
 </script>
 
 <MainScreenLayoutBase>
-	<MainContentContainer>Index</MainContentContainer>
+	<MainContentContainer>Feed</MainContentContainer>
 </MainScreenLayoutBase>

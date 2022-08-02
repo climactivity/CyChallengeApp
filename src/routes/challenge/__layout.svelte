@@ -1,6 +1,4 @@
 <script lang="ts">
-	import HeaderBar from '$lib/components/header-bar.svelte';
-
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
 	import { fly, slide } from 'svelte/transition';
@@ -13,14 +11,15 @@
 	import { cubicOut } from 'svelte/easing';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
+	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+
+	let contentScroll;
 </script>
 
 <!-- <div class="relative " style="margin-top: {$insets.top}px" in:fly={{ duration: 1000, x: 200 }}> -->
 <MainScreenLayoutBase>
-	<div class="absolute top-0 left-0 right-0 z-30" slot="header">
-		<HeaderBar />
-	</div>
-	<MainContentContainer>
+	<ProportionalHeader slot="header" scrollPosition={contentScroll} />
+	<MainContentContainer bind:y={contentScroll}>
 		<slot />
 	</MainContentContainer>
 </MainScreenLayoutBase>

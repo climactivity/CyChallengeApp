@@ -18,13 +18,13 @@
 	let insets: Writable<any> = getContext('insets');
 
 	import { headerState } from '$lib/stores/header-store';
-	import HeaderBar from '$lib/components/header-bar.svelte';
 	import type { Writable } from 'svelte/store';
 	import { getContext, onMount } from 'svelte';
 	import { cubicOut } from 'svelte/easing';
 	import { navigating } from '$app/stores';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
+	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 
 	headerState.set({
 		backbutton: false,
@@ -32,14 +32,13 @@
 		hidden: false
 	});
 	export let data: AcceptedChallenge[];
+	let scrollPosition;
 </script>
 
 <MainScreenLayoutBase>
-	<div slot="header" class="absolute top-0 left-0 right-0 z-30">
-		<HeaderBar />
-	</div>
+	<ProportionalHeader bind:scrollPosition />
 
-	<MainContentContainer>
+	<MainContentContainer bind:y={scrollPosition}>
 		<div class="grid grid-flow-row gap-4 overflow-y-auto">
 			{#each data as acceptedChallenge}
 				<JournalChallengeCard {acceptedChallenge} />

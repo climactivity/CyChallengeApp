@@ -7,6 +7,7 @@
 	import { browser } from '$app/env';
 	import { page } from '$app/stores';
 	import ChallengesButton from './buttons/challenges-button.svelte';
+	import FeedButton from './buttons/feed-button.svelte';
 
 	if (browser) {
 		page.subscribe(({ routeId }) => {
@@ -38,7 +39,9 @@
 	<HomeButton path="/home" aria-label="Wald" />
 	<JournalButton path="/journal" aria-label="Journal" />
 	<ChallengesButton path="/challenges" aria-label="Challenges" />
-	<FriendsButton path="/social" aria-label="Social" />
+	<!-- <FriendsButton path="/social" aria-label="Social" /> -->
+	<FeedButton path="/feed" aria-label="Feed" />
+
 	<MenuButton aria-label="Menu" />
 </div>
 

@@ -7,6 +7,4 @@
 	});
 </script>
 
-<div>
-	<slot />
-</div>
+<div>Settings</div>
