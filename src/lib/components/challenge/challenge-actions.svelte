@@ -5,6 +5,7 @@
 		acceptChallenge,
 		bookmarkChallenge,
 		completeChallenge,
+		nextLevelForChallenge,
 		rejectChallenge,
 		type ChallengeAccept,
 		type ChallengeBookmark,
@@ -40,7 +41,7 @@
 			<AcceptButton
 				onClick={async (e) => {
 					console.log('accept challenge');
-					acceptChallenge(challenge)
+					acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
 						.then((value) => {
 							console.log(value);
 							if (value === null) {

@@ -1,5 +1,8 @@
+import DifficultyCard from '$lib/components/difficulty-card.svelte';
 import type { ChallengeV2 } from '$lib/types/challenges';
 import { listStorage, readStorage, writeStorage } from './client-storage-engine';
+
+export type Difficulty = 'easy' | 'medium' | 'hard';
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
 export interface ChallengeInteraction {
@@ -25,14 +28,15 @@ export interface ChallengeAccept extends ChallengeInteraction {
 	challengeType: 'recurring' | 'one-time';
 	nextNotification?: Date | null;
 	nextCheckpoint: Date | null;
-	completions?: { completedAt: Date }[];
+	currentLevel: Difficulty;
+	completions?: { completedAt: Date; level: Difficulty }[];
 }
 
 export interface ChallengeComplete extends ChallengeInteraction {
 	type: 'complete';
 	completedAt: Date;
 	skipped: boolean;
-	completions?: { completedAt: Date }[];
+	completions?: { completedAt: Date; level: Difficulty }[];
 }
 
 export function instanceOfChallengeBookmark(value): value is ChallengeBookmark {
@@ -51,9 +55,75 @@ export function instanceOfChallengeComplete(value): value is ChallengeComplete {
 	return 'type' in value && value.type === 'complete';
 }
 
-// export function instanceOfChallengeInteraction(value): value is ChallengeInteraction {
-// 	return 'type' in value;
-// }
+const compareDifficulty = (a: Difficulty, b: Difficulty) => {
+	if (a === 'easy') {
+		return b === 'easy' ? 0 : -1;
+	} else if (a === 'medium') {
+		return b === 'easy' ? 1 : b === 'medium' ? 0 : -1;
+	} else {
+		return b === 'easy' ? 1 : b === 'medium' ? 1 : b === 'hard' ? 0 : -1;
+	}
+};
+
+export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): Difficulty => {
+	if (
+		challengeState === null ||
+		challengeState.type === 'bookmark' ||
+		challengeState.type === 'reject' ||
+		(challengeState.type === 'accept' &&
+			(challengeState as ChallengeAccept).completions === undefined)
+	) {
+		return challenge.difficulties['easy']
+			? 'medium'
+			: challenge.difficulties['medium']
+			? 'hard'
+			: null;
+	}
+
+	if (challengeState.type === 'completed') {
+		return null;
+	}
+
+	if (challengeState.type === 'accept') {
+		const highestCompletion = (challengeState as ChallengeAccept).completions.reduce(
+			(acc, cur) => {
+				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
+			},
+			{ level: 'easy' as Difficulty }
+		);
+		return highestCompletion.level === 'easy'
+			? 'medium'
+			: highestCompletion.level === 'medium'
+			? 'hard'
+			: null;
+	}
+};
+
+export const currentLevelForChallenge = (challenge: ChallengeV2, challengeState): Difficulty => {
+	if (null || challengeState.type === 'bookmark' || challengeState.type === 'reject') {
+		return challenge.difficulties['easy']
+			? 'easy'
+			: challenge.difficulties['medium']
+			? 'medium'
+			: challenge.difficulties['hard']
+			? 'hard'
+			: null;
+	}
+
+	if (challengeState.type === 'completed') {
+		return null;
+	}
+
+	if (challengeState.type === 'accept') {
+		const highestCompletion = (challengeState as ChallengeAccept).completions.reduce(
+			(acc, cur) => {
+				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
+			},
+			{ level: 'easy' as Difficulty }
+		);
+		return highestCompletion.level;
+	}
+};
 
 export const getChallengeUserData = async (challengeSlug) => {
 	const challengeState = await readStorage('challenges', `${challengeSlug}`);
@@ -85,7 +155,11 @@ export const getChallengeState = async (
 		return storageObject.value ?? null;
 };
 
-export const acceptChallenge = async (challenge: ChallengeV2, nextCheckpoint?: Date) => {
+export const acceptChallenge = async (
+	challenge: ChallengeV2,
+	difficulty: Difficulty,
+	nextCheckpoint?: Date
+) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
 
 	let acceptedChallenge: ChallengeAccept = {
@@ -93,6 +167,7 @@ export const acceptChallenge = async (challenge: ChallengeV2, nextCheckpoint?: D
 		challengeSlug: challenge.slug,
 		at: new Date(),
 		nextCheckpoint,
+		currentLevel: difficulty,
 		challengeType: challenge.type ?? 'recurring'
 	};
 
@@ -163,7 +238,11 @@ export const rejectChallenge = async (challenge: ChallengeV2, reason?, message?)
 	return await writeStorage('challenges', `${challenge.slug}`, rejectedChallenge);
 };
 
-export const completeChallenge = async (challenge: ChallengeV2, finalize = false) => {
+export const completeChallenge = async (
+	challenge: ChallengeV2,
+	level: Difficulty = 'easy',
+	finalize = false
+) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
 
 	if (challengeState !== null) {
@@ -194,7 +273,7 @@ export const completeChallenge = async (challenge: ChallengeV2, finalize = false
 				// the challenge is a recurring challenge and finlize is false, we can add a new completion and mark it as accepted
 				const acceptedChallenge: ChallengeAccept = {
 					...value,
-					completions: [...(value.completions ?? []), { completedAt: new Date() }]
+					completions: [...(value.completions ?? []), { completedAt: new Date(), level }]
 				};
 
 				return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge, version);
