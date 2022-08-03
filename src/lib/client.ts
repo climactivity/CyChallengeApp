@@ -6,7 +6,7 @@ import { goto } from '$app/navigation';
 
 export const ssr = false;
 console.log('nk use ssl', import.meta.env.VITE_NAKAMA_USE_SSL);
-var client = new Client(
+export let client = new Client(
     import.meta.env.VITE_NAKAMA_CLIENT_API_KEY,
     import.meta.env.VITE_NAKAMA_HOST,
     import.meta.env.VITE_NAKAMA_PORT,
@@ -15,7 +15,7 @@ var client = new Client(
     true
 );
 let deviceId: string;
-// let session: Session;
+export let session: Session;
 let reconnectHandle
 export let socket = client.createSocket(
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
@@ -32,7 +32,7 @@ export const init = async () => {
         let deviceId = v4();
         await localStorage.setItem('NK_DEVICE_ID', deviceId);
     }
-    let session = await createSession();
+    session = await createSession();
     await connectSocket(session);
 
     nkReady.set(true);

@@ -25,6 +25,7 @@ export interface Challenge {
 export interface ChallengeV2 {
 	title: string;
 	topic: string;
+	type?: 'recurring' | 'one-time';
 	tags: string[];
 	frontMatter: string;
 	content: string;

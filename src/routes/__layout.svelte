@@ -13,6 +13,7 @@
 	import { page } from '$app/stores';
 	import { root } from 'postcss';
 	import { onMount } from 'svelte';
+	import { init, nkReady } from '$lib/client';
 
 	let insets = writable({
 		top: 0,
@@ -52,6 +53,10 @@
 		if (Capacitor.getPlatform() === 'ios') {
 			let root = document.documentElement;
 			root.style.setProperty('--save-h-max', '92vh');
+		}
+
+		if (!$nkReady) {
+			init();
 		}
 	});
 </script>
