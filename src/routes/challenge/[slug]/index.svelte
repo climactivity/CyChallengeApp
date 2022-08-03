@@ -1,44 +1,40 @@
 <script lang="ts" context="module">
-	import { availableChallenges, challenges } from '$testData/challenges';
+	import { availableChallenges } from '$testData/challenges';
 
 	export async function load({ params, fetch, session, stuff }) {
 		let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
 		return {
 			status: 200,
 			props: {
-				data: challenge
+				challenge: challenge
 			}
 		};
 	}
 </script>
 
 <script lang="ts">
-	import DifficultyCard from '$lib/components/difficulty-card.svelte';
-
-	import { browser } from '$app/env';
-	import ShareButton from '$lib/components/buttons/share-button.svelte';
-	import { fade, fly } from 'svelte/transition';
-
-	import type { AcceptedChallenge, ChallengeV2, CompletedStep } from '$lib/types/challenges';
-
-	export let data: ChallengeV2;
-	import { headerState } from '$lib/stores/header-store';
-	import Fa from 'svelte-fa';
-	import { faCircleCheck, faCircleDot } from '@fortawesome/free-solid-svg-icons';
-	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
-	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
 	import { goto, prefetch } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { detectLinks } from '$lib/util';
-	import Confetti from '$lib/components/particles/confetti.svelte';
-	import AcceptButton from '$lib/components/buttons/accept-button.svelte';
-	import BookmarkButton from '$lib/components/buttons/bookmark-button.svelte';
-	import AlreadyDoingItButton from '$lib/components/buttons/already-doing-it-button.svelte';
-	import RejectButton from '$lib/components/buttons/reject-button.svelte';
-	import { buttonAlerts } from '$lib/stores/button-alerts';
+	import { nkReady } from '$lib/client';
+	import ChallengeActions from '$lib/components/challenge/challenge-actions.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
+	import DifficultyCard from '$lib/components/difficulty-card.svelte';
+	import {
+		getChallengeState,
+		type ChallengeAccept,
+		type ChallengeBookmark,
+		type ChallengeComplete,
+		type ChallengeInteractionType,
+		type ChallengeReject
+	} from '$lib/services/challenge-storage';
+	import { headerState } from '$lib/stores/header-store';
+	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { fade } from 'svelte/transition';
 
+	export let challenge: ChallengeV2;
+	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
+	let challengeStateType: ChallengeInteractionType;
 	let showMore = false;
 
 	const back = () => {
@@ -51,7 +47,7 @@
 	};
 	headerState.set({
 		backbutton: true,
-		title: data.title,
+		title: challenge.title,
 		hidden: false,
 		transparent: true,
 		back
@@ -72,10 +68,17 @@
 	};
 
 	const action = async (nextRoute) => {
-		const route = `/challenge/${data.slug}/${nextRoute}`;
+		const route = `/challenge/${challenge.slug}/${nextRoute}`;
 		await prefetch(route);
 		goto(route, { noscroll: true });
 	};
+
+	nkReady.subscribe(async (val) => {
+		if (val) {
+			challengeState = await getChallengeState(challenge.slug);
+			console.log('challengeState', challengeState);
+		}
+	});
 
 	let playAt;
 </script>
@@ -96,79 +99,41 @@
 		<!-- title -->
 
 		<div class="text-xl font-bold font-serif">
-			{data.title}
+			{challenge.title}
 		</div>
 
 		<!-- front matter -->
 		<p class="text-lg  prose">
-			{data.frontMatter}
+			{challenge.frontMatter}
 		</p>
 
 		<!-- actions -->
 
-		<div class="grid grid-flow-col actions " style="place-items: baseline;">
-			<!-- accept button -->
-			<AcceptButton
-				onClick={async (e) => {
-					console.log('accept challenge');
-					action('accept');
-				}}
-			/>
-			<!-- save button -->
-			<BookmarkButton
-				onClick={async (e) => {
-					console.log('bookmark challenge');
-					buttonAlerts.update((alerts) => [
-						...alerts,
-						{
-							path: '/journal',
-							type: 'attention'
-						}
-					]);
-					action('bookmark');
-				}}
-			/>
-
-			<!-- already doing it button -->
-			<AlreadyDoingItButton
-				onClick={(e) => {
-					console.log('already doing challenge');
-					action('way-ahead-of-you');
-				}}
-			/>
-
-			<!-- reject challenge button -->
-			<RejectButton
-				onClick={(e) => {
-					console.log('reject challenge');
-					action('reject');
-				}}
-			/>
-		</div>
+		<ChallengeActions {challenge} nextState={action} bind:challengeState bind:challengeStateType />
 
 		<!-- steps -->
-		{#if data.difficulties['easy']}
+		{#if challenge.difficulties['easy']}
 			<div class="">
 				<DifficultyCard
-					difficulty={data.difficulties['easy']}
+					difficulty={challenge.difficulties['easy']}
 					name="Todos"
 					onSelected={() => {}}
 					selected
 				/>
 			</div>
-		{:else if data.difficulties['medium']}
+		{:else if challenge.difficulties['medium']}
 			<div class="">
 				<DifficultyCard
-					difficulty={data.difficulties['medium']}
+					difficulty={challenge.difficulties['medium']}
 					name="Todos"
 					onSelected={() => {}}
 					selected
 				/>
 			</div>
-		{:else if data.difficulties['hard']}
+		{:else if challenge.difficulties['hard']}
 			<div class="">
 				<DifficultyCard
-					difficulty={data.difficulties['hard']}
+					difficulty={challenge.difficulties['hard']}
 					name="Todos"
 					onSelected={() => {}}
 					selected
@@ -180,15 +145,15 @@
 		<div class=" rounded-xl p-2 bg-white">
 			<p class="text-center font-bold text-xl pb-2">Mehr</p>
 			<p class="align-middle text-md pb-2">
-				{data.content}
+				{challenge.content}
 			</p>
 		</div>
 	</div>
 	<!-- related challenges -->
-	<RecommendedChallengesSection challenge={data} />
+	<RecommendedChallengesSection {challenge} />
 
 	<!-- share to social media -->
-	<ShareToSocialMediaSection challenge={data} last />
+	<ShareToSocialMediaSection {challenge} last />
 </div>
 
 <style lang="scss">

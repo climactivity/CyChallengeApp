@@ -35,7 +35,7 @@
 	<div
 		class=" h-64 bg-red-500 w-full ch-card-sharp shadow-nature "
 		style={`background: url( ${
-			data.image?.file?.path
+			data.image && data.image?.file?.path
 				? $page.url.origin + '/' + data.image?.file?.path
 				: 'https://picsum.photos/1000'
 		}); background-size: cover;`}

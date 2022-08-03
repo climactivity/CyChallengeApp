@@ -1,4 +1,4 @@
-import { writable, type Writable } from "svelte/store";
+import type { Writable } from 'svelte/store';
 
 export const detectLinks = (text: string): string => {
 	const regex = /(https?:\/\/[^\s]+)/g;
@@ -33,5 +33,4 @@ export const getState = <T>(writable: Writable<T>): T | null => {
 		return value;
 	});
 	return state;
-}
-
+};

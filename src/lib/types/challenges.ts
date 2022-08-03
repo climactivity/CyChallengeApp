@@ -32,17 +32,19 @@ export interface ChallengeV2 {
 	difficulties: Difficulties;
 	slug: string;
 	impact: string;
-	image?: {
-		url?: string;
-		alt?: string;
-		file: {
-			path?: string;
-			size?: {
-				x: number;
-				y: number;
-			};
-		};
-	};
+	image?:
+		| ''
+		| {
+				url?: string;
+				alt?: string;
+				file: {
+					path?: string;
+					size?: {
+						x: number;
+						y: number;
+					};
+				};
+		  };
 }
 
 export interface Difficulties {

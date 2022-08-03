@@ -42,10 +42,13 @@ const readManyStorage = async (
 ): Promise<StorageObjects | Error> => {
 	const storageReadRequests: ApiReadStorageObjectsRequest = {
 		object_ids: ids.map((obj) => ({
-			...obj
+			...obj,
+			user_id: session.user_id
 		}))
 	};
 	try {
+		// console.log('readManyStorage', storageReadRequests);
+
 		return await client.readStorageObjects(session, storageReadRequests);
 	} catch (e) {
 		console.error(e);
@@ -57,6 +60,7 @@ const readStorage = async (
 	key: string
 ): Promise<StorageObject | Error | null> => {
 	const result = await readManyStorage([{ collection, key }]);
+	// console.log('readStorage', collection, key, result);
 	// pass along errors
 	if (result instanceof Error) return result;
 	// return null if no object is found

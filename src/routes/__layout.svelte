@@ -48,7 +48,7 @@
 		});
 	}
 
-	onMount(() => {
+	onMount(async () => {
 		console.log('hi');
 		if (Capacitor.getPlatform() === 'ios') {
 			let root = document.documentElement;
@@ -56,7 +56,7 @@
 		}
 
 		if (!$nkReady) {
-			init();
+			await init();
 		}
 	});
 </script>

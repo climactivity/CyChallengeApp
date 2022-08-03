@@ -28,6 +28,7 @@ const flattenChallenges = (challenges: { [key: string]: ChallengeV2[] }): Challe
 	return Object.values(challenges).flatMap((challenge) => challenge);
 };
 
+//@ts-ignore
 export const availableChallenges: any[] = flattenChallenges(available_challenges.challenges);
 
 export const availableTags: { [key: string]: string } = available_challenges.topics;
