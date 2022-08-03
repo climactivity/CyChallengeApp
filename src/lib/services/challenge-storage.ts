@@ -1,5 +1,5 @@
 import type { ChallengeV2 } from '$lib/types/challenges';
-import { readStorage, writeStorage } from './client-storage-engine';
+import { listStorage, readStorage, writeStorage } from './client-storage-engine';
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
 export interface ChallengeInteraction {
@@ -214,4 +214,56 @@ export const completeChallenge = async (challenge: ChallengeV2, finalize = false
 	};
 
 	return await writeStorage('challenges', `${challenge.slug}`, completedChallenge);
+};
+
+export const getChallengeInteractionsUserData = async (cursor?: string, limit?: number) => {
+	return await listStorage('challenges', cursor, limit);
+};
+
+export const getRejectedChallenges = async (cursor?: string, limit?: number) => {
+	const challengeInteractions = await getChallengeInteractionsUserData(cursor, limit);
+	const rejectedChallengeInteractions = challengeInteractions.objects
+		.filter((storageObject) => {
+			if (instanceOfChallengeReject(storageObject.value)) {
+				return storageObject.value;
+			}
+		})
+		.map((storageObject) => storageObject.value as ChallengeReject);
+	return { interactions: rejectedChallengeInteractions, cursor: challengeInteractions.cursor };
+};
+
+export const getCompletedChallenges = async (cursor?: string, limit?: number) => {
+	const challengeInteractions = await getChallengeInteractionsUserData(cursor, limit);
+	const completedChallengeInteractions = challengeInteractions.objects
+		.filter((storageObject) => {
+			if (instanceOfChallengeComplete(storageObject.value)) {
+				return storageObject.value;
+			}
+		})
+		.map((storageObject) => storageObject.value as ChallengeComplete);
+	return { interactions: completedChallengeInteractions, cursor: challengeInteractions.cursor };
+};
+
+export const getBookmarkedChallenges = async (cursor?: string, limit?: number) => {
+	const challengeInteractions = await getChallengeInteractionsUserData(cursor, limit);
+	const bookmarkedChallengeInteractions = challengeInteractions.objects
+		.filter((storageObject) => {
+			if (instanceOfChallengeBookmark(storageObject.value)) {
+				return storageObject.value;
+			}
+		})
+		.map((storageObject) => storageObject.value as ChallengeBookmark);
+	return { interactions: bookmarkedChallengeInteractions, cursor: challengeInteractions.cursor };
+};
+
+export const getAcceptedChallenges = async (cursor?: string, limit?: number) => {
+	const challengeInteractions = await getChallengeInteractionsUserData(cursor, limit);
+	const acceptedChallengeInteractions = challengeInteractions.objects
+		.filter((storageObject) => {
+			if (instanceOfChallengeAccept(storageObject.value)) {
+				return storageObject.value;
+			}
+		})
+		.map((storageObject) => storageObject.value as ChallengeAccept);
+	return { interactions: acceptedChallengeInteractions, cursor: challengeInteractions.cursor };
 };
