@@ -47,7 +47,7 @@
 		<button aria-label={label} class="grid place-items-center" on:click={(e) => onClick(e)}>
 			<slot />
 			{#if showLabel}
-				<div class="text-md text-storm-darkest">
+				<div class="text-sm text-storm-darkest">
 					<span>
 						{label}
 					</span>

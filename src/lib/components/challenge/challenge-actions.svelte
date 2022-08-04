@@ -18,9 +18,12 @@
 	import type { ChallengeV2 } from '$lib/types/challenges';
 
 	import AcceptButton from '../buttons/accept-button.svelte';
-	import AlreadyDoingItButton from '../buttons/already-doing-it-button.svelte';
+	import CompleteChallengeButton from '../buttons/complete-challenge-button.svelte';
 	import BookmarkButton from '../buttons/bookmark-button.svelte';
 	import RejectButton from '../buttons/reject-button.svelte';
+	import InviteFriendButton from '../buttons/invite-friend-button.svelte';
+	import EndChallengeButton from '../buttons/end-challenge-button.svelte';
+	import NotificationButton from '../buttons/notification-button.svelte';
 
 	export let nextState: (string, ...args) => void;
 
@@ -33,122 +36,179 @@
 	export let challengeStateType: ChallengeInteractionType | null;
 </script>
 
+<!-- Challenge State: {challengeState?.type} -->
+
 <div class="h-24">
-	{#if $nkReady}
-		Challenge State: {challengeState?.type}
-		<div class="grid grid-flow-col actions " style="place-items: baseline;">
-			<!-- accept button -->
-			<AcceptButton
-				onClick={async (e) => {
-					console.log('accept challenge');
-					acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
-						.then((value) => {
-							console.log(value);
-							if (value === null) {
-								console.error('accept failed');
-								return;
-							}
-							buttonAlerts.update((alerts) => [
-								...alerts,
-								{
-									path: '/journal',
-									type: 'attention'
+	<div class="grid grid-flow-col actions gap-2 place-content-evenly" style="place-items: baseline;">
+		{#if $nkReady}
+			{#if challengeState?.type === 'accept'}
+				<!-- already doing it button -->
+				<CompleteChallengeButton
+					onClick={(e) => {
+						console.log('complete challenge');
+						completeChallenge(challenge)
+							.then((value) => {
+								console.log(value);
+								if (value === null) {
+									console.error('accept failed');
+									return;
 								}
-							]);
-							nextState('accept');
-						})
-						.catch((err) => {
-							console.error(err);
-						});
-				}}
-			/>
+								buttonAlerts.update((alerts) => [
+									...alerts,
+									{
+										path: '/journal',
+										type: 'attention'
+									}
+								]);
+								nextState('completed');
+							})
+							.catch((err) => {
+								console.error(err);
+							});
+					}}
+				/>
 
-			<!-- bookmark button -->
-			<BookmarkButton
-				bookmarked={challengeState && challengeState.type === 'bookmark'}
-				onClick={async (e) => {
-					console.log('bookmark challenge');
-					bookmarkChallenge(challenge)
-						.then((value) => {
-							console.log(value);
-							if (value === null) {
-								console.error('bookmark failed');
-								return;
-							}
-							buttonAlerts.update((alerts) => [
-								...alerts,
-								{
-									path: '/journal',
-									type: 'attention'
+				<NotificationButton
+					onClick={(e) => {
+						console.log('set notifications challenge');
+						nextState('notifications');
+					}}
+				/>
+				<EndChallengeButton
+					onClick={(e) => {
+						console.log('end challenge');
+						nextState('cancle');
+					}}
+				/>
+				<InviteFriendButton
+					onClick={(e) => {
+						console.log('invite friend to challenge');
+						nextState('invite');
+					}}
+				/>
+			{:else}
+				<!-- accept button -->
+				<AcceptButton
+					onClick={async (e) => {
+						console.log('accept challenge');
+						acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
+							.then((value) => {
+								console.log(value);
+								if (value === null) {
+									console.error('accept failed');
+									return;
 								}
-							]);
-							nextState('bookmark');
-						})
-						.catch((err) => {
-							console.error(err);
-						});
-				}}
-			/>
+								buttonAlerts.update((alerts) => [
+									...alerts,
+									{
+										path: '/journal',
+										type: 'attention'
+									}
+								]);
+								nextState('accept');
+							})
+							.catch((err) => {
+								console.error(err);
+							});
+					}}
+				/>
 
-			<!-- already doing it button -->
-			<AlreadyDoingItButton
-				onClick={(e) => {
-					console.log('already doing challenge');
-					completeChallenge(challenge)
-						.then((value) => {
-							console.log(value);
-							if (value === null) {
-								console.error('accept failed');
-								return;
-							}
-							buttonAlerts.update((alerts) => [
-								...alerts,
-								{
-									path: '/journal',
-									type: 'attention'
+				<!-- bookmark button -->
+				<BookmarkButton
+					bookmarked={challengeState && challengeState.type === 'bookmark'}
+					onClick={async (e) => {
+						console.log('bookmark challenge');
+						bookmarkChallenge(challenge)
+							.then((value) => {
+								console.log(value);
+								if (value === null) {
+									console.error('bookmark failed');
+									return;
 								}
-							]);
-							nextState('way-ahead-of-you');
-						})
-						.catch((err) => {
-							console.error(err);
-						});
-				}}
-			/>
+								buttonAlerts.update((alerts) => [
+									...alerts,
+									{
+										path: '/journal',
+										type: 'attention'
+									}
+								]);
+								nextState('bookmark');
+							})
+							.catch((err) => {
+								console.error(err);
+							});
+					}}
+				/>
 
-			<!-- reject challenge button -->
-			<RejectButton
-				rejected={challengeState && challengeState.type === 'reject'}
-				onClick={(e) => {
-					console.log('reject challenge');
-					rejectChallenge(challenge)
-						.then((value) => {
-							console.log(value);
-							if (value === null) {
-								console.error('accept failed');
-								return;
-							}
-							buttonAlerts.update((alerts) => [
-								...alerts,
-								{
-									path: '/journal',
-									type: 'attention'
+				<!-- already doing it button -->
+				<CompleteChallengeButton
+					skip
+					onClick={(e) => {
+						console.log('already doing challenge');
+						completeChallenge(challenge)
+							.then((value) => {
+								console.log(value);
+								if (value === null) {
+									console.error('accept failed');
+									return;
 								}
-							]);
-							nextState('reject');
-						})
-						.catch((err) => {
-							console.error(err);
-						});
-				}}
-			/>
-		</div>
-	{:else}
-		<div class="grid grid-flow-col actions " style="place-items: baseline;">
+								buttonAlerts.update((alerts) => [
+									...alerts,
+									{
+										path: '/journal',
+										type: 'attention'
+									}
+								]);
+								nextState('way-ahead-of-you');
+							})
+							.catch((err) => {
+								console.error(err);
+							});
+					}}
+				/>
+
+				<!-- reject challenge button -->
+				<RejectButton
+					rejected={challengeState && challengeState.type === 'reject'}
+					onClick={(e) => {
+						console.log('reject challenge');
+						rejectChallenge(challenge)
+							.then((value) => {
+								console.log(value);
+								if (value === null) {
+									console.error('accept failed');
+									return;
+								}
+								buttonAlerts.update((alerts) => [
+									...alerts,
+									{
+										path: '/journal',
+										type: 'attention'
+									}
+								]);
+								nextState('reject');
+							})
+							.catch((err) => {
+								console.error(err);
+							});
+					}}
+				/>
+			{/if}
+		{:else}
 			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
 			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
 			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
 			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
-		</div>
-	{/if}
+		{/if}
+	</div>
 </div>
+
+<style lang="scss">
+	.actions > * {
+		align-self: start;
+		:hover,
+		:focus {
+			outline: none;
+		}
+	}
+</style>

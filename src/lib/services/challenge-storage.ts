@@ -1,4 +1,3 @@
-import DifficultyCard from '$lib/components/difficulty-card.svelte';
 import type { ChallengeV2 } from '$lib/types/challenges';
 import { listStorage, readStorage, writeStorage } from './client-storage-engine';
 
@@ -174,7 +173,12 @@ export const acceptChallenge = async (
 	if (challengeState !== null) {
 		const { value, version } = challengeState;
 		if (instanceOfChallengeAccept(value)) {
-			console.error('Challenge already accepted');
+			acceptedChallenge = {
+				...value,
+				nextCheckpoint,
+				currentLevel: difficulty
+			};
+			return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge, version);
 		}
 		if (instanceOfChallengeAccept(value)) {
 			acceptedChallenge = {

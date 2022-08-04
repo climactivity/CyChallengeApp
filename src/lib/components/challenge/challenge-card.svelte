@@ -9,7 +9,7 @@
 
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
 	$: {
-		imageUrl = challenge.image?.file?.path ?? undefined;
+		imageUrl = challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;
 		// console.log('image', challenge.image?.file?.path, $page.url);
 	}
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
@@ -29,10 +29,12 @@
 	<span>{challenge.title}</span>
 	<div class="flex flex-row flex-wrap">
 		<!-- {#each challenge.topic as topic} -->
-		{#if challenge.impact === 'Big Point'}
-			<div class="card_tag_inverted ">{tags[challenge.topic]}</div>
-		{:else}
-			<div class="card_tag ">{tags[challenge.topic]}</div>
+		{#if tags[challenge.topic]}
+			{#if challenge.impact === 'Big Point'}
+				<div class="card_tag_inverted ">{tags[challenge.topic]}</div>
+			{:else}
+				<div class="card_tag ">{tags[challenge.topic]}</div>
+			{/if}
 		{/if}
 		<!-- {/each} -->
 	</div>

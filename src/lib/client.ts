@@ -1,4 +1,4 @@
-import { Client, WebSocketAdapterText, Session, type Match } from '@heroiclabs/nakama-js';
+import { Client, WebSocketAdapterText, Session, type Match, type WriteStorageObject } from '@heroiclabs/nakama-js';
 import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
 import { matchdata, matchstatus } from '$lib/stores/context';
@@ -116,4 +116,27 @@ socket.onmatchdata = (matchData) => {
 
 export const sendMatchData = (opcode, data = null, presence = null) => {
     socket.sendMatchState(matchId, opcode, data, presence )
+}
+
+export const sendAnalytics = async (event: string, data: any, contextId?: string) => {
+
+    let writeObjects: WriteStorageObject[] = [{
+        collection: 'client_telemetry',
+        key: `${event}${contextId ? `_ctx:${contextId}` : ''}_evId:${v4()}`,
+        permission_read: 0,
+        permission_write: 0,
+        value: {
+            event,
+            device: deviceId,
+            data,
+            contextId,
+        }
+    }];
+
+    try {
+        await client.writeStorageObjects(session, writeObjects)
+    } catch (e) {
+        console.error(e);
+    }
+
 }
