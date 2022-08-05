@@ -6,7 +6,7 @@
 </script>
 
 {#if bookmarked}
-	<IconButton bind:path label="Schon gespeichert" showLabel>
+	<IconButton bind:path label="Schon gespeichert" {onClick} showLabel>
 		<svg width="30" height="40" viewBox="0 0 30 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				fill-rule="evenodd"

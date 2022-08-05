@@ -1,6 +1,9 @@
 import { client, session } from '$lib/client';
 import type { StorageObject, StorageObjects, WriteStorageObject } from '@heroiclabs/nakama-js';
-import type { ApiReadStorageObjectsRequest } from '@heroiclabs/nakama-js/dist/api.gen';
+import type {
+	ApiDeleteStorageObjectsRequest,
+	ApiReadStorageObjectsRequest
+} from '@heroiclabs/nakama-js/dist/api.gen';
 
 const writeManyStorage = async (
 	collection: string,
@@ -74,4 +77,19 @@ const listStorage = async (collection: string, cursor?: string, limit?: number) 
 	return await client.listStorageObjects(session, collection, cursor, limit);
 };
 
-export { writeStorage, writeManyStorage, readStorage, readManyStorage, listStorage };
+const dropStorage = async (collection: string, key: string) => {
+	let currentValue = await readStorage(collection, key);
+	if (currentValue instanceof Error) throw currentValue;
+	if (currentValue === null) return true;
+	const result = await client.deleteStorageObjects(session, {
+		object_ids: [
+			{
+				collection,
+				key,
+				version: currentValue.version
+			}
+		]
+	});
+	return result;
+};
+export { writeStorage, writeManyStorage, readStorage, readManyStorage, listStorage, dropStorage };

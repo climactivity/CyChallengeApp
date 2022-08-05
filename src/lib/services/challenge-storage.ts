@@ -1,5 +1,5 @@
 import type { ChallengeV2 } from '$lib/types/challenges';
-import { listStorage, readStorage, writeStorage } from './client-storage-engine';
+import { dropStorage, listStorage, readStorage, writeStorage } from './client-storage-engine';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
@@ -217,6 +217,10 @@ export const bookmarkChallenge = async (
 		}
 	}
 	return await writeStorage('challenges', `${challenge.slug}`, bookmarkedChallenge);
+};
+
+export const unbookmarkChallenge = async (challenge: ChallengeV2) => {
+	return await dropStorage('challenges', `${challenge.slug}`);
 };
 
 export const rejectChallenge = async (challenge: ChallengeV2, reason?, message?) => {

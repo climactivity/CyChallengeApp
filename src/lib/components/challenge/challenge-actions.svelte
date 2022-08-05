@@ -7,6 +7,7 @@
 		completeChallenge,
 		nextLevelForChallenge,
 		rejectChallenge,
+		unbookmarkChallenge,
 		type ChallengeAccept,
 		type ChallengeBookmark,
 		type ChallengeComplete,
@@ -24,9 +25,10 @@
 	import InviteFriendButton from '../buttons/invite-friend-button.svelte';
 	import EndChallengeButton from '../buttons/end-challenge-button.svelte';
 	import NotificationButton from '../buttons/notification-button.svelte';
+	import { goto } from '$app/navigation';
 
 	export let nextState: (string, ...args) => void;
-
+	export let refetch: () => void;
 	export let challenge: ChallengeV2;
 	export let challengeState:
 		| ChallengeBookmark
@@ -117,7 +119,21 @@
 				<BookmarkButton
 					bookmarked={challengeState && challengeState.type === 'bookmark'}
 					onClick={async (e) => {
+						if (challengeState && challengeState.type === 'bookmark') {
+							console.log('unbookmark challenge');
+
+							if (await unbookmarkChallenge(challenge)) {
+								console.log('unbookmarked challenge');
+							}
+
+							setTimeout(() => {
+								refetch();
+								goto(`/challenge/${challenge.slug}`, { replaceState: true, noscroll: true });
+							}, 250);
+							return;
+						}
 						console.log('bookmark challenge');
+
 						bookmarkChallenge(challenge)
 							.then((value) => {
 								console.log(value);

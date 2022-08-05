@@ -81,6 +81,13 @@
 	});
 
 	let playAt;
+
+	const refetch = async () => {
+		if ($nkReady) {
+			challengeState = await getChallengeState(challenge.slug);
+			console.log('challengeState', challengeState);
+		}
+	};
 </script>
 
 <div class="pb-16" transition:fade={{ duration: 250 }}>
@@ -109,7 +116,13 @@
 
 		<!-- actions -->
 
-		<ChallengeActions {challenge} nextState={action} bind:challengeState bind:challengeStateType />
+		<ChallengeActions
+			{challenge}
+			nextState={action}
+			bind:challengeState
+			bind:challengeStateType
+			{refetch}
+		/>
 
 		<!-- steps -->
 		{#if challenge.difficulties['easy']}
