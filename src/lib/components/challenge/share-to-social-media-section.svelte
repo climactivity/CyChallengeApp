@@ -15,7 +15,7 @@
 
 <VSection {...$$props}>
 	<div class="font-serif font-semibold text-xl">
-		Erzähle deinen Freund:innen von „{challenge.title}“
+		Erzähle deinen Freund:innen von der Challenge „{challenge.title}“
 	</div>
 	<div class="flex flex-row gap-6 py-4 mx-auto place-content-evenly">
 		<a

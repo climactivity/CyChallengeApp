@@ -14,8 +14,10 @@
 				<slot name="description" />
 			</div>
 		</div>
-		<div class=" text-storm-dark">
-			<slot name="icon" />
+		<div class="relative">
+			<div class="absolute w-40 h-40 -top-10 -left-12  text-storm-dark bg-red-500">
+				<slot name="icon" />
+			</div>
 		</div>
 	</div>
 </VSection>

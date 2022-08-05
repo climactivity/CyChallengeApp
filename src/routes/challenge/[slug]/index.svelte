@@ -155,13 +155,3 @@
 	<!-- share to social media -->
 	<ShareToSocialMediaSection {challenge} last />
 </div>
-
-<style lang="scss">
-	.actions > * {
-		align-self: start;
-		:hover,
-		:focus {
-			outline: none;
-		}
-	}
-</style>

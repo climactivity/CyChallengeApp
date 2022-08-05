@@ -28,9 +28,11 @@
 </script>
 
 <div
+	lang="de"
 	class="focus:outline-none cursor-pointer  transition-all duration-500 {selected
 		? 'selected'
-		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button"
+		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button break-words"
+	style="hyphens: auto;"
 >
 	{#if path !== '#'}
 		<a href={path} aria-label={label} class="grid place-items-center">
