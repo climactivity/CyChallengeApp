@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="relative">
-			<div class="absolute w-40 h-40 -top-10 -left-12  text-storm-dark bg-red-500">
+			<div class="absolute w-40 h-40 -top-10 -left-12  text-storm-dark">
 				<slot name="icon" />
 			</div>
 		</div>
