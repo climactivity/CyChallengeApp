@@ -30,8 +30,8 @@
 		<div slot="icon">
 			<!-- svelte-ignore a11y-media-has-caption -->
 			<video autoplay loop muted playsinline width="100%" height="100%">
-				<!-- <source src="/lottie/bookmark-anim.webm" type="video/webm" /> -->
-				<source src="/lottie/0001-0180.mp4" type="video/mp4" />
+				<source src="/lottie/bookmark-anim_H.265.mp4" type="video/mp4;codecs=hvc1" />
+				 <source src="/lottie/bookmark-anim.webm" type="video/webm" />
 
 				<svg viewBox="0 0 31 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
