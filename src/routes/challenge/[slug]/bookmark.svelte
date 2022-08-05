@@ -29,7 +29,14 @@
 		<div slot="description">Unter Aktionen gespeichert!</div>
 		<div slot="icon">
 			<!-- svelte-ignore a11y-media-has-caption -->
-			<video autoplay muted playsinline width="100%" height="100%">
+			<video
+				autoplay
+				muted
+				playsinline
+				width="100%"
+				height="100%"
+				poster="/icons/bookmark-icon.svg"
+			>
 				<source src="/lottie/bookmark-anim_H.265.mp4" type="video/mp4;codecs=hvc1" />
 				<source src="/lottie/bookmark-anim.webm" type="video/webm" />
 
