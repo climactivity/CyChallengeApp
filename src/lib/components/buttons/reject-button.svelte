@@ -5,7 +5,7 @@
 	export let rejected: boolean = false;
 </script>
 
-<IconButton bind:path label="Nichts für mich" {onClick} showLabel>
+<IconButton bind:path label={rejected ? 'viellecht doch?' : 'Nichts für mich'} {onClick} showLabel>
 	{#if rejected}
 		<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M10.5 17H30.5V23H10.5V17Z" fill="#ff00ff" />

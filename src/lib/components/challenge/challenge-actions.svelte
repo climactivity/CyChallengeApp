@@ -8,6 +8,7 @@
 		nextLevelForChallenge,
 		rejectChallenge,
 		unbookmarkChallenge,
+		unrejectChallenge,
 		type ChallengeAccept,
 		type ChallengeBookmark,
 		type ChallengeComplete,
@@ -43,6 +44,7 @@
 <div class="h-24">
 	<div class="grid grid-flow-col actions gap-2 place-content-evenly" style="place-items: baseline;">
 		{#if $nkReady}
+			<!-- challenge accepted -->
 			{#if challengeState?.type === 'accept'}
 				<!-- already doing it button -->
 				<CompleteChallengeButton
@@ -82,6 +84,45 @@
 						nextState('cancle');
 					}}
 				/>
+				<InviteFriendButton
+					onClick={(e) => {
+						console.log('invite friend to challenge');
+						nextState('invite');
+					}}
+				/>
+
+				<!-- what can we do with challenges that are already completed? -->
+			{:else if challengeState?.type === 'complete'}
+				<!-- already doing it button -->
+
+				{#if challenge.type && challenge.type === 'repeatable'}
+					<AcceptButton
+						repeat
+						onClick={async (e) => {
+							console.log('accept challenge');
+							acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
+								.then((value) => {
+									console.log(value);
+									if (value === null) {
+										console.error('accept failed');
+										return;
+									}
+									buttonAlerts.update((alerts) => [
+										...alerts,
+										{
+											path: '/journal',
+											type: 'attention'
+										}
+									]);
+									nextState('accept');
+								})
+								.catch((err) => {
+									console.error(err);
+								});
+						}}
+					/>
+				{/if}
+
 				<InviteFriendButton
 					onClick={(e) => {
 						console.log('invite friend to challenge');
@@ -175,7 +216,7 @@
 										type: 'attention'
 									}
 								]);
-								nextState('way-ahead-of-you');
+								nextState('already-doing-it');
 							})
 							.catch((err) => {
 								console.error(err);
@@ -186,8 +227,23 @@
 				<!-- reject challenge button -->
 				<RejectButton
 					rejected={challengeState && challengeState.type === 'reject'}
-					onClick={(e) => {
+					onClick={async (e) => {
 						console.log('reject challenge');
+
+						if (challengeState && challengeState.type === 'reject') {
+							console.log('unreject challenge');
+
+							if (await unrejectChallenge(challenge)) {
+								console.log('unrejected challenge');
+							}
+
+							setTimeout(() => {
+								refetch();
+								goto(`/challenge/${challenge.slug}`, { replaceState: true, noscroll: true });
+							}, 250);
+							return;
+						}
+
 						rejectChallenge(challenge)
 							.then((value) => {
 								console.log(value);

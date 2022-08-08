@@ -115,7 +115,8 @@
                 "frontMatter": "Wenn du selbst schon soweit bist, dass du darauf achtest dich klimafreundlicher zu ernähren oder du einfach nicht alleine mehr Pflanzen essen willst, lade doch Freunde oder Familie zur veganen Dinnerparty ein.",
                 "image": "",
                 "points": "",
-                "weekly": "Ja",
+                "weekly": "Nein",
+                "type": "repeatable",
                 "content": "Die Ernährung trägt weltweit auch in Deutschland mit ca. 15% zur globalen Treibhausgas-Emission bei. Soll dieser CO2-Fußabdruck gesenkt werden, müssen sich unsere Ernährungsgewohnheiten und folglich auch die Landwirtschaft ändern. Dafür eignet sich sich eine \"Klimatarische Ernährung\". Im Gegensatz zu einer veganen Ernährung musst du bei einer klimatarischen Ernährung den Verzehr von tierischen Produkten zwar auch deutlich reduzieren, aber nicht gänzlich darauf verzichten. Dennoch lohnt es sich zur Ernährungsumstellung auch mal Dinnerpartys zu veranstalten, die ganz ohne tierische Produkte auskommen, um deine Gewohnheiten und die deiner Gäste zu verändern. ",
                 "Status": "in Bearbeitung",
                 "difficulties": {

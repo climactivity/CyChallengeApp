@@ -1,3 +1,5 @@
+import type { ChallegneType } from '$lib/services/challenge-storage';
+
 export type Sector = 'consumption' | 'energy' | 'food' | 'mobility' | 'private' | 'public';
 
 export interface Step {
@@ -25,7 +27,7 @@ export interface Challenge {
 export interface ChallengeV2 {
 	title: string;
 	topic: string;
-	type?: 'recurring' | 'one-time';
+	type?: ChallegneType;
 	tags: string[];
 	frontMatter: string;
 	content: string;

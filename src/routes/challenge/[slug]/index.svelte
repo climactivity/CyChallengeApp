@@ -22,6 +22,8 @@
 	import DifficultyCard from '$lib/components/difficulty-card.svelte';
 	import {
 		getChallengeState,
+		getLastCompletion,
+		getTopicBigointChallengeState,
 		type ChallengeAccept,
 		type ChallengeBookmark,
 		type ChallengeComplete,
@@ -31,7 +33,8 @@
 	import { headerState } from '$lib/stores/header-store';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { fade } from 'svelte/transition';
-
+	import { LocalDateTime } from '$lib/services/luxon-proxy';
+	import { DateTime } from 'luxon';
 	export let challenge: ChallengeV2;
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
@@ -88,6 +91,9 @@
 			console.log('challengeState', challengeState);
 		}
 	};
+
+	let showBigpointReminder =
+		challenge.impact === 'peanut' && getTopicBigointChallengeState(challenge.topic);
 </script>
 
 <div class="pb-16" transition:fade={{ duration: 250 }}>
@@ -109,13 +115,27 @@
 			{challenge.title}
 		</div>
 
+		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
+		{#if showBigpointReminder}
+			<div class="bg-water2-light rounded-md shadow-md p-4 relative">
+				<button class="absolute top-0 right-2">x</button>
+				Hey, du hast den Bigpoint in diesem Bereich nicht angenommen. Mach doch erstmal den!
+			</div>
+		{/if}
+
 		<!-- front matter -->
 		<p class="text-lg  prose">
 			{challenge.frontMatter}
 		</p>
 
-		<!-- actions -->
+		<!-- completions -->
+		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
+			<div>
+				Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
+			</div>
+		{/if}
 
+		<!-- actions -->
 		<ChallengeActions
 			{challenge}
 			nextState={action}

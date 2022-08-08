@@ -1,12 +1,18 @@
 import type { ChallengeV2 } from '$lib/types/challenges';
 import { dropStorage, listStorage, readStorage, writeStorage } from './client-storage-engine';
+import { DateTime } from 'luxon';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
+export type ChallengeImpact = 'bigpoint' | 'peanut';
+export type ChallegneType = 'one-time' | 'recurring' | 'repeatable';
 export interface ChallengeInteraction {
 	type: ChallengeInteractionType;
 	challengeSlug: string;
+	challengeTopic: string;
+	challengeTags: string[];
+	challengeImpact: string;
 	at: Date;
 	updatedAt?: Date;
 }
@@ -24,7 +30,7 @@ export interface ChallengeReject extends ChallengeInteraction {
 
 export interface ChallengeAccept extends ChallengeInteraction {
 	type: 'accept';
-	challengeType: 'recurring' | 'one-time';
+	challengeType: ChallegneType;
 	nextNotification?: Date | null;
 	nextCheckpoint: Date | null;
 	currentLevel: Difficulty;
@@ -63,6 +69,8 @@ const compareDifficulty = (a: Difficulty, b: Difficulty) => {
 		return b === 'easy' ? 1 : b === 'medium' ? 1 : b === 'hard' ? 0 : -1;
 	}
 };
+
+export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): Difficulty => {
 	if (
@@ -124,8 +132,34 @@ export const currentLevelForChallenge = (challenge: ChallengeV2, challengeState)
 	}
 };
 
+export const getLastCompletion = (challengeState): DateTime | null => {
+	if (challengeState.type === 'bookmark' || challengeState.type === 'reject') {
+		return null;
+	}
+
+	if (challengeState.type === 'complete') {
+		return DateTime.fromISO(challengeState.completedAt);
+	}
+
+	if (challengeState.type === 'accept') {
+		const last = (challengeState as ChallengeAccept).completions.reduce((acc, cur) => {
+			const curDT = DateTime.fromISO(cur.completedAt);
+			console.log(acc, cur.completedAt, curDT);
+			if (curDT.ts > acc.ts) {
+				console.log('returning', curDT);
+				return curDT;
+			}
+			return acc;
+			// return curDT > acc ? curDT : acc;
+		}, DateTime.fromISO('1970-01-01T00:00:00.000Z'));
+
+		console.log('last', last);
+		return last;
+	}
+};
+
 export const getChallengeUserData = async (challengeSlug) => {
-	const challengeState = await readStorage('challenges', `${challengeSlug}`);
+	const challengeState = await readStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challengeSlug}`);
 	// console.log('getChallengeUserData', challengeSlug, challengeState);
 
 	if (challengeState === null) {
@@ -164,6 +198,9 @@ export const acceptChallenge = async (
 	let acceptedChallenge: ChallengeAccept = {
 		type: 'accept',
 		challengeSlug: challenge.slug,
+		challengeImpact: challenge.impact,
+		challengeTopic: challenge.topic,
+		challengeTags: challenge.tags,
 		at: new Date(),
 		nextCheckpoint,
 		currentLevel: difficulty,
@@ -178,19 +215,52 @@ export const acceptChallenge = async (
 				nextCheckpoint,
 				currentLevel: difficulty
 			};
-			return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge, version);
+			return await writeStorage(
+				CHALLENGE_INTERACTIONS_COLLECTION,
+				`${challenge.slug}`,
+				acceptedChallenge,
+				version
+			);
 		}
 		if (instanceOfChallengeAccept(value)) {
 			acceptedChallenge = {
 				...value,
 				nextCheckpoint
 			};
-			return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge, version);
+			return await writeStorage(
+				CHALLENGE_INTERACTIONS_COLLECTION,
+				`${challenge.slug}`,
+				acceptedChallenge,
+				version
+			);
+		} else if (instanceOfChallengeComplete(value)) {
+			acceptedChallenge = {
+				...value,
+				type: 'accept',
+				nextCheckpoint,
+				challengeType: challenge.type ?? 'recurring',
+				currentLevel: difficulty
+			};
+			return await writeStorage(
+				CHALLENGE_INTERACTIONS_COLLECTION,
+				`${challenge.slug}`,
+				acceptedChallenge,
+				version
+			);
 		} else {
-			return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge, version);
+			return await writeStorage(
+				CHALLENGE_INTERACTIONS_COLLECTION,
+				`${challenge.slug}`,
+				acceptedChallenge,
+				version
+			);
 		}
 	}
-	return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge);
+	return await writeStorage(
+		CHALLENGE_INTERACTIONS_COLLECTION,
+		`${challenge.slug}`,
+		acceptedChallenge
+	);
 };
 
 export const bookmarkChallenge = async (
@@ -201,6 +271,9 @@ export const bookmarkChallenge = async (
 	const bookmarkedChallenge: ChallengeBookmark = {
 		type: 'bookmark',
 		challengeSlug: challenge.slug,
+		challengeImpact: challenge.impact,
+		challengeTopic: challenge.topic,
+		challengeTags: challenge.tags,
 		at: new Date(),
 		bookmarkedAt: new Date()
 	};
@@ -213,20 +286,42 @@ export const bookmarkChallenge = async (
 			console.error('Cannot bookmark a challenge that is already accepted');
 			return null;
 		} else {
-			return await writeStorage('challenges', `${challenge.slug}`, bookmarkedChallenge, version);
+			return await writeStorage(
+				CHALLENGE_INTERACTIONS_COLLECTION,
+				`${challenge.slug}`,
+				bookmarkedChallenge,
+				version
+			);
 		}
 	}
-	return await writeStorage('challenges', `${challenge.slug}`, bookmarkedChallenge);
+	return await writeStorage(
+		CHALLENGE_INTERACTIONS_COLLECTION,
+		`${challenge.slug}`,
+		bookmarkedChallenge
+	);
 };
 
 export const unbookmarkChallenge = async (challenge: ChallengeV2) => {
-	return await dropStorage('challenges', `${challenge.slug}`);
+	const challengeState = await getChallengeUserData(challenge.slug);
+
+	if (challengeState !== null) {
+		const { value, version } = challengeState;
+		if (instanceOfChallengeBookmark(value)) {
+			return await dropStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challenge.slug}`);
+		} else {
+			return false;
+		}
+	}
+	return false;
 };
 
 export const rejectChallenge = async (challenge: ChallengeV2, reason?, message?) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
 
 	const rejectedChallenge: ChallengeReject = {
+		challengeImpact: challenge.impact,
+		challengeTopic: challenge.topic,
+		challengeTags: challenge.tags,
 		type: 'reject',
 		challengeSlug: challenge.slug,
 		at: new Date(),
@@ -238,12 +333,37 @@ export const rejectChallenge = async (challenge: ChallengeV2, reason?, message?)
 		const { value, version } = challengeState;
 		if (instanceOfChallengeReject(value)) {
 			return value;
-		} else {
-			console.error('Cannot reject a challenge that is already accepted bookmarked etc... ');
+		} else if (instanceOfChallengeAccept(value) || instanceOfChallengeComplete(value)) {
+			console.error('Cannot reject a challenge that is already accepted or completed');
 			return null;
+		} else {
+			return await writeStorage(
+				CHALLENGE_INTERACTIONS_COLLECTION,
+				`${challenge.slug}`,
+				rejectedChallenge,
+				version
+			);
 		}
 	}
-	return await writeStorage('challenges', `${challenge.slug}`, rejectedChallenge);
+	return await writeStorage(
+		CHALLENGE_INTERACTIONS_COLLECTION,
+		`${challenge.slug}`,
+		rejectedChallenge
+	);
+};
+
+export const unrejectChallenge = async (challenge: ChallengeV2) => {
+	const challengeState = await getChallengeUserData(challenge.slug);
+
+	if (challengeState !== null) {
+		const { value, version } = challengeState;
+		if (instanceOfChallengeReject(value)) {
+			return await dropStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challenge.slug}`);
+		} else {
+			return false;
+		}
+	}
+	return false;
 };
 
 export const completeChallenge = async (
@@ -257,26 +377,47 @@ export const completeChallenge = async (
 		const { value, version } = challengeState;
 		if (instanceOfChallengeAccept(value)) {
 			// if the challenge is a one-time challenge, we can mark it as completed
-			if (value.challengeType === 'one-time') {
+			if (value.challengeType === 'one-time' || value.challengeType === 'repeatable') {
 				const completedChallenge: ChallengeComplete = {
-					type: 'complete',
-					challengeSlug: challenge.slug,
-					at: new Date(),
-					completedAt: new Date(),
-					skipped: false
-				};
-				return await writeStorage('challenges', `${challenge.slug}`, completedChallenge, version);
-			} else if (finalize) {
-				// if the challenge is a recurring challenge and finlize is true, we can mark it as completed
-				const completedChallenge: ChallengeComplete = {
+					challengeImpact: challenge.impact,
+					challengeTopic: challenge.topic,
+					challengeTags: challenge.tags,
 					type: 'complete',
 					challengeSlug: challenge.slug,
 					at: new Date(),
 					completedAt: new Date(),
 					skipped: false,
 					completions: value.completions
+						? [...value.completions, { level, completedAt: new Date() }]
+						: [{ level, completedAt: new Date() }]
 				};
-				return await writeStorage('challenges', `${challenge.slug}`, completedChallenge, version);
+				return await writeStorage(
+					CHALLENGE_INTERACTIONS_COLLECTION,
+					`${challenge.slug}`,
+					completedChallenge,
+					version
+				);
+			} else if (finalize) {
+				// if the challenge is a recurring challenge and finlize is true, we can mark it as completed
+				const completedChallenge: ChallengeComplete = {
+					type: 'complete',
+					challengeImpact: challenge.impact,
+					challengeTopic: challenge.topic,
+					challengeTags: challenge.tags,
+					challengeSlug: challenge.slug,
+					at: new Date(),
+					completedAt: new Date(),
+					skipped: false,
+					completions: value.completions
+						? [...value.completions, { level, completedAt: new Date() }]
+						: [{ level, completedAt: new Date() }]
+				};
+				return await writeStorage(
+					CHALLENGE_INTERACTIONS_COLLECTION,
+					`${challenge.slug}`,
+					completedChallenge,
+					version
+				);
 			} else {
 				// the challenge is a recurring challenge and finlize is false, we can add a new completion and mark it as accepted
 				const acceptedChallenge: ChallengeAccept = {
@@ -284,7 +425,12 @@ export const completeChallenge = async (
 					completions: [...(value.completions ?? []), { completedAt: new Date(), level }]
 				};
 
-				return await writeStorage('challenges', `${challenge.slug}`, acceptedChallenge, version);
+				return await writeStorage(
+					CHALLENGE_INTERACTIONS_COLLECTION,
+					`${challenge.slug}`,
+					acceptedChallenge,
+					version
+				);
 			}
 		} else {
 			console.error('Cannot reject a challenge that is already accepted bookmarked etc... ');
@@ -293,6 +439,9 @@ export const completeChallenge = async (
 	}
 
 	const completedChallenge: ChallengeComplete = {
+		challengeImpact: challenge.impact,
+		challengeTopic: challenge.topic,
+		challengeTags: challenge.tags,
 		type: 'complete',
 		challengeSlug: challenge.slug,
 		at: new Date(),
@@ -300,11 +449,15 @@ export const completeChallenge = async (
 		skipped: true
 	};
 
-	return await writeStorage('challenges', `${challenge.slug}`, completedChallenge);
+	return await writeStorage(
+		CHALLENGE_INTERACTIONS_COLLECTION,
+		`${challenge.slug}`,
+		completedChallenge
+	);
 };
 
 export const getChallengeInteractionsUserData = async (cursor?: string, limit?: number) => {
-	return await listStorage('challenges', cursor, limit);
+	return await listStorage(CHALLENGE_INTERACTIONS_COLLECTION, cursor, limit);
 };
 
 export const getRejectedChallenges = async (cursor?: string, limit?: number) => {
@@ -353,4 +506,12 @@ export const getAcceptedChallenges = async (cursor?: string, limit?: number) => 
 		})
 		.map((storageObject) => storageObject.value as ChallengeAccept);
 	return { interactions: acceptedChallengeInteractions, cursor: challengeInteractions.cursor };
+};
+
+export const getTopicBigointChallengeState = async (
+	topic: string
+): Promise<ChallengeInteraction> => {
+	console.log('getTopicBigointChallengeState', topic, 'not implemented yet');
+
+	return null;
 };

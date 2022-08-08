@@ -2,9 +2,10 @@
 	import IconButton from './icon-button.svelte';
 	export let path: string = '#';
 	export let onClick: Function;
+	export let repeat = false;
 </script>
 
-<IconButton bind:path label="Mach ich" {onClick} showLabel>
+<IconButton bind:path label={repeat ? 'Mache ich nochmal' : 'Mach ich'} {onClick} showLabel>
 	<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<path
 			fill-rule="evenodd"
