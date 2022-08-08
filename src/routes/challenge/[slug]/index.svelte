@@ -35,6 +35,7 @@
 	import { fade } from 'svelte/transition';
 	import { LocalDateTime } from '$lib/services/luxon-proxy';
 	import { DateTime } from 'luxon';
+	import RewardDisplay from '$lib/components/challenge/reward-display.svelte';
 	export let challenge: ChallengeV2;
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
@@ -130,7 +131,12 @@
 
 		<!-- completions -->
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
+			<div>Durch diese Challenge erhaltene Punkte</div>
 			<div>
+				<RewardDisplay
+					medals={challengeState.completions?.length ?? 0}
+					points={challengeState.accScore}
+				/>
 				Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
 			</div>
 		{/if}

@@ -26,6 +26,8 @@
             {
                 "title": "Iss mehr Pflanzen!",
                 "impact": "Big Point",
+                "type": "recurring",
+
                 "tags": [
                     "gesundes_leben",
                     "fussabdruck"

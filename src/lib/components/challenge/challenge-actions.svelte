@@ -95,7 +95,7 @@
 			{:else if challengeState?.type === 'complete'}
 				<!-- already doing it button -->
 
-				{#if challenge.type && challenge.type === 'repeatable'}
+				{#if (challenge.type && challenge.type === 'repeatable') || challenge.type === 'recurring'}
 					<AcceptButton
 						repeat
 						onClick={async (e) => {

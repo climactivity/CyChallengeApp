@@ -34,6 +34,7 @@ export interface ChallengeV2 {
 	difficulties: Difficulties;
 	slug: string;
 	impact: string;
+	score: number;
 	image?:
 		| ''
 		| {

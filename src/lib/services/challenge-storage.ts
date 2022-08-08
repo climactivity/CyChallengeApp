@@ -35,6 +35,7 @@ export interface ChallengeAccept extends ChallengeInteraction {
 	nextCheckpoint: Date | null;
 	currentLevel: Difficulty;
 	completions?: { completedAt: Date; level: Difficulty }[];
+	accScore?: number;
 }
 
 export interface ChallengeComplete extends ChallengeInteraction {
@@ -42,6 +43,7 @@ export interface ChallengeComplete extends ChallengeInteraction {
 	completedAt: Date;
 	skipped: boolean;
 	completions?: { completedAt: Date; level: Difficulty }[];
+	accScore?: number;
 }
 
 export function instanceOfChallengeBookmark(value): value is ChallengeBookmark {
@@ -387,6 +389,7 @@ export const completeChallenge = async (
 					at: new Date(),
 					completedAt: new Date(),
 					skipped: false,
+					accScore: value.accScore ?? 0 + challenge.score,
 					completions: value.completions
 						? [...value.completions, { level, completedAt: new Date() }]
 						: [{ level, completedAt: new Date() }]
@@ -405,6 +408,8 @@ export const completeChallenge = async (
 					challengeTopic: challenge.topic,
 					challengeTags: challenge.tags,
 					challengeSlug: challenge.slug,
+					accScore: value.accScore ?? 0 + challenge.score,
+
 					at: new Date(),
 					completedAt: new Date(),
 					skipped: false,
@@ -429,6 +434,7 @@ export const completeChallenge = async (
 					CHALLENGE_INTERACTIONS_COLLECTION,
 					`${challenge.slug}`,
 					acceptedChallenge,
+
 					version
 				);
 			}
@@ -446,7 +452,8 @@ export const completeChallenge = async (
 		challengeSlug: challenge.slug,
 		at: new Date(),
 		completedAt: new Date(),
-		skipped: true
+		skipped: true,
+		accScore: 0 + challenge.score
 	};
 
 	return await writeStorage(
