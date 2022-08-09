@@ -29,7 +29,7 @@
 
 <div
 	lang="de"
-	class="focus:outline-none cursor-pointer  transition-all duration-500 {selected
+	class="focus:outline-none cursor-pointer  transition-all duration-150 {selected
 		? 'selected'
 		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button break-words"
 	style="hyphens: auto;"
@@ -61,6 +61,7 @@
 
 <style lang="scss">
 	.selected {
+		position: relative;
 		fill: #5689a0;
 		color: #5689a0;
 		// animation: select 150ms ease forwards;

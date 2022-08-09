@@ -33,7 +33,7 @@
 </script>
 
 <div
-	class="p-4 flex flex-row justify-between sticky top-0 z-30 bg-slate-100"
+	class="p-4 flex flex-row justify-between sticky top-0 z-30 bg-slate-100 "
 	class:hidden
 	style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * headerShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *

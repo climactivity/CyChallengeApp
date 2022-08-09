@@ -2,13 +2,16 @@
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
+	export let skipped = false;
 </script>
 
 <VSection {...$$props}>
-	<div class="grid grid-flow-col" style="grid-template-columns: 4fr 1fr;">
-		<div class="flex flex-col">
+	<div class="grid grid-flow-col mx-8" style="grid-template-columns: 4fr 1fr;">
+		<div class="flex flex-col  place-content-center">
 			<div class="text-4xl font-serif font-semibold text-storm-dark">Klasse!</div>
-			<div class="text-md font-serif font-normal text-storm-dark">Das machst du schon</div>
+			<div class="text-md font-serif font-normal text-storm-dark">
+				{skipped ? 'Das machst du schon' : 'Du hast es geschafft'}
+			</div>
 		</div>
 		<div class=" text-storm-dark">
 			<svg viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">

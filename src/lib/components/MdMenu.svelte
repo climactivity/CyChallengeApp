@@ -27,7 +27,9 @@
                      absolute  grid grid-flow-row gap-2 place-content-center transition-all"
 		>
 			<a href="/info/about-us" class="overflow-menu-item">Über Climactivity</a>
-			<a href="/info/about" class="overflow-menu-item">Über diese App</a>
+			<!-- <a href="/info/about" class="overflow-menu-item">Über diese App</a> -->
+			<a href="/info/changelog" class="overflow-menu-item">Versionsgeschichte</a>
+
 			<a href="/info/feedback" class="overflow-menu-item">Feedback senden</a>
 			<a href="/info/settings" class="overflow-menu-item">Einstellungen</a>
 
