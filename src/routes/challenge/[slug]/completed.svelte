@@ -21,12 +21,22 @@
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 	import CongratulationSection from '$lib/components/challenge/congratulation-section.svelte';
 	import RewardSection from '$lib/components/challenge/reward-section.svelte';
+	import { nkReady } from '$lib/client';
+	import { getChallengeState } from '$lib/services/challenge-storage';
 	export let challenge: ChallengeV2;
+
+	let challengeState;
+	nkReady.subscribe(async (val) => {
+		if (val) {
+			challengeState = await getChallengeState(challenge.slug);
+			console.log('challengeState', challengeState);
+		}
+	});
 </script>
 
 <div class="flex flex-col pt-8">
-	<CongratulationSection {challenge} index={0} skipped />
-	<RewardSection {challenge} index={1} />
+	<CongratulationSection {challenge} index={0} />
+	<RewardSection {challenge} {challengeState} index={1} />
 	<RecommendedChallengesSection {challenge} index={4} />
 	<ShareToSocialMediaSection {challenge} index={5} />
 	<BackToChallengesPageSection last={true} index={5} />

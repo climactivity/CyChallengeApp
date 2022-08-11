@@ -36,6 +36,7 @@
 	import { LocalDateTime } from '$lib/services/luxon-proxy';
 	import { DateTime } from 'luxon';
 	import RewardDisplay from '$lib/components/challenge/reward-display.svelte';
+	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
 	export let challenge: ChallengeV2;
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
@@ -141,6 +142,10 @@
 			</div>
 		{/if}
 
+		<!-- todos for currently accepted challenge-->
+		{#if challengeState && challengeState.type === 'accept'}
+			<ChallengeV2Todos {challenge} {challengeState} />
+		{/if}
 		<!-- actions -->
 		<ChallengeActions
 			{challenge}
@@ -150,35 +155,38 @@
 			{refetch}
 		/>
 
-		<!-- steps -->
-		{#if challenge.difficulties['easy']}
-			<div class="">
-				<DifficultyCard
-					difficulty={challenge.difficulties['easy']}
-					name="Todos"
-					onSelected={() => {}}
-					selected
-				/>
-			</div>
-		{:else if challenge.difficulties['medium']}
-			<div class="">
-				<DifficultyCard
-					difficulty={challenge.difficulties['medium']}
-					name="Todos"
-					onSelected={() => {}}
-					selected
-				/>
-			</div>
-		{:else if challenge.difficulties['hard']}
-			<div class="">
-				<DifficultyCard
-					difficulty={challenge.difficulties['hard']}
-					name="Todos"
-					onSelected={() => {}}
-					selected
-				/>
-			</div>
+		{#if !challengeState || challengeState.type !== 'accept'}
+			<!-- steps -->
+			{#if challenge.difficulties['easy']}
+				<div class="">
+					<DifficultyCard
+						difficulty={challenge.difficulties['easy']}
+						name="Todos"
+						onSelected={() => {}}
+						selected
+					/>
+				</div>
+			{:else if challenge.difficulties['medium']}
+				<div class="">
+					<DifficultyCard
+						difficulty={challenge.difficulties['medium']}
+						name="Todos"
+						onSelected={() => {}}
+						selected
+					/>
+				</div>
+			{:else if challenge.difficulties['hard']}
+				<div class="">
+					<DifficultyCard
+						difficulty={challenge.difficulties['hard']}
+						name="Todos"
+						onSelected={() => {}}
+						selected
+					/>
+				</div>
+			{/if}
 		{/if}
+
 		<!-- more infos -->
 
 		<div class=" rounded-xl p-2 bg-white">

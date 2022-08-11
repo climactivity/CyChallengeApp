@@ -1,12 +1,25 @@
 import type { ChallengeV2 } from '$lib/types/challenges';
 import { dropStorage, listStorage, readStorage, writeStorage } from './client-storage-engine';
 import { DateTime } from 'luxon';
+import type { StorageObject } from '@heroiclabs/nakama-js';
 
-export type Difficulty = 'easy' | 'medium' | 'hard';
+export type DifficultyName = 'easy' | 'medium' | 'hard';
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
 export type ChallengeImpact = 'bigpoint' | 'peanut';
 export type ChallegneType = 'one-time' | 'recurring' | 'repeatable';
+export type CompletedStep = {
+	name: string;
+	reward?: any;
+	completed: boolean;
+	completedAt: Date;
+};
+
+export type ChallengeCompletion = {
+	completedAt: Date;
+	level: DifficultyName;
+	completedSteps?: CompletedStep[];
+};
 export interface ChallengeInteraction {
 	type: ChallengeInteractionType;
 	challengeSlug: string;
@@ -33,17 +46,20 @@ export interface ChallengeAccept extends ChallengeInteraction {
 	challengeType: ChallegneType;
 	nextNotification?: Date | null;
 	nextCheckpoint: Date | null;
-	currentLevel: Difficulty;
-	completions?: { completedAt: Date; level: Difficulty }[];
+	currentLevel: DifficultyName;
+	completions?: ChallengeCompletion[];
 	accScore?: number;
+	lastDifficulty?: DifficultyName;
+	currentSteps: CompletedStep[];
 }
 
 export interface ChallengeComplete extends ChallengeInteraction {
 	type: 'complete';
 	completedAt: Date;
 	skipped: boolean;
-	completions?: { completedAt: Date; level: Difficulty }[];
+	completions?: ChallengeCompletion[];
 	accScore?: number;
+	lastDifficulty: DifficultyName;
 }
 
 export function instanceOfChallengeBookmark(value): value is ChallengeBookmark {
@@ -62,7 +78,7 @@ export function instanceOfChallengeComplete(value): value is ChallengeComplete {
 	return 'type' in value && value.type === 'complete';
 }
 
-const compareDifficulty = (a: Difficulty, b: Difficulty) => {
+const compareDifficulty = (a: DifficultyName, b: DifficultyName) => {
 	if (a === 'easy') {
 		return b === 'easy' ? 0 : -1;
 	} else if (a === 'medium') {
@@ -74,7 +90,7 @@ const compareDifficulty = (a: Difficulty, b: Difficulty) => {
 
 export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
-export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): Difficulty => {
+export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
 	if (
 		challengeState === null ||
 		challengeState.type === 'bookmark' ||
@@ -94,11 +110,19 @@ export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): D
 	}
 
 	if (challengeState.type === 'accept') {
-		const highestCompletion = (challengeState as ChallengeAccept).completions.reduce(
+		const { completions } = challengeState as ChallengeAccept;
+		if (completions === undefined) {
+			return challenge.difficulties['easy']
+				? 'medium'
+				: challenge.difficulties['medium']
+				? 'hard'
+				: null;
+		}
+		const highestCompletion = completions.reduce(
 			(acc, cur) => {
 				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
 			},
-			{ level: 'easy' as Difficulty }
+			{ level: 'easy' as DifficultyName }
 		);
 		return highestCompletion.level === 'easy'
 			? 'medium'
@@ -108,7 +132,10 @@ export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): D
 	}
 };
 
-export const currentLevelForChallenge = (challenge: ChallengeV2, challengeState): Difficulty => {
+export const currentLevelForChallenge = (
+	challenge: ChallengeV2,
+	challengeState
+): DifficultyName => {
 	if (null || challengeState.type === 'bookmark' || challengeState.type === 'reject') {
 		return challenge.difficulties['easy']
 			? 'easy'
@@ -124,11 +151,21 @@ export const currentLevelForChallenge = (challenge: ChallengeV2, challengeState)
 	}
 
 	if (challengeState.type === 'accept') {
-		const highestCompletion = (challengeState as ChallengeAccept).completions.reduce(
+		const { completions } = challengeState as ChallengeAccept;
+		if (completions === undefined) {
+			return challenge.difficulties['easy']
+				? 'easy'
+				: challenge.difficulties['medium']
+				? 'medium'
+				: challenge.difficulties['hard']
+				? 'hard'
+				: null;
+		}
+		const highestCompletion = completions.reduce(
 			(acc, cur) => {
 				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
 			},
-			{ level: 'easy' as Difficulty }
+			{ level: 'easy' as DifficultyName }
 		);
 		return highestCompletion.level;
 	}
@@ -192,7 +229,7 @@ export const getChallengeState = async (
 
 export const acceptChallenge = async (
 	challenge: ChallengeV2,
-	difficulty: Difficulty,
+	difficulty: DifficultyName,
 	nextCheckpoint?: Date
 ) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
@@ -203,6 +240,7 @@ export const acceptChallenge = async (
 		challengeImpact: challenge.impact,
 		challengeTopic: challenge.topic,
 		challengeTags: challenge.tags,
+		currentSteps: [],
 		at: new Date(),
 		nextCheckpoint,
 		currentLevel: difficulty,
@@ -238,6 +276,7 @@ export const acceptChallenge = async (
 		} else if (instanceOfChallengeComplete(value)) {
 			acceptedChallenge = {
 				...value,
+				currentSteps: [],
 				type: 'accept',
 				nextCheckpoint,
 				challengeType: challenge.type ?? 'recurring',
@@ -370,7 +409,7 @@ export const unrejectChallenge = async (challenge: ChallengeV2) => {
 
 export const completeChallenge = async (
 	challenge: ChallengeV2,
-	level: Difficulty = 'easy',
+	level: DifficultyName = 'easy',
 	finalize = false
 ) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
@@ -390,6 +429,7 @@ export const completeChallenge = async (
 					completedAt: new Date(),
 					skipped: false,
 					accScore: value.accScore ?? 0 + challenge.score,
+					lastDifficulty: level,
 					completions: value.completions
 						? [...value.completions, { level, completedAt: new Date() }]
 						: [{ level, completedAt: new Date() }]
@@ -408,6 +448,8 @@ export const completeChallenge = async (
 					challengeTopic: challenge.topic,
 					challengeTags: challenge.tags,
 					challengeSlug: challenge.slug,
+					lastDifficulty: level,
+
 					accScore: value.accScore ?? 0 + challenge.score,
 
 					at: new Date(),
@@ -427,6 +469,8 @@ export const completeChallenge = async (
 				// the challenge is a recurring challenge and finlize is false, we can add a new completion and mark it as accepted
 				const acceptedChallenge: ChallengeAccept = {
 					...value,
+					lastDifficulty: level,
+
 					completions: [...(value.completions ?? []), { completedAt: new Date(), level }]
 				};
 
@@ -453,6 +497,8 @@ export const completeChallenge = async (
 		at: new Date(),
 		completedAt: new Date(),
 		skipped: true,
+		lastDifficulty: level,
+
 		accScore: 0 + challenge.score
 	};
 
@@ -521,4 +567,46 @@ export const getTopicBigointChallengeState = async (
 	console.log('getTopicBigointChallengeState', topic, 'not implemented yet');
 
 	return null;
+};
+
+export const stepCompleted = (challengeInteraction, step) => {
+	if (instanceOfChallengeAccept(challengeInteraction)) {
+		if (!challengeInteraction.currentSteps) {
+			challengeInteraction.currentSteps = [];
+		}
+		return !!challengeInteraction.currentSteps.find((cs) => cs.name === step.name);
+	}
+};
+
+export const completeStep = async (
+	challengeInteraction: ChallengeAccept,
+	step: { name: string; reward?: any }
+) => {
+	const challengeState = await getChallengeUserData(challengeInteraction.challengeSlug);
+	challengeInteraction.currentSteps = challengeInteraction.currentSteps ?? [];
+
+	if (stepCompleted(challengeInteraction, step)) {
+		challengeInteraction.currentSteps = challengeInteraction.currentSteps.filter(
+			(cs) => cs.name !== step.name
+		);
+	} else {
+		const completed: CompletedStep = {
+			...step,
+			completed: true,
+			completedAt: new Date()
+		};
+
+		challengeInteraction.currentSteps = [...challengeInteraction.currentSteps, completed];
+		// console.log('completeStep', challengeInteraction);
+	}
+
+	let res: StorageObject = await writeStorage(
+		CHALLENGE_INTERACTIONS_COLLECTION,
+		`${challengeInteraction.challengeSlug}`,
+		challengeInteraction,
+		challengeState.version
+	);
+
+	console.log(res);
+	return challengeInteraction;
 };

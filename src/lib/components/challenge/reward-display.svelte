@@ -3,10 +3,13 @@
 	export let medals: number = 0;
 </script>
 
-<div class="rounded-md   grid grid-flow-col items-center place-items-center h-20">
+<div
+	class="rounded-md   grid grid-flow-col items-center place-content-between h-20 gap-8"
+	style="grid-template-columns: 1fr 1fr;"
+>
 	{#if points > 0}
 		<div
-			class="grid grid-flow-col items-center place-items-center border border-black border-opacity-10 px-4 py-2 rounded-xl"
+			class="grid grid-flow-col items-center place-items-center border border-black border-opacity-10 py-2 rounded-xl"
 		>
 			<div class="text-nature-dark w-full ">
 				<svg

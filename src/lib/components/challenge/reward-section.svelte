@@ -23,15 +23,17 @@
 
 <VSection {...$$props}>
 	<div class="flex flex-col gap-4">
-		Vom "{challenge.title}" hast du dir:
+		<div class="text-storm-dark text-xl font-semibold ">Vom "{challenge.title}" hast du dir:</div>
 		<RewardDisplay points={challenge.score ?? 10} medals={1} />
 
-		{#if challenge.impact}
-			{challenge.impact}
-		{:else}
-			Super, diese Challenge gibt es auch noch in wirksamer
-		{/if}
-
+		<div class="prose text-lg text-storm-dark">
+			<!-- TODO add support for texts based on the difficulty of the selected challenge and if there is another difficulty level -->
+			{#if false}
+				{challenge.impact}
+			{:else}
+				Super, diese Challenge gibt es auch noch in wirksamer
+			{/if}
+		</div>
 		<ButtonPrimaryCta
 			onClick={(e) => {
 				console.log('increase level');
@@ -40,7 +42,7 @@
 			Einsatz erhöhen
 		</ButtonPrimaryCta>
 
-		<div class="flex flex-row w-full justify-end px-2 text-water2-dark font-semibold font-sans">
+		<div class="flex flex-row w-full justify-end px-2 text-water2-dark font-semibold font-sans ">
 			<button on:click|preventDefault={(e) => console.log('lieber nicht')}> Lieber nicht </button>
 		</div>
 	</div>
