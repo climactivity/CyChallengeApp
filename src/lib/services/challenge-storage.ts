@@ -539,6 +539,7 @@ export const getCompletedChallenges = async (cursor?: string, limit?: number) =>
 
 export const getBookmarkedChallenges = async (cursor?: string, limit?: number) => {
 	const challengeInteractions = await getChallengeInteractionsUserData(cursor, limit);
+	console.log(challengeInteractions);
 	const bookmarkedChallengeInteractions = challengeInteractions.objects
 		.filter((storageObject) => {
 			if (instanceOfChallengeBookmark(storageObject.value)) {

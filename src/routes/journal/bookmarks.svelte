@@ -5,30 +5,27 @@
 	import ChallengeJournalCard from '$lib/components/journal/challenge-journal-card.svelte';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import { getAcceptedChallenges, getBookmarkedChallenges } from '$lib/services/challenge-storage';
-	import About from '../info/about.svelte';
 
 	let activeChallenge = [];
 
 	nkReady.subscribe(async (value) => {
 		if (value) {
-			let { interactions, cursor } = await getAcceptedChallenges();
+			let { interactions, cursor } = await getBookmarkedChallenges();
 			console.log('interactions', interactions);
 			activeChallenge = await Promise.all(
-				interactions
-					.sort((a, b) => new Date(b.at).getSeconds() - new Date(a.at).getSeconds())
-					.map(async (interaction) => {
-						const challenge = await getChallengeBySlug(interaction.challengeSlug);
-						return {
-							interaction,
-							challenge
-						};
-					})
+				interactions.map(async (interaction) => {
+					const challenge = await getChallengeBySlug(interaction.challengeSlug);
+					return {
+						interaction,
+						challenge
+					};
+				})
 			);
 		}
 	});
 </script>
 
-<div class="px-4 py-4 grid grid-flow-row gap-4">
+<div class="px-4 py-4">
 	{#each activeChallenge as activeChallenge}
 		<ChallengeJournalCard
 			challenge={activeChallenge.challenge}

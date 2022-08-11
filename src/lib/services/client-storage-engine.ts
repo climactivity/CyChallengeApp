@@ -72,9 +72,10 @@ const readStorage = async (
 	return result.objects[0];
 };
 
-const listStorage = async (collection: string, cursor?: string, limit?: number) => {
+const listStorage = async (collection: string, cursor?: string, limit: number = 100) => {
 	// TODO: maybe make pagination more explicit
-	return await client.listStorageObjects(session, collection, cursor, limit);
+	// console.log('listStorage', session, collection, limit, cursor);
+	return await client.listStorageObjects(session, collection, session.user_id, limit, cursor);
 };
 
 const dropStorage = async (collection: string, key: string) => {

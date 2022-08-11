@@ -1,23 +1,23 @@
 import { CapacitorConfig } from '@capacitor/cli';
 import * as dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 let config: CapacitorConfig = {
-  appId: 'de.climactivity.challenge',
-  appName: 'cychallengeapp',
-  webDir: 'build',
-  bundledWebRuntime: false
+	appId: 'de.climactivity.challenge',
+	appName: 'Klima-Challenges',
+	webDir: 'build',
+	bundledWebRuntime: false
 };
 
 if (process.env.CAP_USE_SERVER === 'true') {
-  let server = {
-    "url": process.env.CAP_SERVER_ADDR,
-    "cleartext": process.env.CAP_USE_CLEARTEXT === "true"
-  }
-  config = {...config, server}
+	let server = {
+		url: process.env.CAP_SERVER_ADDR,
+		cleartext: process.env.CAP_USE_CLEARTEXT === 'true'
+	};
+	config = { ...config, server };
 }
 
-console.log(config)
+console.log(config);
 
 export default config;

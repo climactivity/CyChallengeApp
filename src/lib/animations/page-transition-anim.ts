@@ -57,6 +57,10 @@ const currentAnimDirection = (naviation): AnimationDirection => {
 		}
 	}
 
+	if (originPathBase === screenOrder.journal && targetPathBase === screenOrder.journal) {
+		return AnimationDirection.neutral;
+	}
+
 	if (originPathBase !== targetPathBase) {
 		if (originPathBase > targetPathBase) {
 			return AnimationDirection.left;
