@@ -19,7 +19,7 @@
 	import BackToChallengesPageSection from '$lib/components/challenge/back-to-challenges-page-section.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
-	import ScoreSection from '$lib/components/challenge/score-section.svelte';
+	import ScoreSection from '$lib/components/challenge/congratulation-section.svelte';
 	export let challenge: ChallengeV2;
 </script>
 
