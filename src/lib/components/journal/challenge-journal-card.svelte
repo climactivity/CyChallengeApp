@@ -9,7 +9,8 @@
 	export let challengeState: ChallengeInteraction;
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
 	$: {
-		imageUrl = challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;
+		imageUrl =
+			challenge && challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;
 		// console.log('image', challenge.image?.file?.path, $page.url);
 	}
 
