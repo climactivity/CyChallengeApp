@@ -83,7 +83,7 @@
 		<!-- Tabs -->
 		<div class="py-2">
 			<div
-				class=" select-none grid grid-flow-col align-bottom place-items-center justify-around md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-auto bg-slate-100 ring-opacity-100 underline"
+				class=" select-none grid grid-flow-col align-bottom place-items-center justify-around md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-auto bg-slate-100 ring-opacity-100 "
 				style="grid-template-columns: 1fr 1fr 1fr;"
 			>
 				<a class="tab" href="/journal" class:activeTab={$page.routeId === 'journal'}>Aktuell</a>
@@ -108,9 +108,11 @@
 
 <style lang="scss">
 	.tab {
+		text-decoration-line: underline;
 		@apply transition-colors;
 	}
 	.activeTab {
-		@apply font-bold text-water;
+		text-decoration-line: none;
+		@apply font-bold text-water text-lg;
 	}
 </style>

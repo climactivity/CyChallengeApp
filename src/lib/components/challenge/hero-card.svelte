@@ -1,10 +1,13 @@
 <script>
-	import { randomIntBetween } from '$lib/util';
+	import { goto } from '$app/navigation';
 </script>
 
 <div
 	class="grid grid-flow-col bg-white h-36 rounded overflow-clip ring-4 ring-storm-light p-1"
 	style="grid-template-columns: 1fr 1fr;"
+	on:click={(e) => {
+		goto('/challenges/intro');
+	}}
 >
 	<div class="grid place-content-center left rounded" />
 	<div class="right flex flex-col">

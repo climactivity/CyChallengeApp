@@ -57,21 +57,28 @@ const currentAnimDirection = (naviation): AnimationDirection => {
 		}
 	}
 
+	if (originPathBase === screenOrder.challenges && targetPathBase === screenOrder.challenges) {
+		// console.log('challenges', originPathDepth, targetPathDepth);
+		if (originPathDepth === 3 || targetPathDepth === 4) {
+			return AnimationDirection.neutral;
+		}
+	}
+
 	if (originPathBase === screenOrder.journal && targetPathBase === screenOrder.journal) {
 		return AnimationDirection.neutral;
 	}
 
 	if (originPathBase !== targetPathBase) {
-		if (originPathDepth > targetPathDepth) {
-			return AnimationDirection.up;
-		} else {
-			return AnimationDirection.down;
-		}
-	} else {
 		if (originPathBase > targetPathBase) {
 			return AnimationDirection.left;
 		} else {
 			return AnimationDirection.right;
+		}
+	} else {
+		if (originPathDepth > targetPathDepth) {
+			return AnimationDirection.up;
+		} else {
+			return AnimationDirection.down;
 		}
 	}
 };
