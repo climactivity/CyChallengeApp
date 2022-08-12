@@ -37,7 +37,7 @@
 	let _difficulty: Difficulty =
 		challenge.difficulties[currentLevelForChallenge(challenge, challengeState)];
 
-	let playAt;
+	let playAt = () => console.warn('playAt undefined');
 </script>
 
 <div>

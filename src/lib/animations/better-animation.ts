@@ -28,3 +28,13 @@ export function customFlyOut(node) {
 	if (node.style.animation) return;
 	return fly(node, { y: 15, duration: 400 });
 }
+
+/**
+ * If the element was already flying out, leave it that way.
+ * Do not add another flying animation, as the new element is going
+ * to
+ */
+export function customFly(node, { y, duration }) {
+	if (node.style.animation) return;
+	return fly(node, { y, duration });
+}

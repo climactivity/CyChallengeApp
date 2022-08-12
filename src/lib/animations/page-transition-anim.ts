@@ -62,16 +62,16 @@ const currentAnimDirection = (naviation): AnimationDirection => {
 	}
 
 	if (originPathBase !== targetPathBase) {
-		if (originPathBase > targetPathBase) {
-			return AnimationDirection.left;
-		} else {
-			return AnimationDirection.right;
-		}
-	} else {
 		if (originPathDepth > targetPathDepth) {
 			return AnimationDirection.up;
 		} else {
 			return AnimationDirection.down;
+		}
+	} else {
+		if (originPathBase > targetPathBase) {
+			return AnimationDirection.left;
+		} else {
+			return AnimationDirection.right;
 		}
 	}
 };

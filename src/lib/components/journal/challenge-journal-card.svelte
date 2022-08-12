@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
 	import type { ChallengeInteraction } from '$lib/services/challenge-storage';
 
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { randomIntBetween } from '$lib/util';
 
+	export let index = 0;
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeInteraction;
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
@@ -17,7 +19,12 @@
 	export let onClick = () => {};
 </script>
 
-<div class="grid grid-flow-col h-20  " on:click={onClick} style="grid-template-columns: 1fr 2fr;">
+<div
+	class="grid grid-flow-col h-20 animate-fadeInUp opacity-0"
+	on:click={onClick}
+	style="grid-template-columns: 1fr 2fr; animation-delay: {(index * ANIMATION_BASE_SPEED) / 2 +
+		ANIMATION_BASE_SPEED}ms;"
+>
 	<div
 		class="image-element z-10 card-container shadow-amber-700 "
 		style={imageUrl

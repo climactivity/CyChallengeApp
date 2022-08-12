@@ -18,7 +18,7 @@
 </script>
 
 <div
-	class="  overflow-x-hidden h-safe relative top-0 left-0 right-0  z-20 "
+	class=" overflow-y-auto overflow-x-hidden h-safe relative top-0 left-0 right-0  z-20 "
 	on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
 >
 	<slot />

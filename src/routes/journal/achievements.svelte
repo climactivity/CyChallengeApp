@@ -9,6 +9,7 @@
 		getBookmarkedChallenges,
 		getCompletedChallenges
 	} from '$lib/services/challenge-storage';
+	import { fade, scale } from 'svelte/transition';
 
 	let activeChallenge = [];
 
@@ -29,9 +30,14 @@
 	});
 </script>
 
-<div class="px-4 py-4">
-	{#each activeChallenge as activeChallenge}
+<div
+	class="px-4 py-4"
+	in:scale={{ delay: 250, duration: 250, start: 0.8 }}
+	out:scale={{ delay: 0, duration: 250, start: 0.8 }}
+>
+	{#each activeChallenge as activeChallenge, i}
 		<ChallengeJournalCard
+			index={i}
 			challenge={activeChallenge.challenge}
 			challengeState={activeChallenge.interaction}
 			onClick={() => {
