@@ -13,6 +13,8 @@
 </script>
 
 <script lang="ts">
+import { goto } from '$app/navigation';
+
 	import BlogPost from '$lib/components/feed/blog-post.svelte';
 	import Spenden from '$lib/components/feed/spenden.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
@@ -89,7 +91,7 @@
 				</p>
 				<button
 					class="btn rounded-full mt-4 bg-sky-500 py-2  mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
-					on:click={() => alert('gut gemacht')}
+					on:click={() => goto('/newsletter')}
 				>
 					Newsletter abonnieren
 				</button>
