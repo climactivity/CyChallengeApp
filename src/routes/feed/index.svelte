@@ -13,11 +13,15 @@
 </script>
 
 <script lang="ts">
+	import BlogPost from '$lib/components/feed/blog-post.svelte';
+	import Spenden from '$lib/components/feed/spenden.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import { headerState } from '$lib/stores/header-store';
+	import { dataset_dev } from 'svelte/internal';
+	import { Background } from 'tsparticles-engine';
 	export let posts;
 	let scrollPosition;
 	headerState.set({
@@ -25,6 +29,7 @@
 		title: 'Feed',
 		hidden: false
 	});
+	let testData = [1, 2, 3, 4, 5];
 </script>
 
 <MainScreenLayoutBase>
@@ -37,14 +42,75 @@
 	/>
 
 	<MainContentContainer bind:y={scrollPosition}>
-		<div class="px-4">
-			{#if posts || posts.length > 0}
+		<div class="px-4 ">
+			<h1 class=" m-1 text-xl font-bold">Blogposts</h1>
+			<div class="flex h-44 overflow-scroll gap-4">
 				{#each posts as post}
-					<div class="mb-2 px-2 py-2 bg-white">
-						<a href={post.link}>{@html post.title.rendered}</a>
-					</div>
+				<div class="w-80 ">
+					<BlogPost {post} />
+				</div>
 				{/each}
-			{/if}
+			</div>
+		</div>
+
+		<div class="border-t border-b border-gray-300 mt-2 py-2">
+			<Spenden />
+		</div>
+
+		<div class="border-b mb-8 border-gray-300 mt-2 py-2">
+			<div class="m-4">
+				<iframe
+					class="w-full aspect-video shadow-lg rounded-lg"
+					src="https://www.youtube.com/embed/EaGnkNQPdsQ"
+					title="climactivity - Gemeinsam zum Klimaziel"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				/>
+			</div>
+		</div>
+
+		<div class="border-b mb-8 mt-2 py-2 ">
+			<div class="m-4 ">
+				<h1 class="m-1 text-xl font-bold">Teste dein Umweltwissen...!</h1>
+				<div class=" flex overflow-scroll gap-4">
+					{#each testData as data}
+						<img class="img-card flex " src="/images/test.png" alt="" />
+					{/each}
+				</div>
+			</div>
+		</div>
+
+		<div class="border-b mb-10 border-gray-300 mt-2 py-2 ">
+			<div class="m-4">
+				<h1 class="m-1 text-xl font-bold">Newsletter abonnieren:</h1>
+				<p>
+					Bleib auf dem Laufenden mit den neuesten Nachrichten von Climactivity und Veranstaltungen!
+				</p>
+				<button
+					class="btn rounded-full mt-4 bg-sky-500 py-2  mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
+					on:click={() => alert('gut gemacht')}
+				>
+					Newsletter abonnieren
+				</button>
+			</div>
 		</div>
 	</MainContentContainer>
 </MainScreenLayoutBase>
+
+<style>
+	.img-card {
+		width: 140px;
+		height: 100px;
+
+		background: url(.jpg), #d9d9d9;
+		border-radius: 0px 0px 0px 32px;
+
+		/* Inside auto layout */
+
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+	}
+	
+</style>

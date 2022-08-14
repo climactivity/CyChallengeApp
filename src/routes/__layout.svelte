@@ -103,6 +103,7 @@
 			style="padding-top: {$insets.top}px"
 		/>
 		<main class="pb-12">
+			
 			<div class="h-full relative ">
 				<!-- <PageTransition url={$page.url.href}> -->
 				<slot />
