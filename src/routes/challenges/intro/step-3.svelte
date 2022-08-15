@@ -16,7 +16,8 @@
 
 	let recommendedChallengesReq = Promise.all([
 		getChallengeBySlug('iss_mehr_pflanzen'),
-		getChallengeBySlug('iss_mehr_pflanzen')
+		getChallengeBySlug('wechsel_zu_oekostrom'),
+		getChallengeBySlug('wuensch_dir_was')
 	]);
 
 	const iOSSafari = getContext('iOSSafari');
@@ -41,16 +42,17 @@
 		similique nemo nesciunt fuga temporibus velit.
 	</div>
 </div>
-<div class="overflow-visible px-4 pb-4 h-40">
+<div class="overflow-visible  h-40">
 	{#await recommendedChallengesReq then recommendedChallenges}
 		<ChallengeScroller
 			challengeHidden={() => false}
 			challenges={recommendedChallenges}
 			title="Gute Startchallenges"
+			pad
 		/>
 	{/await}
 </div>
-<div class=" px-4 pb-4">
+<div class=" p-4 ">
 	<ButtonSecondaryCta
 		onClick={() => {
 			goto('/challenges');

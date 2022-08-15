@@ -4,10 +4,13 @@
 	import { randomIntBetween } from '$lib/util';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import type { ChallengeInteraction } from '$lib/services/challenge-storage';
+	import {
+		instanceOfChallengeReject,
+		type ChallengeInteraction
+	} from '$lib/services/challenge-storage';
 
 	export let challenge: ChallengeV2;
-	export let challengeState: ChallengeInteraction;
+	export let challengeState: ChallengeInteraction = undefined;
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
 	$: {
 		imageUrl = challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;
@@ -19,7 +22,8 @@
 
 <div
 	class:hidden={isHidden(challenge)}
-	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image"
+	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image 
+	{instanceOfChallengeReject(challengeState) ? 'bg-red-500' : ''}"
 	style={imageUrl
 		? `--bg-image: url(${$page.url.origin + '/' + imageUrl})`
 		: `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`}

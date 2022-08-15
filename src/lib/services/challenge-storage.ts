@@ -63,18 +63,25 @@ export interface ChallengeComplete extends ChallengeInteraction {
 }
 
 export function instanceOfChallengeBookmark(value): value is ChallengeBookmark {
+	if (value == undefined || value == null) return false;
 	return 'type' in value && value.type === 'bookmark';
 }
 
 export function instanceOfChallengeReject(value): value is ChallengeReject {
+	if (value == undefined || value == null) return false;
+
 	return 'type' in value && value.type === 'reject';
 }
 
 export function instanceOfChallengeAccept(value): value is ChallengeAccept {
+	if (value == undefined || value == null) return false;
+
 	return 'type' in value && value.type === 'accept';
 }
 
 export function instanceOfChallengeComplete(value): value is ChallengeComplete {
+	if (value == undefined || value == null) return false;
+
 	return 'type' in value && value.type === 'complete';
 }
 
