@@ -4,9 +4,10 @@
 	import { randomIntBetween } from '$lib/util';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import type { ChallengeInteraction } from '$lib/services/challenge-storage';
 
 	export let challenge: ChallengeV2;
-
+	export let challengeState: ChallengeInteraction;
 	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
 	$: {
 		imageUrl = challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;

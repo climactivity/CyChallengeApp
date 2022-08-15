@@ -8,7 +8,7 @@ import { goto, prefetch } from '$app/navigation';
 import { writable } from 'svelte/store';
 
 const LS_KEY_ONBOARDING = 'cy-onboarding';
-
+const LS_KEY_TUTORAIL = 'cy-onboarding-tutorial';
 const initialValue = browser ? window.localStorage.getItem(LS_KEY_ONBOARDING) ?? false : false;
 let currentValue = initialValue ? JSON.parse(initialValue) : {};
 export const onboarding = writable<OnboardingState>(currentValue);
@@ -32,3 +32,12 @@ export const onboardingGuard = async () => {
 		goto('/welcome');
 	}
 };
+
+export const tutorialStore = writable<boolean>(false);
+
+tutorialStore.subscribe((value) => {
+	if (browser) {
+		window.localStorage.setItem(LS_KEY_TUTORAIL, JSON.stringify(value));
+		currentValue = value;
+	}
+});

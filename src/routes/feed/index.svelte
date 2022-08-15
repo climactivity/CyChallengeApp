@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-import { goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
 
 	import BlogPost from '$lib/components/feed/blog-post.svelte';
 	import Spenden from '$lib/components/feed/spenden.svelte';
@@ -44,13 +44,13 @@ import { goto } from '$app/navigation';
 	/>
 
 	<MainContentContainer bind:y={scrollPosition}>
-		<div class="px-4 ">
+		<div class="px-4  ">
 			<h1 class=" m-1 text-xl font-bold">Blogposts</h1>
-			<div class="flex h-44 overflow-scroll gap-4">
+			<div class="flex h-44 overflow-x-scroll gap-4">
 				{#each posts as post}
-				<div class="w-80 ">
-					<BlogPost {post} />
-				</div>
+					<div class="w-80 ">
+						<BlogPost {post} />
+					</div>
 				{/each}
 			</div>
 		</div>
@@ -114,5 +114,4 @@ import { goto } from '$app/navigation';
 		order: 0;
 		flex-grow: 0;
 	}
-	
 </style>

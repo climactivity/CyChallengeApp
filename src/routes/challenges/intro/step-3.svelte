@@ -12,6 +12,7 @@
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
+	import { tutorialStore } from '$lib/stores/onboarding-store';
 
 	let recommendedChallengesReq = Promise.all([
 		getChallengeBySlug('iss_mehr_pflanzen'),
@@ -19,6 +20,8 @@
 	]);
 
 	const iOSSafari = getContext('iOSSafari');
+
+	tutorialStore.set(true);
 </script>
 
 <div
@@ -29,7 +32,7 @@
 	<div class="text-xl text-center font-serif font-bold pb-4">
 		<h1>Einfach loslegen</h1>
 	</div>
-	<div>
+	<div class="h-80">
 		<LottieAnim assetPath="/lottie/110955-rocket-launch-animation-space-exploration.json" />
 	</div>
 	<div>
@@ -38,7 +41,7 @@
 		similique nemo nesciunt fuga temporibus velit.
 	</div>
 </div>
-<div class="overflow-visible px-4 pb-4">
+<div class="overflow-visible px-4 pb-4 h-40">
 	{#await recommendedChallengesReq then recommendedChallenges}
 		<ChallengeScroller
 			challengeHidden={() => false}
