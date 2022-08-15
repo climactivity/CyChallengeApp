@@ -1,15 +1,31 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { slide } from 'svelte/transition';
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
+	import { slide, fly, blur } from 'svelte/transition';
+	import { customFlyOut } from '$lib/animations/better-animation';
 	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
+	import LottieAnim from '$lib/animations/lottie-anim.svelte';
+	import { TorusGeometry } from 'three';
 </script>
 
-<div class="grid grid-flow-row bg-white" out:slide={{ duration: ANIMATION_BASE_SPEED }}>
-	<div>Step 1</div>
+<div
+	class="grid grid-flow-row bg-white p-4 m-4 rounded-lg"
+	in:blur={{ duration: ANIMATION_BASE_SPEED, delay: ANIMATION_BASE_SPEED }}
+	out:blur={{ duration: ANIMATION_BASE_SPEED }}
+>
+	<div class="text-xl text-center font-serif font-bold pb-4">
+		<h1>Was sind Bigpoints</h1>
+	</div>
+
 	<div>
 		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt sequi, atque adipisci aliquid
 		amet ex nostrum corrupti, praesentium distinctio libero, maiores beatae obcaecati consectetur
 		similique nemo nesciunt fuga temporibus velit.
+	</div>
+	<div class="h-80">
+		<LottieAnim
+			assetPath="/lottie/112117-404-page.json"
+			animOptions={{ loop: true, autoplay: true, pauseAfter: 1800 }}
+		/>
 	</div>
 </div>

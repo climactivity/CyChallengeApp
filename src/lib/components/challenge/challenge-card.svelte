@@ -13,7 +13,7 @@
 		// console.log('image', challenge.image?.file?.path, $page.url);
 	}
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
-	export let tags;
+	export let tags = {};
 </script>
 
 <div
@@ -31,9 +31,9 @@
 		<!-- {#each challenge.topic as topic} -->
 		{#if tags[challenge.topic]}
 			{#if challenge.impact === 'Big Point'}
-				<div class="card_tag_inverted ">{tags[challenge.topic]}</div>
+				<div class="card_tag_inverted ">{tags[challenge.topic] ?? ''}</div>
 			{:else}
-				<div class="card_tag ">{tags[challenge.topic]}</div>
+				<div class="card_tag ">{tags[challenge.topic] ?? ''}</div>
 			{/if}
 		{/if}
 		<!-- {/each} -->

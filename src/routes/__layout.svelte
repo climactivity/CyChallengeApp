@@ -14,13 +14,8 @@
 	import { root } from 'postcss';
 	import { onMount } from 'svelte';
 	import { init, nkReady } from '$lib/client';
+	import { insets } from '$lib/stores/context';
 
-	let insets = writable({
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0
-	});
 	setContext('insets', insets);
 
 	SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
@@ -31,12 +26,15 @@
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
 	let url = $page.routeId;
 	let iOSSafari = false;
+
 	if (browser) {
 		let ua = window.navigator.userAgent;
 		let iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
 		let webkit = !!ua.match(/WebKit/i);
 		iOSSafari = iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/FxiOS/i);
 	}
+
+	setContext('iOSSafari', iOSSafari);
 
 	if (browser) {
 		CapacitorApp.addListener('backButton', ({ canGoBack }) => {
@@ -87,12 +85,13 @@
 		: 'h-[100vh]'} overflow-hidden bg-slate-100"
 >
 	<safe-area
+		id="safe-area"
 		class="area"
 		style="
         top: {$insets.top}px;
         left: {$insets.left}px;
         right: {$insets.right}px;
-        {iOSSafari ? `${$insets.bottom}px` : 'h-[100vh]'}
+        bottom: {iOSSafari ? `${$insets.bottom}px` : 'h-[100vh]'}
         "
 	>
 		<div
@@ -103,7 +102,6 @@
 			style="padding-top: {$insets.top}px"
 		/>
 		<main class="pb-12">
-			
 			<div class="h-full relative ">
 				<!-- <PageTransition url={$page.url.href}> -->
 				<slot />

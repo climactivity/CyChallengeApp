@@ -5,7 +5,7 @@
 	export let title = '';
 	export let challenges: ChallengeV2[] = [];
 	export let challengeHidden: (ChallengeV2) => boolean;
-	export let tags;
+	export let tags = {};
 	export let pad = false;
 </script>
 
@@ -17,8 +17,8 @@
 			? 'px-4'
 			: ''} h-scroller snaps-inline"
 		style="
-            grid-auto-columns: 6rem;
-            grid-template-rows: 8rem;
+            grid-auto-columns: 4rem;
+            grid-template-rows: 4rem;
         "
 	>
 		{#if challenges && challenges.length > 0}

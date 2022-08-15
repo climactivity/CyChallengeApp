@@ -15,6 +15,10 @@
 	showMenu.subscribe((state) => {
 		shadow = !state;
 	});
+
+	page.subscribe((state) => {
+		shadow = !state.routeId.startsWith('challenges/intro');
+	});
 </script>
 
 <div
