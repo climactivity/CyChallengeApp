@@ -33,7 +33,7 @@
 	<div class="text-xl text-center font-serif font-bold pb-4">
 		<h1>Einfach loslegen</h1>
 	</div>
-	<div class="h-80">
+	<div class="h-80 w-72 mx-auto">
 		<LottieAnim assetPath="/lottie/110955-rocket-launch-animation-space-exploration.json" />
 	</div>
 	<div>

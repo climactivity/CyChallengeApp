@@ -18,7 +18,7 @@
 		amet ex nostrum corrupti, praesentium distinctio libero, maiores beatae obcaecati consectetur
 		similique nemo nesciunt fuga temporibus velit.
 	</div>
-	<div>
+	<div class="h-80 w-72 mx-auto">
 		<LottieAnim assetPath="/lottie/104853-thinking.json" />
 	</div>
 </div>

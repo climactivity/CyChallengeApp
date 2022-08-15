@@ -22,7 +22,7 @@
 		amet ex nostrum corrupti, praesentium distinctio libero, maiores beatae obcaecati consectetur
 		similique nemo nesciunt fuga temporibus velit.
 	</div>
-	<div class="h-80">
+	<div class="h-80 w-72 mx-auto">
 		<LottieAnim
 			assetPath="/lottie/112117-404-page.json"
 			animOptions={{ loop: true, autoplay: true, pauseAfter: 1800 }}
