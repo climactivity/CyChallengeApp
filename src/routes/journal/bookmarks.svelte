@@ -87,6 +87,7 @@
 				button vormerken
 			</div>
 			<ButtonPrimaryCta onClick={() => goto('/challenges')}>Nimm dir welche vor</ButtonPrimaryCta>
+			<div class=" h-40" />
 		</div>
 	{/if}
 </div>

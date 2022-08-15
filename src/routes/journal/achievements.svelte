@@ -71,5 +71,6 @@
 			</div>
 			<ButtonPrimaryCta onClick={() => goto('/challenges')}>Nimm dir welche vor</ButtonPrimaryCta>
 		</div>
+		<div class=" h-40" />
 	{/if}
 </div>

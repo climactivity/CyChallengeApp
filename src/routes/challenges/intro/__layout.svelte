@@ -85,7 +85,7 @@
 		<button disabled={!routesNext[$page.routeId]} on:click={(e) => next()}> Weiter </button>
 	</div>
 	<MainContentContainer bind:y={scrollPos}>
-		<div class="relative min-h-full">
+		<div class="relative min-h-full max-w-3xl mx-auto">
 			<slot />
 		</div>
 	</MainContentContainer>
