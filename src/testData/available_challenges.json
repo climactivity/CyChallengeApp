@@ -5,7 +5,6 @@
         "handabdruck": "Handabdruck",
         "geld_sparen": "Geld sparen",
         "fuer_mieter": "Für Mieter",
-        "strom_sparen": "Strom sparen",
         "leicht_gemacht": "Leicht gemacht"
     },
     "topics": {
@@ -13,41 +12,33 @@
         "strom": "Strom",
         "bewusster_konsum": "Bewusster Konsum",
         "mobilitaet_zu_lande": "Mobilität zu Lande",
-        "urlaub__fliegen": "Urlaub & Fliegen",
+        "urlaub_amp_fliegen": "Urlaub &amp; Fliegen",
         "waerme": "Wärme",
         "sharing_is_caring": "Sharing is Caring",
-        "geld__finanzen": "Geld & Finanzen",
+        "geld_amp_finanzen": "Geld &amp; Finanzen",
         "klimakommunikation": "Klimakommunikation",
         "sich_informieren": "Sich informieren",
-        "politik__gesellschaft": "Politik & Gesellschaft",
-        "schule__betrieb": "Schule & Betrieb"
+        "politik_amp_gesellschaft": "Politik &amp; Gesellschaft",
+        "schule_amp_betrieb": "Schule &amp; Betrieb"
     },
     "challenges": {
         "Ernährung": [
             {
                 "title": "Iss mehr Pflanzen!",
+                "lead": false,
                 "impact": "Big Point",
                 "tags": [
                     "gesundes_leben",
                     "fussabdruck"
                 ],
                 "frontMatter": "Wusstest du, dass du mit der Umstellung auf eine pflanzlichere Ernährung ca. 35% CO2 einsparen kannst? Definitiv ein Grund das mal auszuprobieren.",
-                "image": {
-                    "file": {
-                        "path": "images/E1.webp",
-                        "size": {
-                            "x": 1279,
-                            "y": 1920
-                        }
-                    },
-                    "url": "https://unsplash.com/photos/Faf6gzEI3Do"
-                },
+                "image": {},
                 "points": "",
                 "type": "recurring",
-                "Notification-Text": "Hey, denk dran, diese Woche wolltest du wieder an ... Tagen kein Fleisch essen.",
-                "Nach Annahme der Challenge soll erinnert werden in...Tagen": 7.0,
-                "content": "Ein Großteil der Treibhausgasemissionen aus der Landwirtschaft ist biologischen Prozessen zuzuschreiben. Dazu zählt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren. Lachgas entsteht vor allem als Folge einer viel zu hohen Tierhaltungsdichte und der damit verbundenen Überdüngung. Durch die Verdauungsprozesse von Wiederkäuern (Rindern, Schafen, Ziegen) kommt es zur Freisetzung von Methan. Lachgas und Methan sind deshalb besonders klimarelevant, weil sie in großen Mengen entstehen und beide Gase deutlich klimaschädlicher sind als das bekannte CO2. Für Methan und Lachgas gilt die Landwirtschaft mit einem Anteil von ca. 50 bzw. 60% als Hauptverursacher in Deutschland.\n",
-                "Status": "in Korrektur",
+                "notification": "Hey, denk dran, diese Woche wolltest du wieder an ... Tagen kein Fleisch essen.",
+                "notificationDays": 7.0,
+                "content": "Ein Großteil der Treibhausgasemissionen aus der Landwirtschaft ist biologischen Prozessen zuzuschreiben. Dazu zählt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren. Lachgas entsteht vor allem als Folge einer viel zu hohen Tierhaltungsdichte und der damit verbundenen Überdüngung. Durch die Verdauungsprozesse von Wiederkäuern (Rindern, Schafen, Ziegen) kommt es zur Freisetzung von Methan. Lachgas und Methan sind deshalb besonders klimarelevant, weil sie in großen Mengen entstehen und beide Gase deutlich klimaschädlicher sind als das bekannte CO2. Für Methan und Lachgas gilt die Landwirtschaft mit einem Anteil von ca. 50 bzw. 60% als Hauptverursacher in Deutschland.",
+                "Status": "Fertig (aber wird nochmal nach neuen Vorgaben überarbeitet)",
                 "difficulties": {
                     "easy": {
                         "taskDescription": "Ich esse an einem Tag in der Woche kein Fleisch.",
@@ -110,6 +101,7 @@
             },
             {
                 "title": "Deine vegane Dinnerparty!",
+                "lead": false,
                 "impact": "Peanut",
                 "tags": [
                     "gesundes_leben",
@@ -119,8 +111,8 @@
                 "image": "",
                 "points": "",
                 "type": "recurring",
-                "Notification-Text": "",
-                "Nach Annahme der Challenge soll erinnert werden in...Tagen": "",
+                "notification": "",
+                "notificationDays": "",
                 "content": "Die Ernährung trägt weltweit auch in Deutschland mit ca. 15% zur globalen Treibhausgas-Emission bei. Soll dieser CO2-Fußabdruck gesenkt werden, müssen sich unsere Ernährungsgewohnheiten und folglich auch die Landwirtschaft ändern. Dafür eignet sich sich eine \"Klimatarische Ernährung\". Im Gegensatz zu einer veganen Ernährung musst du bei einer klimatarischen Ernährung den Verzehr von tierischen Produkten zwar auch deutlich reduzieren, aber nicht gänzlich darauf verzichten. Dennoch lohnt es sich zur Ernährungsumstellung auch mal Dinnerpartys zu veranstalten, die ganz ohne tierische Produkte auskommen, um deine Gewohnheiten und die deiner Gäste zu verändern. ",
                 "Status": "in Bearbeitung",
                 "difficulties": {
@@ -157,6 +149,7 @@
         "Strom": [
             {
                 "title": "Wechsel zu Ökostrom!",
+                "lead": false,
                 "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
@@ -167,8 +160,15 @@
                 "image": "",
                 "points": "",
                 "type": "one-time",
-                "Notification-Text": "Hey, hast du schon deinen Stromanbieter gewechselt?",
-                "Nach Annahme der Challenge soll erinnert werden in...Tagen": "7,7,14,28,28,28",
+                "notification": "Hey, hast du schon deinen Stromanbieter gewechselt?",
+                "notificationDays": [
+                    7,
+                    7,
+                    14,
+                    28,
+                    28,
+                    28
+                ],
                 "content": " In Deutschland ist die Stromversorgung in den letzten Jahren für etwa ein Drittel der Treibhausgas-Emissionen verantwortlich gewesen. Denn unser Strom kommt ja nicht einfach aus der Steckdose, sondern muss erst auf die eine oder andere Weise produziert werden. In Deutschland passiert das zu einem großen Teil immer noch mithilfe fossiler Energieträger (Öl, Kohle, Gas). Die fossilen Energieträger kommen nicht nur bei der Stromproduktion, sondern auch z.B. als Treibstoff oder bei der Wärmeversorgung zum Einsatz. Ob wir es schaffen werden, unsere CO2-Emissionen wirksam und schnell zu reduzieren, hängt deswegen ganz wesentlich von der Frage ab, wie wir in Zukunft anders Strom produzieren. Mit dem Wechsel zu einem Ökostromanbieter können wir die Sache selbst in die Hand nehmen und den Zubau bei den erneuerbaren Energien beschleunigen. Ökostrom ist dabei nicht teuer! Im Gegenteil, in den meisten Fällen kannst du gegenüber dem Tarif deines Grundversorgers sogar noch sparen. ",
                 "Status": "in Bearbeitung",
                 "difficulties": {
@@ -203,7 +203,8 @@
             },
             {
                 "title": "Ökostrom für Alle!",
-                "impact": "Big Point\n",
+                "lead": false,
+                "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
                     "handabdruck"
@@ -212,8 +213,8 @@
                 "image": "",
                 "points": "",
                 "type": "recurring",
-                "Notification-Text": "",
-                "Nach Annahme der Challenge soll erinnert werden in...Tagen": "",
+                "notification": "",
+                "notificationDays": "",
                 "content": "",
                 "Status": "in Bearbeitung",
                 "difficulties": {
@@ -248,17 +249,18 @@
             },
             {
                 "title": "Strom sparen",
-                "impact": "Big Point\n",
+                "lead": false,
+                "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
-                    "strom_sparen"
+                    "fussabdruck"
                 ],
                 "frontMatter": "Mach den Strom-Sparcheck und schone Geldbeutel und Klima. Denn die beste Kilowattstunde ist die, die gar nicht erst produziert werden muss.",
                 "image": "",
                 "points": "",
                 "type": "recurring",
-                "Notification-Text": "",
-                "Nach Annahme der Challenge soll erinnert werden in...Tagen": "",
+                "notification": "",
+                "notificationDays": "",
                 "content": "",
                 "Status": "in Bearbeitung",
                 "difficulties": {},
@@ -269,6 +271,7 @@
         " Bewusster Konsum": [
             {
                 "title": "Wünsch dir was!",
+                "lead": false,
                 "impact": "Peanut",
                 "tags": [
                     "geld_sparen",
@@ -322,6 +325,7 @@
             },
             {
                 "title": "Wunschliste für Alle!",
+                "lead": false,
                 "impact": "Peanut",
                 "tags": [
                     "geld_sparen",
@@ -353,13 +357,266 @@
                 "topic": "bewusster_konsum"
             }
         ],
-        "Mobilität zu Lande": [],
-        "Urlaub & Fliegen": [],
-        "Wärme": [],
+        "Mobilität zu Lande": [
+            {
+                "title": "Allein ist nicht fein",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "geld_sparen",
+                    "gesundes_leben",
+                    "fussabdruck"
+                ],
+                "frontMatter": "Das Kernproblem bei der Mobilität zu Lande sind die Kilometer, die so viele Menschen im Auto alleine fahren. Verringere deine allein gefahrenen Kilometer durch einen Umstieg aufs Fahrrad oder den ÖPNV, durch Park & Ride, Mitfahrgelegenheiten oder indem du Fahrten vermeidest.",
+                "image": {},
+                "points": " ",
+                "type": "recurring",
+                "content": " ",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich fahr zwar mehr als 125 km alleine Auto, aber bemühe mich immer eine Alternative zu finden.",
+                        "todos": [
+                            {
+                                "name": "",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich fahre nicht mehr als 125 km in der Woche alleine Auto",
+                        "todos": [
+                            {
+                                "name": "",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich fahre nicht mehr als 35 km in der Woche alleine Auto",
+                        "todos": [
+                            {
+                                "name": "",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "allein_ist_nicht_fein",
+                "topic": "mobilitaet_zu_lande"
+            }
+        ],
+        "Urlaub &amp; Fliegen": [
+            {
+                "title": "Bleib Mal am Boden!",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "fussabdruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "Fliegen ist rund 7.5-Mal klimaschädlicher als Bus- und Bahnfahren. Das ist doch eigentlich bereits Grund genug um während der nächsten Urlaubsreise auf dem Boden zu bleiben?",
+                "image": "",
+                "points": "",
+                "type": "one-time",
+                "notification": "Wie sieht es mit deiner Bodenhaftung aus; planst du immer noch alle Reisen mit Bus, Bahn oder Zug?",
+                "notificationDays": [
+                    14,
+                    30,
+                    60,
+                    180
+                ],
+                "content": "Fliegen ist von allen Verkehrsmitteln die klimaschädlichste Art sich fortzubewegen. Kein anderes Verkehrsmittel verursacht eine vergleichbare Menge an Treibhausgas pro Personenkilometer. Dazu ein kleiner Vergleich: Auf einem Inlandsflug werden pro Personenkilometer 230 gCO2eq ausgestossen. Mit dem PKW (mit nur einer Person!) sind 147  gCO2eq sid und mit dem Zug oder dem Bus im Fernverkehr nur etwa 30 gCO2eq. Somit ist Fliegen rund 7,5-mal klimaschädlicher als Zug/Bus/Bahnfahren!",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich ....",
+                        "todos": [
+                            {
+                                "name": "Keine Flüge unter einer Distanz von 800 km",
+                                "reward": null
+                            },
+                            {
+                                "name": "800-3800 km: mindestens eine Woche bleiben",
+                                "reward": null
+                            },
+                            {
+                                "name": "Weiter als 3800 km: mindestens 2 Wochen bleiben.",
+                                "reward": null
+                            },
+                            {
+                                "name": "auf  www.unter1000.de registrieren",
+                                "reward": null
+                            },
+                            {
+                                "name": "das Portal katzensprung-deutschland.de kennenlernen",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich fliege nicht (mehr). Seit midestens einem Jahr habe meine Füsse den Boden nicht mehr verlassen. ",
+                        "todos": []
+                    }
+                },
+                "slug": "bleib_mal_am_boden",
+                "topic": "urlaub_amp_fliegen"
+            },
+            {
+                "title": "Anderen helfen, am Boden zu bleiben.",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {},
+                "slug": "anderen_helfen_am_boden_zu_bleiben",
+                "topic": "urlaub_amp_fliegen"
+            }
+        ],
+        "Wärme": [
+            {
+                "title": "Bleib cool!",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen",
+                    "fussabdruck",
+                    "leicht_gemacht",
+                    "fuer_mieter"
+                ],
+                "frontMatter": "Sparsame Gewohnheiten beim Heizen und Lüften sind kinderleicht und wirken sich positiv auf Klima und Geldbeutel aus. Also warm anziehen und gleich ausprobieren!",
+                "image": {},
+                "points": "jeweils 100 Punkte",
+                "type": "recurring",
+                "notification": "Hey, denk dran, diese Woche wolltest du dich wieder darin üben, sparsam(er) zu lüften und zu heizen.",
+                "notificationDays": 7.0,
+                "content": "Im deutschen Durchschnitt macht der Wärmebedarf für Heizen und Warmwasser etwa ein Siebtel des individuellen Fußabdrucks aus (UBA-CO2-Rechner). Die Beheizung deines Arbeitsplatzes und all der Gebäude, in denen Produkte für dich hergestellt und Dienstleistungen für dich erbracht werden, kommt zu den Emissionen des Sektors Wärme noch hinzu. Auch wenn du gerade nicht die Kapazitäten für große Veränderungen wie eine energetische Sanierung hast, gibt es doch jede Menge kleine Maßnahmen, die schon viel helfen und dir gleichzeitig noch Geld sparen!",
+                "Status": "Fertig",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich heize eine Woche lang nur die Räume, in denen ich mich aufhalte und minimiere den Wärmeverlust.",
+                        "todos": [
+                            {
+                                "name": "Heizung in Räumen abdrehen, die länger nicht benutzt werden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Vorhänge und Rolläden schließen, damit weniger Wärme verloren geht",
+                                "reward": null
+                            },
+                            {
+                                "name": "Noch mehr Tipps finden, z.B. hier https://utopia.de/ratgeber/richtig-heizen-energiesparen/",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich achte zwei Wochen lang besonders darauf, energiesparend zu lüften.",
+                        "todos": [
+                            {
+                                "name": "Mehrmals täglich Stoßlüften statt das Fenster auf Kipp zu halten",
+                                "reward": null
+                            },
+                            {
+                                "name": "Nach dem Duschen oder Kochen auf Durchzug lüften",
+                                "reward": null
+                            },
+                            {
+                                "name": "Noch mehr Tipps finden, z.B. hier https://utopia.de/ratgeber/richtig-lueften-gegen-schimmel/",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich heize benutzte Räume einen Monat lang auf niedrigen Temperaturen.",
+                        "todos": [
+                            {
+                                "name": "Heizung auf 18-20 Grad, im Schlafzimmer reichen 16-18 Grad",
+                                "reward": null
+                            },
+                            {
+                                "name": "Im Bad darf es auch gerne etwas wärmer sein ;)",
+                                "reward": null
+                            },
+                            {
+                                "name": "Erst wärmer anziehen oder Wärmflasche machen bevor die Heizung aufgedreht wird",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "bleib_cool",
+                "topic": "waerme"
+            },
+            {
+                "title": "Optimal warm in der Mietwohnung",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "geld_sparen",
+                    "fussabdruck",
+                    "fuer_mieter"
+                ],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses, die sich aber natürlich nicht für jede:n mal so eben machen lässt. Darüber hinaus gibt es aber auch einen beträchtlichen Teil, der von dir als Nutzer:in von Heizung und Warmwasser abhängt. Wir zeigen dir, mit welchen Maßnahmen du einen Unterschied machen kannst!- in einer kleineren Wohnung kommen natürlich weniger Energiekosten zustande & mit mehr Leuten auch weniger Verbrauch pro Kopf- ein Großteil unseres Warmwasserverbrauchs geht auf Duschen & Baden zurück - auch hier können wir viel einsparen, ohne direkt kalt duschen zu müssen",
+                "Status": "In Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Sparduschkopf einbauen",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Möglichkeiten für Automatisches Thermostat prüfen + einbauen",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Fenter abdichten",
+                        "todos": []
+                    }
+                },
+                "slug": "optimal_warm_in_der_mietwohnung",
+                "topic": "waerme"
+            },
+            {
+                "title": "Optimal warm im Eigenheim",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "fussabdruck"
+                ],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses.",
+                "Status": "in Bearbeitung",
+                "difficulties": {},
+                "slug": "optimal_warm_im_eigenheim",
+                "topic": "waerme"
+            }
+        ],
         "Sharing is Caring": [
             {
                 "title": "Finde deine Sharing Community!",
-                "impact": "",
+                "lead": false,
+                "impact": "Peanut",
                 "tags": [
                     "geld_sparen",
                     "fussabdruck"
@@ -406,10 +663,10 @@
                 "topic": "sharing_is_caring"
             }
         ],
-        "Geld & Finanzen": [],
+        "Geld &amp; Finanzen": [],
         "Klimakommunikation": [],
         "Sich informieren": [],
-        "Politik & Gesellschaft": [],
-        "Schule & Betrieb": []
+        "Politik &amp; Gesellschaft": [],
+        "Schule &amp; Betrieb": []
     }
 }
