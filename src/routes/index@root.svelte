@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { goto, prefetch } from '$app/navigation';
-import enablePlugins from '$lib/plugins/EnablePlugins';
+	import enablePlugins from '$lib/plugins/EnablePlugins';
 	import { onboarding, onboardingGuard } from '$lib/stores/onboarding-store';
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
-		enablePlugins();
-		onboardingGuard();
+		await enablePlugins();
+		await onboardingGuard();
+		goto;
 	});
 </script>
 

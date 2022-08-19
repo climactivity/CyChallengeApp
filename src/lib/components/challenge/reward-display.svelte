@@ -5,7 +5,7 @@
 
 <div
 	class="rounded-md   grid grid-flow-col items-center place-content-between h-20 gap-8"
-	style="grid-template-columns: 1fr 1fr;"
+	style="grid-auto-columns: 1fr;"
 >
 	{#if points > 0}
 		<div

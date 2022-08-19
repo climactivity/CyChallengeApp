@@ -49,7 +49,7 @@
 			/>
 		{/each}
 	{:else}
-		<div class="h-[100vh] px-4">
+		<div class="min-h-full px-4">
 			<svg
 				class="w-full h-full text-storm-light rotate-6"
 				viewBox="0 0 40 40"

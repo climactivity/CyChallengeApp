@@ -9,7 +9,7 @@
 	export let challenge: ChallengeV2;
 
 	let selectedDate = '';
-
+	export let onchanged = (date) => {};
 	const setNewNextCheckpoint = (challenge, date) => {
 		console.log('setNewNextCheckpoint', challenge.slug, date);
 		acceptChallenge(
@@ -28,7 +28,10 @@
 			<input
 				type="datetime-local"
 				bind:value={selectedDate}
-				on:change={() => setNewNextCheckpoint(challenge, selectedDate)}
+				on:change={() => {
+					onchanged(selectedDate);
+					setNewNextCheckpoint(challenge, selectedDate);
+				}}
 			/>
 		</form>
 	</div>

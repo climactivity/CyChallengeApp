@@ -96,6 +96,13 @@
 
 	let showBigpointReminder =
 		challenge.impact === 'peanut' && getTopicBigointChallengeState(challenge.topic);
+
+	let numCompletions, medals;
+	$: {
+		numCompletions = challengeState?.completions?.length ?? 0;
+		medals = challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions;
+		console.log('medals', medals);
+	}
 </script>
 
 <div class="pb-16" transition:fade={{ duration: 250 }}>
@@ -134,10 +141,7 @@
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
 			<div>Durch diese Challenge erhaltene Punkte</div>
 			<div>
-				<RewardDisplay
-					medals={challengeState.completions?.length ?? 0}
-					points={challengeState.accScore}
-				/>
+				<RewardDisplay {medals} points={challenge.score * medals} />
 				Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
 			</div>
 		{/if}

@@ -99,7 +99,7 @@ export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
 	if (
-		challengeState === null ||
+		challengeState === undefined ||
 		challengeState.type === 'bookmark' ||
 		challengeState.type === 'reject' ||
 		(challengeState.type === 'accept' &&
@@ -477,7 +477,7 @@ export const completeChallenge = async (
 				const acceptedChallenge: ChallengeAccept = {
 					...value,
 					lastDifficulty: level,
-
+					currentSteps: [],
 					completions: [...(value.completions ?? []), { completedAt: new Date(), level }]
 				};
 

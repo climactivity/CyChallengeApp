@@ -63,6 +63,6 @@
 	}
 	.activeTab {
 		text-decoration-line: none;
-		@apply font-bold text-water text-lg;
+		@apply font-bold text-water2-dark text-lg;
 	}
 </style>
