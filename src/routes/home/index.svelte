@@ -1,29 +1,33 @@
-<script>
-	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
-	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
+<script lang="ts">
+	import { goto } from '$app/navigation';
+
+	import WirkungAktion from '$lib/components/home/wirkung-aktion.svelte';
 </script>
 
-<MainScreenLayoutBase>
-	<MainContentContainer>
-		<ul class="list-disc">
-			<li>hier eine Übersicht über die Bigpoints einfügen</li>
-			<li>nur über die Fußabruck dinge</li>
-			<li>anzeigen wenn geschätze Halbierung geschaft ist</li>
-			<li>am besten mit so einer Tafel mit den 8 Lead-Challenge-Completions</li>
+<div class="p-4">
+	<WirkungAktion />
 
-			<ul>
-				<li>"Ernährung"</li>
-				<li>"Strom & Wärme "</li>
-				<li>"Bewusster Konsum"</li>
-				<li>"Mobilität zu Lande"</li>
-				<li>"Urlaub & Fliegen"</li>
-				<li>"Sharing is Caring"</li>
-				<li>"Geld & Finanzen"</li>
-				<li>"Klimakommunikation"</li>
-				<li>"Sich informieren"</li>
-				<li>"Politik & Gesellschaft"</li>
-				<li>"Schule & Betrieb"</li>
-			</ul>
-		</ul>
-	</MainContentContainer>
-</MainScreenLayoutBase>
+	<button
+		class="btn rounded-full mt-4 bg-sky-400 py-3  mx-auto w-full cursor-auto focus:bg-sky-300 hover:bg-sky-300"
+		on:click={() => goto('/freund-einladen')}
+	>
+		Freund einladen
+	</button>
+
+	<div class="py-8">
+		<h2 class="text-lg py-3 font-bold">Unser Partner</h2>
+		<img class="w-full" src="/images/partner.svg" alt="alt" >
+	</div>
+
+	<div class="pb-8 ">
+		<h2 class="text-lg py-3 font-bold">Unser App bewerten!</h2>
+		<img class="w-full" src="/images/app-bewerten.svg" alt="alt" >
+	</div>
+
+	<button
+		class="btn rounded-full mt-4 bg-green-400 mb-24 py-3 mx-auto w-full cursor-auto focus:bg-green-300 hover:bg-green-300"
+		on:click={() => goto('/contact')}
+	>
+		Uns kontaktieren
+	</button>
+</div>

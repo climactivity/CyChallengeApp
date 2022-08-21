@@ -1,15 +1,16 @@
-<div class="flex flex-row justify-between mb-3">
-	<div class="font-semibold text-xl font-serif transition-all">
-		<img src="/favicon.png" alt="user-icon" />
-	</div>
+<script lang="ts">
+	import { goto } from '$app/navigation';
+</script>
+
+<div class="flex gap-2 items-center justify-center">
 	<div
-		class="rounded-md   grid grid-flow-col items-end place-content-evenly  gap-2"
-		style="grid-template-columns: 1fr 1fr;">
-		<div
-			class="grid grid-flow-col items-center place-items-center border border-black border-opacity-10 rounded-xl">
+		class="flex flex-col gap-5 items-center place-items-center border border-black border-opacity-10 rounded-xl p-3 m-2 w-full"
+		on:click={() => goto('/journal')}>
+		<div class="text-sm">Meine Wirkung</div>
+		<div class="flex">
 			<div class="text-nature-dark w-full ">
 				<svg
-					class="h-4 w-4 mx-auto mr-4"
+					class="h-12 w-12 mx-auto mr-4"
 					viewBox="0 0 57 76"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -21,15 +22,20 @@
 				</svg>
 			</div>
 
-			<div class="text-md text-nature-dark">
-				{0}
+			<div class="text-2xl  text-nature-dark">
+				{2476}
 			</div>
 		</div>
-		<div
-			class="grid grid-flow-col items-center place-items-center  border border-black border-opacity-10  px-4  rounded-xl">
+	</div>
+	<div
+		class="flex flex-col gap-5 items-center place-items-center border border-black border-opacity-10 rounded-xl p-3 m-2 w-full"
+		on:click={() => goto('/challenges')}
+	>
+		<div class="text-sm">Meine Aktionen</div>
+		<div class="flex">
 			<div class="text-heart w-full 0">
 				<svg
-					class="h-4 w-4 mx-auto mr-4"
+					class="h-12 w-12 mx-auto mr-4"
 					viewBox="0 0 76 76"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -45,9 +51,37 @@
 				</svg>
 			</div>
 
-			<div class="text-md text-heart">
-				{0}
+			<div class="text-2xl text-heart">
+				{4}
 			</div>
 		</div>
 	</div>
 </div>
+
+<style>
+
+	.frame88 {
+		box-sizing: border-box;
+
+		/* Auto layout */
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 10px 20px;
+		gap: 10px;
+
+		width: 150px;
+		height: 121px;
+
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		border-radius: 16px;
+
+		/* Inside auto layout */
+
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+	}
+</style>

@@ -2,7 +2,7 @@
 	export async function load({ params, fetch, session, stuff }) {
 		let res = await fetch('https://climactivity.de/wp-json/wp/v2/posts/');
 		let posts = await res.json();
-		console.log('posts', posts);
+
 		return {
 			status: 200,
 			props: {
@@ -90,7 +90,7 @@
 					Bleib auf dem Laufenden mit den neuesten Nachrichten von Climactivity und Veranstaltungen!
 				</p>
 				<button
-					class="btn rounded-full mt-4 bg-sky-500 py-2  mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
+					class="btn rounded-full mt-4 bg-sky-500 py-3 mb-12 mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
 					on:click={() => goto('/newsletter')}
 				>
 					Newsletter abonnieren
