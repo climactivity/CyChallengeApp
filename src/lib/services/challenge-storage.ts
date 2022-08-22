@@ -190,7 +190,7 @@ export const getLastCompletion = (challengeState): DateTime | null => {
 	if (challengeState.type === 'accept') {
 		const last = (challengeState as ChallengeAccept).completions.reduce((acc, cur) => {
 			const curDT = DateTime.fromISO(cur.completedAt);
-			console.log(acc, cur.completedAt, curDT);
+			// console.log(acc, cur.completedAt, curDT);
 			if (curDT.ts > acc.ts) {
 				console.log('returning', curDT);
 				return curDT;
