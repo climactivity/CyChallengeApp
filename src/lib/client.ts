@@ -5,7 +5,11 @@ import { matchdata, matchstatus } from '$lib/stores/context';
 import { goto } from '$app/navigation';
 
 export const ssr = false;
-console.log('nk use ssl', import.meta.env.VITE_NAKAMA_USE_SSL);
+console.log('connecting to nakama with settings:', {
+    host: import.meta.env.VITE_NAKAMA_HOST,
+    port: import.meta.env.VITE_NAKAMA_PORT,
+    useSSL: import.meta.env.VITE_NAKAMA_USE_SSL
+});
 export let client = new Client(
     import.meta.env.VITE_NAKAMA_CLIENT_API_KEY,
     import.meta.env.VITE_NAKAMA_HOST,
@@ -26,7 +30,7 @@ export const nkReady = writable(false);
 export const init = async () => {
     if (reconnectHandle) {
         clearInterval(reconnectHandle)
-    } 
+    }
     deviceId = await localStorage.getItem('NK_DEVICE_ID');
     if (!deviceId) {
         let deviceId = v4();
@@ -69,11 +73,11 @@ socket.ondisconnect = (e) => {
     }, 3000);
 };
 
-let matchId 
+let matchId
 
 socket.onmatchmakermatched = async (matched) => {
     matchId = matched.match_id
-    const match : Match = await socket.joinMatch(matched.match_id, matched.token);
+    const match: Match = await socket.joinMatch(matched.match_id, matched.token);
     matchstatus.set(match);
     console.log(match);
     // goto('/match');
@@ -115,7 +119,7 @@ socket.onmatchdata = (matchData) => {
 };
 
 export const sendMatchData = (opcode, data = null, presence = null) => {
-    socket.sendMatchState(matchId, opcode, data, presence )
+    socket.sendMatchState(matchId, opcode, data, presence)
 }
 
 export const sendAnalytics = async (event: string, data: any, contextId?: string) => {

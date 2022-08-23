@@ -2,6 +2,9 @@
 	import { goto } from '$app/navigation';
 
 	import WirkungAktion from '$lib/components/home/wirkung-aktion.svelte';
+import { onMount } from 'svelte';
+	onMount(async () => {
+	})
 </script>
 
 <div class="p-4">

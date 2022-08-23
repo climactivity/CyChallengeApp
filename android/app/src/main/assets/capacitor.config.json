@@ -1,10 +1,6 @@
 {
-	"appId": "de.climactivity.challenge",
-	"appName": "cychallengeapp",
+	"appId": "de.climactivity.challenges",
+	"appName": "Climactivity",
 	"webDir": "build",
-	"bundledWebRuntime": false,
-	"server": {
-		"url": "cy-challenge-app-beta.netlify.app",
-		"cleartext": false
-	}
+	"bundledWebRuntime": false
 }

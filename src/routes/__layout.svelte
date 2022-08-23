@@ -15,6 +15,7 @@
 	import { onMount } from 'svelte';
 	import { init, nkReady } from '$lib/client';
 	import { insets } from '$lib/stores/context';
+import { oneSignalInit } from '$lib/push-notifications';
 
 	setContext('insets', insets);
 
@@ -59,6 +60,8 @@
 		if (!$nkReady) {
 			await init();
 		}
+		await oneSignalInit(); 
+
 	});
 </script>
 
