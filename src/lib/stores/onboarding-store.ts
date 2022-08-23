@@ -43,6 +43,6 @@ tutorialStore.subscribe((value) => {
 });
 
 if (browser) {
-	let tutorialState = !!(await window.localStorage.getItem(LS_KEY_TUTORIAL)) ?? false;
+	let tutorialState = !!(window.localStorage.getItem(LS_KEY_TUTORIAL)) ?? false;
 	tutorialStore.set(tutorialState);
 }
