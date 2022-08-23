@@ -36,7 +36,8 @@
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
-import TopHeader from '$lib/components/top-header.svelte';
+	import TopHeader from '$lib/components/top-header.svelte';
+	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -69,6 +70,8 @@ import TopHeader from '$lib/components/top-header.svelte';
 	let filterShadow = 0,
 		titleShadow = 0;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
+
+	// let challengeStates = getChallengeInteractionsUserData();
 </script>
 
 <MainScreenLayoutBase>

@@ -50,7 +50,10 @@
 				<CompleteChallengeButton
 					onClick={(e) => {
 						console.log('complete challenge');
-						completeChallenge(challenge)
+
+						const currentDifficulty = challengeState?.currentLevel ?? null;
+
+						completeChallenge(challenge, currentDifficulty)
 							.then((value) => {
 								console.log(value);
 								if (value === null) {

@@ -8,3 +8,10 @@
 </script>
 
 <div>Feedback Form</div>
+
+<iframe
+	id="feedbackForm"
+	src="https://climactivity.de/kontakt/"
+	width="100%"
+	class="min-h-screen"
+/>

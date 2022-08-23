@@ -84,7 +84,7 @@
 					/>
 				</svg>
 
-				button vormerken
+				Button vormerken
 			</div>
 			<ButtonPrimaryCta onClick={() => goto('/challenges')}>Nimm dir welche vor</ButtonPrimaryCta>
 		</div>

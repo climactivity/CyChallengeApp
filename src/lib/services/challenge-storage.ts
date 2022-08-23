@@ -99,7 +99,7 @@ export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
 	if (
-		challengeState === null ||
+		challengeState === undefined ||
 		challengeState.type === 'bookmark' ||
 		challengeState.type === 'reject' ||
 		(challengeState.type === 'accept' &&
@@ -190,7 +190,7 @@ export const getLastCompletion = (challengeState): DateTime | null => {
 	if (challengeState.type === 'accept') {
 		const last = (challengeState as ChallengeAccept).completions.reduce((acc, cur) => {
 			const curDT = DateTime.fromISO(cur.completedAt);
-			console.log(acc, cur.completedAt, curDT);
+			// console.log(acc, cur.completedAt, curDT);
 			if (curDT.ts > acc.ts) {
 				console.log('returning', curDT);
 				return curDT;
@@ -477,7 +477,7 @@ export const completeChallenge = async (
 				const acceptedChallenge: ChallengeAccept = {
 					...value,
 					lastDifficulty: level,
-
+					currentSteps: [],
 					completions: [...(value.completions ?? []), { completedAt: new Date(), level }]
 				};
 

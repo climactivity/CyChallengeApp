@@ -42,9 +42,14 @@ const screenOrderIndex = (string): number => {
 	return screenOrder[screen] ?? 0;
 };
 
-const currentAnimDirection = (naviation): AnimationDirection => {
-	const originPath = naviation.from.pathname;
-	const targetPath = naviation.to.pathname;
+const currentAnimDirection = (navigation): AnimationDirection => {
+	if (!navigation || !navigation.from || !navigation.to) {
+		console.warn('No from or to screen in navigation', navigation);
+		return AnimationDirection.neutral;
+	}
+
+	const originPath = navigation.from.pathname;
+	const targetPath = navigation.to.pathname;
 	const originPathBase = screenOrderIndex(originPath);
 	const targetPathBase = screenOrderIndex(targetPath);
 

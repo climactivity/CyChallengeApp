@@ -48,6 +48,12 @@
 			Lottie.destroy(anim);
 		}
 	});
+
+	export let play = () => {
+		if (anim) {
+			anim.play();
+		}
+	};
 </script>
 
 <div id="anim" bind:this={animContainer} />

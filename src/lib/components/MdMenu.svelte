@@ -30,12 +30,17 @@
 			<!-- <a href="/info/about" class="overflow-menu-item">Über diese App</a> -->
 			<a href="/info/changelog" class="overflow-menu-item">Versionsgeschichte</a>
 
-			<a href="/info/feedback" class="overflow-menu-item">Feedback senden</a>
 			<a href="/info/settings" class="overflow-menu-item">Einstellungen</a>
 
 			<hr class="my-4 border-1 border-black rounded-full" />
-			<a href="/info/imprint" class="overflow-menu-item-boring">Impressum</a>
-			<a href="/info/privacy" class="overflow-menu-item-boring">Datenschutzerklärung</a>
+			<a href="https://climactivity.de/kontakt/" class="overflow-menu-item-boring"
+				>Feedback senden</a
+			>
+
+			<a href="https://climactivity.de/impressum/" class="overflow-menu-item-boring">Impressum</a>
+			<a href="https://climactivity.de/datenschutzerklaerung/" class="overflow-menu-item-boring"
+				>Datenschutzerklärung</a
+			>
 
 			<hr class="my-2 border-0 border-black rounded-full" />
 			<SocialLinks />

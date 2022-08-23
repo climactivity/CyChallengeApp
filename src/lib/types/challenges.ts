@@ -28,6 +28,8 @@ export interface ChallengeV2 {
 	title: string;
 	topic: string;
 	type?: ChallegneType;
+	upgradeText?: string;
+
 	tags: string[];
 	frontMatter: string;
 	content: string;
@@ -40,7 +42,7 @@ export interface ChallengeV2 {
 		| {
 				url?: string;
 				alt?: string;
-				file: {
+				file?: {
 					path?: string;
 					size?: {
 						x: number;

@@ -13,11 +13,11 @@
 {#if post}
 	<a class="blog-post mt-2 bg-gray-50 rounded-sm shadow-md " href={post.link}>
 		<img src="/images/E1.webp" alt="Post img" class="w-24" />
-		<div class="p-2">
-			<h1 class="title break-words ">{@html post.title.rendered}</h1>
-			{#if post.title.rendered.length >= 75}
+		<div class="p-2 h-32">
+			<h1 class="title break-words ">{@html post.title.rendered.slice(0,75)} 	{#if post.title.rendered.length >= 75}
 				<span class="">...</span>
-			{/if}
+			{/if}</h1>
+		
 
 			<h5 class="text-sm text-gray-500">
 				<span>1 Juli</span> <span>-4m lesezeit</span>
