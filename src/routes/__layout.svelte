@@ -15,14 +15,14 @@
 	import { onMount } from 'svelte';
 	import { init, nkReady } from '$lib/client';
 	import { insets } from '$lib/stores/context';
-import { oneSignalInit } from '$lib/push-notifications';
+	import { oneSignalInit } from '$lib/push-notifications';
 
 	setContext('insets', insets);
 
 	SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
 		insets.set(_insets);
 
-		console.log(_insets);
+		console.log('insets', JSON.stringify(_insets));
 	});
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
 	let url = $page.routeId;
@@ -60,8 +60,7 @@ import { oneSignalInit } from '$lib/push-notifications';
 		if (!$nkReady) {
 			await init();
 		}
-		await oneSignalInit(); 
-
+		await oneSignalInit();
 	});
 </script>
 
@@ -91,7 +90,7 @@ import { oneSignalInit } from '$lib/push-notifications';
 		id="safe-area"
 		class="area"
 		style="
-        top: {$insets.top}px;
+        top: {Capacitor.getPlatform() === 'android' ? '0' : $insets.top}px;
         left: {$insets.left}px;
         right: {$insets.right}px;
         bottom: {iOSSafari ? `${$insets.bottom}px` : 'h-[100vh]'}
@@ -102,7 +101,7 @@ import { oneSignalInit } from '$lib/push-notifications';
 	top-0
 	w-full 
 	bg-water2-dark z-10"
-			style="padding-top: {$insets.top}px"
+			style="padding-top: {Capacitor.getPlatform() === 'android' ? '0' : $insets.top}px"
 		/>
 		<main class="pb-12">
 			<div class="h-full relative ">
