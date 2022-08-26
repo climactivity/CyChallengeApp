@@ -10,6 +10,7 @@
 	import { headerState } from '$lib/stores/header-store';
 	import { insets } from '$lib/stores/context';
 	import { getContext } from 'svelte';
+	import { Capacitor } from '@capacitor/core';
 
 	headerState.set({
 		backbutton: true,
@@ -60,7 +61,12 @@
 	<div
 		class="absolute {iOSSafari
 			? 'bottom-[15vh]'
-			: 'bottom-0'} bg-white pb-20 pt-2  mx-auto w-full grid grid-flow-col place-items-center z-40 tutorial-nav"
+			: ``} bg-white pb-20 pt-2  mx-auto w-full grid grid-flow-col place-items-center z-40 tutorial-nav"
+		style={iOSSafari
+			? ''
+			: Capacitor.getPlatform() === 'android'
+			? `bottom: ${$insets.bottom + 48}px !important`
+			: 'bottom: 0px'}
 	>
 		<button disabled={!routesPrev[$page.routeId]} on:click={(e) => prev()}> Zurück </button>
 		<!-- svelte-ignore a11y-missing-content -->

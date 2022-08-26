@@ -3,6 +3,9 @@ import { dropStorage, listStorage, readStorage, writeStorage } from './client-st
 import { DateTime } from 'luxon';
 import type { StorageObject } from '@heroiclabs/nakama-js';
 import { armSoftNotificationTrigger } from '$lib/push-notifications';
+import { notificationSettingsStore } from '$lib/stores/notification-config';
+import { Capacitor } from '@capacitor/core';
+import { client, session } from '$lib/client';
 
 export type DifficultyName = 'easy' | 'medium' | 'hard';
 
@@ -47,6 +50,7 @@ export interface ChallengeAccept extends ChallengeInteraction {
 	challengeType: ChallegneType;
 	nextNotification?: Date | null;
 	nextCheckpoint: Date | null;
+	notificationId?: string;
 	currentLevel: DifficultyName;
 	completions?: ChallengeCompletion[];
 	accScore?: number;
@@ -305,11 +309,28 @@ export const acceptChallenge = async (
 			);
 		}
 	}
-	return await writeStorage(
-		CHALLENGE_INTERACTIONS_COLLECTION,
-		`${challenge.slug}`,
-		acceptedChallenge
-	);
+
+	let osId;
+	notificationSettingsStore.update((value) => {
+		osId = value.oneSignalSettings?.userId;
+		return value;
+	});
+
+	if (Capacitor.isNativePlatform() && acceptedChallenge.nextCheckpoint && osId) {
+		const res = await client.rpc(session, 'schedule_one_signal_notification', {
+			recipient_player_id: osId,
+			payload: challenge.reminderText ?? `$Erninngerung an "{challenge.title}"`,
+			at: acceptedChallenge.nextCheckpoint
+		});
+		if (res.payload) {
+			const notificationId = res.payload['notificaion_id'] ?? null;
+			if (notificationId != null) {
+				acceptedChallenge.notificationId = notificationId;
+			}
+		}
+	}
+
+	return writeStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challenge.slug}`, acceptedChallenge);
 };
 
 export const bookmarkChallenge = async (

@@ -5,11 +5,11 @@ import { matchdata, matchstatus } from '$lib/stores/context';
 import { goto } from '$app/navigation';
 
 export const ssr = false;
-console.log('connecting to nakama with settings:', {
+console.log('connecting to nakama with settings:', JSON.stringify({
     host: import.meta.env.VITE_NAKAMA_HOST,
     port: import.meta.env.VITE_NAKAMA_PORT,
     useSSL: import.meta.env.VITE_NAKAMA_USE_SSL
-});
+}));
 export let client = new Client(
     import.meta.env.VITE_NAKAMA_CLIENT_API_KEY,
     import.meta.env.VITE_NAKAMA_HOST,

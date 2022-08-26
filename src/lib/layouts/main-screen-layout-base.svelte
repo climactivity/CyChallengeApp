@@ -9,7 +9,9 @@
 
 <div
 	class="relative bg-slate-100"
-	style="margin-top: {$insets.top}px; --offset: 200px;"
+	style="margin-top: {Capacitor.getPlatform() === 'android'
+		? '0'
+		: $insets.top}px; --offset: 200px;"
 	in:mainScreenAnim={{
 		navigation: $navigating,
 		role: AnimationRole.to

@@ -29,7 +29,7 @@ export interface ChallengeV2 {
 	topic: string;
 	type?: ChallegneType;
 	upgradeText?: string;
-
+	reminderText?: string;
 	tags: string[];
 	frontMatter: string;
 	content: string;
