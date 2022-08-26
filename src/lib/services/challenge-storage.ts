@@ -2,6 +2,7 @@ import type { ChallengeV2 } from '$lib/types/challenges';
 import { dropStorage, listStorage, readStorage, writeStorage } from './client-storage-engine';
 import { DateTime } from 'luxon';
 import type { StorageObject } from '@heroiclabs/nakama-js';
+import { armSoftNotificationTrigger } from '$lib/push-notifications';
 
 export type DifficultyName = 'easy' | 'medium' | 'hard';
 
@@ -240,7 +241,7 @@ export const acceptChallenge = async (
 	nextCheckpoint?: Date
 ) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
-
+	armSoftNotificationTrigger()
 	let acceptedChallenge: ChallengeAccept = {
 		type: 'accept',
 		challengeSlug: challenge.slug,
