@@ -267,12 +267,12 @@ export const acceptChallenge = async (
 				nextCheckpoint,
 				currentLevel: difficulty
 			};
-			return await writeStorage(
-				CHALLENGE_INTERACTIONS_COLLECTION,
-				`${challenge.slug}`,
-				acceptedChallenge,
-				version
-			);
+			// return await writeStorage(
+			// 	CHALLENGE_INTERACTIONS_COLLECTION,
+			// 	`${challenge.slug}`,
+			// 	acceptedChallenge,
+			// 	version
+			// );
 		}
 		if (instanceOfChallengeAccept(value)) {
 			acceptedChallenge = {
@@ -294,20 +294,22 @@ export const acceptChallenge = async (
 				challengeType: challenge.type ?? 'recurring',
 				currentLevel: difficulty
 			};
-			return await writeStorage(
-				CHALLENGE_INTERACTIONS_COLLECTION,
-				`${challenge.slug}`,
-				acceptedChallenge,
-				version
-			);
+			// return await writeStorage(
+			// 	CHALLENGE_INTERACTIONS_COLLECTION,
+			// 	`${challenge.slug}`,
+			// 	acceptedChallenge,
+			// 	version
+			// );
 		} else {
-			return await writeStorage(
-				CHALLENGE_INTERACTIONS_COLLECTION,
-				`${challenge.slug}`,
-				acceptedChallenge,
-				version
-			);
+			// return await writeStorage(
+			// 	CHALLENGE_INTERACTIONS_COLLECTION,
+			// 	`${challenge.slug}`,
+			// 	acceptedChallenge,
+			// 	version
+			// );
 		}
+	} else {
+
 	}
 
 	let osId;
@@ -330,7 +332,7 @@ export const acceptChallenge = async (
 		}
 	}
 
-	return writeStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challenge.slug}`, acceptedChallenge);
+	return await writeStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challenge.slug}`, acceptedChallenge);
 };
 
 export const bookmarkChallenge = async (
