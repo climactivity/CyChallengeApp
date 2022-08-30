@@ -103,8 +103,10 @@ const compareDifficulty = (a: DifficultyName, b: DifficultyName) => {
 export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
+	console.log(challengeState);
 	if (
 		challengeState === undefined ||
+		challengeState === null ||
 		challengeState.type === 'bookmark' ||
 		challengeState.type === 'reject' ||
 		(challengeState.type === 'accept' &&
@@ -245,7 +247,7 @@ export const acceptChallenge = async (
 	nextCheckpoint?: Date
 ) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
-	armSoftNotificationTrigger()
+	armSoftNotificationTrigger();
 	let acceptedChallenge: ChallengeAccept = {
 		type: 'accept',
 		challengeSlug: challenge.slug,
