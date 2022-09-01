@@ -37,7 +37,7 @@
 <div class="flex flex-col pt-8">
 	<CongratulationSection {challenge} index={0} />
 	<RewardSection {challenge} {challengeState} index={1} />
-	<RecommendedChallengesSection {challenge} index={4} />
 	<ShareToSocialMediaSection {challenge} index={5} />
+	<RecommendedChallengesSection {challenge} index={4} />
 	<BackToChallengesPageSection last={true} index={5} />
 </div>

@@ -109,8 +109,8 @@
 	const scrollPosition: Writable<number> = hasContext('scrollPosition')
 		? getContext('scrollPosition')
 		: writable(0);
-	export let actionsOffsetStart = 300;
-	export let actionsOffsetEnd = 300;
+	export let actionsOffsetStart = 440;
+	export let actionsOffsetEnd = 40;
 
 	let actionsShadow = 0;
 	$: {
@@ -118,7 +118,7 @@
 			Math.min(Math.max(0, $scrollPosition - actionsOffsetStart), actionsOffsetEnd) /
 			actionsOffsetEnd;
 
-		if (actionsShadow > 0.7) {
+		if ($scrollPosition > 480) {
 			headerState.update((headerState) => ({ ...headerState, transparent: true }));
 		}
 	}
