@@ -16,16 +16,15 @@
 	<div class="text-xl text-center font-serif font-bold pb-4">
 		<h1>Was sind Bigpoints</h1>
 	</div>
-
-	<div>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt sequi, atque adipisci aliquid
-		amet ex nostrum corrupti, praesentium distinctio libero, maiores beatae obcaecati consectetur
-		similique nemo nesciunt fuga temporibus velit.
-	</div>
 	<div class="h-80 w-72 mx-auto">
 		<LottieAnim
 			assetPath="/lottie/112117-404-page.json"
 			animOptions={{ loop: true, autoplay: true, pauseAfter: 1800 }}
 		/>
+	</div>
+	<div>
+		Big Points sind die Bereiche in unserem Leben, in denen es einen richtig großen Unterschied
+		macht, ob wir uns klimafreundlich verhalten. Hier können wir einige hundert kg oder sogar
+		mehrere Tonnen CO2 einsparen.
 	</div>
 </div>

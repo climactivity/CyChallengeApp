@@ -89,6 +89,7 @@
 			bind:scrollPosition={scrollY}
 		>
 			<SearchButton
+				class="hidden"
 				slot="action"
 				path="#"
 				onClick={(e) => {

@@ -37,6 +37,8 @@
 	import { DateTime } from 'luxon';
 	import RewardDisplay from '$lib/components/challenge/reward-display.svelte';
 	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
+	import { getContext, hasContext } from 'svelte';
+	import { writable, type Writable } from 'svelte/store';
 	export let challenge: ChallengeV2;
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
@@ -103,6 +105,23 @@
 		medals = challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions;
 		console.log('medals', medals);
 	}
+
+	const scrollPosition: Writable<number> = hasContext('scrollPosition')
+		? getContext('scrollPosition')
+		: writable(0);
+	export let actionsOffsetStart = 300;
+	export let actionsOffsetEnd = 300;
+
+	let actionsShadow = 0;
+	$: {
+		actionsShadow =
+			Math.min(Math.max(0, $scrollPosition - actionsOffsetStart), actionsOffsetEnd) /
+			actionsOffsetEnd;
+
+		if (actionsShadow > 0.7) {
+			headerState.update((headerState) => ({ ...headerState, transparent: true }));
+		}
+	}
 </script>
 
 <div class="pb-16" transition:fade={{ duration: 250 }}>
@@ -117,87 +136,107 @@
 				: 'https://picsum.photos/1000'
 		}); background-size: cover;`}
 	/> -->
-	<div class="p-4 m-4 space-y-8">
+	<div class="space-y-8">
 		<!-- title -->
 
-		<div class="text-xl font-bold font-serif">
+		<div class="text-xl font-bold font-serif mx-4 my-4">
 			{challenge.title}
 		</div>
 
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
-			<div class="bg-water2-light rounded-md shadow-md p-4 relative">
+			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4">
 				<button class="absolute top-0 right-2">x</button>
 				Hey, du hast den Bigpoint in diesem Bereich nicht angenommen. Mach doch erstmal den!
 			</div>
 		{/if}
 
 		<!-- front matter -->
-		<p class="text-lg  prose">
+		<p class="text-lg  prose mx-4">
 			{challenge.frontMatter}
 		</p>
 
+		<!-- actions -->
+		<div
+			class="sticky top-0 bg-slate-100 min-w-full px-4 pt-4 z-50"
+			style="
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * actionsShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
+				actionsShadow});
+		--tw-bg-opacity: {actionsShadow}
+	"
+		>
+			<ChallengeActions
+				{challenge}
+				nextState={action}
+				bind:challengeState
+				bind:challengeStateType
+				{refetch}
+			/>
+		</div>
+
 		<!-- completions -->
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-			<div>Durch diese Challenge erhaltene Punkte</div>
-			<div>
-				<RewardDisplay {medals} points={challenge.score * medals} />
-				Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
+			<div class="mx-4">
+				<div>Durch diese Challenge erhaltene Punkte</div>
+				<div>
+					<RewardDisplay {medals} points={challenge.score * medals} />
+					Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
+				</div>
 			</div>
 		{/if}
 
+		<div class="mx-4">
+			{#if !challengeState || challengeState.type !== 'accept'}
+				<!-- steps -->
+				{#if challenge.difficulties['easy']}
+					<div class="">
+						<DifficultyCard
+							difficulty={challenge.difficulties['easy']}
+							name="Todos"
+							onSelected={() => {}}
+							selected
+						/>
+					</div>
+				{:else if challenge.difficulties['medium']}
+					<div class="">
+						<DifficultyCard
+							difficulty={challenge.difficulties['medium']}
+							name="Todos"
+							onSelected={() => {}}
+							selected
+						/>
+					</div>
+				{:else if challenge.difficulties['hard']}
+					<div class="">
+						<DifficultyCard
+							difficulty={challenge.difficulties['hard']}
+							name="Todos"
+							onSelected={() => {}}
+							selected
+						/>
+					</div>
+				{/if}
+			{/if}
+		</div>
 		<!-- todos for currently accepted challenge-->
 		{#if challengeState && challengeState.type === 'accept'}
-			<ChallengeV2Todos {challenge} {challengeState} />
+			<div class="mx-4">
+				<ChallengeV2Todos {challenge} {challengeState} />
+			</div>
 		{/if}
-		<!-- actions -->
-		<ChallengeActions
-			{challenge}
-			nextState={action}
-			bind:challengeState
-			bind:challengeStateType
-			{refetch}
-		/>
-
-		{#if !challengeState || challengeState.type !== 'accept'}
-			<!-- steps -->
-			{#if challenge.difficulties['easy']}
-				<div class="">
-					<DifficultyCard
-						difficulty={challenge.difficulties['easy']}
-						name="Todos"
-						onSelected={() => {}}
-						selected
-					/>
-				</div>
-			{:else if challenge.difficulties['medium']}
-				<div class="">
-					<DifficultyCard
-						difficulty={challenge.difficulties['medium']}
-						name="Todos"
-						onSelected={() => {}}
-						selected
-					/>
-				</div>
-			{:else if challenge.difficulties['hard']}
-				<div class="">
-					<DifficultyCard
-						difficulty={challenge.difficulties['hard']}
-						name="Todos"
-						onSelected={() => {}}
-						selected
-					/>
-				</div>
-			{/if}
-		{/if}
-
 		<!-- more infos -->
 
-		<div class=" rounded-xl p-2 bg-white">
+		<div class="mx-4 rounded-xl p-2 bg-white">
 			<p class="text-center font-bold text-xl pb-2">Mehr</p>
-			<p class="align-middle text-md pb-2">
-				{challenge.content}
-			</p>
+			{#if !challengeState || challengeState.type !== 'accept'}
+				<p class="align-middle text-md pb-2">
+					{challenge.content}
+				</p>
+			{:else}
+				<p class="align-middle text-md pb-2">
+					{challenge.content}
+				</p>
+			{/if}
 		</div>
 	</div>
 	<!-- related challenges -->

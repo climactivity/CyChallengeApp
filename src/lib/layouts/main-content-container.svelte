@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { headerState } from '$lib/stores/header-store';
 	import { Capacitor } from '@capacitor/core';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
 
 	export let y = 0;
 	let headerTransparent;
@@ -14,12 +16,22 @@
 		return headerTransparent;
 	};
 
+	const scrollPosition = writable<number>(0.0);
+	setContext('scrollPosition', scrollPosition);
+
+	const updateScrollPosition = (offset) => {
+		scrollPosition.set(offset);
+	};
+
 	$: headerTransparent = updateHeader(y);
 </script>
 
 <div
 	class=" overflow-y-auto overflow-x-hidden h-safe relative top-0 left-0 right-0  z-20 "
-	on:scroll={(e) => updateHeader(e.currentTarget.scrollTop)}
+	on:scroll={(e) => {
+		updateHeader(e.currentTarget.scrollTop);
+		updateScrollPosition(e.currentTarget.scrollTop);
+	}}
 >
 	<slot />
 </div>

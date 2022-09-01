@@ -8,6 +8,7 @@ export const headerState: Writable<HeaderState> = writable({
     back: undefined,
     hidden: false,
     transparent: false,
+    shadowOffsetEnd: 20
 });
 
  

@@ -7,7 +7,12 @@
 
 	export let assetPath;
 	export let initDelay = ANIMATION_BASE_SPEED + 100;
-	export let animOptions = {
+	export let animOptions: {
+		loop?: boolean | number;
+		autoplay?: boolean;
+		pauseAfter?: number;
+		[key: string]: any;
+	} = {
 		loop: true,
 		autoplay: true,
 		pauseAfter: 0

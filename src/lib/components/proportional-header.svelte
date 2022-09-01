@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { headerState } from '$lib/stores/header-store';
+	import { getContext, hasContext } from 'svelte';
+	import { writable, type Writable } from 'svelte/store';
 
 	export let title = 'HEADER TEXT MISSING!';
 	export let backbutton = false;
@@ -7,6 +9,7 @@
 	export let shadowOffsetStart = 20;
 	export let shadowOffsetEnd = 20;
 	export let hidden = false;
+	export let transparent = false;
 
 	export let onGoBack = () => {
 		history.back();
@@ -25,9 +28,14 @@
 				history.back();
 			};
 		hidden = newState.hidden;
+		transparent = newState.transparent;
+		shadowOffsetEnd = newState.shadowOffsetEnd ?? 20;
+
+		console.log(newState);
 	});
 
 	let headerShadow = 0;
+
 	$: headerShadow =
 		Math.min(Math.max(0, scrollPosition - shadowOffsetStart), shadowOffsetEnd) / shadowOffsetEnd;
 </script>
@@ -36,9 +44,10 @@
 	class="p-4 flex flex-row justify-between sticky top-0 z-30 bg-slate-100 "
 	class:hidden
 	style="
-					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * headerShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
-		headerShadow});
-					--tw-bg-opacity: {headerShadow}
+					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 *
+		headerShadow *
+		(transparent ? 0.0 : 1)}), 0 2px 4px -2px rgb(0 0 0 / {0.1 * headerShadow});
+					--tw-bg-opacity: {transparent ? 0.0 : headerShadow}
 				"
 >
 	<div class="flex flex-row gap-2">

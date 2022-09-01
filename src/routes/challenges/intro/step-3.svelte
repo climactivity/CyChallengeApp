@@ -31,15 +31,20 @@
 	out:blur={{ duration: ANIMATION_BASE_SPEED }}
 >
 	<div class="text-xl text-center font-serif font-bold pb-4">
-		<h1>Einfach loslegen</h1>
+		<h1>Weitererzählen!</h1>
 	</div>
 	<div class="h-80 w-72 mx-auto">
-		<LottieAnim assetPath="/lottie/110955-rocket-launch-animation-space-exploration.json" />
+		<LottieAnim
+			assetPath="/lottie/110955-rocket-launch-animation-space-exploration.json"
+			animOptions={{ loop: 4, autoplay: true }}
+		/>
 	</div>
 	<div>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt sequi, atque adipisci aliquid
-		amet ex nostrum corrupti, praesentium distinctio libero, maiores beatae obcaecati consectetur
-		similique nemo nesciunt fuga temporibus velit.
+		Bist du auf deinem Weg zur Klimaneutralität schon weiter fortgeschritten oder du kannst in
+		deinem Leben an bestimmten Punkten einfach nicht mehr tun, um deinen Fußabdruck weiter zu
+		reduzieren? Vielleicht ist es dann Zeit, dass du rausgehst und anderen von der Sache erzählst!
+		Denn am Ende brauchen wir nicht ein paar wenige, die ganz viel getan haben, sondern ganz viele,
+		die sich in die richtige Richtung bewegen 😉
 	</div>
 </div>
 <div class="overflow-visible  h-40">

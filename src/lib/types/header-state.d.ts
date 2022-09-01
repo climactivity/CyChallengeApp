@@ -7,4 +7,5 @@ export type HeaderState = {
 	back?: () => void;
 	hidden: boolean;
 	transparent?: boolean;
+	shadowOffsetEnd?: number;
 };

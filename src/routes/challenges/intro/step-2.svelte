@@ -13,12 +13,16 @@
 	<div class="text-xl text-center font-serif font-bold pb-4">
 		<h1>Warum Challenges</h1>
 	</div>
-	<div>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt sequi, atque adipisci aliquid
-		amet ex nostrum corrupti, praesentium distinctio libero, maiores beatae obcaecati consectetur
-		similique nemo nesciunt fuga temporibus velit.
-	</div>
+
 	<div class="h-80 w-72 mx-auto">
-		<LottieAnim assetPath="/lottie/104853-thinking.json" />
+		<LottieAnim
+			assetPath="/lottie/104853-thinking.json"
+			animOptions={{ loop: 1, autoplay: true }}
+		/>
+	</div>
+	<div>
+		Challenges helfen uns, für einen begrenzten Zeitraum aus unserer Komfortzone herauszutreten und
+		neue Handlungen auszuprobieren. Im Idealfall gefällt dir dein neues Leben mit jeder
+		Klimaschutz-Challenge ein bisschen besser!
 	</div>
 </div>
