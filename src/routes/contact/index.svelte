@@ -1,4 +1,8 @@
 <script lang="ts">
+	const handleSubmit = () =>{
+		alert('aboniert');
+		console.log( this.name, this.message);
+	}
 </script>
 
 <div class="newsletter mx-4 ">
@@ -6,16 +10,16 @@
 	<h2 class="abonieren mt-8">Schreib uns!</h2>
 	<p class="blieb">Wir freuen uns von dir zu hören!</p>
 
-	<form class="mt-8 w-full">
+	<form class="mt-8 w-full" on:submit|preventDefault={handleSubmit}>
 		<label class=" block" for="name">Deine Emailadresse:</label>
 		<input type="text" class=" rounded-md" name="name" />
 
-		<label class="block" for="name">Was möchtest du uns sagen?</label>
-		<input type="text" class=" rounded-md" name="name" />
+		<label class="block" for="message">Was möchtest du uns sagen?</label>
+		<input type="text" class=" rounded-md" name="message" />
 
-		<button
+		<button type="submit"
 			class="btn rounded-full mt-4 bg-sky-500 py-2  mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
-			on:click={() => alert('aboniert')}
+	
 		>
 			Nachricht senden
 		</button>
