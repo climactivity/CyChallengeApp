@@ -5,21 +5,22 @@
         "handabdruck": "Handabdruck",
         "geld_sparen": "Geld sparen",
         "fuer_mieter": "Für Mieter",
-        "leicht_gemacht": "Leicht gemacht"
+        "leicht_gemacht": "Leicht gemacht",
+        "": ""
     },
     "topics": {
         "ernaehrung": "Ernährung",
         "strom": "Strom",
-        "bewusster_konsum": "Bewusster Konsum",
+        "bewusster_konsum_amp_sharing": "Bewusster Konsum & Sharing",
         "mobilitaet_zu_lande": "Mobilität zu Lande",
-        "urlaub_amp_fliegen": "Urlaub &amp; Fliegen",
+        "urlaub_amp_fliegen": "Urlaub & Fliegen",
         "waerme": "Wärme",
         "sharing_is_caring": "Sharing is Caring",
-        "geld_amp_finanzen": "Geld &amp; Finanzen",
+        "geld_amp_finanzen": "Geld & Finanzen",
         "klimakommunikation": "Klimakommunikation",
         "sich_informieren": "Sich informieren",
-        "politik_amp_gesellschaft": "Politik &amp; Gesellschaft",
-        "schule_amp_betrieb": "Schule &amp; Betrieb"
+        "politik_amp_gesellschaft": "Politik & Gesellschaft",
+        "schule_amp_betrieb": "Schule & Betrieb"
     },
     "challenges": {
         "Ernährung": [
@@ -32,7 +33,16 @@
                     "fussabdruck"
                 ],
                 "frontMatter": "Wusstest du, dass du mit der Umstellung auf eine pflanzlichere Ernährung ca. 35% CO2 einsparen kannst? Definitiv ein Grund das mal auszuprobieren.",
-                "image": {},
+                "image": {
+                    "file": {
+                        "path": "images/E1.webp",
+                        "size": {
+                            "x": 1279,
+                            "y": 1920
+                        }
+                    },
+                    "url": "https://unsplash.com/photos/Faf6gzEI3Do"
+                },
                 "points": "",
                 "type": "recurring",
                 "notification": "Hey, denk dran, diese Woche wolltest du wieder an ... Tagen kein Fleisch essen.",
@@ -268,7 +278,7 @@
                 "topic": "strom"
             }
         ],
-        " Bewusster Konsum": [
+        " Bewusster Konsum &amp; Sharing": [
             {
                 "title": "Wünsch dir was!",
                 "lead": false,
@@ -321,7 +331,7 @@
                     }
                 },
                 "slug": "wuensch_dir_was",
-                "topic": "bewusster_konsum"
+                "topic": "bewusster_konsum_amp_sharing"
             },
             {
                 "title": "Wunschliste für Alle!",
@@ -354,7 +364,7 @@
                     }
                 },
                 "slug": "wunschliste_fuer_alle",
-                "topic": "bewusster_konsum"
+                "topic": "bewusster_konsum_amp_sharing"
             }
         ],
         "Mobilität zu Lande": [
@@ -368,41 +378,30 @@
                     "fussabdruck"
                 ],
                 "frontMatter": "Das Kernproblem bei der Mobilität zu Lande sind die Kilometer, die so viele Menschen im Auto alleine fahren. Verringere deine allein gefahrenen Kilometer durch einen Umstieg aufs Fahrrad oder den ÖPNV, durch Park & Ride, Mitfahrgelegenheiten oder indem du Fahrten vermeidest.",
-                "image": {},
+                "image": " ",
                 "points": " ",
                 "type": "recurring",
                 "content": " ",
                 "Status": "in Bearbeitung",
-                "difficulties": {
-                    "easy": {
-                        "taskDescription": "Ich fahr zwar mehr als 125 km alleine Auto, aber bemühe mich immer eine Alternative zu finden.",
-                        "todos": [
-                            {
-                                "name": "",
-                                "reward": null
-                            }
-                        ]
-                    },
-                    "medium": {
-                        "taskDescription": "Ich fahre nicht mehr als 125 km in der Woche alleine Auto",
-                        "todos": [
-                            {
-                                "name": "",
-                                "reward": null
-                            }
-                        ]
-                    },
-                    "hard": {
-                        "taskDescription": "Ich fahre nicht mehr als 35 km in der Woche alleine Auto",
-                        "todos": [
-                            {
-                                "name": "",
-                                "reward": null
-                            }
-                        ]
-                    }
-                },
+                "difficulties": {},
                 "slug": "allein_ist_nicht_fein",
+                "topic": "mobilitaet_zu_lande"
+            },
+            {
+                "title": " ",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    ""
+                ],
+                "frontMatter": " ",
+                "image": " ",
+                "points": " ",
+                "type": "repeatable",
+                "content": " ",
+                "Status": " ",
+                "difficulties": {},
+                "slug": "",
                 "topic": "mobilitaet_zu_lande"
             }
         ],
@@ -473,7 +472,7 @@
                 "frontMatter": "",
                 "image": "",
                 "points": "",
-                "type": "repeatable",
+                "type": "one-time",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -495,32 +494,17 @@
                     "fuer_mieter"
                 ],
                 "frontMatter": "Sparsame Gewohnheiten beim Heizen und Lüften sind kinderleicht und wirken sich positiv auf Klima und Geldbeutel aus. Also warm anziehen und gleich ausprobieren!",
-                "image": {},
+                "image": {
+                    "url": "https://live.staticflickr.com/2936/13920194440_d6077663bf_b.jpg"
+                },
                 "points": "jeweils 100 Punkte",
-                "type": "recurring",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
                 "notification": "Hey, denk dran, diese Woche wolltest du dich wieder darin üben, sparsam(er) zu lüften und zu heizen.",
                 "notificationDays": 7.0,
                 "content": "Im deutschen Durchschnitt macht der Wärmebedarf für Heizen und Warmwasser etwa ein Siebtel des individuellen Fußabdrucks aus (UBA-CO2-Rechner). Die Beheizung deines Arbeitsplatzes und all der Gebäude, in denen Produkte für dich hergestellt und Dienstleistungen für dich erbracht werden, kommt zu den Emissionen des Sektors Wärme noch hinzu. Auch wenn du gerade nicht die Kapazitäten für große Veränderungen wie eine energetische Sanierung hast, gibt es doch jede Menge kleine Maßnahmen, die schon viel helfen und dir gleichzeitig noch Geld sparen!",
-                "Status": "Fertig",
+                "Status": "in Korrektur",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich heize eine Woche lang nur die Räume, in denen ich mich aufhalte und minimiere den Wärmeverlust.",
-                        "todos": [
-                            {
-                                "name": "Heizung in Räumen abdrehen, die länger nicht benutzt werden",
-                                "reward": null
-                            },
-                            {
-                                "name": "Vorhänge und Rolläden schließen, damit weniger Wärme verloren geht",
-                                "reward": null
-                            },
-                            {
-                                "name": "Noch mehr Tipps finden, z.B. hier https://utopia.de/ratgeber/richtig-heizen-energiesparen/",
-                                "reward": null
-                            }
-                        ]
-                    },
-                    "medium": {
                         "taskDescription": "Ich achte zwei Wochen lang besonders darauf, energiesparend zu lüften.",
                         "todos": [
                             {
@@ -533,6 +517,23 @@
                             },
                             {
                                 "name": "Noch mehr Tipps finden, z.B. hier https://utopia.de/ratgeber/richtig-lueften-gegen-schimmel/",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich heize zwei Wochen lang nur die Räume, in denen ich mich aufhalte und minimiere den Wärmeverlust.",
+                        "todos": [
+                            {
+                                "name": "Heizung in Räumen abdrehen, die länger nicht benutzt werden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Vorhänge und Rolläden schließen, damit weniger Wärme verloren geht",
+                                "reward": null
+                            },
+                            {
+                                "name": "Noch mehr Tipps finden, z.B. hier https://utopia.de/ratgeber/richtig-heizen-energiesparen/",
                                 "reward": null
                             }
                         ]
@@ -567,26 +568,75 @@
                     "fussabdruck",
                     "fuer_mieter"
                 ],
-                "frontMatter": "",
-                "image": "",
-                "points": "",
-                "type": "repeatable",
+                "frontMatter": "Es braucht nicht immer große Umbaumaßnahmen, um unseren Wohnraum klimafreundlich aufzurüsten - auch kleinere Veränderungen können schon Emissionen und Kosten deutlich reduzieren! Ideal für alle Sparfüchse in Mietwohnungen.",
+                "image": {
+                    "url": "https://unsplash.com/photos/RfkaDKptt-A"
+                },
+                "points": "2000 / 10 / 10",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
                 "notification": "",
                 "notificationDays": "",
-                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses, die sich aber natürlich nicht für jede:n mal so eben machen lässt. Darüber hinaus gibt es aber auch einen beträchtlichen Teil, der von dir als Nutzer:in von Heizung und Warmwasser abhängt. Wir zeigen dir, mit welchen Maßnahmen du einen Unterschied machen kannst!- in einer kleineren Wohnung kommen natürlich weniger Energiekosten zustande & mit mehr Leuten auch weniger Verbrauch pro Kopf- ein Großteil unseres Warmwasserverbrauchs geht auf Duschen & Baden zurück - auch hier können wir viel einsparen, ohne direkt kalt duschen zu müssen",
-                "Status": "In Bearbeitung",
+                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses, die sich aber natürlich nicht für jede:n mal so eben machen lässt. Darüber hinaus gibt es aber auch einen beträchtlichen Teil, der von dir als Nutzer:in von Heizung und Warmwasser abhängt. Wir zeigen dir, mit welchen Maßnahmen du einen Unterschied machen kannst und gleichzeitig noch Energiekosten sparst! Zusätzlich könntest du die Vermietenden oder die Hausverwaltung auf die Dringlichkeit des Dämmens hinweisen, vielleicht mit dem Hinweis, dass energetische Sanierungen vom Staat gefördert werden. Siehe mehr Infos dazu hier: https://www.energieheld.de/foerderung/aenderungen-2020",
+                "Status": "in Korrektur",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Sparduschkopf einbauen",
-                        "todos": []
+                        "taskDescription": "Ich baue einen Sparduschkopf ein.",
+                        "todos": [
+                            {
+                                "name": "Geeigneten Sparduschkopf aussuchen, kaufen und anbringen (sollte nur 6-10l pro Minute verbrauchen)",
+                                "reward": null
+                            },
+                            {
+                                "name": "Tipps für Kauf & Nutzung: https://www.co2online.de/energie-sparen/heizenergie-sparen/warmwasser/sparduschkopf/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Weitere Tipps zum Warmwasser sparen: https://utopia.de/ratgeber/warmwasser-sparen-5-tipps-die-du-einfach-umsetzen-kannst/",
+                                "reward": null
+                            }
+                        ]
                     },
                     "medium": {
-                        "taskDescription": "Möglichkeiten für Automatisches Thermostat prüfen + einbauen",
-                        "todos": []
+                        "taskDescription": "Ich dichte zugige Fenster ab.",
+                        "todos": [
+                            {
+                                "name": "Mit Vermierter:in in Kontakt setzten und Möglichkeiten besprechen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Infos zur Erneuerung/Aufrüstung von Fensterdichtungen durchlesen (https://www.dollex.de/)",
+                                "reward": null
+                            },
+                            {
+                                "name": "Ggf. Handwerker:in beauftragen (oder beauftragen lassen)",
+                                "reward": null
+                            },
+                            {
+                                "name": "Für Heimwerker:innen: DIY Anleitung zum Abdichten von Fenstern (https://www.talu.de/fensterrahmen-abdichten/)",
+                                "reward": null
+                            }
+                        ]
                     },
                     "hard": {
-                        "taskDescription": "Fenter abdichten",
-                        "todos": []
+                        "taskDescription": "Ich baue ein oder mehrere programmierbare Thermostate ein.",
+                        "todos": [
+                            {
+                                "name": "Möglichkeiten zur Installation programmierbarer Thermostate in der eigenen Wohnung erkunden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Ggf. mit Vermieter:in absprechen (evtl. werden die Kosten sogar übernommen!)",
+                                "reward": null
+                            },
+                            {
+                                "name": "Programmierbares Thermostat selber installieren oder anbringen lassen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Mehr Infos hier: https://www.heizsparer.de/spartipps/heizkosten/programmierbare-thermostate-nutzen",
+                                "reward": null
+                            }
+                        ]
                     }
                 },
                 "slug": "optimal_warm_in_der_mietwohnung",
@@ -599,15 +649,65 @@
                 "tags": [
                     "fussabdruck"
                 ],
-                "frontMatter": "",
-                "image": "",
+                "frontMatter": "Zusätzlich zum Umstieg auf erneuerbare Energien sind gut gedämmte Häuser essenziell, um unsere Klimaziele zu erreichen. Eine gute Hausdämmung ist der Königsweg des Energiesparens. Auch wenn hohe Kosten und umfangreiche Baumaßnahmen erst einmal abschreckend wirken mögen, sind sie es dennoch wert. Glücklicherweise gibt es für solche Vorhaben auch staatliche Zuschüsse.",
+                "image": {
+                    "url": "https://unsplash.com/photos/aCshJn3y93s"
+                },
                 "points": "",
-                "type": "repeatable",
-                "notification": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
+                "notification": "Hey, denk dran, du wolltest dich um die Dämmung deines Hauses kümmern.",
                 "notificationDays": "",
-                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses.",
+                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses. Mehr als die Hälfte von Wohngebäuden sind noch aus einer Zeit, in der es überhaupt keine Wärmeschutzvorschriften gab und die energetische Sanierung kommt in Deutschland viel zu langsam voran, um das 1,5-Grad-Ziel einzuhalten. Neubauten sind leider auch nicht die Lösung; strengere Auflagen für neue Gebäude reichen nicht aus und die Sanierung von alten Gebäuden hat tatsächlich eine bessere Energiebilanz als Abriss und Neubau. Mehr dazu kannst die hier nachlesen: https://www.agora-energiewende.de/veroeffentlichungen/wert-der-effizienz-im-gebaeudesektor-in-zeiten-der-sektorenkopplung/ ",
                 "Status": "in Bearbeitung",
-                "difficulties": {},
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich überprüfe die Potentiale für die energetische Sanierung meines Hauses.",
+                        "todos": [
+                            {
+                                "name": "Gute Gründe fürs Dämmen https://www.co2online.de/modernisieren-und-bauen/daemmung/warum-daemmen-acht-gute-gruende/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Maßnahmen im Vergleich: https://www.co2online.de/modernisieren-und-bauen/daemmung/daemmmassnahmen-uebersicht/",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich lasse ein professionelles Gutachten und einen Sanierungsplan anfertigen.",
+                        "todos": [
+                            {
+                                "name": "Infos zu individullem Sanierungsfahrplan: https://www.dena.de/themen-projekte/projekte/gebaeude/individueller-sanierungsfahrplan-fuer-wohngebaeude/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Schritt für Schritt: https://www.dena.de/newsroom/schritt-fuer-schritt-zum-sanierten-haus/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Infos zur Energieberatung: https://www.bafa.de/DE/Energie/Energieberatung/Energieberatung_Wohngebaeude/Beratene/beratene_node.html",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich lasse die Dämmung meines Hauses auf den neuesten Stand bringen.",
+                        "todos": [
+                            {
+                                "name": "Austausch der Fenster, Dämmung von Dach, Keller und Außenwänden, Installation einer effizienteren Heizung, richtiger Lüftung",
+                                "reward": null
+                            },
+                            {
+                                "name": "Bei der energetischen Sanierung muss nicht unbedingt alles auf einmal gemacht werden, aber es sollte dringend sinnvoll aufeinander abgestimmt sein. Beispielsweise sollte vor dem Heizungstausch gedämmt werden, damit die Heizung nach der Dämmung nicht viel zu groß ausgelegt ist.",
+                                "reward": null
+                            },
+                            {
+                                "name": "Förderung für energetische Sanierung: https://www.energieheld.de/foerderung/aenderungen-2020",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
                 "slug": "optimal_warm_im_eigenheim",
                 "topic": "waerme"
             }

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { AcceptedChallenge, ChallengeV2 } from '$lib/types/challenges';
+	import type { AcceptedChallenge, ChallengeV2, ImageSource } from '$lib/types/challenges';
 	import type { Writable } from 'svelte/store';
-	import { randomIntBetween } from '$lib/util';
+	import { getImageUrlFromChallenge, randomIntBetween } from '$lib/util';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import {
@@ -11,11 +11,12 @@
 
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeInteraction = undefined;
-	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
-	$: {
-		imageUrl = challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;
-		// console.log('image', challenge.image?.file?.path, $page.url);
-	}
+	let imageUrl = getImageUrlFromChallenge(challenge);
+	// $: {
+	// 	// imageUrl = challenge.image != 'imageUrl' ? challenge.image?.file?.path ?? undefined : undefined;
+	// 	imageUrl = getImageUrlFromChallenge(challenge);
+	// 	// console.log('image', challenge.image?.file?.path, $page.url);
+	// }
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
 	export let tags = {};
 </script>
@@ -24,9 +25,7 @@
 	class:hidden={isHidden(challenge)}
 	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image 
 	{instanceOfChallengeReject(challengeState) ? 'bg-red-500' : ''}"
-	style={imageUrl
-		? `--bg-image: url(${$page.url.origin + '/' + imageUrl})`
-		: `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`}
+	style={`--bg-image: url(${imageUrl})`}
 	on:click={() => {
 		goto(`/challenge/${challenge.slug}`);
 	}}

@@ -17,8 +17,10 @@
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { page } from '$app/stores';
 	import { headerState } from '$lib/stores/header-store';
+	import { getImageUrlFromChallenge } from '$lib/util';
 
 	export let data: ChallengeV2;
+	let imageUrl = getImageUrlFromChallenge(data);
 	headerState.set({
 		backbutton: true,
 		title: data.title,
@@ -34,11 +36,7 @@
 	<!-- header image-->
 	<div
 		class=" h-64 bg-red-500 w-full ch-card-sharp shadow-nature "
-		style={`background: url( ${
-			data.image && data.image?.file?.path
-				? $page.url.origin + '/' + data.image?.file?.path
-				: 'https://picsum.photos/1000'
-		}); background-size: cover;`}
+		style={`background: url( ${imageUrl}); background-size: cover;`}
 	/>
 
 	<slot />

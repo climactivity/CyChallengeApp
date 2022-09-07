@@ -1,4 +1,5 @@
 import type { Writable } from 'svelte/store';
+import type { ImageSource } from './types/challenges';
 
 export const detectLinks = (text: string): string => {
 	const regex = /(https?:\/\/[^\s]+)/g;
@@ -33,4 +34,19 @@ export const getState = <T>(writable: Writable<T>): T | null => {
 		return value;
 	});
 	return state;
+};
+
+export const getImageUrlFromChallenge: (ChallengeV2) => string = (challenge) => {
+	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
+
+	if (challenge.image !== '') {
+		const img: ImageSource = challenge.image;
+		if (img.file) {
+			return `/${img.file.path}`;
+		} else if (img.url) {
+			return img.url;
+		}
+	}
+
+	return imageUrl;
 };
