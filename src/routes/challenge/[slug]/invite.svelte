@@ -15,32 +15,13 @@
 <script lang="ts">
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 	import type { ChallengeV2 } from '$lib/types/challenges';
+import FormComponent from '$lib/components/form-component.svelte';
 	export let challenge: ChallengeV2;
 </script>
 
 <div class="flex flex-col pt-8">
-
-		<div class="mx-4 px-6 py-8 bg-white shadow rounded-lg sm:px-10  ">
-		<form class="mb-0 space-y-6">
-			<div>
-				<label for="your_name" class="block text-sm font-medium mb-1"> Dein Name </label>
-				<input
-					class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light"
-					id="your_name"
-					type="text"
-				/>
-			</div>
-
-			<div>
-				<label for="their_name" class="block text-sm font-medium mb-1"> Dein:e Freund:in </label>
-				<input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light" id="your_name" type="text" />
-			</div>
-
-			<div>
-				<label for="their_email" class="block text-sm font-medium mb-1"> Email </label>
-				<input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light" id="your_name" type="text" />
-			</div>
-		</form>
+	<div class="mx-4 px-6 py-8 bg-white shadow rounded-lg sm:px-10  ">
+		<FormComponent/>
 	</div>
 	<ShareToSocialMediaSection {challenge} index={0} last />
 </div>

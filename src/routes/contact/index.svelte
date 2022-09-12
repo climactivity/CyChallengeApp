@@ -9,10 +9,10 @@
 
 <div class=" m-x-2 mt-8 ">
 	<div class="mx-4 px-6 py-8 bg-white shadow rounded-lg sm:px-10  ">
+		<h1 class="text-2xl font-bold tracking-wide">Climactivity kontaktieren</h1>
+		<h2 class=" text-lg font-bold ">Schreib uns!</h2>
+		<p class="">Wir freuen uns von dir zu hören!</p>
 		<form class="mb-0 space-y-2" on:submit|preventDefault={handleSubmit}>
-			<h1 class="text-2xl font-bold tracking-wide">Climactivity kontaktieren</h1>
-			<h2 class=" text-lg font-bold ">Schreib uns!</h2>
-			<p class="">Wir freuen uns von dir zu hören!</p>
 			<div>
 				<label for="your_email" class="block  mb-1">
 					Deine E-mail Adresse:
