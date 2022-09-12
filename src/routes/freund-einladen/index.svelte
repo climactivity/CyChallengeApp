@@ -1,4 +1,5 @@
 <script lang="ts">
+import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 import SocialLinks from "$lib/components/social-links.svelte";
 
 </script>
@@ -8,10 +9,10 @@ import SocialLinks from "$lib/components/social-links.svelte";
 	<p class="blieb">Zur zweit macht's mehr Spass!</p>
 
   <form class="mt-8 w-full">
-    <label class=" block" for="name">Name von Deine Freund|in:</label>
+    <label class=" block" for="name">Name von deinen Freund:innen:</label>
     <input type="text" class=" rounded-md" name="name" >
 
-		<label class="block" for="email">Email von Deine Freund|in:</label>
+		<label class="block" for="email">Email von deinen Freund:innen:</label>
     <input type="text" class=" rounded-md" name="email" >
     
 
@@ -19,8 +20,9 @@ import SocialLinks from "$lib/components/social-links.svelte";
       Freund einladen
     </button>
   </form>
-	<p class="">oder auf Social Media teilen:</p>
-	<SocialLinks />
+
+	<ShareToSocialMediaSection />
+
 
 
 

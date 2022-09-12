@@ -24,6 +24,19 @@
 </script>
 
 <div class="flex flex-col pt-8">
-	invite screen here
+	<div>
+		<form class="mt-8 mx-3">
+			<label class=" block" for="name">Name von deinen Freund:innen:</label>
+			<input type="text" class="w-full  rounded-md" name="name" >
+	
+			<label class="block w-full " for="email">Email von deinen Freund:innen:</label>
+			<input type="text" class="w-full  rounded-md" name="email" >
+			
+	
+			<button class="btn rounded-full mt-4 bg-sky-400 py-2  mx-auto w-full cursor-auto focus:bg-sky-300 hover:bg-sky-300" on:click={() => alert('eingeladen')}>
+				Freund einladen
+			</button>
+		</form>
+	</div>
 	<ShareToSocialMediaSection {challenge} index={0} last />
 </div>

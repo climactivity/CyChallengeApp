@@ -8,6 +8,9 @@ let OneSignal: OneSignalPlugin;
 
 let isSubscribed = false;
 export const armSoftNotificationTrigger: () => Promise<void> = async () => {
+
+	if(!Capacitor.isNativePlatform())return
+	
 	if (!OneSignal) {
 		await oneSignalInit();
 	}
