@@ -24,6 +24,18 @@ export interface Challenge {
 	prerequisites: any[];
 }
 
+export interface ImageSource {
+	url?: string;
+	alt?: string;
+	file?: {
+		path?: string;
+		size?: {
+			x: number;
+			y: number;
+		};
+	};
+}
+
 export interface ChallengeV2 {
 	title: string;
 	topic: string;
@@ -37,19 +49,7 @@ export interface ChallengeV2 {
 	slug: string;
 	impact: string;
 	score: number;
-	image?:
-		| ''
-		| {
-				url?: string;
-				alt?: string;
-				file?: {
-					path?: string;
-					size?: {
-						x: number;
-						y: number;
-					};
-				};
-		  };
+	image?: '' | ImageSource;
 }
 
 export interface Difficulties {
