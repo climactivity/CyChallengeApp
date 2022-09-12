@@ -8,20 +8,10 @@
 </script>
 
 <MainScreenLayoutBase>
-	<div
-		class="topbar pt-4 px-4 flex flex-col justify-between sticky top-0 z-30 bg-slate-100 shadow-lg "
-	>
-		<TopHeader />
-	</div>
-
 	<MainContentContainer bind:y={scrollPosition}>
-		<ProportionalHeader
-			bind:scrollPosition
-			backbutton={false}
-			shadowOffsetStart={0}
-			shadowOffsetEnd={20}
-			title="Home"
-		/>
+		<div class="topbar pt-4 px-4 flex flex-col justify-between sticky top-0 z-30 bg-slate-100 shadow-lg ">
+			<TopHeader />
+		</div>
 
 		<slot />
 	</MainContentContainer>

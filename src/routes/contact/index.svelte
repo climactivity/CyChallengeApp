@@ -29,13 +29,13 @@
 				<input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light" id="your_name" type="textarea" />
 			</div>
 
-			<button
-				type="submit"
-				class="btn rounded-full mt-4 bg-sky-500 py-2  mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
-			>
-				Nachricht senden
-			</button>
 		</form>
+		<button
+			type="submit"
+			class="btn rounded-full mt-4 bg-sky-500 py-2  mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
+		>
+			Nachricht senden
+		</button>
 		<p class="mt-3">oder mailen uns hier:</p>
 		<a href="mailto:kontatk@climactivity.de" class=" underline decoration-sky-500"
 			>kontatk@climactivity.de</a

@@ -2,7 +2,6 @@
 	let insets: Writable<any> = getContext('insets');
 
 	import { page } from '$app/stores';
-	import TopHeader from '$lib/components/top-header.svelte';
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import { getContext } from 'svelte';
