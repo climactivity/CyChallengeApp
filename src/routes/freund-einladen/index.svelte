@@ -1,107 +1,40 @@
 <script lang="ts">
-import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
-import SocialLinks from "$lib/components/social-links.svelte";
-
+	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
+	import SocialLinks from '$lib/components/social-links.svelte';
 </script>
 
-<div class="newsletter mx-4 ">
-	<h1 class="header">Freund einladen</h1>
-	<p class="blieb">Zur zweit macht's mehr Spass!</p>
+<div class=" m-2 mt-4 ">
 
-  <form class="mt-8 w-full">
-    <label class=" block" for="name">Name von deinen Freund:innen:</label>
-    <input type="text" class=" rounded-md" name="name" >
+	<div class="mx-4 px-6 py-8 bg-white shadow rounded-lg sm:px-10  ">
+		<form class="mb-0 space-y-6">
+			<h1 class="text-2xl font-bold tracking-wide">Freund einladen</h1>
+			<p class="text-lg font-bold">Zur zweit macht's mehr Spass!</p>
+			<div>
+				<label for="your_name" class="block text-sm font-medium mb-1"> Dein Name </label>
+				<input
+					class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light"
+					id="your_name"
+					type="text"
+				/>
+			</div>
 
-		<label class="block" for="email">Email von deinen Freund:innen:</label>
-    <input type="text" class=" rounded-md" name="email" >
-    
+			<div>
+				<label for="their_name" class="block text-sm font-medium"> Dein:e Freund:in </label>
+				<input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light" id="your_name" type="text" />
+			</div>
 
-    <button class="btn rounded-full mt-4 bg-sky-400 py-2  mx-auto w-full cursor-auto focus:bg-sky-300 hover:bg-sky-300" on:click={() => alert('eingeladen')}>
-      Freund einladen
-    </button>
-  </form>
+			<div>
+				<label for="their_email" class="block text-sm font-medium"> Email </label>
+				<input class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-water2-light focus:ring focus:ring-water2-light" id="your_name" type="text" />
+			</div>
+			<button
+				class="btn rounded-full mt-4 bg-sky-400 py-2  mx-auto w-full cursor-auto focus:bg-sky-300 hover:bg-sky-300"
+				on:click={() => alert('eingeladen')}
+			>
+				Freund einladen
+			</button>
+		</form>
+	</div>
 
 	<ShareToSocialMediaSection />
-
-
-
-
 </div>
-
-<style>
-	.newsletter {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 16px 0px 0px;
-		gap: 8px;
-	}
-	.header {
-		width: 285px;
-		height: 36px;
-
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 600;
-		font-size: 24px;
-		line-height: 36px;
-		/* identical to box height */
-
-		text-align: center;
-
-		color: rgba(0, 0, 0, 0.8);
-
-		/* Inside auto layout */
-
-		flex: none;
-		order: 0;
-		flex-grow: 0;
-	}
-
-	.blieb{
-		font-family: 'Poppins';
-		font-style: normal;
-		font-weight: 500;
-		font-size: 15px;
-		line-height: 22px;
-
-		color: rgba(0, 0, 0, 0.9);
-
-		/* Inside auto layout */
-
-
-		align-self: stretch;
-		flex-grow: 0;
-	}
-  input{
-    width: 98%;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 0px 16px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 22px;
-    color: rgba(0, 0, 0, 0.9);
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-  }
-  label{
-    width: 260px;
-height: 18px;
-
-
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-
-
-letter-spacing: 0.342857px;
-
-color: #757575;
-  }
-</style>
