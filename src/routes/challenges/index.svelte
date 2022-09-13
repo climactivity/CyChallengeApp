@@ -36,7 +36,6 @@
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
-	import TopHeader from '$lib/components/top-header.svelte';
 	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
 	headerState.set({
 		backbutton: false,

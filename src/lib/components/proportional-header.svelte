@@ -31,7 +31,7 @@
 		transparent = newState.transparent;
 		shadowOffsetEnd = newState.shadowOffsetEnd ?? 20;
 
-		console.log(newState);
+		// console.log(newState);
 	});
 
 	let headerShadow = 0;

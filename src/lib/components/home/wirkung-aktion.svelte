@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	export let baueme = 10;
+	export let footprint = 20;
 </script>
 
 <div class="flex gap-2 items-center justify-center">
 	<div
 		class="flex flex-col gap-5 items-center place-items-center border border-black border-opacity-10 rounded-xl p-3 m-2 w-full"
-		on:click={() => goto('/journal')}>
+		on:click={() => goto('/journal')}
+	>
 		<div class="text-sm">Meine Wirkung</div>
 		<div class="flex">
 			<div class="text-nature-dark w-full ">
@@ -23,7 +26,7 @@
 			</div>
 
 			<div class="text-2xl  text-nature-dark">
-				{2476}
+				{baueme}
 			</div>
 		</div>
 	</div>
@@ -52,36 +55,8 @@
 			</div>
 
 			<div class="text-2xl text-heart">
-				{4}
+				{footprint}
 			</div>
 		</div>
 	</div>
 </div>
-
-<style>
-
-	.frame88 {
-		box-sizing: border-box;
-
-		/* Auto layout */
-
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 10px 20px;
-		gap: 10px;
-
-		width: 150px;
-		height: 121px;
-
-		border: 1px solid rgba(0, 0, 0, 0.1);
-		border-radius: 16px;
-
-		/* Inside auto layout */
-
-		flex: none;
-		order: 0;
-		flex-grow: 0;
-	}
-</style>

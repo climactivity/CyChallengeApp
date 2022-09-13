@@ -1,3 +1,11 @@
+<script lang="ts">
+
+
+export let baueme = 10
+export let footprint = 20
+</script>
+
+
 <div class="flex flex-row justify-between mb-3">
 	<div class="font-semibold text-xl font-serif transition-all">
 		<img src="/favicon.png" alt="user-icon" />
@@ -22,7 +30,7 @@
 			</div>
 
 			<div class="text-md text-nature-dark">
-				{0}
+				{baueme}
 			</div>
 		</div>
 		<div
@@ -46,7 +54,7 @@
 			</div>
 
 			<div class="text-md text-heart">
-				{0}
+				{footprint}
 			</div>
 		</div>
 	</div>

@@ -14,9 +14,15 @@
 </script>
 
 <VSection {...$$props}>
+	{#if challenge}
 	<div class="font-serif font-semibold text-xl">
-		Erzähle deinen Freund:innen von der Challenge „{challenge.title}“
+		Erzähle deinen Freund:innen von der Challenge „{challenge?.title}“
 	</div>
+	{:else}
+	<div class="font-serif font-semibold text-xl">
+		oder auf Social Media teilen:
+	</div>
+	{/if}
 	<div class="flex flex-row gap-6 py-4 mx-auto place-content-evenly">
 		<a
 			href={`https://www.instagram.com/?url=${$page.url.href}`}
@@ -38,3 +44,4 @@
 		>
 	</div>
 </VSection>
+
