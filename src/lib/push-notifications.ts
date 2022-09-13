@@ -1,6 +1,7 @@
 import { browser } from '$app/env';
 import { Capacitor } from '@capacitor/core';
 import type { OneSignalPlugin } from 'onesignal-cordova-plugin';
+import { client, session } from './client';
 import { writeStorage } from './services/client-storage-engine';
 import { notificationSettingsStore } from './stores/notification-config';
 
@@ -8,6 +9,10 @@ let OneSignal: OneSignalPlugin;
 
 let isSubscribed = false;
 export const armSoftNotificationTrigger: () => Promise<void> = async () => {
+	if (!Capacitor.isNativePlatform()) {
+		return;
+	}
+
 	if (!OneSignal) {
 		await oneSignalInit();
 	}
@@ -52,4 +57,26 @@ export const oneSignalInit: () => Promise<void> = async () => {
 		console.log('Onesignal Subscription changed:', event);
 		writeStorage('notification-settings', 'onesignal-settings', event.to);
 	});
+};
+
+export const scheduleNotification = async (payload, at): string => {
+	let osId;
+	notificationSettingsStore.update((value) => {
+		osId = value.oneSignalSettings?.userId;
+		return value;
+	});
+
+	if (Capacitor.isNativePlatform() && osId) {
+		const res = await client.rpc(session, 'schedule_one_signal_notification', {
+			recipient_player_id: osId,
+			payload,
+			at
+		});
+		if (res.payload) {
+			const notificationId = res.payload['notificaion_id'] ?? null;
+			if (notificationId != null) {
+				return notificationId;
+			}
+		}
+	}
 };

@@ -23,6 +23,7 @@ export type ChallengeCompletion = {
 	completedAt: Date;
 	level: DifficultyName;
 	completedSteps?: CompletedStep[];
+	accScore?: number;
 };
 export interface ChallengeInteraction {
 	type: ChallengeInteractionType;
@@ -311,7 +312,6 @@ export const acceptChallenge = async (
 			// );
 		}
 	} else {
-
 	}
 
 	let osId;
@@ -334,7 +334,11 @@ export const acceptChallenge = async (
 		}
 	}
 
-	return await writeStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challenge.slug}`, acceptedChallenge);
+	return await writeStorage(
+		CHALLENGE_INTERACTIONS_COLLECTION,
+		`${challenge.slug}`,
+		acceptedChallenge
+	);
 };
 
 export const bookmarkChallenge = async (

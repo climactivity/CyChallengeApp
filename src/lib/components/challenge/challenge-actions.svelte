@@ -84,7 +84,7 @@
 				<EndChallengeButton
 					onClick={(e) => {
 						console.log('end challenge');
-						nextState('cancle');
+						nextState('cancel');
 					}}
 				/>
 				<InviteFriendButton
