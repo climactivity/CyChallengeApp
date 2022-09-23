@@ -57,7 +57,7 @@ export const oneSignalInit: () => Promise<void> = async () => {
 	});
 };
 
-export const scheduleNotification = async (payload, at): string => {
+export const scheduleNotification = async (payload, at): Promise<string> => {
 	let osId;
 	notificationSettingsStore.update((value) => {
 		osId = value.oneSignalSettings?.userId;

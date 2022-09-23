@@ -200,7 +200,7 @@ export const getLastCompletion = (challengeState): DateTime | null => {
 			const curDT = DateTime.fromISO(cur.completedAt);
 			// console.log(acc, cur.completedAt, curDT);
 			if (curDT.ts > acc.ts) {
-				console.log('returning', curDT);
+				// console.log('returning', curDT);
 				return curDT;
 			}
 			return acc;

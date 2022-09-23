@@ -6,21 +6,22 @@
         "geld_sparen": "Geld sparen",
         "fuer_mieter": "Für Mieter",
         "leicht_gemacht": "Leicht gemacht",
-        "": ""
+        "fussabruck": "Fußabruck",
+        "geld_sparen_fussabdruck_leichtgemacht_fuer_mieter": "Geld sparen Fußabdruck Leichtgemacht Für Mieter",
+        "geld_sparen_fussabdruck": "Geld sparen Fußabdruck",
+        "": "",
+        "bank": "Bank",
+        "nachhaltige_bank": "nachhaltige Bank"
     },
     "topics": {
         "ernaehrung": "Ernährung",
         "strom": "Strom",
         "bewusster_konsum_amp_sharing": "Bewusster Konsum & Sharing",
         "mobilitaet_zu_lande": "Mobilität zu Lande",
-        "urlaub_amp_fliegen": "Urlaub & Fliegen",
+        "reisen_amp_fliegen": "Reisen & Fliegen",
         "waerme": "Wärme",
-        "sharing_is_caring": "Sharing is Caring",
         "geld_amp_finanzen": "Geld & Finanzen",
-        "klimakommunikation": "Klimakommunikation",
-        "sich_informieren": "Sich informieren",
-        "politik_amp_gesellschaft": "Politik & Gesellschaft",
-        "schule_amp_betrieb": "Schule & Betrieb"
+        "sammlung_handabdruck": "Sammlung Handabdruck"
     },
     "challenges": {
         "Ernährung": [
@@ -32,26 +33,25 @@
                     "gesundes_leben",
                     "fussabdruck"
                 ],
-                "frontMatter": "Wusstest du, dass du mit der Umstellung auf eine pflanzlichere Ernährung ca. 35% CO2 einsparen kannst? Definitiv ein Grund das mal auszuprobieren.",
+                "frontMatter": "Wusstest du, dass du mit der Umstellung auf eine klimatarische, also weit überwiegend pflanzliche Ernährung bis zu 40% gegenüber den durchschnittlichen Ernährungs-Emissionen einsparen kannst? Definitiv ein Grund das mal auszuprobieren.",
                 "image": {
                     "file": {
-                        "path": "images/E1.webp",
+                        "path": "images/Ernaeh01.webp",
                         "size": {
-                            "x": 1279,
-                            "y": 1920
+                            "x": 2000,
+                            "y": 3004
                         }
-                    },
-                    "url": "https://unsplash.com/photos/Faf6gzEI3Do"
+                    }
                 },
-                "points": "",
+                "points": "5007501000",
                 "type": "recurring",
-                "notification": "Hey, denk dran, diese Woche wolltest du wieder an ... Tagen kein Fleisch essen.",
-                "notificationDays": 7.0,
-                "content": "Ein Großteil der Treibhausgasemissionen aus der Landwirtschaft ist biologischen Prozessen zuzuschreiben. Dazu zählt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren. Lachgas entsteht vor allem als Folge einer viel zu hohen Tierhaltungsdichte und der damit verbundenen Überdüngung. Durch die Verdauungsprozesse von Wiederkäuern (Rindern, Schafen, Ziegen) kommt es zur Freisetzung von Methan. Lachgas und Methan sind deshalb besonders klimarelevant, weil sie in großen Mengen entstehen und beide Gase deutlich klimaschädlicher sind als das bekannte CO2. Für Methan und Lachgas gilt die Landwirtschaft mit einem Anteil von ca. 50 bzw. 60% als Hauptverursacher in Deutschland.",
+                "notification": "Hey, wie sieht es aus mit den Tagen mit rein pflanzlicher Ernährung?",
+                "notificationDays": "",
+                "content": "Die Treibhausgas-Emissionen der Ernährung machen etwa 15 % des durchschnittlichen CO2-Fußabdrucks aus. Weil diese Emissionen aber im Wesentlichen auf Methan, Lachgas und die Landnutzung zurückgehen, wird die Landwirtschaft auch dann noch eine Menge Emissionen verursachen, wenn wir nur noch erneuerbare Energie nutzen. Das macht es so schwierig in dem Bereich Klimaneutralität zu erreichen und so wichtig, dass wir alles tun, um die Emissionen zu verringern. Dazu kommt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren.Lachgas entsteht vor allem als Folge von Überdüngung (z.B. durch Gülle). Durch die Verdauungsprozesse von Rindern, Schafen und Ziegen kommt es zur Freisetzung von Methan.Die wichtigste Einzelmaßnahme für den Klimaschutz im Bereich Ernährung ist, weniger tierische Produkte zu essen, damit die Massentierhaltung endlich Geschichte werden kann. Das hilft nicht nur dem Klimaschutz, sondern auch dem Grundwasserschutz, dem Tierwohl und der menschlichen Gesundheit 😀 ",
                 "Status": "Fertig (aber wird nochmal nach neuen Vorgaben überarbeitet)",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich esse an einem Tag in der Woche kein Fleisch.",
+                        "taskDescription": "Ich esse an einem Tag in der Woche keine tierischen Produkte.",
                         "todos": [
                             {
                                 "name": "Vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
@@ -71,7 +71,7 @@
                         "taskDescription": "Ich esse an zwei Tagen in der Woche keine tierischen Produkte.",
                         "todos": [
                             {
-                                "name": "Vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
+                                "name": "Vegane Rezepte suchen z.B. hier: https://www.zuckerjagdwurst.com/de",
                                 "reward": null
                             },
                             {
@@ -80,6 +80,10 @@
                             },
                             {
                                 "name": "Zubereiten & Ausprobieren",
+                                "reward": null
+                            },
+                            {
+                                "name": "vegane Ersatzprodukte für Dinge finden, die ich weiterhin gerne Essen möchte",
                                 "reward": null
                             }
                         ]
@@ -92,7 +96,7 @@
                                 "reward": null
                             },
                             {
-                                "name": "Vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
+                                "name": "Vegane Rezepte suchen z.B. hier: https://veggie-einhorn.de/",
                                 "reward": null
                             },
                             {
@@ -110,6 +114,94 @@
                 "topic": "ernaehrung"
             },
             {
+                "title": "Lecker satt werden mit weniger Fleisch",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "gesundes_leben",
+                    "fussabdruck"
+                ],
+                "frontMatter": "Wusstest du, dass du mit der Umstellung auf eine (fast nur)  vegetarische Ernährung ca. 25 % gegenüber den durchschnittlichen Ernährungs-Emissionen einsparen kannst? Definitiv ein guter Grund das mal auszuprobieren.",
+                "image": {
+                    "file": {
+                        "path": "images/Ernaeh03.webp",
+                        "size": {
+                            "x": 3888,
+                            "y": 5184
+                        }
+                    }
+                },
+                "points": "",
+                "type": "recurring",
+                "notification": "Hey, wie sieht es aus mit den vegetraischen Tagen?",
+                "notificationDays": "",
+                "content": "Die Treibhausgas-Emissionen der Ernährung machen etwa 15 % des durchschnittlichen CO2-Fußabdrucks aus. Weil diese Emissionen aber im Wesentlichen auf Methan, Lachgas und die Landnutzung zurückgehen, wird die Landwirtschaft auch dann noch eine Menge Emissionen verursachen, wenn wir nur noch erneuerbare Energie nutzen. Das macht es so schwierig in dem Bereich Klimaneutralität zu erreichen und so wichtig, dass wir alles tun, um die Emissionen zu verringern. Dazu kommt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren.Lachgas entsteht vor allem als Folge von Überdüngung (z.B. durch Gülle). Durch die Verdauungsprozesse von Rindern, Schafen und Ziegen kommt es zur Freisetzung von Methan.Die wichtigste Einzelmaßnahme für den Klimaschutz im Bereich Ernährung ist, weniger tierische Produkte zu essen, damit die Massentierhaltung endlich Geschichte werden kann. Das hilft nicht nur dem Klimaschutz, sondern auch dem Grundwasserschutz, dem Tierwohl und der menschlichen Gesundheit 😀 ",
+                "Status": "Fertig (aber wird nochmal nach neuen Vorgaben überarbeitet)",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich esse an einem Tag in der Woche kein Fleisch.",
+                        "todos": [
+                            {
+                                "name": "Vegetarische Rezepte suchen z.B. hier: https://naturkost.de/rezeptfinden/#",
+                                "reward": null
+                            },
+                            {
+                                "name": "Oder vegane Rezepte suchen z.B. hier: https://www.zuckerjagdwurst.com/de",
+                                "reward": null
+                            },
+                            {
+                                "name": "Einkaufen gehen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Zubereiten & Ausprobieren",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich esse an zwei Tagen in der Woche kein Fleisch.",
+                        "todos": [
+                            {
+                                "name": "Vegetarische Rezepte suchen z.B. hier: http://vegetarischerezepte.com",
+                                "reward": null
+                            },
+                            {
+                                "name": "Oder vegane Rezepte suchen z.B. hier: https://biancazapatka.com/de/rezepte/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Einkaufen gehen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Zubereiten & Ausprobieren",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich esse an vier Tagen in der Woche kein Fleisch.",
+                        "todos": [
+                            {
+                                "name": "vegetarische oder vegane Ersatzprodukte für Dinge finden, die ich weiterhin gerne essen möchte",
+                                "reward": null
+                            },
+                            {
+                                "name": "Vegetarische Rezepte suchen z.B. hier:  https://schrotundkorn.de/rezepte",
+                                "reward": null
+                            },
+                            {
+                                "name": "Oder vegane Rezepte suchen z.B. hier: https://veggie-einhorn.de/",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "lecker_satt_werden_mit_weniger_fleisch",
+                "topic": "ernaehrung"
+            },
+            {
                 "title": "Deine vegane Dinnerparty!",
                 "lead": false,
                 "impact": "Peanut",
@@ -118,11 +210,25 @@
                     "handabdruck"
                 ],
                 "frontMatter": "Wenn du selbst schon soweit bist, dass du darauf achtest dich klimafreundlicher zu ernähren oder du einfach nicht alleine mehr Pflanzen essen willst, lade doch Freunde oder Familie zur veganen Dinnerparty ein.",
-                "image": "",
+                "image": {
+                    "file": {
+                        "path": "images/Ernaeh02.webp",
+                        "size": {
+                            "x": 5278,
+                            "y": 3519
+                        }
+                    }
+                },
                 "points": "",
-                "type": "recurring",
+                "type": "one-time",
                 "notification": "",
-                "notificationDays": "",
+                "notificationDays": [
+                    7,
+                    14,
+                    21,
+                    28,
+                    35
+                ],
                 "content": "Die Ernährung trägt weltweit auch in Deutschland mit ca. 15% zur globalen Treibhausgas-Emission bei. Soll dieser CO2-Fußabdruck gesenkt werden, müssen sich unsere Ernährungsgewohnheiten und folglich auch die Landwirtschaft ändern. Dafür eignet sich sich eine \"Klimatarische Ernährung\". Im Gegensatz zu einer veganen Ernährung musst du bei einer klimatarischen Ernährung den Verzehr von tierischen Produkten zwar auch deutlich reduzieren, aber nicht gänzlich darauf verzichten. Dennoch lohnt es sich zur Ernährungsumstellung auch mal Dinnerpartys zu veranstalten, die ganz ohne tierische Produkte auskommen, um deine Gewohnheiten und die deiner Gäste zu verändern. ",
                 "Status": "in Bearbeitung",
                 "difficulties": {
@@ -154,6 +260,45 @@
                 },
                 "slug": "deine_vegane_dinnerparty",
                 "topic": "ernaehrung"
+            },
+            {
+                "title": "Ernährung mal anders (Sebastian) ",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich informiere mich über die Planetary Health Diet",
+                        "todos": []
+                    }
+                },
+                "slug": "ernaehrung_mal_anders_sebastian",
+                "topic": "ernaehrung"
+            },
+            {
+                "title": "Bei Foodsharing mitmachen",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "",
+                "difficulties": {},
+                "slug": "bei_foodsharing_mitmachen",
+                "topic": "ernaehrung"
             }
         ],
         "Strom": [
@@ -166,24 +311,31 @@
                     "fussabdruck",
                     "fuer_mieter"
                 ],
-                "frontMatter": "Mit einem durchschnittlichen Verbrauch kannst du mit einem Wechsel zu echtem Ökostrom etwa 650 kg CO2 bei deinem Fußabdruck mit einem Schlag einsparen. Das lohnt sich und ist auch noch superschnell erledigt.",
-                "image": "",
-                "points": "",
+                "frontMatter": "Bei einem durchschnittlichen Verbrauch kannst du mit einem Wechsel zu echtem Ökostrom etwa 500 kg CO2 bei deinem Fußabdruck mit einem Schlag einsparen. Das lohnt sich und ist auch noch superschnell erledigt.",
+                "image": {
+                    "file": {
+                        "path": "images/Strom_01.webp",
+                        "size": {
+                            "x": 2730,
+                            "y": 3640
+                        }
+                    }
+                },
+                "points": "5007501000",
                 "type": "one-time",
                 "notification": "Hey, hast du schon deinen Stromanbieter gewechselt?",
                 "notificationDays": [
                     7,
-                    7,
                     14,
-                    28,
-                    28,
-                    28
+                    30,
+                    60,
+                    90
                 ],
-                "content": " In Deutschland ist die Stromversorgung in den letzten Jahren für etwa ein Drittel der Treibhausgas-Emissionen verantwortlich gewesen. Denn unser Strom kommt ja nicht einfach aus der Steckdose, sondern muss erst auf die eine oder andere Weise produziert werden. In Deutschland passiert das zu einem großen Teil immer noch mithilfe fossiler Energieträger (Öl, Kohle, Gas). Die fossilen Energieträger kommen nicht nur bei der Stromproduktion, sondern auch z.B. als Treibstoff oder bei der Wärmeversorgung zum Einsatz. Ob wir es schaffen werden, unsere CO2-Emissionen wirksam und schnell zu reduzieren, hängt deswegen ganz wesentlich von der Frage ab, wie wir in Zukunft anders Strom produzieren. Mit dem Wechsel zu einem Ökostromanbieter können wir die Sache selbst in die Hand nehmen und den Zubau bei den erneuerbaren Energien beschleunigen. Ökostrom ist dabei nicht teuer! Im Gegenteil, in den meisten Fällen kannst du gegenüber dem Tarif deines Grundversorgers sogar noch sparen. ",
-                "Status": "in Bearbeitung",
+                "content": "In Deutschland ist die Stromversorgung für etwa ein Drittel der Treibhausgas-Emissionen verantwortlich. Denn unser Strom kommt ja nicht einfach aus der Steckdose, sondern muss erst auf die eine oder andere Weise produziert werden. In Deutschland passiert das zu einem großen Teil immer noch mithilfe fossiler Energieträger (Öl, Kohle, Gas). Ob wir es schaffen werden, unsere CO2-Emissionen wirksam und schnell zu reduzieren, hängt deswegen ganz wesentlich von der Frage ab, wie wir in Zukunft anders Strom produzieren. Mit dem Wechsel zu einem Ökostromanbieter können wir die Sache selbst in die Hand nehmen und den Zubau bei den erneuerbaren Energien beschleunigen. Ökostrom ist dabei nicht teuer! Im Gegenteil, in den meisten Fällen kannst du gegenüber dem Tarif deines Grundversorgers sogar noch sparen.",
+                "Status": "in Bearbeitung (fertig bis auf Feld \"Punkte Alte App\")",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich wechsle zu einem Stromanbieter mit Labeln aus der Utopia-Bestenliste oder anderen Vergleichsportalen.",
+                        "taskDescription": "Ich wechsele zu einem Stromanbieter mit Labeln aus der Utopia-Bestenliste oder anderen Vergleichsportalen.",
                         "todos": [
                             {
                                 "name": "Jahresverbrauch von der letzten Stromrechnung ablesen",
@@ -206,6 +358,10 @@
                                 "reward": null
                             }
                         ]
+                    },
+                    "medium": {
+                        "taskDescription": " ",
+                        "todos": []
                     }
                 },
                 "slug": "wechsel_zu_oekostrom",
@@ -220,7 +376,15 @@
                     "handabdruck"
                 ],
                 "frontMatter": "Du bist schon zu Ökostrom gewechselt? Super! Dann wird es Zeit, dass du Andere davon überzeugst.",
-                "image": "",
+                "image": {
+                    "file": {
+                        "path": "images/Strom_02.webp",
+                        "size": {
+                            "x": 4608,
+                            "y": 2592
+                        }
+                    }
+                },
                 "points": "",
                 "type": "recurring",
                 "notification": "",
@@ -228,6 +392,31 @@
                 "content": "",
                 "Status": "in Bearbeitung",
                 "difficulties": {
+                    "medium": {
+                        "taskDescription": "Ich überzeuge einen Menschen davon ebenfalls zu Ökostrom zu wechseln.",
+                        "todos": [
+                            {
+                                "name": "Mit jemandem über das Thema Strom reden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Zuhören & Hemmnisse verstehen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Die Wichtigkeit der nachhaltigen Stromerzeugung deutlich machen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Die Utopia-Liste oder andere Vergleichsportale an die Hand geben",
+                                "reward": null
+                            },
+                            {
+                                "name": "Wertschätzung dafür geben, dass sie sich mit dem Thema auseinandergesetzt haben",
+                                "reward": null
+                            }
+                        ]
+                    },
                     "hard": {
                         "taskDescription": "Ich überzeuge mindestens zwei Menschen davon ebenfalls zu Ökostrom zu wechseln.",
                         "todos": [
@@ -240,7 +429,7 @@
                                 "reward": null
                             },
                             {
-                                "name": "Die Wichtigkeit der Stromerzeugung deutlich machen",
+                                "name": "Die Wichtigkeit der nachhaltigen Stromerzeugung deutlich machen",
                                 "reward": null
                             },
                             {
@@ -266,15 +455,56 @@
                     "fussabdruck"
                 ],
                 "frontMatter": "Mach den Strom-Sparcheck und schone Geldbeutel und Klima. Denn die beste Kilowattstunde ist die, die gar nicht erst produziert werden muss.",
-                "image": "",
+                "image": {
+                    "file": {
+                        "path": "images/Strom_03.webp",
+                        "size": {
+                            "x": 5184,
+                            "y": 3456
+                        }
+                    }
+                },
                 "points": "",
                 "type": "recurring",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
                 "Status": "in Bearbeitung",
-                "difficulties": {},
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Zum Stromsparcheck von CO2-Online -gehen --> https://www.co2online.de/service/energiesparchecks/stromcheck/ . Befolge die fünf vorgeschlagenen Stromspartips",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Befolge von dieser Stromsparliste 13 Tipps (von 25): https://www.co2online.de/energie-sparen/strom-sparen/strom-sparen-stromspartipps/strom-sparen-tipps-und-tricks/",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Befolge von dieser Stromsparliste 20 Tipps (von 25): https://www.co2online.de/energie-sparen/strom-sparen/strom-sparen-stromspartipps/strom-sparen-tipps-und-tricks/",
+                        "todos": []
+                    }
+                },
                 "slug": "strom_sparen",
+                "topic": "strom"
+            },
+            {
+                "title": "Strom, aber Nachhaltig!(sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck",
+                    "geld_sparen"
+                ],
+                "frontMatter": "Durch Ökostrom sparst du viele Tonnen an Co2 ein!",
+                "image": "Strom_04.jpg",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {},
+                "slug": "strom_aber_nachhaltigsebastian",
                 "topic": "strom"
             }
         ],
@@ -282,24 +512,28 @@
             {
                 "title": "Wünsch dir was!",
                 "lead": false,
-                "impact": "Peanut",
+                "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
                     "fussabdruck",
                     "leicht_gemacht"
                 ],
-                "frontMatter": "Im durchschnittlichen deutschen CO2-Fußabdruck macht der sonstige Konsum immerhin ein Drittel des Gesamtwertes aus. Ein Grund, mal nur das zu kaufen, was wir uns wirkliche wünschen.",
-                "image": "",
-                "points": "",
+                "frontMatter": "Im durchschnittlichen deutschen CO2-Fußabdruck macht der sonstige Konsum immerhin ein Drittel des Gesamtwertes aus. Ein Grund, mal nur das zu kaufen, was wir wirklich brauchen.",
+                "image": {
+                    "url": "https://unsplash.com/photos/RLw-UC03Gwc"
+                },
+                "points": "5007501000",
                 "type": "recurring",
-                "content": "Bei dem Thema „Bewusst Konsumieren“ geht es darum, vor dem Einkaufen zu überlegen, ob das Gewünschte wirklich zu den Dingen gehört, die nötig sind oder glücklich machen. Eine Wunschliste kann dabei helfen, zu erkennen was echt Wünsche und was eher kurzfristige Verlangen sind. Wir können in der Liste beispielsweise notieren, was wir kaufen möchten, wie teuer es ist und wofür wir es brauchen. Wenn Dinge länger drauf stehen, können wir diese voller Vorfreude kaufen und bei einigen Dingen werden wir feststellen, dass wir doch nicht brauchen/ wollen.  ",
-                "Status": "In Bearbeitung",
+                "notification": "Ist deine Wunschliste noch aktuell?",
+                "notificationDays": "",
+                "content": "Bei dem Thema „Bewusst Konsumieren“ geht es darum, vor dem Einkaufen zu überlegen, ob das Gewünschte wirklich zu den Dingen gehört, die nötig sind oder glücklich machen. Eine Wunschliste kann dabei helfen, zu erkennen was echte Wünsche und was eher kurzfristige Impulse sind. Wir können in der Liste beispielsweise notieren, was wir kaufen möchten, wie teuer es ist und wofür wir es brauchen. Wenn Dinge länger drauf stehen, können wir diese voller Vorfreude kaufen und bei einigen Dingen werden wir feststellen, dass wir sie doch nicht brauchen/ wollen.  ",
+                "Status": "fertig zum Gegenlesen ",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich führe eine Woche lang eine Wunschliste und kaufe nur Dinge, die mindestens 24 Stunden auf der Wunschliste gestanden haben. *Lebensnotwendige Dinge wie Grundnahrungsmittel natürlich ausgeschlossen.",
+                        "taskDescription": "Ich führe eine Wunschliste und kaufe nur Dinge, die mindestens 24 Stunden auf der Wunschliste gestanden haben. (Lebensnotwendige Dinge wie Nahrungsmittel natürlich ausgeschlossen.)",
                         "todos": [
                             {
-                                "name": "Wunschliste machen (Was will ich mir kaufen? Wie teuer ist es? Wofür brauche ich es? Macht es mich (lange) glücklich?",
+                                "name": "Wunschliste machen (Was will ich mir kaufen? Wie teuer ist es? Wofür brauche ich es? Macht es mich (lange) glücklich?)",
                                 "reward": null
                             },
                             {
@@ -313,10 +547,10 @@
                         ]
                     },
                     "medium": {
-                        "taskDescription": "Ich führe mindestens vier Wochen lang eine Wunschliste und kaufe nur Dinge, die mindestens 48 Stunden auf der Wunschliste gestanden haben. ",
+                        "taskDescription": "Ich führe eine Wunschliste und kaufe nur Dinge, die mindestens 48 Stunden auf der Wunschliste gestanden haben. ",
                         "todos": [
                             {
-                                "name": "Wunschliste machen",
+                                "name": "Wunschliste machen (Was will ich mir kaufen? Wie teuer ist es? Wofür brauche ich es? Macht es mich (lange) glücklich?)",
                                 "reward": null
                             },
                             {
@@ -325,6 +559,23 @@
                             },
                             {
                                 "name": "Ich lasse alles mindestens 48 Stunden stehen, bevor ich sie mir kaufe",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich führe eine Wunschliste und kaufe nur Dinge, die mindestens eine Woche auf der Wunschliste gestanden haben. ",
+                        "todos": [
+                            {
+                                "name": "Wunschliste machen (Was will ich mir kaufen? Wie teuer ist es? Wofür brauche ich es? Macht es mich (lange) glücklich?)",
+                                "reward": null
+                            },
+                            {
+                                "name": "Dinge, die ich haben möchte, kommen auf die Wunschliste",
+                                "reward": null
+                            },
+                            {
+                                "name": "Ich lasse alles mindestens eine Woche stehen, bevor ich sie mir kaufe",
                                 "reward": null
                             }
                         ]
@@ -346,6 +597,8 @@
                 "image": "",
                 "points": "",
                 "type": "recurring",
+                "notification": "",
+                "notificationDays": "",
                 "content": "Wir im globalen Norden müssen uns im Regelfall kaum Sorgen über unsere Grundversorgung machen. Wir können alles und fast immer haben. Das gilt neben Lebensmitteln ebenso wie für die meisten anderen Dingen, die sich im Leben so gerne anhäufen. Daher ist es wichtig, dass möglichst viele Menschn lernen bewusst zu konsumieren, und nicht in den Kreislauf zu verfallen öfters mal unnötige Dinge zu kaufen, die viele Ressourcen verbrauchen aber für das eigene Leben keinen echten Mehrwert bieten.",
                 "Status": "In Bearbeitung",
                 "difficulties": {
@@ -365,11 +618,174 @@
                 },
                 "slug": "wunschliste_fuer_alle",
                 "topic": "bewusster_konsum_amp_sharing"
+            },
+            {
+                "title": "Sharing is Caring! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen",
+                    "handabdruck",
+                    "fuer_mieter",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "Durch das Ausleihen von  Produkten kannst du eine Menge CO2 sparen. ",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich hänge eine Werkzeugliste ins Treppenhaus",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Bevor ich das nächste Produkt kaufe, prüfe ich vorher die Leihoptionen. - Kommerzieller Verleih (z.B. über Geschäfte), - Verleih aus dem Umfeld (wer könnte das gesuchte Objekt schon besitzen?)",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Ich baue eine Leihinfrastruktur in meiner Nachbarschaft/ meinem Bekanntenkreis/ meiner Familie auf. So wissen wir alle voneinander, was wir uns leihen könnten, und ich beeinflusse meine Nachbar:innen gleich mit. ",
+                        "todos": [
+                            {
+                                "name": "- Ich frage meine Nachbar:innen, was sie zu einer Leihbörse hinzufügen würden. - Ich mache eine Liste aller Sachen, die ich prinzipiell Verleihen würde.",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "sharing_is_caring_sebastian",
+                "topic": "bewusster_konsum_amp_sharing"
+            },
+            {
+                "title": "Recycle doch mal! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen",
+                    "fussabruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "DIe Herstellung von 1 Kilogramm Frischfaserpapier benötigt 3 Mal so viel Wasser, wie die Herstellung von 1 Kilogramm Recyclingpapier. Zudem ist der Energieverbrauch für Frischfaserpapier ist 2,5 Mal so hoch wie für Recyclingpapier.",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": " ich setze mich für die Nutzung von Recycling-Papier ein",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Ich verwende nur noch Recycling-Papier, wenn ich denn überhaupt etwas drucken muss.",
+                        "todos": []
+                    }
+                },
+                "slug": "recycle_doch_mal_sebastian",
+                "topic": "bewusster_konsum_amp_sharing"
+            },
+            {
+                "title": "Schwing den Schraubendreher!",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen",
+                    "fussabruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "Durch eine Reperatur in einem Repair-Cafe kannst du bis zu 24 Kilogramm CO2 sparen. Es gibt über 600 Repair-Cafes in ganz Deutschland, sicherlich auch eines bei dir in der Nähe.",
+                "image": {
+                    "url": "https://pixabay.com/photos/tools-work-repair-a-hammer-2145771/"
+                },
+                "points": "",
+                "type": "recurring",
+                "notification": "Hast du schon erfolgreich etwas reparieren können?",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich schaue mir die Pyramide des Nachhaltigen Konsums an ",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Ich lasse etwas reparieren / gehe zu einem Repair-Cafe",
+                        "todos": []
+                    }
+                },
+                "slug": "schwing_den_schraubendreher",
+                "topic": "bewusster_konsum_amp_sharing"
+            },
+            {
+                "title": "Lass los!",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen_fussabdruck_leichtgemacht_fuer_mieter"
+                ],
+                "frontMatter": "Ganz schön viel Zeug! Hast du auch schonmal überlegt, dass Du viele Dinge, die in Deinem Besitz sind, gar nicht mehr brauchst? Dann lass los! Gib diesen Dingen ein zweites Leben, indem du sie verschenkst, oder verkaufst. Das kann ganz schön befreiend sein.",
+                "image": "",
+                "points": "",
+                "type": "recurring",
+                "notification": "Konntest du schon etwas verkaufen?",
+                "notificationDays": "",
+                "content": "",
+                "Status": "",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich fange klein an und entscheide mich für 1-2 Dinge, die ich lange nicht mehr in der Hand hatte und vermutlich gar nicht mehr benötige. Ich überlege, wem ich damit eine Freude machen könnte, oder schalte eine Anzeige im Internet, z.B. auf privaten Verkaufsbörsen.",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Das große Ausmisten steht an: Ich nehme mir Zeit und schaue durch alle meine Dinge durch, um mich bewusst zu entscheiden, was ich getrost loslassen kann. Und hey; vielleicht kann ich den Gebrauchtmarkt damit stärken, und jemand anderes entscheidet sich gegen einen Neukauf!",
+                        "todos": []
+                    }
+                },
+                "slug": "lass_los",
+                "topic": "bewusster_konsum_amp_sharing"
+            },
+            {
+                "title": "Neukauf? Wozu, wenn die Alternative doch so einfach ist!",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen_fussabdruck"
+                ],
+                "frontMatter": "Durch den Kauf von gebrauchten anstatt von neuen Sachen lässt sich ganz schön viel CO2 einsparen. Laut Umweltbundesamt werden zum Beispiel ein Drittel der Haushaltsgroßgeräte ausgetauscht, obwohl sie noch funktionieren.",
+                "image": "",
+                "points": "",
+                "type": "recurring",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich informiere mich das nächste Mal, wenn ich etwas neu kaufen möchte, welche Optionen es für einen Gebrauchtkauf gibt. Übrigens: bei kommerziellen Gebrauchtwarenshops gibt es oft sogar eine Garantie für die Produkte.",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Ich nehme mir vor, fast alles, was ich kaufe, gebraucht zu kaufen.",
+                        "todos": [
+                            {
+                                "name": "Das kann auch Geschenke mit einschließen",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "neukauf_wozu_wenn_die_alternative_doch_so_einfach_ist",
+                "topic": "bewusster_konsum_amp_sharing"
             }
         ],
         "Mobilität zu Lande": [
             {
-                "title": "Allein ist nicht fein",
+                "title": "Weniger allein - mehr Klimaschutz",
                 "lead": false,
                 "impact": "Big Point",
                 "tags": [
@@ -377,14 +793,100 @@
                     "gesundes_leben",
                     "fussabdruck"
                 ],
-                "frontMatter": "Das Kernproblem bei der Mobilität zu Lande sind die Kilometer, die so viele Menschen im Auto alleine fahren. Verringere deine allein gefahrenen Kilometer durch einen Umstieg aufs Fahrrad oder den ÖPNV, durch Park & Ride, Mitfahrgelegenheiten oder indem du Fahrten vermeidest.",
-                "image": " ",
-                "points": " ",
+                "frontMatter": "Das Kernproblem bei der Mobilität am Boden sind die Kilometer, die so viele Menschen im Auto alleine fahren. Verringere deine alleine gefahrenen Kilometer durch einen Umstieg aufs Fahrrad oder den ÖPNV, durch Park & Ride, Mitfahrgelegenheiten oder indem du Fahrten vermeidest.",
+                "image": {
+                    "file": {
+                        "path": "images/MobLan01.webp",
+                        "size": {
+                            "x": 3915,
+                            "y": 5873
+                        }
+                    }
+                },
+                "points": " 5007501000",
                 "type": "recurring",
-                "content": " ",
+                "notification": "Bist du letzte Woche weniger alleine im Auto gefahren?",
+                "notificationDays": "",
+                "content": "Die Mobilität zu Lande umfasst Auto, Zug, Bus, Straßenbahn und Fahrrad fahren sowie zu Fuß gehen. Dieser Bereich hat einen Anteil von 14% am durchschnittlichen deutschen CO2-Fußabdruck und ist damit definitiv einer der Big Points beim Klimaschutz. Der größte Teil der Emissionen stammt dabei aus der Nutzung von Autos.Die Debatte zum Klimaschutz im Verkehrssektor stehen dementsprechend oft die Elektromobilität und Treibstoffe aus erneuerbarer Energie oder erneuerbaren Rohstoffen. Neben dieser notwendigen Antriebswende umfasst die Verkehrswende auch die Mobilitätswende, also ein Veränderung der Art, wie und wie viel wir uns fortbewegen. Und wenn mit dem Niedergang der Verbrennungsmotoren auch der Vorrang für das Auto zu Ende geht, dann gibt es außer für den Klimaschutz auch für andere Bereiche wie Gesundheit, Wohlbefinden und die Lebensqualität im öffentlichen Raum eine Menge zu gewinnen.",
                 "Status": "in Bearbeitung",
-                "difficulties": {},
-                "slug": "allein_ist_nicht_fein",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich überlege für jede private Autofahrt, ob es eine Möglichkeit gibt, sie nicht alleine zu machen.",
+                        "todos": [
+                            {
+                                "name": "Fahrten vermeiden",
+                                "reward": null
+                            },
+                            {
+                                "name": "ÖPNV nutzen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Fahrrad fahren",
+                                "reward": null
+                            },
+                            {
+                                "name": "Fahrgemeinschaft bilden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Park & Ride nutzen",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Unter 125! Ich überlege für meine privaten Autofahrten, ob sich das alleine fahren vermeiden lässt, und fahre nächste Woche nicht mehr als 125 km in der Woche alleine Auto.",
+                        "todos": [
+                            {
+                                "name": "Fahrten vermeiden",
+                                "reward": null
+                            },
+                            {
+                                "name": "ÖPNV nutzen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Fahrrad fahren",
+                                "reward": null
+                            },
+                            {
+                                "name": "Fahrgemeinschaft bilden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Park & Ride nutzen",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Unter 35! Ich überlege für meine private Autofahrten, ob sich das alleine fahren vermeiden lässt, und fahre nächste Woche nicht mehr als 35 km in der Woche alleine Auto.",
+                        "todos": [
+                            {
+                                "name": "Fahrten vermeiden",
+                                "reward": null
+                            },
+                            {
+                                "name": "ÖPNV nutzen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Fahrrad fahren",
+                                "reward": null
+                            },
+                            {
+                                "name": "Fahrgemeinschaft bilden",
+                                "reward": null
+                            },
+                            {
+                                "name": "Park & Ride nutzen",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "weniger_allein__mehr_klimaschutz",
                 "topic": "mobilitaet_zu_lande"
             },
             {
@@ -395,52 +897,198 @@
                     ""
                 ],
                 "frontMatter": " ",
-                "image": " ",
+                "image": "",
                 "points": " ",
                 "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
                 "content": " ",
                 "Status": " ",
                 "difficulties": {},
                 "slug": "",
                 "topic": "mobilitaet_zu_lande"
+            },
+            {
+                "title": "Autos teilen",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen",
+                    "fussabdruck"
+                ],
+                "frontMatter": "Carsharing-Angebote haben ein Einsparpotenzial von mehr als sechs Millionen Tonnen CO2 pro Jahr. Dies hatte eine Studie des Umweltbundesamtes schon 2015 berechnet.",
+                "image": {},
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich schaue, wo die nächste Carsharing-Station ist",
+                        "todos": [
+                            {
+                                "name": "Car Sharing in deiner Stadt finden: https://www.dein-carsharing.de/stadt.html?",
+                                "reward": null
+                            },
+                            {
+                                "name": "https://carsharing.de/",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich finde eine Person, die Car-Sharing nutzt, und rede mit ihr über ihre Erfahrungen mit Car-Sharing.",
+                        "todos": [
+                            {
+                                "name": "Car Sharing in deiner Stadt finden: https://www.dein-carsharing.de/stadt.html?",
+                                "reward": null
+                            },
+                            {
+                                "name": "https://carsharing.de/",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "hard": {
+                        "taskDescription": "Ich melde mich beim Car-Sharing an",
+                        "todos": [
+                            {
+                                "name": "Car Sharing in deiner Stadt finden: https://www.dein-carsharing.de/stadt.html?",
+                                "reward": null
+                            },
+                            {
+                                "name": "https://carsharing.de/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Halte Ausschau nach Aktionen, mit denen du dir ggf eine Anmeldegebühr sparen kannst, z.B. als Inhaber:in einer ÖPNV-Monatskarte",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "autos_teilen",
+                "topic": "mobilitaet_zu_lande"
+            },
+            {
+                "title": "Mehr Platz fürs Rad",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck"
+                ],
+                "frontMatter": "Ob viele Menschen Fahrrad fahren oder nicht, hängt nicht nur davon ab, ob sie sich selber einen Ruck geben, das zu tun, sondern auch davon, ob die Straßen in der Stadt und auf dem Land für Fahrradfahrer:innen sicher und einladend sind. Und da ist noch viieel Luft nach oben. Critical Mass, Ciddical Mass und andere Fahrraddemos erzeugen Druck auf die Regierenden, damit die nötigen strukturellen Veränderungen endlich in Angriff genommen werden.",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in bearbeitung",
+                "difficulties": {
+                    "medium": {
+                        "taskDescription": "Ich nehme an einer Fahrrad Demo teil",
+                        "todos": [
+                            {
+                                "name": "Auf http://www.critical-mass.de/links.html",
+                                "reward": null
+                            },
+                            {
+                                "name": "Auf https://kinderaufsrad.org/ schauen",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "mehr_platz_fuers_rad",
+                "topic": "mobilitaet_zu_lande"
+            },
+            {
+                "title": "Mobilitätswende im Betrieb",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "geld_sparen",
+                    "gesundes_leben",
+                    "handabdruck"
+                ],
+                "frontMatter": "Nicht nur wir, auch der Betrieb, wo wir arbeiten, kann und sollte etwas für die Mobilitätswende tun. Nur kommen die Entscheider:innen dort vielleicht nicht selber auf die gute Idee, etwas in die Gänge zu bringen. Möglichkeiten gibt es eine ganze Menge. Reg du doch den Wandel an, den du dir wünschst und den der Klimaschutz braucht.",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich setze mich bei mir im Betrieb für E-Autos als Dienstfahrzeuge ein.",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Ich setze mich bei mir im Betrieb für Dienstfahrräder ein.",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Ich rege in meinem Betrieb die Einführung eines Job-Ticket an",
+                        "todos": []
+                    }
+                },
+                "slug": "mobilitaetswende_im_betrieb",
+                "topic": "mobilitaet_zu_lande"
             }
         ],
-        "Urlaub &amp; Fliegen": [
+        "Reisen &amp; Fliegen": [
             {
-                "title": "Bleib Mal am Boden!",
+                "title": "Bleib mal am Boden!",
                 "lead": false,
                 "impact": "Big Point",
                 "tags": [
-                    "fussabdruck",
-                    "leicht_gemacht"
+                    "fussabdruck"
                 ],
-                "frontMatter": "Fliegen ist rund 7.5-Mal klimaschädlicher als Bus- und Bahnfahren. Das ist doch eigentlich bereits Grund genug um während der nächsten Urlaubsreise auf dem Boden zu bleiben?",
-                "image": "",
-                "points": "",
+                "frontMatter": "Das Fliegen ist einer der Sektoren, in denen die Treibhausgas-Emissionen sehr stark wachsen. Eine interkontinentale Flugreise kann schnell deinen Fußabdruck um 50 oder sogar 100 % vergrößern. Willst du das in Zukunft vermeiden?",
+                "image": {
+                    "file": {
+                        "path": "images/Fliege01.webp",
+                        "size": {
+                            "x": 2845,
+                            "y": 3673
+                        }
+                    }
+                },
+                "points": "5007501000",
                 "type": "one-time",
-                "notification": "Wie sieht es mit deiner Bodenhaftung aus; planst du immer noch alle Reisen mit Bus, Bahn oder Zug?",
+                "notification": "Bleibst du auf dem Boden?",
                 "notificationDays": [
                     14,
                     30,
                     60,
-                    180
+                    180,
+                    365,
+                    550
                 ],
-                "content": "Fliegen ist von allen Verkehrsmitteln die klimaschädlichste Art sich fortzubewegen. Kein anderes Verkehrsmittel verursacht eine vergleichbare Menge an Treibhausgas pro Personenkilometer. Dazu ein kleiner Vergleich: Auf einem Inlandsflug werden pro Personenkilometer 230 gCO2eq ausgestossen. Mit dem PKW (mit nur einer Person!) sind 147  gCO2eq sid und mit dem Zug oder dem Bus im Fernverkehr nur etwa 30 gCO2eq. Somit ist Fliegen rund 7,5-mal klimaschädlicher als Zug/Bus/Bahnfahren!",
+                "content": "Fliegen ist von allen Verkehrsmitteln die klimaschädlichste Art sich fortzubewegen. Kein anderes Verkehrsmittel verursacht eine vergleichbare Menge an Treibhausgas pro Personenkilometer. Dazu ein kleiner Vergleich: Auf einem Inlandsflug werden pro Personenkilometer 210 gCO2eq ausgestossen. Mit dem PKW (bei durchschnittlicher Besetzung mit 1,5 Personen) sind es 135 gCO2eq und mit dem Zug oder dem Bus im Fernverkehr nur etwa 30 gCO2eq. Somit ist Fliegen rund sieben mal klimaschädlicher als Zug- oder Busfahren!Wenn du (fast) nicht fliegst befindest du dich übrigens in bester Gesellschaft: über 80% der Menschen auf der Welt sind noch nie geflogen und noch vor 50 Jahren war Fliegen auch in Deutschland etwas sehr Außergewöhnliches.",
                 "Status": "in Bearbeitung",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich ....",
+                        "taskDescription": "Ich halte mich an die Regeln des Forums anders reisen und setze mir selber ein CO2-Budget für Flüge in die nächsten 5 Jahren.",
                         "todos": [
                             {
-                                "name": "Keine Flüge unter einer Distanz von 800 km",
+                                "name": "Keine Flüge unter einer Distanz von 1000 km",
                                 "reward": null
                             },
                             {
-                                "name": "800-3800 km: mindestens eine Woche bleiben",
+                                "name": "1000-4000 km: mindestens eine Woche bleiben",
                                 "reward": null
                             },
                             {
-                                "name": "Weiter als 3800 km: mindestens 2 Wochen bleiben.",
+                                "name": "Weiter als 4000 km: mindestens 2 Wochen bleiben.",
+                                "reward": null
+                            },
+                            {
+                                "name": "Flug-Emissionen berechnen: https://www.atmosfair.de/de/kompensieren/flug/",
                                 "reward": null
                             },
                             {
@@ -448,18 +1096,64 @@
                                 "reward": null
                             },
                             {
-                                "name": "das Portal katzensprung-deutschland.de kennenlernen",
+                                "name": "das Portal katzensprung-deutschland.de für Alternativen kennenlernen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Reiseziele auf wirsindanderswo.de erkunden",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich plane mein Reisen so, dass ich in den nächsten 5 Jahren mit einem Budget von 2 Tonnen CO2eq (gem. atmosfair) auskomme.",
+                        "todos": [
+                            {
+                                "name": "Flug-Emissionen berechnen: https://www.atmosfair.de/de/kompensieren/flug/",
+                                "reward": null
+                            },
+                            {
+                                "name": "20 % unterm deutschen Durchschnitt bleiben",
+                                "reward": null
+                            },
+                            {
+                                "name": "auf  www.unter1000.de registrieren",
+                                "reward": null
+                            },
+                            {
+                                "name": "das Portal katzensprung-deutschland.de für Alternativen kennenlernen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Reiseziele auf wirsindanderswo.de erkunden",
                                 "reward": null
                             }
                         ]
                     },
                     "hard": {
-                        "taskDescription": "Ich fliege nicht (mehr). Seit midestens einem Jahr habe meine Füsse den Boden nicht mehr verlassen. ",
-                        "todos": []
+                        "taskDescription": "Ich plane, in den nächsten 5 Jahren nicht zu fliegen.",
+                        "todos": [
+                            {
+                                "name": "Held:in sein 😇",
+                                "reward": null
+                            },
+                            {
+                                "name": "auf  www.unter1000.de registrieren",
+                                "reward": null
+                            },
+                            {
+                                "name": "das Portal katzensprung-deutschland.de für Alternativen kennenlernen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Reiseziele auf wirsindanderswo.de erkunden",
+                                "reward": null
+                            }
+                        ]
                     }
                 },
                 "slug": "bleib_mal_am_boden",
-                "topic": "urlaub_amp_fliegen"
+                "topic": "reisen_amp_fliegen"
             },
             {
                 "title": "Anderen helfen, am Boden zu bleiben.",
@@ -470,23 +1164,40 @@
                     "leicht_gemacht"
                 ],
                 "frontMatter": "",
-                "image": "",
+                "image": {},
                 "points": "",
-                "type": "one-time",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
                 "Status": "in Bearbeitung",
                 "difficulties": {},
                 "slug": "anderen_helfen_am_boden_zu_bleiben",
-                "topic": "urlaub_amp_fliegen"
+                "topic": "reisen_amp_fliegen"
+            },
+            {
+                "title": "Zuhause, statt vor Ort! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "type": "repeatable",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {},
+                "slug": "zuhause_statt_vor_ort_sebastian",
+                "topic": "reisen_amp_fliegen"
             }
         ],
         "Wärme": [
             {
                 "title": "Bleib cool!",
                 "lead": false,
-                "impact": "Peanut",
+                "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
                     "fussabdruck",
@@ -495,17 +1206,23 @@
                 ],
                 "frontMatter": "Sparsame Gewohnheiten beim Heizen und Lüften sind kinderleicht und wirken sich positiv auf Klima und Geldbeutel aus. Also warm anziehen und gleich ausprobieren!",
                 "image": {
-                    "url": "https://live.staticflickr.com/2936/13920194440_d6077663bf_b.jpg"
+                    "file": {
+                        "path": "images/Waerme01.webp",
+                        "size": {
+                            "x": 6302,
+                            "y": 4789
+                        }
+                    }
                 },
-                "points": "jeweils 100 Punkte",
+                "points": "5007501000",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
                 "notification": "Hey, denk dran, diese Woche wolltest du dich wieder darin üben, sparsam(er) zu lüften und zu heizen.",
-                "notificationDays": 7.0,
+                "notificationDays": "",
                 "content": "Im deutschen Durchschnitt macht der Wärmebedarf für Heizen und Warmwasser etwa ein Siebtel des individuellen Fußabdrucks aus (UBA-CO2-Rechner). Die Beheizung deines Arbeitsplatzes und all der Gebäude, in denen Produkte für dich hergestellt und Dienstleistungen für dich erbracht werden, kommt zu den Emissionen des Sektors Wärme noch hinzu. Auch wenn du gerade nicht die Kapazitäten für große Veränderungen wie eine energetische Sanierung hast, gibt es doch jede Menge kleine Maßnahmen, die schon viel helfen und dir gleichzeitig noch Geld sparen!",
                 "Status": "in Korrektur",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich achte zwei Wochen lang besonders darauf, energiesparend zu lüften.",
+                        "taskDescription": "Ich achte besonders darauf, energiesparend zu lüften.",
                         "todos": [
                             {
                                 "name": "Mehrmals täglich Stoßlüften statt das Fenster auf Kipp zu halten",
@@ -522,7 +1239,7 @@
                         ]
                     },
                     "medium": {
-                        "taskDescription": "Ich heize zwei Wochen lang nur die Räume, in denen ich mich aufhalte und minimiere den Wärmeverlust.",
+                        "taskDescription": "Ich heize (auch zeitweise) unbenutzte Räume nur minimal (Schimmelvermeidung)",
                         "todos": [
                             {
                                 "name": "Heizung in Räumen abdrehen, die länger nicht benutzt werden",
@@ -539,7 +1256,7 @@
                         ]
                     },
                     "hard": {
-                        "taskDescription": "Ich heize benutzte Räume einen Monat lang auf niedrigen Temperaturen.",
+                        "taskDescription": "Ich heize benutzte Räume auf niedrigere Temperaturen.",
                         "todos": [
                             {
                                 "name": "Heizung auf 18-20 Grad, im Schlafzimmer reichen 16-18 Grad",
@@ -570,13 +1287,19 @@
                 ],
                 "frontMatter": "Es braucht nicht immer große Umbaumaßnahmen, um unseren Wohnraum klimafreundlich aufzurüsten - auch kleinere Veränderungen können schon Emissionen und Kosten deutlich reduzieren! Ideal für alle Sparfüchse in Mietwohnungen.",
                 "image": {
-                    "url": "https://unsplash.com/photos/RfkaDKptt-A"
+                    "file": {
+                        "path": "images/Waerme02.webp",
+                        "size": {
+                            "x": 4272,
+                            "y": 2848
+                        }
+                    }
                 },
-                "points": "2000 / 10 / 10",
+                "points": "200010 10",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
                 "notification": "",
                 "notificationDays": "",
-                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses, die sich aber natürlich nicht für jede:n mal so eben machen lässt. Darüber hinaus gibt es aber auch einen beträchtlichen Teil, der von dir als Nutzer:in von Heizung und Warmwasser abhängt. Wir zeigen dir, mit welchen Maßnahmen du einen Unterschied machen kannst und gleichzeitig noch Energiekosten sparst! Zusätzlich könntest du die Vermietenden oder die Hausverwaltung auf die Dringlichkeit des Dämmens hinweisen, vielleicht mit dem Hinweis, dass energetische Sanierungen vom Staat gefördert werden. Siehe mehr Infos dazu hier: https://www.energieheld.de/foerderung/aenderungen-2020",
+                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses, die sich aber natürlich nicht für jede:n mal so eben machen lässt. Darüber hinaus gibt es aber auch einen beträchtlichen Teil, der von dir als Nutzer:in von Heizung und Warmwasser abhängt. Wir zeigen dir, mit welchen Maßnahmen du einen Unterschied machen kannst und gleichzeitig noch Energiekosten sparst! Zusätzlich könntest du die Vermietenden oder die Hausverwaltung auf die Dringlichkeit des Dämmens hinweisen, vielleicht mit dem Hinweis, dass energetische Sanierungen vom Staat gefördert werden. Mehr Infos dazu hier: https://www.energieheld.de/foerderung/aenderungen-2020",
                 "Status": "in Korrektur",
                 "difficulties": {
                     "easy": {
@@ -656,8 +1379,8 @@
                 "points": "",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
                 "notification": "Hey, denk dran, du wolltest dich um die Dämmung deines Hauses kümmern.",
-                "notificationDays": "",
-                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses. Mehr als die Hälfte von Wohngebäuden sind noch aus einer Zeit, in der es überhaupt keine Wärmeschutzvorschriften gab und die energetische Sanierung kommt in Deutschland viel zu langsam voran, um das 1,5-Grad-Ziel einzuhalten. Neubauten sind leider auch nicht die Lösung; strengere Auflagen für neue Gebäude reichen nicht aus und die Sanierung von alten Gebäuden hat tatsächlich eine bessere Energiebilanz als Abriss und Neubau. Mehr dazu kannst die hier nachlesen: https://www.agora-energiewende.de/veroeffentlichungen/wert-der-effizienz-im-gebaeudesektor-in-zeiten-der-sektorenkopplung/ ",
+                "notificationDays": 7.0,
+                "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses. Mehr als die Hälfte der Wohngebäude sind noch aus einer Zeit, in der es überhaupt keine Wärmeschutzvorschriften gab und die energetische Sanierung kommt in Deutschland viel zu langsam voran, um das 1,5-Grad-Ziel einzuhalten. Neubauten sind leider auch nicht die Lösung; strengere Auflagen für neue Gebäude reichen nicht aus und die Sanierung von alten Gebäuden hat tatsächlich eine bessere Energiebilanz als Abriss und Neubau. Mehr dazu kannst die hier nachlesen: https://www.agora-energiewende.de/veroeffentlichungen/wert-der-effizienz-im-gebaeudesektor-in-zeiten-der-sektorenkopplung/ ",
                 "Status": "in Bearbeitung",
                 "difficulties": {
                     "easy": {
@@ -712,61 +1435,340 @@
                 "topic": "waerme"
             }
         ],
-        "Sharing is Caring": [
+        "Geld &amp; Finanzen": [
             {
-                "title": "Finde deine Sharing Community!",
+                "title": "Nachhaltig anlegen! (sebastian)",
                 "lead": false,
                 "impact": "Peanut",
                 "tags": [
-                    "geld_sparen",
-                    "fussabdruck"
+                    "fussabdruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "Jeden Euro den du nicht nachhaltig anlegst beeinflusst das Klima.",
+                "image": "",
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich informiere mich zu den Auswirkungen nicht nachhaltiger Geldanlagen",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Ich wechsel zu einer nachhaltigen Bank",
+                        "todos": []
+                    }
+                },
+                "slug": "nachhaltig_anlegen_sebastian",
+                "topic": "geld_amp_finanzen"
+            },
+            {
+                "title": "Nachhaltig investieren! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck",
+                    "leicht_gemacht"
                 ],
                 "frontMatter": "",
                 "image": "",
                 "points": "",
-                "type": "repeatable",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
                 "content": "",
-                "Status": "In Bearbeitung",
+                "Status": "in Bearbeitung",
                 "difficulties": {
                     "easy": {
-                        "taskDescription": "Ich  erkunde Möglichkeiten zum Dinge ausleihen und verleihen in meiner Gegend.",
+                        "taskDescription": "Informiere mich bei Urgewald und im FairFinance-Guide",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": " Ich investiere Geld in ein Bürgerenergie-Projekt",
+                        "todos": []
+                    }
+                },
+                "slug": "nachhaltig_investieren_sebastian",
+                "topic": "geld_amp_finanzen"
+            },
+            {
+                "title": "Lass dein Geld das Klima schützen!",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "fussabdruck"
+                ],
+                "frontMatter": "Jeder Euro hat eine Klimawirkung. Eine erhöhte Nachfrage nach Geldanlagen oder Versicherungen, die den Schutz von Mensch und Umwelt im Blick haben, kann den Finanzmarkt schrittweise nachhaltiger und transparenter gestalten. Auch du kannst einen Unterschied machen!",
+                "image": {
+                    "url": "https://unsplash.com/photos/joqWSI9u_XM"
+                },
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
+                "notification": "",
+                "notificationDays": "",
+                "content": "Wenn wir unser Geld  einer Bank überlassen, es anlegen oder eine Lebensversicherung abschließen, dann wird dieses Geld irgendwo investiert. Auch ohne unsere Zustimmung kann dies dazu führen, dass unser Geld mithilft, fossile Energieträger zu finanzieren oder andere klimaschädliche Projekte zu ermöglichen. Von daher sollten wir dafür sorgen, dass wir und unser Geld gemeinsam für den Klimaschutz arbeiten. Ethische Banken und Versicherungen verzichten nicht nur auf Investitionen, die Mensch und Umwelt schaden (wie z.B. fossile Energien oder Waffengeschäfte), sondern investieren stattdessen gezielt in Unternehmungen, die den positiven Wandel in Richtung Klimawende, besserer globaler Durchsetzung von Menschenrechten und mehr wirtschaftlicher Gerechtigkeit fördern.",
+                "Status": "in Korrektur",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich suche mir in den nächsten zwei Wochen eine Versicherung aus, bei der ich auf eine grüne Alternative umsteigen kann.",
                         "todos": [
                             {
-                                "name": "Orte und Plattformen durchstöbern (z.B. nebenan.de, Leih-Café)",
+                                "name": "Über verschiedene grüne Versicherungen informieren (Krankenversicherung, Rente, Haftpflicht, Hausrat, Kfz, u.v.m.), z.B. hier: https://utopia.de/ratgeber/nachhaltige-versicherung-gruene-rente-krankenkasse/",
                                 "reward": null
                             },
                             {
-                                "name": "vor dem nächsten Kauf nachschauen, ob der Gegenstand auch ausgeliehen werden könnte",
+                                "name": "Beratung und Vermittlung suchen, z.B. bei www.gruen-versichert.de oder ver.de",
                                 "reward": null
                             }
                         ]
                     },
                     "medium": {
-                        "taskDescription": "Ich leihe mir einen Gegenstand von Freunden oder verleihe selber etwas.",
+                        "taskDescription": "Ich kümmere in den nächsten 3 Wochen um den Wechsel zu einer grünen Versicherung.",
                         "todos": [
                             {
-                                "name": "Umhören, wer den gebrauchten Gegenstand bereits besitzt und verleihen würde",
+                                "name": "Laufzeit und Fristen der aktuellen Versicherung ermitteln",
                                 "reward": null
                             },
                             {
-                                "name": "Selber anbieten etwas zu verleihen wenn jemand anderes es sucht oder sich neu kaufen möchte",
+                                "name": "Neue Versicherung kontaktieren und alle Unterlagen zur Anmeldung zusammenstellen",
+                                "reward": null
+                            },
+                            {
+                                "name": "ggf. alte Versicherung zum nächstmöglichen Zeitpunkt kündigen",
                                 "reward": null
                             }
                         ]
                     },
                     "hard": {
-                        "taskDescription": "Ich leihe mir einen Gegenstand von Fremden oder verleihe etwas über eine Sharing-Plattform.",
+                        "taskDescription": "Ich wechsle innerhalb der nächsten 3 Monate zu einer nachhaltigen Bank.",
+                        "todos": [
+                            {
+                                "name": "Über die Nachhaltigkeit verschiedener Banken informieren, z.B. hier https://www.fairfinanceguide.de/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Nachhaltige Bank aussuchen, eine Übersicht gibt es z.B. hier https://utopia.de/ratgeber/alternative-gruene-bank/",
+                                "reward": null
+                            },
+                            {
+                                "name": "Konto bei nachhaltiger Bank eröffnen",
+                                "reward": null
+                            },
+                            {
+                                "name": "ggf. Kontowechsel-Service nutzen, altes Konto schließen",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "lass_dein_geld_das_klima_schuetzen",
+                "topic": "geld_amp_finanzen"
+            },
+            {
+                "title": "Bankwechsel ",
+                "lead": false,
+                "impact": "Big Point",
+                "tags": [
+                    "bank",
+                    "nachhaltige_bank",
+                    "fussabdruck"
+                ],
+                "frontMatter": "Der Wechsel zu einer nachhaltigen Bank ist einfacher als mensch denkt. Mittlerweile sind Banken sogar dazu verpflichtet dir bei deinem Wechsel zu helfen. Es gibt außerdem auch den Kontowechsel-Service, der dir den Wechsel erleichtern kann. Also nichts wie los. ",
+                "image": {
+                    "file": {
+                        "path": "images/GeldFi01.webp",
+                        "size": {
+                            "x": 5616,
+                            "y": 3744
+                        }
+                    }
+                },
+                "points": "5007501000",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
+                "notification": "Hast du schon deine Bank gewechselt?",
+                "notificationDays": [
+                    7,
+                    14,
+                    21,
+                    28
+                ],
+                "content": "Kohle-Kredite, Rüstungs-Deals und Anleihen von Autokraten oder Investitionen in Erneuerbare Energien, Energieeffizienz, nachhaltige Landwirtschaft und innovative Projekte? Ein Wechsel zu einer nachhaltigen Bank ist dabei ein einfacher Weg zu beeinflussen, was mit unserem Geld passiert. Der Aufwand ist dabei glücklicherweise geringer als mensch denkt. Informationen gibt es u.a. bei den NGOs Urgewald und FairFinanceGuide. Aber nicht nur das, mitllerweile gibt es einige Angebote für Kontowechsel-Services. Damit ist der Bankwechsel schneller getan als mensch denkt und nicht mehr so ein großer Brocken, den wir lange vor uns herschieben müssen. Übrigens, wenn 10.000 Euro bei einer nachhaltigen Bank liegen, spart das 2,1 t/CO2eq.",
+                "Status": "bereit zum gegenlesen",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich informiere mich bei Urgewald oder beim FairFinance-Guide über nachaltige Banken.",
+                        "todos": [
+                            {
+                                "name": "auf urgewald.org informieren",
+                                "reward": null
+                            },
+                            {
+                                "name": "auf fairfinanceguide.de informieren",
+                                "reward": null
+                            }
+                        ]
+                    },
+                    "medium": {
+                        "taskDescription": "Ich wechsel zu einer nachhaltigen Bank. ",
+                        "todos": [
+                            {
+                                "name": "Bank auswählen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Kontowechsel-Service beauftragen oder",
+                                "reward": null
+                            },
+                            {
+                                "name": "Konto eröffnen",
+                                "reward": null
+                            },
+                            {
+                                "name": "Umstellung von Daueraufträgen und Lastschriften",
+                                "reward": null
+                            },
+                            {
+                                "name": "Der alten Bank kündigen. WICHTIG: Teile deiner Bank den Kündigungsgrund mit!",
+                                "reward": null
+                            },
+                            {
+                                "name": "Weitersagen und andere zum Wechsel bewegen.",
+                                "reward": null
+                            }
+                        ]
+                    }
+                },
+                "slug": "bankwechsel",
+                "topic": "geld_amp_finanzen"
+            },
+            {
+                "title": "Bankwechsel für alle ",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "",
+                "difficulties": {},
+                "slug": "bankwechsel_fuer_alle",
+                "topic": "geld_amp_finanzen"
+            }
+        ],
+        "Sammlung Handabdruck": [
+            {
+                "title": "Informier dich! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "  Der beste Weg um etwas zu verstehen ist sich zu informieren.",
+                "image": "",
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Über Handabdruck (Germanwatch)informieren und CO2 Fußabdruck (UBA-Rechner) ",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "climactivity abonnieren und mindestens 2 Posts angucken(Newsletter, YouTube, Insta) ",
                         "todos": []
                     }
                 },
-                "slug": "finde_deine_sharing_community",
-                "topic": "sharing_is_caring"
+                "slug": "informier_dich_sebastian",
+                "topic": "sammlung_handabdruck"
+            },
+            {
+                "title": "Rege andere an! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "  Ich besuche einfach-jetzt-machen.de mit meiner Firma/Schule/Uni",
+                        "todos": []
+                    }
+                },
+                "slug": "rege_andere_an_sebastian",
+                "topic": "sammlung_handabdruck"
+            },
+            {
+                "title": "Beweg dich für das Klima! (sebastian)",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck",
+                    "leicht_gemacht"
+                ],
+                "frontMatter": "Um Interesse auf etwas zu lenken musst du darauf Aufmerksam machen. Durch Demos werden viele Menschen von deinem Anliegen erfahren.",
+                "image": "",
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {
+                    "easy": {
+                        "taskDescription": "Ich nehme an der nächsten Fridays for Future Demo teil",
+                        "todos": []
+                    },
+                    "medium": {
+                        "taskDescription": "Ich mache bei einer Schulung von Schwarm for Future mit",
+                        "todos": []
+                    },
+                    "hard": {
+                        "taskDescription": "Ich mache bei einer Klimaschutz-Initiative mit",
+                        "todos": []
+                    }
+                },
+                "slug": "beweg_dich_fuer_das_klima_sebastian",
+                "topic": "sammlung_handabdruck"
+            },
+            {
+                "title": "Suche das Gespräch",
+                "lead": false,
+                "impact": "Peanut",
+                "tags": [
+                    "handabdruck"
+                ],
+                "frontMatter": "",
+                "image": "",
+                "points": "",
+                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "notification": "",
+                "notificationDays": "",
+                "content": "",
+                "Status": "in Bearbeitung",
+                "difficulties": {},
+                "slug": "suche_das_gespraech",
+                "topic": "sammlung_handabdruck"
             }
-        ],
-        "Geld &amp; Finanzen": [],
-        "Klimakommunikation": [],
-        "Sich informieren": [],
-        "Politik &amp; Gesellschaft": [],
-        "Schule &amp; Betrieb": []
+        ]
     }
 }

@@ -17,7 +17,7 @@
 			? 'px-4'
 			: ''} h-scroller snaps-inline"
 		style="
-            grid-auto-columns: 4rem;
+            grid-auto-columns: 6rem;
             grid-template-rows: 4rem;
         "
 	>

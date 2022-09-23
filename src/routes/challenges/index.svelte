@@ -5,10 +5,14 @@
 			status: 200,
 			props: {
 				data: availableChallenges,
-				tags: availableTags,
-				tagList: Object.keys(availableTags),
-				topics: availableTopics,
-				topicList: Object.keys(availableTopics)
+				// tags: availableTags,
+				// tagList: Object.keys(availableTags),
+				// topics: availableTopics,
+				// topicList: Object.keys(availableTopics)
+				tags: availableTopics,
+				tagList: Object.keys(availableTopics),
+				topics: availableTags,
+				topicList: Object.keys(availableTags)
 			}
 		};
 	}
@@ -60,8 +64,8 @@
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
 	};
 
-	const isHidden = (challenge) =>
-		filter.length > 0 && !filter.every((r) => challenge.topic.includes(r));
+	const isHidden = (challenge: ChallengeV2) =>
+		filter.length > 0 && !filter.every((r) => challenge.tags.includes(r));
 
 	$: console.log(filter);
 
@@ -132,16 +136,18 @@
 		<!-- Challenges -->
 
 		{#if filter.length > 0}
-			<div class="container__filter min-h-content ">
-				{#each data as challenge}
-					<ChallengeCard {challenge} {tags} {isHidden} />
-				{/each}
-			</div>
+			{#key filter}
+				<div class="container__filter min-h-content ">
+					{#each data as challenge}
+						<ChallengeCard {challenge} {tags} {isHidden} />
+					{/each}
+				</div>
+			{/key}
 		{:else}
 			<div class="container min-h-content overflow-visible">
 				{#each topicList as topic}
 					<ChallengeScroller
-						challenges={data.filter((challenge) => challenge.tags.includes(topic))}
+						challenges={data.filter((challenge) => challenge.topic === topic)}
 						title={topics[topic]}
 						{tags}
 						challengeHidden={(_) => false}

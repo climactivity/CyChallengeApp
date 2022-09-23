@@ -23,23 +23,25 @@
 
 <div
 	class:hidden={isHidden(challenge)}
-	class="ch-card shadow-nature fadedownin flex card-2x2  bg-image 
+	class="ch-card-sharp shadow-storm-light fadedownin flex card-2x2  bg-image 
 	{instanceOfChallengeReject(challengeState) ? 'bg-red-500' : ''}"
 	style={`--bg-image: url(${imageUrl})`}
 	on:click={() => {
 		goto(`/challenge/${challenge.slug}`);
 	}}
 >
-	<span>{challenge.title}</span>
-	<div class="flex flex-row flex-wrap">
+	<span class="">{challenge.title}</span>
+	<div class="flex flex-row flex-wrap items-end justify-end pl-4 w-full">
 		<!-- {#each challenge.topic as topic} -->
-		{#if tags[challenge.topic]}
+		<!-- {#if tags[challenge.topic]} -->
+		{#each challenge.tags as tag}
 			{#if challenge.impact === 'Big Point'}
-				<div class="card_tag_inverted ">{tags[challenge.topic] ?? ''}</div>
+				<div class="card_tag ">{tags[tag] ?? ''}</div>
 			{:else}
-				<div class="card_tag ">{tags[challenge.topic] ?? ''}</div>
+				<div class="card_tag ">{tags[tag] ?? ''}</div>
 			{/if}
-		{/if}
+		{/each}
+		<!-- {/if} -->
 		<!-- {/each} -->
 	</div>
 
@@ -74,7 +76,7 @@
 	.card-2x2 {
 		grid-column: span 2 / span 2;
 		grid-row: span 2 / span 2;
-		justify-content: space-evenly;
+		// justify-content: space-evenly;
 		@apply text-xl;
 	}
 
@@ -100,7 +102,7 @@
 	.card_tag {
 		white-space: nowrap;
 		font-weight: 300;
-		@apply text-xs text-gray-600 bg-gray-100 rounded-full my-1 mx-1 px-1;
+		@apply text-xs text-black font-medium bg-gray-100 rounded-full my-1 mx-1 px-1;
 	}
 
 	.card_tag_inverted {
