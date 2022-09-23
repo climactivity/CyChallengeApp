@@ -43,7 +43,7 @@
 <div>
 	<div class="text-center mx-auto font-serif font-semibold text-2xl">Todos</div>
 	<div class="grid grid-flow-row text-md items-center  gap-2">
-		<!-- <Confetti bind:playAt /> -->
+		<!-- <Confetti b	ind:playAt /> -->
 
 		{#if _difficulty && _difficulty.todos}
 			{#each _difficulty.todos as step}
