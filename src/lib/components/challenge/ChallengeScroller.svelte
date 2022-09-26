@@ -13,12 +13,12 @@
 	<!-- get the nice, readable topic title-->
 	<div class="text-lg font-light font-serif {pad ? 'px-4' : ''}">{title}</div>
 	<div
-		class="py-2 grid grid-flow-col gap-4 overflow-x-scroll {pad
+		class="py-2 grid grid-flow-col gap-4 overflow-x-scroll place-items-stretch {pad
 			? 'px-4'
 			: ''} h-scroller snaps-inline"
 		style="
             grid-auto-columns: 6rem;
-            grid-template-rows: 4rem;
+            grid-auto-rows: 5rem;
         "
 	>
 		{#if challenges && challenges.length > 0}
