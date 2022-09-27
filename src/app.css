@@ -67,7 +67,7 @@
 		font-family: 'poppins';
 		//background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
 		//	var(--bg-image, url('https://picsum.photos/400'));
-		background: var(--bg-image, url('https://picsum.photos/400')), rgba(101, 101, 101, 0.65);
+		background: var(--bg-image, url('/images/not-found.webp')), rgba(101, 101, 101, 0.65);
 		background-blend-mode: multiply;
 		background-size: cover;
 	}

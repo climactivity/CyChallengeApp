@@ -19,6 +19,18 @@
 	// }
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
 	export let tags = {};
+
+	const challengeStatusTag = (status: string) => {
+		if (status !== '') {
+			status = status.toLowerCase().trim();
+			if (status.startsWith('fertig')) {
+				return '';
+			} else {
+				return '*';
+			}
+		}
+		return '*';
+	};
 </script>
 
 <div
@@ -30,7 +42,9 @@
 		goto(`/challenge/${challenge.slug}`);
 	}}
 >
-	<span class="">{challenge.title}</span>
+	<span class=""
+		>{challenge.Status ? challengeStatusTag(challenge.Status) : ''}{challenge.title}</span
+	>
 	<div class="flex flex-row flex-wrap items-end justify-end pl-4 w-full">
 		<!-- {#each challenge.topic as topic} -->
 		<!-- {#if tags[challenge.topic]} -->

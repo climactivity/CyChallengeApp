@@ -11,7 +11,7 @@ export type DifficultyName = 'easy' | 'medium' | 'hard';
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
 export type ChallengeImpact = 'bigpoint' | 'peanut';
-export type ChallegneType = 'one-time' | 'recurring' | 'repeatable';
+export type ChallengeType = 'one-time' | 'recurring' | 'repeatable';
 export type CompletedStep = {
 	name: string;
 	reward?: any;
@@ -48,7 +48,7 @@ export interface ChallengeReject extends ChallengeInteraction {
 
 export interface ChallengeAccept extends ChallengeInteraction {
 	type: 'accept';
-	challengeType: ChallegneType;
+	challengeType: ChallengeType;
 	nextNotification?: Date | null;
 	nextCheckpoint: Date | null;
 	notificationId?: string;

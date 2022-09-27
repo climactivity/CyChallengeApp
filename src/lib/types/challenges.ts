@@ -1,4 +1,4 @@
-import type { ChallegneType } from '$lib/services/challenge-storage';
+import type { ChallengeType } from '$lib/services/challenge-storage';
 
 export type Sector = 'consumption' | 'energy' | 'food' | 'mobility' | 'private' | 'public';
 
@@ -39,7 +39,7 @@ export interface ImageSource {
 export interface ChallengeV2 {
 	title: string;
 	topic: string;
-	type?: ChallegneType;
+	type?: ChallengeType;
 	upgradeText?: string;
 	reminderText?: string;
 	tags: string[];
@@ -50,6 +50,7 @@ export interface ChallengeV2 {
 	impact: string;
 	score: number;
 	image?: '' | ImageSource;
+	Status?: string;
 }
 
 export interface Difficulties {

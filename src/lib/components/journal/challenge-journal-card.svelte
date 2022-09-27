@@ -26,10 +26,10 @@
 		ANIMATION_BASE_SPEED}ms;"
 >
 	<div
-		class="image-element z-10 card-container shadow-amber-700 "
+		class="image-element z-10 card-container shadow-storm-light"
 		style={imageUrl
 			? `--bg-image: url(${$page.url.origin + '/' + imageUrl})`
-			: `--bg-image: url(https://picsum.photos/${randomIntBetween(500, 1000)})`}
+			: `--bg-image: url("/images/not-found.webp")`}
 	/>
 	<div class="relative">
 		<div class="absolute bottom-1 right-4">
@@ -82,7 +82,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: 10;
-		background: var(--bg-image, url('https://picsum.photos/400'));
+		background: var(--bg-image, url('/images/not-found.webp'));
 		background-blend-mode: multiply;
 		background-size: cover;
 	}

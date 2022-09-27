@@ -1,8 +1,12 @@
 <script lang="ts" context="module">
-	export async function load({ params, fetch, session, stuff }) {
-		let res = await fetch('https://climactivity.de/wp-json/wp/v2/posts/');
+	const channelFeedUrl =
+		'https://www.youtube.com/feeds/videos.xml?channel_id=UCtvM1pUmM3KqXFxLanvoTQg';
+
+	export async function load(params) {
+		let res = await params.fetch('https://climactivity.de/wp-json/wp/v2/posts?_embed');
 		let posts = await res.json();
 
+		const videoId = 'EaGnkNQPdsQ';
 		return {
 			status: 200,
 			props: {
@@ -17,6 +21,7 @@
 
 	import BlogPost from '$lib/components/feed/blog-post.svelte';
 	import Spenden from '$lib/components/feed/spenden.svelte';
+	import YtEmbed from '$lib/components/feed/yt-embed.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
@@ -31,7 +36,7 @@
 		title: 'Feed',
 		hidden: false
 	});
-	let testData = [1, 2, 3, 4, 5];
+	export let latestVideo;
 </script>
 
 <MainScreenLayoutBase>
@@ -60,7 +65,8 @@
 		</div>
 
 		<div class="border-b mb-8 border-gray-300 mt-2 py-2">
-			<div class="m-4">
+			<YtEmbed {latestVideo} />
+			<!-- <div class="m-4">
 				<iframe
 					class="w-full aspect-video shadow-lg rounded-lg"
 					src="https://www.youtube.com/embed/EaGnkNQPdsQ"
@@ -69,10 +75,10 @@
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen
 				/>
-			</div>
+			</div> -->
 		</div>
 
-		<div class="border-b mb-8 mt-2 py-2 ">
+		<!-- <div class="border-b mb-8 mt-2 py-2 ">
 			<div class="m-4 ">
 				<h1 class="m-1 text-xl font-bold">Teste dein Umweltwissen...!</h1>
 				<div class=" flex overflow-scroll gap-4">
@@ -81,7 +87,7 @@
 					{/each}
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="border-b mb-10 border-gray-300 mt-2 py-2 ">
 			<div class="m-4">
@@ -90,7 +96,7 @@
 					Bleib auf dem Laufenden mit den neuesten Nachrichten von Climactivity und Veranstaltungen!
 				</p>
 				<button
-					class="btn rounded-full mt-4 bg-sky-500 py-3 mb-12 mx-auto w-full cursor-auto focus:bg-sky-400 hover:bg-sky-400"
+					class="btn rounded-full mt-4 bg-water2 py-3 mb-12 mx-auto w-full cursor-pointer focus:bg-water2-light hover:bg-water2-light font-serif font-bold text-white"
 					on:click={() => goto('/newsletter')}
 				>
 					Newsletter abonnieren

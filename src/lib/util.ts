@@ -37,7 +37,7 @@ export const getState = <T>(writable: Writable<T>): T | null => {
 };
 
 export const getImageUrlFromChallenge: (ChallengeV2) => string = (challenge) => {
-	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
+	let imageUrl = '/images/not-found.webp';
 
 	if (challenge.image !== '') {
 		const img: ImageSource = challenge.image;
