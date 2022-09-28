@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 </script>
 
-<div class="mt-8 mx-6">
+<div class=" mx-4">
 	<h1 class="text-xl ">Jeder Euro hilft!</h1>
 	<p>
 		Unsere Organisation wird ausschließlich durch Spenden von Menschen wie Ihnen unterstützt. Schon

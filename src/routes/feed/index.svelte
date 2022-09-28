@@ -49,9 +49,9 @@
 	/>
 
 	<MainContentContainer bind:y={scrollPosition}>
-		<div class="px-4  ">
-			<h1 class=" m-1 text-xl font-bold">Blogposts</h1>
-			<div class="flex h-44 overflow-x-scroll gap-4">
+		<div class="px-4 border-b border-gray-300  pb-2 ">
+			<h2 class="m-1 text-lg font-bold">Blogposts</h2>
+			<div class="flex overflow-x-scroll overflow-y-hidden gap-4 pb-2">
 				{#each posts as post}
 					<div class="w-80 ">
 						<BlogPost {post} />
@@ -60,11 +60,11 @@
 			</div>
 		</div>
 
-		<div class="border-t border-b border-gray-300 mt-2 py-2">
+		<div class=" border-b border-gray-300  py-2">
 			<Spenden />
 		</div>
 
-		<div class="border-b mb-8 border-gray-300 mt-2 py-2">
+		<div class="border-b  border-gray-300 py-2">
 			<YtEmbed {latestVideo} />
 			<!-- <div class="m-4">
 				<iframe
@@ -89,9 +89,9 @@
 			</div>
 		</div> -->
 
-		<div class="border-b mb-10 border-gray-300 mt-2 py-2 ">
-			<div class="m-4">
-				<h1 class="m-1 text-xl font-bold">Newsletter abonnieren:</h1>
+		<div class="border-b mb-10 border-gray-300 py-2 ">
+			<div class="mx-4">
+				<h2 class=" text-lg font-bold">Newsletter abonnieren:</h2>
 				<p>
 					Bleib auf dem Laufenden mit den neuesten Nachrichten von Climactivity und Veranstaltungen!
 				</p>
