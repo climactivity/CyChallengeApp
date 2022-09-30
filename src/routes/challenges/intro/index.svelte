@@ -14,7 +14,7 @@
 	out:blur={{ duration: ANIMATION_BASE_SPEED }}
 >
 	<div class="text-xl text-center font-serif font-bold pb-4">
-		<h1>Was sind Bigpoints</h1>
+		<h1>Den Fußabdruck halbieren</h1>
 	</div>
 	<div class="h-80 w-72 mx-auto">
 		<LottieAnim
@@ -23,8 +23,7 @@
 		/>
 	</div>
 	<div>
-		Big Points sind die Bereiche in unserem Leben, in denen es einen richtig großen Unterschied
-		macht, ob wir uns klimafreundlich verhalten. Hier können wir einige hundert kg oder sogar
-		mehrere Tonnen CO2 einsparen.
+		Wenn wir in unserem Leben die Big Points des Klimaschutzes beherzigen, dann können wir leicht
+		unseren Fußabdruck auf die Hälfte reduzieren. Die Climactivity-Challenge-App hilft dir dabei!
 	</div>
 </div>

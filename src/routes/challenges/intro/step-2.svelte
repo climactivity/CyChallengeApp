@@ -11,7 +11,7 @@
 	out:blur={{ duration: ANIMATION_BASE_SPEED }}
 >
 	<div class="text-xl text-center font-serif font-bold pb-4">
-		<h1>Warum Challenges</h1>
+		<h1>Big Points &amp; Challenges</h1>
 	</div>
 
 	<div class="h-80 w-72 mx-auto">
@@ -21,8 +21,8 @@
 		/>
 	</div>
 	<div>
-		Challenges helfen uns, für einen begrenzten Zeitraum aus unserer Komfortzone herauszutreten und
-		neue Handlungen auszuprobieren. Im Idealfall gefällt dir dein neues Leben mit jeder
-		Klimaschutz-Challenge ein bisschen besser!
+		Big Points sind die Bereiche in unserem Leben, in denen es einen richtig großen Unterschied
+		macht, ob wir uns klimafreundlich verhalten oder nicht. Challenges helfen uns, für einen
+		begrenzten Zeitraum aus unserer Komfortzone herauszutreten und neue Handlungen auszuprobieren.
 	</div>
 </div>

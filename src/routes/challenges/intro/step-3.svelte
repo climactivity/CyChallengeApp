@@ -31,7 +31,7 @@
 	out:blur={{ duration: ANIMATION_BASE_SPEED }}
 >
 	<div class="text-xl text-center font-serif font-bold pb-4">
-		<h1>Weitererzählen!</h1>
+		<h1>Tell a friend!</h1>
 	</div>
 	<div class="h-80 w-72 mx-auto">
 		<LottieAnim
@@ -40,11 +40,8 @@
 		/>
 	</div>
 	<div>
-		Bist du auf deinem Weg zur Klimaneutralität schon weiter fortgeschritten oder du kannst in
-		deinem Leben an bestimmten Punkten einfach nicht mehr tun, um deinen Fußabdruck weiter zu
-		reduzieren? Vielleicht ist es dann Zeit, dass du rausgehst und anderen von der Sache erzählst!
-		Denn am Ende brauchen wir nicht ein paar wenige, die ganz viel getan haben, sondern ganz viele,
-		die sich in die richtige Richtung bewegen 😉
+		Wenn du bei der Hälfte deines Fußabdrucks bist, dann ist es Zeit, dass du rausgehst und anderen
+		von der Sache erzählst! 😉
 	</div>
 </div>
 <div class="overflow-visible  h-56">
