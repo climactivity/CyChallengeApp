@@ -19,5 +19,8 @@
 	out:mainScreenAnim={{ navigation: $navigating, role: AnimationRole.from }}
 >
 	<slot name="header" />
-	<slot />
+	<div class="overflow-y-auto">
+		<slot />
+		<!-- <div class="h-20 findme" /> -->
+	</div>
 </div>

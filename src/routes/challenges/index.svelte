@@ -88,6 +88,7 @@
 			backbutton={false}
 			shadowOffsetStart={0}
 			shadowOffsetEnd={20}
+			transparent={false}
 			title="Challenges"
 			bind:scrollPosition={scrollY}
 		>

@@ -144,3 +144,25 @@ export const sendAnalytics = async (event: string, data: any, contextId?: string
     }
 
 }
+
+export const makeRpc = async (rpc, payload) => {
+    let isConnected = false
+     nkReady.update(state => {
+        isConnected = state
+        return state;
+    }) 
+
+    if (!isConnected) {
+        return Promise.reject("No connection to gameserver!")
+    }
+
+    await client.rpc(session, rpc, payload).then((response) => {
+        console.log("RPC:", response)
+        return Promise.resolve(response)
+    }
+    ).catch(error => {
+        console.log("RPC failed:", error)
+
+        return Promise.reject(error.statusText ?? error.payload ?? error ?? "Internal server error")
+    })
+}

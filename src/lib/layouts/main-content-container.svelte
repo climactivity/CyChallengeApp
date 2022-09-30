@@ -27,16 +27,17 @@
 </script>
 
 <div
-	class=" overflow-y-auto overflow-x-hidden h-safe relative top-0 left-0 right-0  z-20 "
+	class=" overflow-x-hidden h-safe relative top-0 left-0 right-0  z-20 "
 	on:scroll={(e) => {
 		updateHeader(e.currentTarget.scrollTop);
 		updateScrollPosition(e.currentTarget.scrollTop);
 	}}
 >
 	<slot />
+	<div class="h-40 findme " />
 </div>
 
-{#if Capacitor.getPlatform() === 'ios'}
+<!-- {#if Capacitor.getPlatform() === 'ios'}
 	<div class="h-20 findme">
 		<pre>
 *meow* *meow*
@@ -54,4 +55,4 @@
 scrolling broke (again)
 </pre>
 	</div>
-{/if}
+{/if} -->

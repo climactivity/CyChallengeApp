@@ -51,7 +51,7 @@
 		console.log('hi');
 		if (Capacitor.getPlatform() === 'ios') {
 			let root = document.documentElement;
-			root.style.setProperty('--save-h-max', '92vh');
+			root.style.setProperty('--save-h-max', '95vh');
 		} else {
 			let root = document.documentElement;
 			root.style.setProperty('--save-h-max', '95vh');

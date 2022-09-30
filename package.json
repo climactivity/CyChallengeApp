@@ -29,7 +29,7 @@
     "@storybook/manager-webpack4": "^6.5.4",
     "@storybook/svelte": "^6.5.4",
     "@storybook/testing-library": "^0.0.11",
-    "@sveltejs/adapter-auto": "1.0.0-next.338",
+    "@sveltejs/adapter-auto": "1.0.0-next.80",
     "@sveltejs/kit": "1.0.0-next.338",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
@@ -86,6 +86,7 @@
     "tsparticles-engine": "^2.0.6",
     "tsparticles-preset-confetti": "^2.0.6",
     "tsparticles-preset-fireworks": "^2.0.6",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.11"
   }
 }

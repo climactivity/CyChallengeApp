@@ -52,7 +52,7 @@
 			</button>
 		</div>
 		<div class="title-container">
-			{challenge.title}
+			{challenge?.title ?? ''}
 		</div>
 	</div>
 </div>

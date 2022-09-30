@@ -15,15 +15,22 @@
 		if (value) {
 			let { interactions, cursor } = await getBookmarkedChallenges();
 			console.log('interactions', interactions);
-			activeChallenge = await Promise.all(
-				interactions.map(async (interaction) => {
-					const challenge = await getChallengeBySlug(interaction.challengeSlug);
-					return {
-						interaction,
-						challenge
-					};
-				})
+			let values = await Promise.all(
+				interactions
+					.map(async (interaction) => {
+						const challenge = await getChallengeBySlug(interaction.challengeSlug);
+						if (!challenge) {
+							return null;
+						}
+						return {
+							interaction,
+							challenge
+						};
+					})
+					.filter((value) => value !== null)
 			);
+			activeChallenge = values.filter((value) => value !== null);
+			console.log(activeChallenge);
 		}
 	});
 </script>

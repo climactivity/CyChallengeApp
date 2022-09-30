@@ -47,7 +47,7 @@
 		die sich in die richtige Richtung bewegen 😉
 	</div>
 </div>
-<div class="overflow-visible  h-40">
+<div class="overflow-visible  h-56">
 	{#await recommendedChallengesReq then recommendedChallenges}
 		<ChallengeScroller
 			challengeHidden={() => false}

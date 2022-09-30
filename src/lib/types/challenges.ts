@@ -51,6 +51,7 @@ export interface ChallengeV2 {
 	score: number;
 	image?: '' | ImageSource;
 	Status?: string;
+	lead: boolean;
 }
 
 export interface Difficulties {

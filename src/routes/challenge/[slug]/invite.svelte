@@ -15,13 +15,13 @@
 <script lang="ts">
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-import FormComponent from '$lib/components/form-component.svelte';
+	import FormComponent from '$lib/components/forms/invite-friend-form.svelte';
 	export let challenge: ChallengeV2;
 </script>
 
 <div class="flex flex-col pt-8">
 	<div class="mx-4 px-6 py-8 bg-white shadow rounded-lg sm:px-10  ">
-		<FormComponent/>
+		<FormComponent />
 	</div>
 	<ShareToSocialMediaSection {challenge} index={0} last />
 </div>

@@ -50,3 +50,21 @@ export const getImageUrlFromChallenge: (ChallengeV2) => string = (challenge) => 
 
 	return imageUrl;
 };
+
+import type { ValidationError } from 'yup';
+
+type ErrorObject = {
+	[field: string]: string;
+};
+
+export function yupErrorToErrorObject(err: ValidationError): ErrorObject {
+	const object: ErrorObject = {};
+
+	err.inner.forEach((x) => {
+		if (x.path !== undefined) {
+			object[x.path] = x.errors[0];
+		}
+	});
+
+	return object;
+}

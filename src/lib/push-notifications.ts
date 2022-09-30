@@ -45,11 +45,12 @@ export const oneSignalInit: () => Promise<void> = async () => {
 		console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
 	});
 
+	// *** obsoleted by soft prompt via one signal in app message service! ***
 	// Prompts the user for notification permissions.
 	//    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 7) to better communicate to your users what notifications they will get.
-	OneSignal.promptForPushNotificationsWithUserResponse(function (accepted) {
-		console.log('User accepted notifications: ' + accepted);
-	});
+	// OneSignal.promptForPushNotificationsWithUserResponse(function (accepted) {
+	// 	console.log('User accepted notifications: ' + accepted);
+	// });
 
 	OneSignal.addSubscriptionObserver((event) => {
 		console.log('Onesignal Subscription changed:', event);

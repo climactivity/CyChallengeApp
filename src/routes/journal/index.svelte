@@ -16,17 +16,22 @@
 		if (value) {
 			let { interactions, cursor } = await getAcceptedChallenges();
 			console.log('interactions', interactions);
-			activeChallenge = await Promise.all(
+			let values = await Promise.all(
 				interactions
 					.sort((a, b) => new Date(b.at).getSeconds() - new Date(a.at).getSeconds())
 					.map(async (interaction) => {
 						const challenge = await getChallengeBySlug(interaction.challengeSlug);
+						if (!challenge) {
+							return null;
+						}
 						return {
 							interaction,
 							challenge
 						};
 					})
 			);
+			activeChallenge = values.filter((value) => value !== null);
+			console.log(activeChallenge);
 		}
 	});
 </script>
