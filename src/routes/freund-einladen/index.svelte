@@ -13,7 +13,7 @@
 	let key;
 	let ready = false;
 	onMount(() => {
-		key = randInt(0, 200);
+		// key = randInt(0, 200);
 		ready = true;
 	});
 </script>
