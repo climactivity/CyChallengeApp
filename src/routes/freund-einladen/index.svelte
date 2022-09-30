@@ -4,7 +4,6 @@
 
 	import { headerState } from '$lib/stores/header-store';
 	import { onMount } from 'svelte';
-	import { randInt } from 'three/src/math/MathUtils';
 	headerState.set({
 		backbutton: true,
 		title: 'Freund einladen',
