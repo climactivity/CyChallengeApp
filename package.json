@@ -30,6 +30,9 @@
     "@storybook/svelte": "^6.5.4",
     "@storybook/testing-library": "^0.0.11",
     "@sveltejs/adapter-auto": "next",
+    "@sveltejs/adapter-netlify": "next",
+    "@sveltejs/adapter-static": "^1.0.0-next.31",
+
     "@sveltejs/kit": "next",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.2",
@@ -72,8 +75,6 @@
     "@heroiclabs/nakama-js": "^2.3.0",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-svelte-csf": "^2.0.4",
-    "@sveltejs/adapter-netlify": "^1.0.0-next.78",
-    "@sveltejs/adapter-static": "^1.0.0-next.31",
     "bodymovin": "^4.13.0",
     "capacitor-plugin-safe-area": "^0.0.3",
     "lottie-web": "^5.9.6",
