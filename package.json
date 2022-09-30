@@ -72,7 +72,7 @@
     "@heroiclabs/nakama-js": "^2.3.0",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-svelte-csf": "^2.0.4",
-    "@sveltejs/adapter-netlify": "^1.0.0-next.58",
+    "@sveltejs/adapter-netlify": "^1.0.0-next.78",
     "@sveltejs/adapter-static": "^1.0.0-next.31",
     "bodymovin": "^4.13.0",
     "capacitor-plugin-safe-area": "^0.0.3",
