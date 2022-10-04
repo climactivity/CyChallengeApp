@@ -1,6 +1,2 @@
 /build/*
 !/build/.npmkeep
-/debug/*
-!/debug/.npmkeep
-/release/*
-!/release/.npmkeep

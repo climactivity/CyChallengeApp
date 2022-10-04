@@ -1,4 +1,4 @@
-package de.climactivity.challenge;
+package de.climactivity.challenges;
 
 import com.getcapacitor.BridgeActivity;
 

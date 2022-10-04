@@ -1,6 +1,5 @@
 <script>
-	import { Capacitor } from '@capacitor/core';
-	import { Http } from '@capacitor-community/http';
+	import { Capacitor, CapacitorHttp } from '@capacitor/core';
 	import BlogPost from './blog-post.svelte';
 	import BlogSekelton from './blog-skeleton.svelte';
 
@@ -14,7 +13,7 @@
 			url: 'https://climactivity.de/wp-json/wp/v2/posts?_embed'
 		};
 
-		return Http.get(options)
+		return CapacitorHttp.get(options)
 			.then((res) => res.data)
 			.catch((error) => console.error('Error loading blog with Capacitor/http:', error));
 	};
