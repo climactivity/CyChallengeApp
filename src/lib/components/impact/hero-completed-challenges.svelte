@@ -1,4 +1,12 @@
-<div class="flex flex-col gap-5 items-center place-items-center  w-full">
+<script>
+	import BlobAnim from '$lib/animations/blob-anim.svelte';
+</script>
+
+<div class="flex flex-col gap-5 items-center place-items-center  w-full relative">
+	<!-- <div class="relative -z-10">
+		<BlobAnim />
+	</div> -->
+
 	<div class="font-serif font-bold text-lg">Abgeschlossene Challenges</div>
 	<div class="grid grid-flow-col place-items-center gap-20">
 		<div class="text-[#37814B]">

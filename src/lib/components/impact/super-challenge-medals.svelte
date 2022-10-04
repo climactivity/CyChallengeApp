@@ -8,23 +8,23 @@
 
 	let superChallenges: SuperChallenge[] = [
 		{ label: 'Ernährung', icon: '/icons/super-challenge-ernährung.svg', slug: 'iss_mehr_pflanzen' },
-		{ label: 'Strom', icon: '/icons/super-challenge-strom.svg', slug: 'iss_mehr_pflanzen' },
-		{ label: 'Wärme', icon: '/icons/super-challenge-wärme.svg', slug: 'iss_mehr_pflanzen' },
+		{ label: 'Strom', icon: '/icons/super-challenge-strom.svg', slug: 'wechsel_zu_oekostrom' },
+		{ label: 'Wärme', icon: '/icons/super-challenge-wärme.svg', slug: 'bleib_cool' },
 		{
 			label: 'Bewusster Konsume',
 			icon: '/icons/super-challenge-konsum.svg',
-			slug: 'iss_mehr_pflanzen'
+			slug: 'wuensch_dir_was'
 		},
 		{
 			label: 'Mobilität Land',
 			icon: '/icons/super-challenge-mobilität.svg',
-			slug: 'iss_mehr_pflanzen'
+			slug: 'weniger_allein__mehr_klimaschutz'
 		},
-		{ label: 'Geld', icon: '/icons/super-challenge-geld.svg', slug: 'iss_mehr_pflanzen' },
+		{ label: 'Geld', icon: '/icons/super-challenge-geld.svg', slug: 'bankwechsel' },
 		{
 			label: 'Reisen & Fliegen',
 			icon: '/icons/super-challenge-travel.svg',
-			slug: 'iss_mehr_pflanzen'
+			slug: 'bleib_mal_am_boden'
 		}
 	];
 </script>
@@ -39,7 +39,9 @@
 				<SuperChallengeState {superChallenge} index={i} />
 			{/each}
 		{:else}
-			<SuperChallengeMedalsSkeleton />
+			<div class="absolute">
+				<SuperChallengeMedalsSkeleton />
+			</div>
 		{/if}
 	</div>
 </div>

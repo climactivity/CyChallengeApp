@@ -3,6 +3,7 @@
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import { headerState } from '$lib/stores/header-store';
+	import BlobAnim from '$lib/animations/blob-anim.svelte';
 
 	let scrollPosition = 0;
 
@@ -14,6 +15,8 @@
 </script>
 
 <MainScreenLayoutBase>
+	<!-- <div class="absolute top-0 left-0 right-0 h-60">
+	</div> -->
 	<ProportionalHeader
 		bind:scrollPosition
 		backbutton={false}
