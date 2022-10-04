@@ -38,6 +38,7 @@
 	class="ch-card-sharp shadow-storm-light fadedownin flex card-2x2  bg-image 
 	{instanceOfChallengeReject(challengeState) ? 'bg-red-500' : ''}"
 	style={`--bg-image: url(${imageUrl})`}
+	rel="preload"
 	on:click={() => {
 		goto(`/challenge/${challenge.slug}`);
 	}}

@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<!-- <script lang="ts" context="module">
 	const channelFeedUrl =
 		'https://www.youtube.com/feeds/videos.xml?channel_id=UCtvM1pUmM3KqXFxLanvoTQg';
 
@@ -14,10 +14,10 @@
 			}
 		};
 	}
-</script>
-
+</script> -->
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import BlogEmbed from '$lib/components/feed/blog-embed.svelte';
 
 	import BlogPost from '$lib/components/feed/blog-post.svelte';
 	import Spenden from '$lib/components/feed/spenden.svelte';
@@ -36,7 +36,7 @@
 		title: 'Feed',
 		hidden: false
 	});
-	export let latestVideo;
+	export let latestVideo = 'EaGnkNQPdsQ';
 </script>
 
 <MainScreenLayoutBase>
@@ -50,14 +50,7 @@
 
 	<MainContentContainer bind:y={scrollPosition}>
 		<div class="px-4 border-b border-gray-300  pb-2 ">
-			<h2 class="m-1 text-lg font-bold">Blogposts</h2>
-			<div class="flex overflow-x-scroll overflow-y-hidden gap-4 pb-2">
-				{#each posts as post}
-					<div class="w-80 ">
-						<BlogPost {post} />
-					</div>
-				{/each}
-			</div>
+			<BlogEmbed />
 		</div>
 
 		<div class=" border-b border-gray-300  py-2">
