@@ -1,5 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import ShareAppButton from '$lib/components/buttons/share-app-button.svelte';
 	import HeroCompletedChallenges from '$lib/components/impact/hero-completed-challenges.svelte';
 	import SuperChallengeMedals from '$lib/components/impact/super-challenge-medals.svelte';
 </script>
@@ -27,6 +29,8 @@
 	</p>
 	<p class="footnote">*Durchschnittlicher Co2 pro Person in Deutschland: 9,44 Tonnen im Jahr</p>
 </div>
+
+<ShareAppButton context={$page.url.href} />
 
 <style lang="scss">
 	p > em {

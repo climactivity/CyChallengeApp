@@ -10,8 +10,8 @@
 <MainScreenLayoutBase>
 	<ProportionalHeader slot="header" scrollPosition={contentScroll} />
 	<MainContentContainer bind:y={contentScroll}>
-		<div class="mx-2 px-2 rounded bg-white">
-			<slot />
-		</div>
+		<!-- <div class="mx-2 px-2 rounded bg-white"> -->
+		<slot />
+		<!-- </div> -->
 	</MainContentContainer>
 </MainScreenLayoutBase>

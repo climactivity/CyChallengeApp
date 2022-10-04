@@ -9,7 +9,7 @@
 	});
 </script>
 
-<div class="bg-white">
+<div class="mx-4 p-4 rounded shadow bg-white">
 	<div class="prose mb-20 mx-auto">
 		<p>
 			Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen

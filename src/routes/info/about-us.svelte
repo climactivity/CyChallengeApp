@@ -7,7 +7,7 @@
 	});
 </script>
 
-<div class="prose">
+<div class="prose mx-4 p-4 rounded shadow bg-white">
 	<p>
 		climactivity richtet sich an alle, denen es wichtig ist, dass die Erde in einem guten Zustand
 		von einer Generation an die nächste übergeben wird. Wer bei climactivity mitmacht, der/die wirft

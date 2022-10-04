@@ -7,7 +7,7 @@
 	});
 </script>
 
-<div class="bg-white ">
+<div class="mx-4 p-4 rounded shadow bg-white ">
 	<div class="prose p-4 mb-20 mx-auto">
 		<h2>Angaben gemäß § 5 TMG</h2>
 

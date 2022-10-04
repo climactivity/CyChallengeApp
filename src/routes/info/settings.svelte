@@ -7,26 +7,28 @@
 	});
 </script>
 
-<label for="notification_freq">
-	Wieviele Benachrichtigungen sollen angezeigt werden?
+<div class="mx-4 p-4 rounded shadow bg-white">
+	<label for="notification_freq">
+		Wieviele Benachrichtigungen sollen angezeigt werden?
 
-	<input
-		class="w-full notifications-input"
-		type="range"
-		id="notification_freq"
-		name="notification_freq"
-		min="0"
-		max="2"
-		step="1"
-		value="1"
-		list="steplist"
-	/>
-	<datalist id="steplist">
-		<option value="0">Keine</option>
-		<option value="1">Einige</option>
-		<option value="2">Alle</option>
-	</datalist>
-</label>
+		<input
+			class="w-full notifications-input"
+			type="range"
+			id="notification_freq"
+			name="notification_freq"
+			min="0"
+			max="2"
+			step="1"
+			value="1"
+			list="steplist"
+		/>
+		<datalist id="steplist">
+			<option value="0">Keine</option>
+			<option value="1">Einige</option>
+			<option value="2">Alle</option>
+		</datalist>
+	</label>
+</div>
 
 <style lang="scss">
 	.notifications-input {

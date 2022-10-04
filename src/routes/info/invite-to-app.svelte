@@ -1,12 +1,13 @@
 <script lang="ts">
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 	import InviteFriendForm from '$lib/components/forms/invite-friend-form.svelte';
+	import ShareToSocialMedia from '$lib/components/share-to-social-media.svelte';
 
 	import { headerState } from '$lib/stores/header-store';
 	import { onMount } from 'svelte';
 	headerState.set({
 		backbutton: true,
-		title: 'Freund einladen',
+		title: 'Freund:in einladen',
 		hidden: false
 	});
 
@@ -39,5 +40,6 @@
 <!-- {#if ready} -->
 <InviteFriendForm />
 <!-- {/if} -->
-
-<ShareToSocialMediaSection />
+<div class="h-20" />
+<!-- <ShareToSocialMediaSection /> -->
+<ShareToSocialMedia />
