@@ -4,7 +4,7 @@
 
 	let fetchPosts = fetch('https://climactivity.de/wp-json/wp/v2/posts?_embed')
 		.then((res) => res.json())
-		.catch((error) => console.error(error));
+		.catch((error) => console.error("Error loading blog:", error));
 </script>
 
 <h2 class="m-1 text-lg font-bold">Blogposts</h2>

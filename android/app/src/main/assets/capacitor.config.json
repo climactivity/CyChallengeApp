@@ -2,5 +2,10 @@
 	"appId": "de.climactivity.challenges",
 	"appName": "Climactivity",
 	"webDir": "build",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"plugins": {
+		"CapacitorHttp": {
+			"enabled": true
+		}
+	}
 }

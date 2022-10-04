@@ -7,7 +7,12 @@ let config: CapacitorConfig = {
 	appId: 'de.climactivity.challenges',
 	appName: 'Climactivity',
 	webDir: 'build',
-	bundledWebRuntime: false
+	bundledWebRuntime: false,
+	plugins: {
+		CapacitorHttp: {
+			"enabled": true
+		}
+	}
 };
 
 if (process.env.CAP_USE_SERVER === 'true') {
