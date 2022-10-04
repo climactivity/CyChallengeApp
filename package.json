@@ -60,6 +60,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@capacitor-community/http": "^1.4.1",
     "@capacitor/android": "^3.5.1",
     "@capacitor/app": "^1.1.1",
     "@capacitor/core": "^3.5.1",
