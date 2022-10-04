@@ -1,0 +1,28 @@
+<script lang="ts">
+	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
+	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
+	import { headerState } from '$lib/stores/header-store';
+
+	let scrollPosition = 0;
+
+	headerState.set({
+		backbutton: false,
+		title: 'Meine Wirkung',
+		hidden: false
+	});
+</script>
+
+<MainScreenLayoutBase>
+	<ProportionalHeader
+		bind:scrollPosition
+		backbutton={false}
+		shadowOffsetStart={0}
+		shadowOffsetEnd={20}
+		title="Feed"
+	/>
+
+	<MainContentContainer bind:y={scrollPosition}>
+		<slot />
+	</MainContentContainer>
+</MainScreenLayoutBase>

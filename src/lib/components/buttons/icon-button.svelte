@@ -36,9 +36,11 @@
 >
 	{#if path !== '#'}
 		<a href={path} aria-label={label} class="grid place-items-center">
-			<slot />
+			<div class="h-7 grid place-content-center">
+				<slot />
+			</div>
 			{#if showLabel}
-				<div class="text-xs text-storm-dark">
+				<div class="text-xs mb-1 ">
 					<span>
 						{label}
 					</span>

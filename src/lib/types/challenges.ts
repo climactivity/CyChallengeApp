@@ -1,5 +1,11 @@
 import type { ChallengeType } from '$lib/services/challenge-storage';
 
+export type SuperChallenge = {
+	slug: string;
+	label: string;
+	icon: string;
+};
+
 export type Sector = 'consumption' | 'energy' | 'food' | 'mobility' | 'private' | 'public';
 
 export interface Step {

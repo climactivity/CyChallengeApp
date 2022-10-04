@@ -166,3 +166,15 @@ export const makeRpc = async (rpc, payload) => {
         return Promise.reject(error.statusText ?? error.payload ?? error ?? "Internal server error")
     })
 }
+
+// export const getSessionSafe =   async () => {
+//     if (session) return session; 
+//     let resolve = new Promise(())
+//     nkReady.subscribe((ready) => {
+//         if (ready){
+//             return
+//         }
+//     })
+
+
+// }

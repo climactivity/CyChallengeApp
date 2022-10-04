@@ -9,6 +9,7 @@
 	import ChallengesButton from './buttons/challenges-button.svelte';
 	import FeedButton from './buttons/feed-button.svelte';
 	import { showMenu } from '$lib/stores/menu-store';
+	import ImpactButton from './buttons/impact-button.svelte';
 
 	let xSize;
 	let shadow = true;
@@ -28,19 +29,21 @@
 		grid grid-flow-col
 		px-2 gap-2 sm:gap-12
 		place-content-around sm:place-content-center
-		select-none h-12 bg-white  backdrop-blur-md z-50 menu transition-shadow"
+		select-none h-16 bg-white  backdrop-blur-md z-50 menu transition-shadow"
 	class:home={!!$page.routeId?.startsWith('challenge')}
 	class:journal={!!$page.routeId?.startsWith('journal')}
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}
 >
-	<HomeButton path="/home" aria-label="Wald" />
-	<JournalButton path="/journal" aria-label="Journal" />
-	<ChallengesButton path="/challenges" aria-label="Challenges" />
-	<!-- <FriendsButton path="/social" aria-label="Social" /> -->
-	<FeedButton path="/feed" aria-label="Feed" />
+	<!-- <HomeButton path="/home"  /> -->
+	<ImpactButton path="/impact" />
 
-	<MenuButton aria-label="Menu" />
+	<JournalButton path="/journal" />
+	<ChallengesButton path="/challenges" />
+	<!-- <FriendsButton path="/social" aria-label="Social" /> -->
+	<FeedButton path="/feed" />
+
+	<MenuButton />
 </div>
 
 <style lang="scss">

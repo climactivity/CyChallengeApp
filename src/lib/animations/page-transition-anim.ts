@@ -18,6 +18,7 @@ export enum AnimationRole {
 
 const screenOrderLtR = {
 	home: 0,
+	impact: 5,
 	journal: 10,
 	challenges: 20,
 	challenge: 25,
@@ -27,6 +28,7 @@ const screenOrderLtR = {
 };
 const screenOrderRtL = {
 	home: 50,
+	impact: 45,
 	journal: 40,
 	challenges: 35,
 	challenge: 30,

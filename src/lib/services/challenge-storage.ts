@@ -214,7 +214,7 @@ export const getLastCompletion = (challengeState): DateTime | null => {
 
 export const getChallengeUserData = async (challengeSlug) => {
 	const challengeState = await readStorage(CHALLENGE_INTERACTIONS_COLLECTION, `${challengeSlug}`);
-	// console.log('getChallengeUserData', challengeSlug, challengeState);
+	console.log('getChallengeUserData', challengeSlug, challengeState);
 
 	if (challengeState === null) {
 		return null;

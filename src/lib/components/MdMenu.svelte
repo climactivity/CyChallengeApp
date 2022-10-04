@@ -5,6 +5,11 @@
 	import { expoInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
 	import SocialLinks from '$lib/components/social-links.svelte';
+	import { Browser } from '@capacitor/browser';
+
+	const openInappBrowser = async (link) => {
+		await Browser.open({ url: link });
+	};
 </script>
 
 {#if $showMenu}
@@ -33,13 +38,18 @@
 			<a href="/info/settings" class="overflow-menu-item">Einstellungen</a>
 
 			<hr class="my-4 border-1 border-black rounded-full" />
-			<a href="https://climactivity.de/kontakt/" class="overflow-menu-item-boring"
-				>Feedback senden</a
+			<span
+				on:click={(e) => openInappBrowser('https://climactivity.de/kontakt/')}
+				class="overflow-menu-item-boring">Feedback senden</span
 			>
 
-			<a href="https://climactivity.de/impressum/" class="overflow-menu-item-boring">Impressum</a>
-			<a href="https://climactivity.de/datenschutzerklaerung/" class="overflow-menu-item-boring"
-				>Datenschutzerklärung</a
+			<span
+				on:click={(e) => openInappBrowser('https://climactivity.de/impressum/')}
+				class="overflow-menu-item-boring">Impressum</span
+			>
+			<span
+				on:click={(e) => openInappBrowser('https://climactivity.de/datenschutzerklaerung/')}
+				class="overflow-menu-item-boring">Datenschutzerklärung</span
 			>
 
 			<hr class="my-2 border-0 border-black rounded-full" />

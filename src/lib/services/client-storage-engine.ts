@@ -43,6 +43,11 @@ const writeStorage = async (
 const readManyStorage = async (
 	ids: { collection?: string; key? }[]
 ): Promise<StorageObjects | Error> => {
+	// let _session = session;
+	// if(!_session) {
+	// 	_session = await client.
+	// }
+
 	const storageReadRequests: ApiReadStorageObjectsRequest = {
 		object_ids: ids.map((obj) => ({
 			...obj,

@@ -33,7 +33,7 @@ module.exports = {
         },
         fontFamily: {
           serif: ['Poppins', 'Montserrat','Roboto Slab', 'serif'],
-          'sans-serif': ['Inter', 'SF UI Text', 'Roboto Condensed', 'sans-serif'],
+          sans: ['Inter', 'SF UI Text', 'Roboto Condensed', 'sans-serif'],
           cursive: ['Loved by the King', 'cursive']
         },
         typography: {
