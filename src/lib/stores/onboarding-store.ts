@@ -27,8 +27,8 @@ export const onboardingGuard = async () => {
 		goto('/welcome');
 	} else if (onboardingOverride === 'skip' || currentValue.hasOnboarded) {
 		try {
-			// await prefetch('/challenges');
-			goto('/home');
+			await prefetch('/impact');
+			goto('/impact');
 		} catch (e) {
 			console.log('onboardingGuard', e);
 		}
@@ -47,6 +47,6 @@ tutorialStore.subscribe((value) => {
 });
 
 if (browser) {
-	let tutorialState = !!(window.localStorage.getItem(LS_KEY_TUTORIAL)) ?? false;
+	let tutorialState = !!window.localStorage.getItem(LS_KEY_TUTORIAL) ?? false;
 	tutorialStore.set(tutorialState);
 }

@@ -3,9 +3,11 @@
 	import { getChallengeUserData } from '$lib/services/challenge-storage';
 	import type { SuperChallenge } from '$lib/types/challenges';
 	import type { StorageObject } from '@heroiclabs/nakama-js';
+	import { fade } from 'svelte/transition';
+	import { calcEasing } from 'tsparticles-engine';
 
 	export let superChallenge: SuperChallenge;
-
+	export let index: 0;
 	let challengeState = getChallengeUserData(superChallenge.slug);
 
 	const getClassForInteracion = (object: StorageObject) => {
@@ -22,6 +24,7 @@
 </script>
 
 <div
+	in:fade
 	class="grid grid-flow-col place-items-center"
 	style="grid-template-columns: 5rem 1fr;"
 	on:click={() => goto(`/challenge/${superChallenge.slug}`)}
@@ -39,7 +42,8 @@
 				src={superChallenge.icon}
 				alt={`${superChallenge.label} icon`}
 				aria-hidden
-				class={getClassForInteracion(challengeInteraction)}
+				class="{getClassForInteracion(challengeInteraction)} animate-fadeInDown opacity-0"
+				style="animation-delay: calc({index} * 300ms + 500ms);"
 			/>
 		{/await}
 	</div>

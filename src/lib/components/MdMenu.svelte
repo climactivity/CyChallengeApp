@@ -28,7 +28,7 @@
 		/>
 
 		<div
-			class=" opacity-100  right-8 bottom-20  
+			class=" opacity-100  right-8 bottom-24  
                      absolute  grid grid-flow-row gap-2 place-content-center transition-all"
 		>
 			<a href="/info/about-us" class="overflow-menu-item">Über Climactivity</a>

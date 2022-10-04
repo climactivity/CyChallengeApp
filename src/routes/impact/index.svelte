@@ -15,7 +15,7 @@
 </div>
 
 <!-- Explanation -->
-<div class="mx-4 grid gap-4">
+<div class="mx-4 grid gap-4 pb-8">
 	<p>
 		Mit <em>abgeschlossene Challenges</em> siehst du wie viele Aktionen du für die Umwelt unternommen
 		hast. Jede Challenge, die du annimmst, macht einen Unterschied!

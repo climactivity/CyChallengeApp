@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { browser } from '$app/env';
+	import { goto, prefetch } from '$app/navigation';
 
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	export let path: string = '#';
 	export let onClick: Function = (e: Event) => {};
@@ -25,6 +27,17 @@
 			});
 		}
 	}
+
+	const navigateJankfree = async () => {
+		// await prefetch(path);
+		goto(path);
+	};
+
+	// onMount(() => {
+	// 	if (path) {
+	// 		prefetch(path);
+	// 	}
+	// });
 </script>
 
 <div
@@ -35,7 +48,7 @@
 	style="hyphens: auto;"
 >
 	{#if path !== '#'}
-		<a href={path} aria-label={label} class="grid place-items-center">
+		<div href={path} aria-label={label} class="grid place-items-center" on:click={navigateJankfree}>
 			<div class="h-7 grid place-content-center">
 				<slot />
 			</div>
@@ -46,7 +59,7 @@
 					</span>
 				</div>
 			{/if}
-		</a>
+		</div>
 	{:else}
 		<button aria-label={label} class="grid place-items-center" on:click={(e) => onClick(e)}>
 			<slot />
