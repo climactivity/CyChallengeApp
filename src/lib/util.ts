@@ -1,5 +1,5 @@
 import type { Writable } from 'svelte/store';
-import type { ImageSource } from './types/challenges';
+import type { ChallengeV2, ImageSource } from './types/challenges';
 
 export const detectLinks = (text: string): string => {
 	const regex = /((http|https)?:\/\/[^\s]+)/g;
@@ -36,19 +36,20 @@ export const getState = <T>(writable: Writable<T>): T | null => {
 	return state;
 };
 
-export const getImageUrlFromChallenge: (ChallengeV2) => string = (challenge) => {
-	let imageUrl = '/images/not-found.webp';
-
+export const getImageUrlFromChallenge = (challenge: ChallengeV2, thumbnail = false) => {
 	if (challenge.image !== '') {
 		const img: ImageSource = challenge.image;
 		if (img.file) {
+			if (thumbnail) {
+				return `/${img.thumb.path}`;
+			}
 			return `/${img.file.path}`;
 		} else if (img.url) {
 			return img.url;
 		}
 	}
 
-	return imageUrl;
+	return '/images/not-found.webp';
 };
 
 import type { ValidationError } from 'yup';

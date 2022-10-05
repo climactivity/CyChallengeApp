@@ -11,7 +11,7 @@
 
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeInteraction = undefined;
-	let imageUrl = getImageUrlFromChallenge(challenge);
+	let imageUrl = getImageUrlFromChallenge(challenge, true);
 	// $: {
 	// 	// imageUrl = challenge.image != 'imageUrl' ? challenge.image?.file?.path ?? undefined : undefined;
 	// 	imageUrl = getImageUrlFromChallenge(challenge);

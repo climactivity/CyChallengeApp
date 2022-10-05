@@ -7,20 +7,19 @@
         "fuer_mieter": "Für Mieter",
         "leicht_gemacht": "Leicht gemacht",
         "fussabruck": "Fußabruck",
-        "geld_sparen_fussabdruck_leichtgemacht_fuer_mieter": "Geld sparen Fußabdruck Leichtgemacht Für Mieter",
-        "geld_sparen_fussabdruck": "Geld sparen Fußabdruck",
-        "": "",
+        "leichtgemacht": "Leichtgemacht",
         "bank": "Bank",
-        "nachhaltige_bank": "nachhaltige Bank"
+        "nachhaltige_bank": "nachhaltige Bank",
+        "": ""
     },
     "topics": {
         "ernaehrung": "Ernährung",
         "strom": "Strom",
-        "bewusster_konsum_amp_sharing": "Bewusster Konsum & Sharing",
+        "bewusster_konsum__sharing": "Bewusster Konsum & Sharing",
         "mobilitaet_zu_lande": "Mobilität zu Lande",
-        "reisen_amp_fliegen": "Reisen & Fliegen",
+        "reisen__fliegen": "Reisen & Fliegen",
         "waerme": "Wärme",
-        "geld_amp_finanzen": "Geld & Finanzen",
+        "geld__finanzen": "Geld & Finanzen",
         "sammlung_handabdruck": "Sammlung Handabdruck"
     },
     "challenges": {
@@ -38,16 +37,19 @@
                     "file": {
                         "path": "images/Ernaeh01.webp",
                         "size": {
-                            "x": 2000,
-                            "y": 3004
+                            "x": 170,
+                            "y": 256
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Ernaeh01.webp"
                     }
                 },
-                "points": "5007501000",
+                "points": "500\n750\n1000",
                 "type": "recurring",
                 "notification": "Hey, wie sieht es aus mit den Tagen mit rein pflanzlicher Ernährung?",
                 "notificationDays": "",
-                "content": "Die Treibhausgas-Emissionen der Ernährung machen etwa 15 % des durchschnittlichen CO2-Fußabdrucks aus. Weil diese Emissionen aber im Wesentlichen auf Methan, Lachgas und die Landnutzung zurückgehen, wird die Landwirtschaft auch dann noch eine Menge Emissionen verursachen, wenn wir nur noch erneuerbare Energie nutzen. Das macht es so schwierig in dem Bereich Klimaneutralität zu erreichen und so wichtig, dass wir alles tun, um die Emissionen zu verringern. Dazu kommt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren.Lachgas entsteht vor allem als Folge von Überdüngung (z.B. durch Gülle). Durch die Verdauungsprozesse von Rindern, Schafen und Ziegen kommt es zur Freisetzung von Methan.Die wichtigste Einzelmaßnahme für den Klimaschutz im Bereich Ernährung ist, weniger tierische Produkte zu essen, damit die Massentierhaltung endlich Geschichte werden kann. Das hilft nicht nur dem Klimaschutz, sondern auch dem Grundwasserschutz, dem Tierwohl und der menschlichen Gesundheit 😀 ",
+                "content": "Die Treibhausgas-Emissionen der Ernährung machen etwa 15 % des durchschnittlichen CO2-Fußabdrucks aus. Weil diese Emissionen aber im Wesentlichen auf Methan, Lachgas und die Landnutzung zurückgehen, wird die Landwirtschaft auch dann noch eine Menge Emissionen verursachen, wenn wir nur noch erneuerbare Energie nutzen. Das macht es so schwierig in dem Bereich Klimaneutralität zu erreichen und so wichtig, dass wir alles tun, um die Emissionen zu verringern. Dazu kommt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren.\nLachgas entsteht vor allem als Folge von Überdüngung (z.B. durch Gülle). Durch die Verdauungsprozesse von Rindern, Schafen und Ziegen kommt es zur Freisetzung von Methan.\nDie wichtigste Einzelmaßnahme für den Klimaschutz im Bereich Ernährung ist, weniger tierische Produkte zu essen, damit die Massentierhaltung endlich Geschichte werden kann. Das hilft nicht nur dem Klimaschutz, sondern auch dem Grundwasserschutz, dem Tierwohl und der menschlichen Gesundheit 😀 ",
                 "Status": "Fertig (aber wird nochmal nach neuen Vorgaben überarbeitet)",
                 "difficulties": {
                     "easy": {
@@ -126,16 +128,19 @@
                     "file": {
                         "path": "images/Ernaeh03.webp",
                         "size": {
-                            "x": 3888,
-                            "y": 5184
+                            "x": 192,
+                            "y": 256
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Ernaeh03.webp"
                     }
                 },
                 "points": "",
                 "type": "recurring",
                 "notification": "Hey, wie sieht es aus mit den vegetraischen Tagen?",
                 "notificationDays": "",
-                "content": "Die Treibhausgas-Emissionen der Ernährung machen etwa 15 % des durchschnittlichen CO2-Fußabdrucks aus. Weil diese Emissionen aber im Wesentlichen auf Methan, Lachgas und die Landnutzung zurückgehen, wird die Landwirtschaft auch dann noch eine Menge Emissionen verursachen, wenn wir nur noch erneuerbare Energie nutzen. Das macht es so schwierig in dem Bereich Klimaneutralität zu erreichen und so wichtig, dass wir alles tun, um die Emissionen zu verringern. Dazu kommt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren.Lachgas entsteht vor allem als Folge von Überdüngung (z.B. durch Gülle). Durch die Verdauungsprozesse von Rindern, Schafen und Ziegen kommt es zur Freisetzung von Methan.Die wichtigste Einzelmaßnahme für den Klimaschutz im Bereich Ernährung ist, weniger tierische Produkte zu essen, damit die Massentierhaltung endlich Geschichte werden kann. Das hilft nicht nur dem Klimaschutz, sondern auch dem Grundwasserschutz, dem Tierwohl und der menschlichen Gesundheit 😀 ",
+                "content": "Die Treibhausgas-Emissionen der Ernährung machen etwa 15 % des durchschnittlichen CO2-Fußabdrucks aus. Weil diese Emissionen aber im Wesentlichen auf Methan, Lachgas und die Landnutzung zurückgehen, wird die Landwirtschaft auch dann noch eine Menge Emissionen verursachen, wenn wir nur noch erneuerbare Energie nutzen. Das macht es so schwierig in dem Bereich Klimaneutralität zu erreichen und so wichtig, dass wir alles tun, um die Emissionen zu verringern. Dazu kommt die Freisetzung von CO2 durch eine humuszehrende Landbewirtschaftung und durch Trockenlegung von Mooren.\nLachgas entsteht vor allem als Folge von Überdüngung (z.B. durch Gülle). Durch die Verdauungsprozesse von Rindern, Schafen und Ziegen kommt es zur Freisetzung von Methan.\nDie wichtigste Einzelmaßnahme für den Klimaschutz im Bereich Ernährung ist, weniger tierische Produkte zu essen, damit die Massentierhaltung endlich Geschichte werden kann. Das hilft nicht nur dem Klimaschutz, sondern auch dem Grundwasserschutz, dem Tierwohl und der menschlichen Gesundheit 😀 ",
                 "Status": "Fertig (aber wird nochmal nach neuen Vorgaben überarbeitet)",
                 "difficulties": {
                     "easy": {
@@ -214,9 +219,12 @@
                     "file": {
                         "path": "images/Ernaeh02.webp",
                         "size": {
-                            "x": 5278,
-                            "y": 3519
+                            "x": 256,
+                            "y": 171
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Ernaeh02.webp"
                     }
                 },
                 "points": "",
@@ -280,7 +288,7 @@
                         "todos": []
                     }
                 },
-                "slug": "ernaehrung_mal_anders_sebastian",
+                "slug": "ernaehrung_mal_anders",
                 "topic": "ernaehrung"
             },
             {
@@ -316,12 +324,15 @@
                     "file": {
                         "path": "images/Strom_01.webp",
                         "size": {
-                            "x": 2730,
-                            "y": 3640
+                            "x": 192,
+                            "y": 256
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Strom_01.webp"
                     }
                 },
-                "points": "5007501000",
+                "points": "500\n750\n1000",
                 "type": "one-time",
                 "notification": "Hey, hast du schon deinen Stromanbieter gewechselt?",
                 "notificationDays": [
@@ -332,7 +343,7 @@
                     90
                 ],
                 "content": "In Deutschland ist die Stromversorgung für etwa ein Drittel der Treibhausgas-Emissionen verantwortlich. Denn unser Strom kommt ja nicht einfach aus der Steckdose, sondern muss erst auf die eine oder andere Weise produziert werden. In Deutschland passiert das zu einem großen Teil immer noch mithilfe fossiler Energieträger (Öl, Kohle, Gas). Ob wir es schaffen werden, unsere CO2-Emissionen wirksam und schnell zu reduzieren, hängt deswegen ganz wesentlich von der Frage ab, wie wir in Zukunft anders Strom produzieren. Mit dem Wechsel zu einem Ökostromanbieter können wir die Sache selbst in die Hand nehmen und den Zubau bei den erneuerbaren Energien beschleunigen. Ökostrom ist dabei nicht teuer! Im Gegenteil, in den meisten Fällen kannst du gegenüber dem Tarif deines Grundversorgers sogar noch sparen.",
-                "Status": "in Bearbeitung (fertig bis auf Feld \"Punkte Alte App\")",
+                "Status": "fertig",
                 "difficulties": {
                     "easy": {
                         "taskDescription": "Ich wechsele zu einem Stromanbieter mit Labeln aus der Utopia-Bestenliste oder anderen Vergleichsportalen.",
@@ -380,9 +391,12 @@
                     "file": {
                         "path": "images/Strom_02.webp",
                         "size": {
-                            "x": 4608,
-                            "y": 2592
+                            "x": 256,
+                            "y": 144
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Strom_02.webp"
                     }
                 },
                 "points": "",
@@ -459,9 +473,12 @@
                     "file": {
                         "path": "images/Strom_03.webp",
                         "size": {
-                            "x": 5184,
-                            "y": 3456
+                            "x": 256,
+                            "y": 171
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Strom_03.webp"
                     }
                 },
                 "points": "",
@@ -508,7 +525,7 @@
                 "topic": "strom"
             }
         ],
-        " Bewusster Konsum &amp; Sharing": [
+        " Bewusster Konsum & Sharing": [
             {
                 "title": "Wünsch dir was!",
                 "lead": false,
@@ -520,9 +537,18 @@
                 ],
                 "frontMatter": "Im durchschnittlichen deutschen CO2-Fußabdruck macht der sonstige Konsum immerhin ein Drittel des Gesamtwertes aus. Ein Grund, mal nur das zu kaufen, was wir wirklich brauchen.",
                 "image": {
-                    "url": "https://unsplash.com/photos/RLw-UC03Gwc"
+                    "file": {
+                        "path": "images/Konsum01.webp",
+                        "size": {
+                            "x": 256,
+                            "y": 170
+                        }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Konsum01.webp"
+                    }
                 },
-                "points": "5007501000",
+                "points": "500\n750\n1000",
                 "type": "recurring",
                 "notification": "Ist deine Wunschliste noch aktuell?",
                 "notificationDays": "",
@@ -582,7 +608,7 @@
                     }
                 },
                 "slug": "wuensch_dir_was",
-                "topic": "bewusster_konsum_amp_sharing"
+                "topic": "bewusster_konsum__sharing"
             },
             {
                 "title": "Wunschliste für Alle!",
@@ -617,7 +643,7 @@
                     }
                 },
                 "slug": "wunschliste_fuer_alle",
-                "topic": "bewusster_konsum_amp_sharing"
+                "topic": "bewusster_konsum__sharing"
             },
             {
                 "title": "Sharing is Caring! (sebastian)",
@@ -656,8 +682,8 @@
                         ]
                     }
                 },
-                "slug": "sharing_is_caring_sebastian",
-                "topic": "bewusster_konsum_amp_sharing"
+                "slug": "sharing_is_caring",
+                "topic": "bewusster_konsum__sharing"
             },
             {
                 "title": "Recycle doch mal! (sebastian)",
@@ -686,8 +712,8 @@
                         "todos": []
                     }
                 },
-                "slug": "recycle_doch_mal_sebastian",
-                "topic": "bewusster_konsum_amp_sharing"
+                "slug": "recycle_doch_mal",
+                "topic": "bewusster_konsum__sharing"
             },
             {
                 "title": "Schwing den Schraubendreher!",
@@ -700,7 +726,16 @@
                 ],
                 "frontMatter": "Durch eine Reperatur in einem Repair-Cafe kannst du bis zu 24 Kilogramm CO2 sparen. Es gibt über 600 Repair-Cafes in ganz Deutschland, sicherlich auch eines bei dir in der Nähe.",
                 "image": {
-                    "url": "https://pixabay.com/photos/tools-work-repair-a-hammer-2145771/"
+                    "file": {
+                        "path": "images/Konsum02.webp",
+                        "size": {
+                            "x": 256,
+                            "y": 199
+                        }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Konsum02.webp"
+                    }
                 },
                 "points": "",
                 "type": "recurring",
@@ -719,14 +754,17 @@
                     }
                 },
                 "slug": "schwing_den_schraubendreher",
-                "topic": "bewusster_konsum_amp_sharing"
+                "topic": "bewusster_konsum__sharing"
             },
             {
                 "title": "Lass los!",
                 "lead": false,
                 "impact": "Peanut",
                 "tags": [
-                    "geld_sparen_fussabdruck_leichtgemacht_fuer_mieter"
+                    "geld_sparen",
+                    "fussabdruck",
+                    "leichtgemacht",
+                    "fuer_mieter"
                 ],
                 "frontMatter": "Ganz schön viel Zeug! Hast du auch schonmal überlegt, dass Du viele Dinge, die in Deinem Besitz sind, gar nicht mehr brauchst? Dann lass los! Gib diesen Dingen ein zweites Leben, indem du sie verschenkst, oder verkaufst. Das kann ganz schön befreiend sein.",
                 "image": "",
@@ -747,14 +785,15 @@
                     }
                 },
                 "slug": "lass_los",
-                "topic": "bewusster_konsum_amp_sharing"
+                "topic": "bewusster_konsum__sharing"
             },
             {
                 "title": "Neukauf? Wozu, wenn die Alternative doch so einfach ist!",
                 "lead": false,
                 "impact": "Peanut",
                 "tags": [
-                    "geld_sparen_fussabdruck"
+                    "geld_sparen",
+                    "fussabdruck"
                 ],
                 "frontMatter": "Durch den Kauf von gebrauchten anstatt von neuen Sachen lässt sich ganz schön viel CO2 einsparen. Laut Umweltbundesamt werden zum Beispiel ein Drittel der Haushaltsgroßgeräte ausgetauscht, obwohl sie noch funktionieren.",
                 "image": "",
@@ -780,7 +819,7 @@
                     }
                 },
                 "slug": "neukauf_wozu_wenn_die_alternative_doch_so_einfach_ist",
-                "topic": "bewusster_konsum_amp_sharing"
+                "topic": "bewusster_konsum__sharing"
             }
         ],
         "Mobilität zu Lande": [
@@ -798,17 +837,20 @@
                     "file": {
                         "path": "images/MobLan01.webp",
                         "size": {
-                            "x": 3915,
-                            "y": 5873
+                            "x": 171,
+                            "y": 256
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/MobLan01.webp"
                     }
                 },
-                "points": " 5007501000",
+                "points": " 500\n750\n1000",
                 "type": "recurring",
                 "notification": "Bist du letzte Woche weniger alleine im Auto gefahren?",
                 "notificationDays": "",
-                "content": "Die Mobilität zu Lande umfasst Auto, Zug, Bus, Straßenbahn und Fahrrad fahren sowie zu Fuß gehen. Dieser Bereich hat einen Anteil von 14% am durchschnittlichen deutschen CO2-Fußabdruck und ist damit definitiv einer der Big Points beim Klimaschutz. Der größte Teil der Emissionen stammt dabei aus der Nutzung von Autos.Die Debatte zum Klimaschutz im Verkehrssektor stehen dementsprechend oft die Elektromobilität und Treibstoffe aus erneuerbarer Energie oder erneuerbaren Rohstoffen. Neben dieser notwendigen Antriebswende umfasst die Verkehrswende auch die Mobilitätswende, also ein Veränderung der Art, wie und wie viel wir uns fortbewegen. Und wenn mit dem Niedergang der Verbrennungsmotoren auch der Vorrang für das Auto zu Ende geht, dann gibt es außer für den Klimaschutz auch für andere Bereiche wie Gesundheit, Wohlbefinden und die Lebensqualität im öffentlichen Raum eine Menge zu gewinnen.",
-                "Status": "in Bearbeitung",
+                "content": "Die Mobilität zu Lande umfasst Auto, Zug, Bus, Straßenbahn und Fahrrad fahren sowie zu Fuß gehen. Dieser Bereich hat einen Anteil von 14% am durchschnittlichen deutschen CO2-Fußabdruck und ist damit definitiv einer der Big Points beim Klimaschutz. Der größte Teil der Emissionen stammt dabei aus der Nutzung von Autos.\nDie Debatte zum Klimaschutz im Verkehrssektor stehen dementsprechend oft die Elektromobilität und Treibstoffe aus erneuerbarer Energie oder erneuerbaren Rohstoffen. Neben dieser notwendigen Antriebswende umfasst die Verkehrswende auch die Mobilitätswende, also ein Veränderung der Art, wie und wie viel wir uns fortbewegen. Und wenn mit dem Niedergang der Verbrennungsmotoren auch der Vorrang für das Auto zu Ende geht, dann gibt es außer für den Klimaschutz auch für andere Bereiche wie Gesundheit, Wohlbefinden und die Lebensqualität im öffentlichen Raum eine Menge zu gewinnen.",
+                "Status": "fertig",
                 "difficulties": {
                     "easy": {
                         "taskDescription": "Ich überlege für jede private Autofahrt, ob es eine Möglichkeit gibt, sie nicht alleine zu machen.",
@@ -887,25 +929,6 @@
                     }
                 },
                 "slug": "weniger_allein__mehr_klimaschutz",
-                "topic": "mobilitaet_zu_lande"
-            },
-            {
-                "title": " ",
-                "lead": false,
-                "impact": "Big Point",
-                "tags": [
-                    ""
-                ],
-                "frontMatter": " ",
-                "image": "",
-                "points": " ",
-                "type": "repeatable",
-                "notification": "",
-                "notificationDays": "",
-                "content": " ",
-                "Status": " ",
-                "difficulties": {},
-                "slug": "",
                 "topic": "mobilitaet_zu_lande"
             },
             {
@@ -1040,7 +1063,7 @@
                 "topic": "mobilitaet_zu_lande"
             }
         ],
-        "Reisen &amp; Fliegen": [
+        "Reisen & Fliegen": [
             {
                 "title": "Bleib mal am Boden!",
                 "lead": false,
@@ -1053,12 +1076,15 @@
                     "file": {
                         "path": "images/Fliege01.webp",
                         "size": {
-                            "x": 2845,
-                            "y": 3673
+                            "x": 198,
+                            "y": 256
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Fliege01.webp"
                     }
                 },
-                "points": "5007501000",
+                "points": "500\n750\n1000",
                 "type": "one-time",
                 "notification": "Bleibst du auf dem Boden?",
                 "notificationDays": [
@@ -1069,8 +1095,8 @@
                     365,
                     550
                 ],
-                "content": "Fliegen ist von allen Verkehrsmitteln die klimaschädlichste Art sich fortzubewegen. Kein anderes Verkehrsmittel verursacht eine vergleichbare Menge an Treibhausgas pro Personenkilometer. Dazu ein kleiner Vergleich: Auf einem Inlandsflug werden pro Personenkilometer 210 gCO2eq ausgestossen. Mit dem PKW (bei durchschnittlicher Besetzung mit 1,5 Personen) sind es 135 gCO2eq und mit dem Zug oder dem Bus im Fernverkehr nur etwa 30 gCO2eq. Somit ist Fliegen rund sieben mal klimaschädlicher als Zug- oder Busfahren!Wenn du (fast) nicht fliegst befindest du dich übrigens in bester Gesellschaft: über 80% der Menschen auf der Welt sind noch nie geflogen und noch vor 50 Jahren war Fliegen auch in Deutschland etwas sehr Außergewöhnliches.",
-                "Status": "in Bearbeitung",
+                "content": "Fliegen ist von allen Verkehrsmitteln die klimaschädlichste Art sich fortzubewegen. Kein anderes Verkehrsmittel verursacht eine vergleichbare Menge an Treibhausgas pro Personenkilometer. Dazu ein kleiner Vergleich: Auf einem Inlandsflug werden pro Personenkilometer 210 gCO2eq ausgestossen. Mit dem PKW (bei durchschnittlicher Besetzung mit 1,5 Personen) sind es 135 gCO2eq und mit dem Zug oder dem Bus im Fernverkehr nur etwa 30 gCO2eq. Somit ist Fliegen rund sieben mal klimaschädlicher als Zug- oder Busfahren!\nWenn du (fast) nicht fliegst befindest du dich übrigens in bester Gesellschaft: über 80% der Menschen auf der Welt sind noch nie geflogen und noch vor 50 Jahren war Fliegen auch in Deutschland etwas sehr Außergewöhnliches.",
+                "Status": "fertig",
                 "difficulties": {
                     "easy": {
                         "taskDescription": "Ich halte mich an die Regeln des Forums anders reisen und setze mir selber ein CO2-Budget für Flüge in die nächsten 5 Jahren.",
@@ -1153,7 +1179,7 @@
                     }
                 },
                 "slug": "bleib_mal_am_boden",
-                "topic": "reisen_amp_fliegen"
+                "topic": "reisen__fliegen"
             },
             {
                 "title": "Anderen helfen, am Boden zu bleiben.",
@@ -1173,7 +1199,7 @@
                 "Status": "in Bearbeitung",
                 "difficulties": {},
                 "slug": "anderen_helfen_am_boden_zu_bleiben",
-                "topic": "reisen_amp_fliegen"
+                "topic": "reisen__fliegen"
             },
             {
                 "title": "Zuhause, statt vor Ort! (sebastian)",
@@ -1189,8 +1215,8 @@
                 "content": "",
                 "Status": "in Bearbeitung",
                 "difficulties": {},
-                "slug": "zuhause_statt_vor_ort_sebastian",
-                "topic": "reisen_amp_fliegen"
+                "slug": "zuhause_statt_vor_ort",
+                "topic": "reisen__fliegen"
             }
         ],
         "Wärme": [
@@ -1209,17 +1235,20 @@
                     "file": {
                         "path": "images/Waerme01.webp",
                         "size": {
-                            "x": 6302,
-                            "y": 4789
+                            "x": 256,
+                            "y": 195
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Waerme01.webp"
                     }
                 },
-                "points": "5007501000",
+                "points": "500\n750\n1000",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
                 "notification": "Hey, denk dran, diese Woche wolltest du dich wieder darin üben, sparsam(er) zu lüften und zu heizen.",
                 "notificationDays": "",
                 "content": "Im deutschen Durchschnitt macht der Wärmebedarf für Heizen und Warmwasser etwa ein Siebtel des individuellen Fußabdrucks aus (UBA-CO2-Rechner). Die Beheizung deines Arbeitsplatzes und all der Gebäude, in denen Produkte für dich hergestellt und Dienstleistungen für dich erbracht werden, kommt zu den Emissionen des Sektors Wärme noch hinzu. Auch wenn du gerade nicht die Kapazitäten für große Veränderungen wie eine energetische Sanierung hast, gibt es doch jede Menge kleine Maßnahmen, die schon viel helfen und dir gleichzeitig noch Geld sparen!",
-                "Status": "in Korrektur",
+                "Status": "fertig",
                 "difficulties": {
                     "easy": {
                         "taskDescription": "Ich achte besonders darauf, energiesparend zu lüften.",
@@ -1290,12 +1319,15 @@
                     "file": {
                         "path": "images/Waerme02.webp",
                         "size": {
-                            "x": 4272,
-                            "y": 2848
+                            "x": 256,
+                            "y": 171
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Waerme02.webp"
                     }
                 },
-                "points": "200010 10",
+                "points": "2000\n10 \n10",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
                 "notification": "",
                 "notificationDays": "",
@@ -1374,7 +1406,16 @@
                 ],
                 "frontMatter": "Zusätzlich zum Umstieg auf erneuerbare Energien sind gut gedämmte Häuser essenziell, um unsere Klimaziele zu erreichen. Eine gute Hausdämmung ist der Königsweg des Energiesparens. Auch wenn hohe Kosten und umfangreiche Baumaßnahmen erst einmal abschreckend wirken mögen, sind sie es dennoch wert. Glücklicherweise gibt es für solche Vorhaben auch staatliche Zuschüsse.",
                 "image": {
-                    "url": "https://unsplash.com/photos/aCshJn3y93s"
+                    "file": {
+                        "path": "images/Waerme03.webp",
+                        "size": {
+                            "x": 256,
+                            "y": 171
+                        }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/Waerme03.webp"
+                    }
                 },
                 "points": "",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
@@ -1435,7 +1476,7 @@
                 "topic": "waerme"
             }
         ],
-        "Geld &amp; Finanzen": [
+        "Geld & Finanzen": [
             {
                 "title": "Nachhaltig anlegen! (sebastian)",
                 "lead": false,
@@ -1462,8 +1503,8 @@
                         "todos": []
                     }
                 },
-                "slug": "nachhaltig_anlegen_sebastian",
-                "topic": "geld_amp_finanzen"
+                "slug": "nachhaltig_anlegen",
+                "topic": "geld__finanzen"
             },
             {
                 "title": "Nachhaltig investieren! (sebastian)",
@@ -1491,8 +1532,8 @@
                         "todos": []
                     }
                 },
-                "slug": "nachhaltig_investieren_sebastian",
-                "topic": "geld_amp_finanzen"
+                "slug": "nachhaltig_investieren",
+                "topic": "geld__finanzen"
             },
             {
                 "title": "Lass dein Geld das Klima schützen!",
@@ -1503,14 +1544,23 @@
                 ],
                 "frontMatter": "Jeder Euro hat eine Klimawirkung. Eine erhöhte Nachfrage nach Geldanlagen oder Versicherungen, die den Schutz von Mensch und Umwelt im Blick haben, kann den Finanzmarkt schrittweise nachhaltiger und transparenter gestalten. Auch du kannst einen Unterschied machen!",
                 "image": {
-                    "url": "https://unsplash.com/photos/joqWSI9u_XM"
+                    "file": {
+                        "path": "images/GeldFi02.webp",
+                        "size": {
+                            "x": 256,
+                            "y": 171
+                        }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/GeldFi02.webp"
+                    }
                 },
                 "points": "",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
                 "notification": "",
                 "notificationDays": "",
                 "content": "Wenn wir unser Geld  einer Bank überlassen, es anlegen oder eine Lebensversicherung abschließen, dann wird dieses Geld irgendwo investiert. Auch ohne unsere Zustimmung kann dies dazu führen, dass unser Geld mithilft, fossile Energieträger zu finanzieren oder andere klimaschädliche Projekte zu ermöglichen. Von daher sollten wir dafür sorgen, dass wir und unser Geld gemeinsam für den Klimaschutz arbeiten. Ethische Banken und Versicherungen verzichten nicht nur auf Investitionen, die Mensch und Umwelt schaden (wie z.B. fossile Energien oder Waffengeschäfte), sondern investieren stattdessen gezielt in Unternehmungen, die den positiven Wandel in Richtung Klimawende, besserer globaler Durchsetzung von Menschenrechten und mehr wirtschaftlicher Gerechtigkeit fördern.",
-                "Status": "in Korrektur",
+                "Status": "fertig",
                 "difficulties": {
                     "easy": {
                         "taskDescription": "Ich suche mir in den nächsten zwei Wochen eine Versicherung aus, bei der ich auf eine grüne Alternative umsteigen kann.",
@@ -1565,7 +1615,7 @@
                     }
                 },
                 "slug": "lass_dein_geld_das_klima_schuetzen",
-                "topic": "geld_amp_finanzen"
+                "topic": "geld__finanzen"
             },
             {
                 "title": "Bankwechsel ",
@@ -1581,12 +1631,15 @@
                     "file": {
                         "path": "images/GeldFi01.webp",
                         "size": {
-                            "x": 5616,
-                            "y": 3744
+                            "x": 256,
+                            "y": 171
                         }
+                    },
+                    "thumb": {
+                        "path": "images/thumbs/GeldFi01.webp"
                     }
                 },
-                "points": "5007501000",
+                "points": "500\n750\n1000",
                 "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
                 "notification": "Hast du schon deine Bank gewechselt?",
                 "notificationDays": [
@@ -1595,7 +1648,7 @@
                     21,
                     28
                 ],
-                "content": "Kohle-Kredite, Rüstungs-Deals und Anleihen von Autokraten oder Investitionen in Erneuerbare Energien, Energieeffizienz, nachhaltige Landwirtschaft und innovative Projekte? Ein Wechsel zu einer nachhaltigen Bank ist dabei ein einfacher Weg zu beeinflussen, was mit unserem Geld passiert. Der Aufwand ist dabei glücklicherweise geringer als mensch denkt. Informationen gibt es u.a. bei den NGOs Urgewald und FairFinanceGuide. Aber nicht nur das, mitllerweile gibt es einige Angebote für Kontowechsel-Services. Damit ist der Bankwechsel schneller getan als mensch denkt und nicht mehr so ein großer Brocken, den wir lange vor uns herschieben müssen. Übrigens, wenn 10.000 Euro bei einer nachhaltigen Bank liegen, spart das 2,1 t/CO2eq.",
+                "content": "Kohle-Kredite, Rüstungs-Deals und Anleihen von Autokraten oder Investitionen in Erneuerbare Energien, Energieeffizienz, nachhaltige Landwirtschaft und innovative Projekte? Ein Wechsel zu einer nachhaltigen Bank ist dabei ein einfacher Weg zu beeinflussen, was mit unserem Geld passiert. Der Aufwand ist dabei glücklicherweise geringer als mensch denkt. Informationen gibt es u.a. bei den NGOs Urgewald und FairFinanceGuide. Aber nicht nur das, mitllerweile gibt es einige Angebote für Kontowechsel-Services. Damit ist der Bankwechsel schneller getan als mensch denkt und nicht mehr so ein großer Brocken, den wir lange vor uns herschieben müssen. \nÜbrigens, wenn 10.000 Euro bei einer nachhaltigen Bank liegen, spart das 2,1 t/CO2eq.",
                 "Status": "bereit zum gegenlesen",
                 "difficulties": {
                     "easy": {
@@ -1642,7 +1695,7 @@
                     }
                 },
                 "slug": "bankwechsel",
-                "topic": "geld_amp_finanzen"
+                "topic": "geld__finanzen"
             },
             {
                 "title": "Bankwechsel für alle ",
@@ -1659,7 +1712,7 @@
                 "Status": "",
                 "difficulties": {},
                 "slug": "bankwechsel_fuer_alle",
-                "topic": "geld_amp_finanzen"
+                "topic": "geld__finanzen"
             }
         ],
         "Sammlung Handabdruck": [
@@ -1689,7 +1742,7 @@
                         "todos": []
                     }
                 },
-                "slug": "informier_dich_sebastian",
+                "slug": "informier_dich",
                 "topic": "sammlung_handabdruck"
             },
             {
@@ -1698,7 +1751,8 @@
                 "impact": "Peanut",
                 "tags": [
                     "handabdruck",
-                    "leicht_gemacht"
+                    "leicht_gemacht",
+                    ""
                 ],
                 "frontMatter": "",
                 "image": "",
@@ -1714,7 +1768,7 @@
                         "todos": []
                     }
                 },
-                "slug": "rege_andere_an_sebastian",
+                "slug": "rege_andere_an",
                 "topic": "sammlung_handabdruck"
             },
             {
@@ -1747,7 +1801,7 @@
                         "todos": []
                     }
                 },
-                "slug": "beweg_dich_fuer_das_klima_sebastian",
+                "slug": "beweg_dich_fuer_das_klima",
                 "topic": "sammlung_handabdruck"
             },
             {

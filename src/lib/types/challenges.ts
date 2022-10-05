@@ -40,6 +40,9 @@ export interface ImageSource {
 			y: number;
 		};
 	};
+	thumb?: {
+		path?: string;
+	};
 }
 
 export interface ChallengeV2 {
