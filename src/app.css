@@ -7,7 +7,6 @@
 		-ms-overflow-style: none; /* IE and Edge */
 		scrollbar-width: none; /* Firefox */
 		outline: none;
-		font-family: 'Inter';
 	}
 
 	*::-webkit-scrollbar {
@@ -17,6 +16,7 @@
 	body {
 		-webkit-tap-highlight-color: transparent;
 		max-height: -webkit-fill-available;
+		font-family: 'Inter';
 	}
 
 	html {

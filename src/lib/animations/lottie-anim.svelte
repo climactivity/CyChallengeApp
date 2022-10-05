@@ -4,6 +4,7 @@
 	import Lottie from 'lottie-web';
 	import { ANIMATION_BASE_SPEED } from './page-transition-anim';
 	import { AnimationOptions } from 'tsparticles-engine';
+	import { page } from '$app/stores';
 
 	export let assetPath;
 	export let initDelay = ANIMATION_BASE_SPEED + 100;
@@ -18,10 +19,16 @@
 		pauseAfter: 0
 	};
 
+	const urlToAbsolute = (relativePath) => {
+		const location = window.location;
+		console.log(location);
+		return location.origin + '/' + relativePath;
+	};
+
 	let anim, animContainer;
 	let guard = false;
 	onMount(() => {
-		setTimeout(() => {
+		setTimeout(async () => {
 			if (browser) {
 				console.log('init anim', anim, guard);
 				if (anim) {
@@ -36,7 +43,7 @@
 					renderer: 'svg',
 
 					...animOptions,
-					path: assetPath
+					path: urlToAbsolute(assetPath)
 				});
 
 				if (animOptions.pauseAfter > 0) {

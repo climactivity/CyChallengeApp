@@ -32,10 +32,8 @@
 
 <div class="flex flex-col pt-8">
 	<ActionHeroSection {challenge} index={0}>
-		<div slot="title">
-			{challenge.title}
-		</div>
-		<div slot="description">Notifications</div>
+		<div slot="title">Benachrich- tigungen</div>
+		<div slot="description">Hilfe zum Ziel</div>
 		<div slot="icon">
 			<LottieAnim
 				assetPath="/lottie/notifications.json"
