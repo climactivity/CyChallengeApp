@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
+	import { rewardStore } from '$lib/stores/reward-store';
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
 
@@ -29,9 +30,9 @@
 			<div class="font-semibold text-xl font-serif transition-all">Meine Aktionen</div>
 			<div
 				class="rounded-md   grid grid-flow-col items-end place-content-evenly  gap-2"
-				style="grid-template-columns: 1fr 1fr;"
+				style="grid-template-columns: 1fr ;"
 			>
-				<div
+				<!-- <div
 					class="grid grid-flow-col items-center place-items-center border border-black border-opacity-10 rounded-xl"
 				>
 					<div class="text-nature-dark w-full ">
@@ -51,11 +52,11 @@
 					<div class="text-md text-nature-dark">
 						{0}
 					</div>
-				</div>
+				</div> -->
 				<div
 					class="grid grid-flow-col items-center place-items-center  border border-black border-opacity-10  px-4  rounded-xl"
 				>
-					<div class="text-heart w-full 0">
+					<div class="text-nature-dark w-full 0">
 						<svg
 							class="h-4 w-4 mx-auto mr-4"
 							viewBox="0 0 76 76"
@@ -73,8 +74,8 @@
 						</svg>
 					</div>
 
-					<div class="text-md text-heart">
-						{0}
+					<div class="text-md text-nature-dark">
+						{$rewardStore.medal}
 					</div>
 				</div>
 			</div>

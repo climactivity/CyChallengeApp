@@ -21,7 +21,7 @@
 
 	const urlToAbsolute = (relativePath) => {
 		const location = window.location;
-		console.log(location);
+		// console.log(location);
 		return location.origin + '/' + relativePath;
 	};
 

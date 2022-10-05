@@ -1,5 +1,5 @@
 {
-	"appId": "de.climactivity.challenges",
+	"appId": "de.climactivity.challenge",
 	"appName": "Climactivity",
 	"webDir": "build",
 	"bundledWebRuntime": false,

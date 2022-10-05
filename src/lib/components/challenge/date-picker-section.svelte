@@ -5,6 +5,7 @@
 		currentLevelForChallenge,
 		getChallengeState
 	} from '$lib/services/challenge-storage';
+	import { DateTime } from 'luxon';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
 
@@ -18,10 +19,31 @@
 			date
 		);
 	};
+
+	const calcDateOptionsForChallenge = (challenge: ChallengeV2) => {
+		const dateTime = DateTime.now().setZone('Europe/Berlin');
+		const { type, notificationDays } = challenge;
+
+		if (type === 'one-time') {
+			return notificationDays.map((days) => {
+				{
+					value: dateTime.plus({ days }).endOf('day').toISO();
+					display: `in ${days}`;
+				}
+			});
+		}
+
+		return [];
+	};
 </script>
 
 <VSection {...$$props}>
 	<div class="text-2xl text-bold font-semibold font-serif">Wir gucken wie es dir geht am:</div>
+	<ul>
+		{#each calcDateOptionsForChallenge(challenge) as day}
+			<li>{day}</li>
+		{/each}
+	</ul>
 	<div>
 		<form>
 			<!-- todo replace -->

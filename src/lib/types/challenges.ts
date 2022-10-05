@@ -61,6 +61,7 @@ export interface ChallengeV2 {
 	image?: '' | ImageSource;
 	Status?: string;
 	lead: boolean;
+	notificationDays: number[];
 }
 
 export interface Difficulties {

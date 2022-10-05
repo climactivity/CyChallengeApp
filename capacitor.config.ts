@@ -4,13 +4,13 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 let config: CapacitorConfig = {
-	appId: 'de.climactivity.challenges',
+	appId: 'de.climactivity.challenge',
 	appName: 'Climactivity',
 	webDir: 'build',
 	bundledWebRuntime: false,
 	plugins: {
 		CapacitorHttp: {
-			"enabled": true
+			enabled: true
 		}
 	}
 };
