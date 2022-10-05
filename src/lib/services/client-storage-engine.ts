@@ -1,4 +1,4 @@
-import { client, getSessionSafe, session } from '$lib/client';
+import { client, connectGuard, session } from '$lib/client';
 import type { StorageObject, StorageObjects, WriteStorageObject } from '@heroiclabs/nakama-js';
 import type {
 	ApiDeleteStorageObjectsRequest,
@@ -45,7 +45,7 @@ const readManyStorage = async (
 ): Promise<StorageObjects | Error> => {
 	let _session = session;
 	if (!_session) {
-		await getSessionSafe();
+		await connectGuard();
 		_session = session;
 	}
 
@@ -81,6 +81,8 @@ const readStorage = async (
 const listStorage = async (collection: string, cursor?: string, limit: number = 100) => {
 	// TODO: maybe make pagination more explicit
 	// console.log('listStorage', session, collection, limit, cursor);
+	await connectGuard();
+
 	return await client.listStorageObjects(session, collection, session.user_id, limit, cursor);
 };
 

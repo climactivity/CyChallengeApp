@@ -168,7 +168,12 @@ export const makeRpc = async (rpc, payload) => {
     })
 }
 
-export const getSessionSafe = async () => {
+/**
+ * Used in storage engine read/list calls to prevent attempted loads before connection 
+ * to gameserver is made, use with caution
+ * resolves instantly if connection is already established when called 
+*/
+export const connectGuard = async () => {
     if (session) return session; 
     let promiseResolve, promiseReject;
 
