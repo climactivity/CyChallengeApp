@@ -3,16 +3,21 @@
 	import {
 		acceptChallenge,
 		currentLevelForChallenge,
-		getChallengeState
+		getChallengeState,
+		type ChallengeAccept
 	} from '$lib/services/challenge-storage';
 	import { DateTime } from 'luxon';
 	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { onMount } from 'svelte';
 	export let challenge: ChallengeV2;
 
+	let isReminding = true;
+	let nextCheckpoint;
 	let selectedDate = '';
 	export let onchanged = (date) => {};
 	const setNewNextCheckpoint = (challenge, date) => {
 		console.log('setNewNextCheckpoint', challenge.slug, date);
+
 		acceptChallenge(
 			challenge,
 			currentLevelForChallenge(challenge, getChallengeState(challenge.slug)),
@@ -39,29 +44,60 @@
 
 		return [];
 	};
+
+	const toggleReminder = () => {
+		if (isReminding) {
+			setNewNextCheckpoint(challenge, null);
+			isReminding = false;
+			onchanged(null);
+		} else {
+			let days = 7;
+			const date = DateTime.now()
+				.setZone('Europe/Berlin')
+				.plus({ days })
+				.startOf('day')
+				.plus({ hours: 16 })
+				.toFormat("yyyy-MM-dd'T'HH:mm");
+
+			onchanged(date);
+
+			setNewNextCheckpoint(challenge, date);
+			isReminding = true;
+		}
+	};
+
+	onMount(async () => {
+		let challengeState = await getChallengeState(challenge.slug);
+		nextCheckpoint = challengeState.nextCheckpoint ?? null;
+		isReminding = nextCheckpoint !== null;
+	});
 </script>
 
 <VSection {...$$props}>
-	<div class="text-2xl text-bold font-semibold font-serif">Wir gucken wie es dir geht am:</div>
-	<ul />
-	<div>
-		<form>
-			<select
-				name="dates"
-				id="date-select"
-				bind:value={selectedDate}
-				on:change={() => {
-					onchanged(selectedDate);
-					setNewNextCheckpoint(challenge, selectedDate);
-				}}
-			>
-				{#each calcDateOptionsForChallenge(challenge) as day}
-					<option value={day.value}>{day.display}</option>
-				{/each}
-			</select>
+	<div class="mx-4 space-y-4">
+		{#if challenge.type === 'one-time' || challenge.type === 'repeatable'}
+			<form class="space-y-4">
+				<label for="date-select" class="block text-2xl text-bold font-semibold font-serif">
+					Wir gucken wie es dir geht am:
+				</label>
 
-			<!-- todo replace -->
-			<!-- <input
+				<select
+					name="dates"
+					id="date-select"
+					class="w-full border border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-water2 focus:outline-none focus:border-water2-light"
+					bind:value={selectedDate}
+					on:change={() => {
+						onchanged(selectedDate);
+						setNewNextCheckpoint(challenge, selectedDate);
+					}}
+				>
+					{#each calcDateOptionsForChallenge(challenge) as day}
+						<option value={day.value}>{day.display}</option>
+					{/each}
+				</select>
+
+				<!-- todo replace -->
+				<!-- <input
 				type="datetime-local"
 				bind:value={selectedDate}
 				on:change={() => {
@@ -69,10 +105,32 @@
 					setNewNextCheckpoint(challenge, selectedDate);
 				}}
 			/> -->
-		</form>
-	</div>
+			</form>
+		{:else}
+			{#if isReminding}
+				<div>Wir erinnern dich wöchentlich wegen <b>{challenge.title}</b></div>
+			{:else}
+				<div>Wir erinnern dich nicht wegen <b>{challenge.title}</b></div>
+			{/if}
+			<!-- <form>
+				<label for="date-select" class="block text-2xl text-bold font-semibold font-serif">
+					Wir gucken wie es dir geht am:
+				</label>
+				<input
+					type="datetime-local"
+					bind:value={selectedDate}
+					on:change={() => {
+						onchanged(selectedDate);
+						setNewNextCheckpoint(challenge, selectedDate);
+					}}
+				/>
+			</form> -->
+		{/if}
 
-	<div>
-		<button> Erinnere mich nicht </button>
+		<div class="flex flex-row-reverse">
+			<button class="block text-sm text-water2" on:click={toggleReminder}>
+				Erinnere mich {isReminding ? 'nicht' : ''}
+			</button>
+		</div>
 	</div>
 </VSection>

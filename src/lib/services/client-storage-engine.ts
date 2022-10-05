@@ -1,4 +1,4 @@
-import { client, session } from '$lib/client';
+import { client, getSessionSafe, session } from '$lib/client';
 import type { StorageObject, StorageObjects, WriteStorageObject } from '@heroiclabs/nakama-js';
 import type {
 	ApiDeleteStorageObjectsRequest,
@@ -43,10 +43,11 @@ const writeStorage = async (
 const readManyStorage = async (
 	ids: { collection?: string; key? }[]
 ): Promise<StorageObjects | Error> => {
-	// let _session = session;
-	// if(!_session) {
-	// 	_session = await client.
-	// }
+	let _session = session;
+	if (!_session) {
+		await getSessionSafe();
+		_session = session;
+	}
 
 	const storageReadRequests: ApiReadStorageObjectsRequest = {
 		object_ids: ids.map((obj) => ({

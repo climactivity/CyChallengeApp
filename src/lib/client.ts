@@ -168,14 +168,20 @@ export const makeRpc = async (rpc, payload) => {
     })
 }
 
-// export const getSessionSafe =   async () => {
-//     if (session) return session; 
-//     let resolve = new Promise(())
-//     nkReady.subscribe((ready) => {
-//         if (ready){
-//             return
-//         }
-//     })
+export const getSessionSafe = async () => {
+    if (session) return session; 
+    let promiseResolve, promiseReject;
 
+    let promise = new Promise(function(resolve, reject){
+        promiseResolve = resolve;
+        promiseReject = reject;
+    });
 
-// }
+    nkReady.subscribe((ready) => {
+        if (ready){
+            promiseResolve();
+        }
+    })
+
+    return promise
+}

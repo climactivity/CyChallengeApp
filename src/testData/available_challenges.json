@@ -26,7 +26,7 @@
         "Ernährung": [
             {
                 "title": "Iss mehr Pflanzen!",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "gesundes_leben",
@@ -117,7 +117,7 @@
             },
             {
                 "title": "Lecker satt werden mit weniger Fleisch",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "gesundes_leben",
@@ -312,7 +312,7 @@
         "Strom": [
             {
                 "title": "Wechsel zu Ökostrom!",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
@@ -528,7 +528,7 @@
         " Bewusster Konsum & Sharing": [
             {
                 "title": "Wünsch dir was!",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
@@ -825,7 +825,7 @@
         "Mobilität zu Lande": [
             {
                 "title": "Weniger allein - mehr Klimaschutz",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
@@ -1066,7 +1066,7 @@
         "Reisen & Fliegen": [
             {
                 "title": "Bleib mal am Boden!",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "fussabdruck"
@@ -1222,7 +1222,7 @@
         "Wärme": [
             {
                 "title": "Bleib cool!",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "geld_sparen",
@@ -1619,7 +1619,7 @@
             },
             {
                 "title": "Bankwechsel ",
-                "lead": false,
+                "lead": true,
                 "impact": "Big Point",
                 "tags": [
                     "bank",

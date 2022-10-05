@@ -139,10 +139,13 @@
 	<div class="space-y-8">
 		<!-- title -->
 
-		<div class="text-xl font-bold font-serif mx-4 my-4">
+		<div class="text-4xl font-bold font-serif mx-4 my-4 text-black ">
 			{challenge.title}
 		</div>
 
+		{#if challenge.lead}
+			<div class="text-lg font-bold font-serif mx-4 my-4 text-opacity-80">Super-Challenge</div>
+		{/if}
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
 			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4">
