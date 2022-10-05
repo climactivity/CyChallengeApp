@@ -1,5 +1,29 @@
 <script>
 	import BlobAnim from '$lib/animations/blob-anim.svelte';
+	import { nkReady } from '$lib/client';
+	import { getChallengeUserDataSummary } from '$lib/services/challenge-storage';
+
+	import { rewardStore } from '$lib/stores/reward-store';
+	import { onMount } from 'svelte';
+
+	let medals = '0';
+
+	const pad = (num, size) => {
+		return String(num).padStart(size, '0');
+	};
+
+	rewardStore.subscribe((state) => {
+		const _medals = state.medal;
+		medals = pad(_medals, 2);
+	});
+
+	// onMount(() => {
+	// 	getChallengeUserDataSummary();
+	// });
+
+	const updateMedals = async () => {
+		return await getChallengeUserDataSummary();
+	};
 </script>
 
 <div class="flex flex-col gap-5 items-center place-items-center  w-full relative">
@@ -26,7 +50,16 @@
 				/>
 			</svg>
 		</div>
-
-		<div class="text-4xl text-[#37814B] font-bold font-serif">10</div>
+		<div class="text-4xl text-[#37814B] font-bold font-serif">
+			{#if $nkReady}
+				{#await updateMedals()}
+					00
+				{:then medals}
+					{pad(medals, 2)}
+				{/await}
+			{:else}
+				00
+			{/if}
+		</div>
 	</div>
 </div>

@@ -2,12 +2,13 @@
 	import { goto, prefetch } from '$app/navigation';
 	import enablePlugins from '$lib/plugins/EnablePlugins';
 	import { onboardingGuard } from '$lib/stores/onboarding-store';
+	import { updatePlayerState } from '$lib/stores/reward-store';
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
 		await enablePlugins();
 		await onboardingGuard();
-		goto;
+		// await updatePlayerState();
 	});
 </script>
 

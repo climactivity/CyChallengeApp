@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
 import { matchdata, matchstatus } from '$lib/stores/context';
 import { goto } from '$app/navigation';
+import { rewardStore } from './stores/reward-store';
 
 export const ssr = false;
 console.log('connecting to nakama with settings:', JSON.stringify({

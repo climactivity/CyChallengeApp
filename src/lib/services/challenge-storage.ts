@@ -1,11 +1,20 @@
 import type { ChallengeV2 } from '$lib/types/challenges';
-import { dropStorage, listStorage, readStorage, writeStorage } from './client-storage-engine';
+import {
+	dropStorage,
+	listStorage,
+	readManyStorage,
+	readStorage,
+	writeStorage
+} from './client-storage-engine';
 import { DateTime } from 'luxon';
-import type { StorageObject } from '@heroiclabs/nakama-js';
+import type { StorageObject, StorageObjects } from '@heroiclabs/nakama-js';
 import { armSoftNotificationTrigger } from '$lib/push-notifications';
 import { notificationSettingsStore } from '$lib/stores/notification-config';
 import { Capacitor } from '@capacitor/core';
-import { client, session } from '$lib/client';
+import { client, nkReady, session } from '$lib/client';
+import { update_await_block_branch } from 'svelte/internal';
+import { object } from 'yup';
+import { rewardStore } from '$lib/stores/reward-store';
 
 export type DifficultyName = 'easy' | 'medium' | 'hard';
 
@@ -210,6 +219,52 @@ export const getLastCompletion = (challengeState): DateTime | null => {
 		console.log('last', last);
 		return last;
 	}
+};
+
+export const getChallengeUserDataSummary = async () => {
+	// this whole thing is stupid and should be precomputed/chached on the server
+
+	console.log('getChallengeUserDataSummary');
+
+	let isConnected = false;
+	nkReady.update((state) => {
+		isConnected = state;
+		return state;
+	});
+
+	if (!isConnected) {
+		rewardStore.update((updater) => {
+			updater.medal = 0;
+			return updater;
+		});
+		return;
+	}
+	const challengeStatesList = await listStorage(CHALLENGE_INTERACTIONS_COLLECTION);
+	const challengeStatesObjects = await readManyStorage(challengeStatesList.objects);
+	if ((challengeStatesObjects as Error).cause) {
+		throw Error;
+	}
+	const challengeStates = (challengeStatesObjects as StorageObjects).objects;
+
+	// count medals
+	const medals = challengeStates
+		.map((object) => {
+			const interaction = object.value as ChallengeInteraction;
+			if (instanceOfChallengeComplete(interaction)) {
+				return Math.max(1, Math.floor((interaction.completions?.length ?? 0) / 6));
+			} else if (instanceOfChallengeAccept(interaction)) {
+				return Math.floor((interaction.completions?.length ?? 0) / 6);
+			}
+			return 0;
+		})
+		.reduce((acc, value) => acc + value, 0);
+
+	rewardStore.update((updater) => {
+		updater.medal = medals;
+		return updater;
+	});
+
+	return medals;
 };
 
 export const getChallengeUserData = async (challengeSlug) => {
