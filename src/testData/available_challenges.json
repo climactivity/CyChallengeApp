@@ -37,8 +37,8 @@
                     "file": {
                         "path": "images/Ernaeh01.webp",
                         "size": {
-                            "x": 170,
-                            "y": 256
+                            "x": 341,
+                            "y": 512
                         }
                     },
                     "thumb": {
@@ -128,8 +128,8 @@
                     "file": {
                         "path": "images/Ernaeh03.webp",
                         "size": {
-                            "x": 192,
-                            "y": 256
+                            "x": 384,
+                            "y": 512
                         }
                     },
                     "thumb": {
@@ -219,8 +219,8 @@
                     "file": {
                         "path": "images/Ernaeh02.webp",
                         "size": {
-                            "x": 256,
-                            "y": 171
+                            "x": 512,
+                            "y": 341
                         }
                     },
                     "thumb": {
@@ -324,8 +324,8 @@
                     "file": {
                         "path": "images/Strom_01.webp",
                         "size": {
-                            "x": 192,
-                            "y": 256
+                            "x": 384,
+                            "y": 512
                         }
                     },
                     "thumb": {
@@ -391,8 +391,8 @@
                     "file": {
                         "path": "images/Strom_02.webp",
                         "size": {
-                            "x": 256,
-                            "y": 144
+                            "x": 512,
+                            "y": 288
                         }
                     },
                     "thumb": {
@@ -473,8 +473,8 @@
                     "file": {
                         "path": "images/Strom_03.webp",
                         "size": {
-                            "x": 256,
-                            "y": 171
+                            "x": 512,
+                            "y": 341
                         }
                     },
                     "thumb": {
@@ -540,8 +540,8 @@
                     "file": {
                         "path": "images/Konsum01.webp",
                         "size": {
-                            "x": 256,
-                            "y": 170
+                            "x": 512,
+                            "y": 341
                         }
                     },
                     "thumb": {
@@ -729,8 +729,8 @@
                     "file": {
                         "path": "images/Konsum02.webp",
                         "size": {
-                            "x": 256,
-                            "y": 199
+                            "x": 512,
+                            "y": 398
                         }
                     },
                     "thumb": {
@@ -837,8 +837,8 @@
                     "file": {
                         "path": "images/MobLan01.webp",
                         "size": {
-                            "x": 171,
-                            "y": 256
+                            "x": 341,
+                            "y": 512
                         }
                     },
                     "thumb": {
@@ -1076,8 +1076,8 @@
                     "file": {
                         "path": "images/Fliege01.webp",
                         "size": {
-                            "x": 198,
-                            "y": 256
+                            "x": 397,
+                            "y": 512
                         }
                     },
                     "thumb": {
@@ -1235,8 +1235,8 @@
                     "file": {
                         "path": "images/Waerme01.webp",
                         "size": {
-                            "x": 256,
-                            "y": 195
+                            "x": 512,
+                            "y": 389
                         }
                     },
                     "thumb": {
@@ -1244,7 +1244,7 @@
                     }
                 },
                 "points": "500\n750\n1000",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
+                "type": "recurring",
                 "notification": "Hey, denk dran, diese Woche wolltest du dich wieder darin üben, sparsam(er) zu lüften und zu heizen.",
                 "notificationDays": "",
                 "content": "Im deutschen Durchschnitt macht der Wärmebedarf für Heizen und Warmwasser etwa ein Siebtel des individuellen Fußabdrucks aus (UBA-CO2-Rechner). Die Beheizung deines Arbeitsplatzes und all der Gebäude, in denen Produkte für dich hergestellt und Dienstleistungen für dich erbracht werden, kommt zu den Emissionen des Sektors Wärme noch hinzu. Auch wenn du gerade nicht die Kapazitäten für große Veränderungen wie eine energetische Sanierung hast, gibt es doch jede Menge kleine Maßnahmen, die schon viel helfen und dir gleichzeitig noch Geld sparen!",
@@ -1319,8 +1319,8 @@
                     "file": {
                         "path": "images/Waerme02.webp",
                         "size": {
-                            "x": 256,
-                            "y": 171
+                            "x": 512,
+                            "y": 341
                         }
                     },
                     "thumb": {
@@ -1328,7 +1328,7 @@
                     }
                 },
                 "points": "2000\n10 \n10",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
+                "type": "one-time",
                 "notification": "",
                 "notificationDays": "",
                 "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses, die sich aber natürlich nicht für jede:n mal so eben machen lässt. Darüber hinaus gibt es aber auch einen beträchtlichen Teil, der von dir als Nutzer:in von Heizung und Warmwasser abhängt. Wir zeigen dir, mit welchen Maßnahmen du einen Unterschied machen kannst und gleichzeitig noch Energiekosten sparst! Zusätzlich könntest du die Vermietenden oder die Hausverwaltung auf die Dringlichkeit des Dämmens hinweisen, vielleicht mit dem Hinweis, dass energetische Sanierungen vom Staat gefördert werden. Mehr Infos dazu hier: https://www.energieheld.de/foerderung/aenderungen-2020",
@@ -1409,8 +1409,8 @@
                     "file": {
                         "path": "images/Waerme03.webp",
                         "size": {
-                            "x": 256,
-                            "y": 171
+                            "x": 512,
+                            "y": 342
                         }
                     },
                     "thumb": {
@@ -1418,7 +1418,7 @@
                     }
                 },
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
+                "type": "recurring",
                 "notification": "Hey, denk dran, du wolltest dich um die Dämmung deines Hauses kümmern.",
                 "notificationDays": 7.0,
                 "content": "Etwa ein Viertel aller deutschen Emissionen gehen auf den Raumwärme- und Warmwasserbedarf zurück. Damit ist Wärme ein wahrer Big Point beim Klimaschutz. Da das Heizen meist den Löwenanteil der CO2-Emissionen bei der Wärme ausmacht, liegt der größte Hebel bei einer guten Dämmung des Hauses. Mehr als die Hälfte der Wohngebäude sind noch aus einer Zeit, in der es überhaupt keine Wärmeschutzvorschriften gab und die energetische Sanierung kommt in Deutschland viel zu langsam voran, um das 1,5-Grad-Ziel einzuhalten. Neubauten sind leider auch nicht die Lösung; strengere Auflagen für neue Gebäude reichen nicht aus und die Sanierung von alten Gebäuden hat tatsächlich eine bessere Energiebilanz als Abriss und Neubau. Mehr dazu kannst die hier nachlesen: https://www.agora-energiewende.de/veroeffentlichungen/wert-der-effizienz-im-gebaeudesektor-in-zeiten-der-sektorenkopplung/ ",
@@ -1488,7 +1488,7 @@
                 "frontMatter": "Jeden Euro den du nicht nachhaltig anlegst beeinflusst das Klima.",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -1517,7 +1517,7 @@
                 "frontMatter": "",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -1547,8 +1547,8 @@
                     "file": {
                         "path": "images/GeldFi02.webp",
                         "size": {
-                            "x": 256,
-                            "y": 171
+                            "x": 512,
+                            "y": 342
                         }
                     },
                     "thumb": {
@@ -1556,7 +1556,7 @@
                     }
                 },
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Ja",
+                "type": "recurring",
                 "notification": "",
                 "notificationDays": "",
                 "content": "Wenn wir unser Geld  einer Bank überlassen, es anlegen oder eine Lebensversicherung abschließen, dann wird dieses Geld irgendwo investiert. Auch ohne unsere Zustimmung kann dies dazu führen, dass unser Geld mithilft, fossile Energieträger zu finanzieren oder andere klimaschädliche Projekte zu ermöglichen. Von daher sollten wir dafür sorgen, dass wir und unser Geld gemeinsam für den Klimaschutz arbeiten. Ethische Banken und Versicherungen verzichten nicht nur auf Investitionen, die Mensch und Umwelt schaden (wie z.B. fossile Energien oder Waffengeschäfte), sondern investieren stattdessen gezielt in Unternehmungen, die den positiven Wandel in Richtung Klimawende, besserer globaler Durchsetzung von Menschenrechten und mehr wirtschaftlicher Gerechtigkeit fördern.",
@@ -1631,8 +1631,8 @@
                     "file": {
                         "path": "images/GeldFi01.webp",
                         "size": {
-                            "x": 256,
-                            "y": 171
+                            "x": 512,
+                            "y": 341
                         }
                     },
                     "thumb": {
@@ -1640,7 +1640,7 @@
                     }
                 },
                 "points": "500\n750\n1000",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "Nein",
+                "type": "one-time",
                 "notification": "Hast du schon deine Bank gewechselt?",
                 "notificationDays": [
                     7,
@@ -1705,7 +1705,7 @@
                 "frontMatter": "",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -1727,7 +1727,7 @@
                 "frontMatter": "  Der beste Weg um etwas zu verstehen ist sich zu informieren.",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -1757,7 +1757,7 @@
                 "frontMatter": "",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -1782,7 +1782,7 @@
                 "frontMatter": "Um Interesse auf etwas zu lenken musst du darauf Aufmerksam machen. Durch Demos werden viele Menschen von deinem Anliegen erfahren.",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
@@ -1814,7 +1814,7 @@
                 "frontMatter": "",
                 "image": "",
                 "points": "",
-                "Wiederkehrende Challenge wöchtenlich  (Ja/Nein)": "",
+                "type": "repeatable",
                 "notification": "",
                 "notificationDays": "",
                 "content": "",
