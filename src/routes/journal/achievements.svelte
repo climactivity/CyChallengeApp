@@ -39,7 +39,7 @@
 </script>
 
 <div
-	class="px-4 py-4"
+	class="px-4 py-4 grid grid-flow-row gap-4"
 	in:scale={{ delay: 250, duration: 250, start: 0.8 }}
 	out:scale={{ delay: 0, duration: 250, start: 0.8 }}
 >
