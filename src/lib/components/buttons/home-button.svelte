@@ -8,8 +8,7 @@
 <IconButton bind:path label="Home">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		width={30}
-		height={30}
+		class="w-[7.5rem] h-[7.5rem]"
 		fill="none"
 		viewBox="0 0 24 24"
 		stroke="currentColor"

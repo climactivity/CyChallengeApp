@@ -29,13 +29,38 @@
 	let iOSSafari = false;
 
 	if (browser) {
-		let ua = window.navigator.userAgent;
-		let iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-		let webkit = !!ua.match(/WebKit/i);
-		iOSSafari = iOS && webkit && !ua.match(/CriOS/i) && !ua.match(/FxiOS/i);
+		// console.log(
+		// 	'import.meta.env.VITE_IGNORE_SAFARI_BOTTOM_BAR:',
+		// 	import.meta.env.VITE_IGNORE_SAFARI_BOTTOM_BAR
+		// );
+		if (import.meta.env.VITE_IGNORE_SAFARI_BOTTOM_BAR === 'true') {
+			console.info('Skipping Safari detection because VITE_IGNORE_SAFARI_BOTTOM_BAR is set');
+		} else {
+			let ua = window.navigator.userAgent;
+			let iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+			//let webkit = !!ua.match(/WebKit/i);
+			iOSSafari = iOS && !ua.match(/CriOS/i) && !ua.match(/FxiOS/i);
+		}
 	}
 
 	setContext('iOSSafari', iOSSafari);
+
+	let constrainedViewportSize = false;
+
+	if (browser) {
+		// console.warn('Viewport size x:', window.outerWidth, 'y:', window.outerHeight);
+		if (window.outerWidth <= 375 || window.outerHeight <= 375) {
+			constrainedViewportSize = true;
+			console.warn(
+				`Viewport Size constrained - w: ${window.outerWidth}, h: ${window.outerHeight} - switching to small screen layout!`
+			);
+
+			const rootElement = document.documentElement;
+			rootElement.style.setProperty('--override-font-size', '10pt');
+
+			setContext('constrainedViewportSize', constrainedViewportSize);
+		}
+	}
 
 	if (browser) {
 		CapacitorApp.addListener('backButton', ({ canGoBack }) => {
@@ -61,6 +86,13 @@
 			await init();
 		}
 		await oneSignalInit();
+
+		console.log(
+			'safari check:',
+			!Capacitor.isNativePlatform(), // only apply when not running as an 'app'
+			iOSSafari, // and on an iOS device
+			window.innerWidth < 768
+		);
 	});
 </script>
 
@@ -80,7 +112,7 @@
 </svelte:head>
 
 <div
-	class="relative w-[100vw]    {Capacitor.getPlatform() === 'web' && // only apply when not running as an 'app'
+	class="relative w-[100vw]    {!Capacitor.isNativePlatform() && // only apply when not running as an 'app'
 	iOSSafari && // and on an iOS device
 	window.innerWidth < 768 // that isn't an ipad
 		? `h-[calc(100vh-80px)]`

@@ -51,7 +51,7 @@
 	export let topics;
 	export let topicList;
 	let filter = [];
-	let showSuperChallenges = false
+	let showSuperChallenges = false;
 	export let tags = {
 		big_point: 'Big Point',
 		easy_action: 'Easy Action',
@@ -62,17 +62,17 @@
 
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
-		if (filter.length > 0) { 
-			showSuperChallenges = false
+		if (filter.length > 0) {
+			showSuperChallenges = false;
 		}
 	};
 
-	const toggleFilterSuperChallenges = () => { 
-		showSuperChallenges = !showSuperChallenges
+	const toggleFilterSuperChallenges = () => {
+		showSuperChallenges = !showSuperChallenges;
 		if (showSuperChallenges) {
-			filter = []
+			filter = [];
 		}
-	}
+	};
 
 	const isHidden = (challenge: ChallengeV2) =>
 		filter.length > 0 && !filter.every((r) => challenge.tags.includes(r));
@@ -125,20 +125,26 @@
 				"
 			>
 				<div
-					class="  rounded-full {filter.length || showSuperChallenges ? 'text-storm-dark' : 'text-storm-light'}"
+					class="  rounded-full {filter.length || showSuperChallenges
+						? 'text-storm-dark'
+						: 'text-storm-light'}"
 					on:click={() => (filter = [])}
 				>
 					<FilterIcon filled={!!filter.length || showSuperChallenges} />
 				</div>
 				<div class="relative" on:click={toggleFilterSuperChallenges}>
-
 					{#if !showSuperChallenges}
-						<div transition:scale class="absolute w-full h-full font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none bg-gradient-to-r to-nature-light from-water2-light blur-sm animate-tiltGradient"/>
+						<div
+							transition:scale
+							class="absolute w-full h-full font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none bg-gradient-to-r to-nature-light from-water2-light blur-sm animate-tiltGradient"
+						/>
 					{/if}
-					<div class="transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
-					{ showSuperChallenges 
-						? "bg-gradient-to-r to-nature-light from-water2-light text-white font-bold" 
-						: "bg-gray-200 border-storm-light text-storm bg-opacity-90"}">
+					<div
+						class="transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
+					{showSuperChallenges
+							? 'bg-gradient-to-r to-nature-light from-water2-light text-white font-bold'
+							: 'bg-gray-50 border-storm-light text-storm bg-opacity-85'}"
+					>
 						Super Challenges
 					</div>
 				</div>
@@ -149,7 +155,7 @@
 							tag
 						)
 							? 'bg-water border-0 text-white font-bold'
-							: 'bg-gray-200 border border-storm-light text-storm'}"
+							: 'bg-gray-50 border border-storm-light text-storm'}"
 					>
 						{tags[tag]}
 					</div>
@@ -166,9 +172,9 @@
 					{/each}
 				</div>
 			{/key}
-		{:else if showSuperChallenges} 
+		{:else if showSuperChallenges}
 			<div class="container__filter min-h-content ">
-				{#each data.filter((challenge) => (challenge.lead)) as challenge}
+				{#each data.filter((challenge) => challenge.lead) as challenge}
 					<ChallengeCard {challenge} {tags} {isHidden} />
 				{/each}
 			</div>

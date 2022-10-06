@@ -6,8 +6,7 @@
 <IconButton bind:path label="Feed" showLabel>
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		width={30}
-		height={30}
+		class="w-[1.875rem] h-[1.875rem]"
 		fill="none"
 		viewBox="0 0 24 24"
 		stroke="currentColor"
