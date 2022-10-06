@@ -8,6 +8,8 @@
 		instanceOfChallengeReject,
 		type ChallengeInteraction
 	} from '$lib/services/challenge-storage';
+	import SuperChallengeIcon from '../impact/super-challenge-icon.svelte';
+	import { getSuperChallengeDataForLeadChallenge } from '../impact/super-challenge';
 
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeInteraction = undefined;
@@ -31,6 +33,10 @@
 		}
 		return '*';
 	};
+
+	let superChallenge = challenge.lead
+		? getSuperChallengeDataForLeadChallenge(challenge.slug)
+		: undefined;
 </script>
 
 <div
@@ -43,9 +49,17 @@
 		goto(`/challenge/${challenge.slug}`);
 	}}
 >
-	<span class=""
-		>{challenge.Status ? challengeStatusTag(challenge.Status) : ''}{challenge.title}</span
-	>
+	<div class="grid grid-flow-col place-content-between w-full">
+		<span class=""
+			>{challenge.Status ? challengeStatusTag(challenge.Status) : ''}{challenge.title}</span
+		>
+		{#if superChallenge}
+			<div>
+				<SuperChallengeIcon {superChallenge} cssClass={'challenge-card'} />
+			</div>
+		{/if}
+	</div>
+
 	<div class="flex flex-row flex-wrap items-end justify-end pl-4 w-full">
 		<!-- {#each challenge.topic as topic} -->
 		<!-- {#if tags[challenge.topic]} -->
