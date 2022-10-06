@@ -69,9 +69,22 @@ module.exports = {
           fadeInDown: "fadeInDown 0.5s forwards ease",
           fadeInUp: "fadeInUp 0.5s forwards ease",
           grabAttention: "grabAttention 1.35s forwards ease-in-out",
+          tiltGradient: "tiltGradient 10s"
           
+
         },
         keyframes: {
+          tiltGradient: {
+            "0%" : {
+              rotateX: "0deg;"
+            },
+            "33%" : {
+              rotateX: "1deg;"
+            },
+            "66%" : {
+              rotateX: "-1deg;"
+            },
+          },
           grabAttention: {
             "0%": {
               transform: "rotateZ(0deg)",

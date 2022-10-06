@@ -18,7 +18,7 @@
 	});
 
 	page.subscribe((state) => {
-		shadow = !state.routeId.startsWith('challenges/intro');
+		shadow = !state?.routeId?.startsWith('challenges/intro');
 	});
 </script>
 

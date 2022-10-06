@@ -20,7 +20,7 @@
 
 <script lang="ts">
 	import type { AcceptedChallenge, ChallengeV2 } from '$lib/types/challenges';
-	import { fly, slide } from 'svelte/transition';
+	import { fly, scale, slide } from 'svelte/transition';
 
 	let insets: Writable<any> = getContext('insets');
 
@@ -51,7 +51,7 @@
 	export let topics;
 	export let topicList;
 	let filter = [];
-
+	let showSuperChallenges = false
 	export let tags = {
 		big_point: 'Big Point',
 		easy_action: 'Easy Action',
@@ -62,7 +62,17 @@
 
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
+		if (filter.length > 0) { 
+			showSuperChallenges = false
+		}
 	};
+
+	const toggleFilterSuperChallenges = () => { 
+		showSuperChallenges = !showSuperChallenges
+		if (showSuperChallenges) {
+			filter = []
+		}
+	}
 
 	const isHidden = (challenge: ChallengeV2) =>
 		filter.length > 0 && !filter.every((r) => challenge.tags.includes(r));
@@ -107,7 +117,7 @@
 		<!-- Filter -->
 		<div class="sticky top-12 z-30">
 			<div
-				class=" select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-auto bg-slate-100 ring-opacity-100 "
+				class=" select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-scroll  bg-slate-100 ring-opacity-100 "
 				style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 					filterShadow});
@@ -115,15 +125,27 @@
 				"
 			>
 				<div
-					class="  rounded-full {filter.length ? 'text-storm-dark' : 'text-storm-light'}"
+					class="  rounded-full {filter.length || showSuperChallenges ? 'text-storm-dark' : 'text-storm-light'}"
 					on:click={() => (filter = [])}
 				>
-					<FilterIcon filled={!!filter.length} />
+					<FilterIcon filled={!!filter.length || showSuperChallenges} />
+				</div>
+				<div class="relative" on:click={toggleFilterSuperChallenges}>
+
+					{#if !showSuperChallenges}
+						<div transition:scale class="absolute w-full h-full font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none bg-gradient-to-r to-nature-light from-water2-light blur-sm animate-tiltGradient"/>
+					{/if}
+					<div class="transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
+					{ showSuperChallenges 
+						? "bg-gradient-to-r to-nature-light from-water2-light text-white font-bold" 
+						: "bg-gray-200 border-storm-light text-storm bg-opacity-90"}">
+						Super Challenges
+					</div>
 				</div>
 				{#each tagList as tag}
 					<div
 						on:click={() => addFilterTag(tag)}
-						class="text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
+						class="transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
 							tag
 						)
 							? 'bg-water border-0 text-white font-bold'
@@ -144,6 +166,12 @@
 					{/each}
 				</div>
 			{/key}
+		{:else if showSuperChallenges} 
+			<div class="container__filter min-h-content ">
+				{#each data.filter((challenge) => (challenge.lead)) as challenge}
+					<ChallengeCard {challenge} {tags} {isHidden} />
+				{/each}
+			</div>
 		{:else}
 			<div class="container min-h-content overflow-visible">
 				{#each topicList as topic}
