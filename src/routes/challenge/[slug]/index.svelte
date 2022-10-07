@@ -77,7 +77,8 @@
 	const action = async (nextRoute) => {
 		const route = `/challenge/${challenge.slug}/${nextRoute}`;
 		await prefetch(route);
-		goto(route, { noscroll: true });
+
+		goto(route);
 	};
 
 	nkReady.subscribe(async (val) => {
@@ -124,7 +125,7 @@
 	}
 </script>
 
-<div class="pb-16" transition:fade={{ duration: 250 }}>
+<div transition:fade={{ duration: 250 }}>
 	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
 
 	<!-- header image-->

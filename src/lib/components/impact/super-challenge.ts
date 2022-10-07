@@ -27,6 +27,6 @@ export const superChallenges: SuperChallenge[] = [
 ];
 
 export const getSuperChallengeDataForLeadChallenge = (slug) => {
-	console.log('getting super challenge:', slug);
+	// console.log('getting super challenge:', slug);
 	return superChallenges.find((element) => element.slug === slug);
 };

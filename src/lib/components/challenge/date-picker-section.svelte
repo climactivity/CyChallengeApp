@@ -9,20 +9,33 @@
 	import { DateTime } from 'luxon';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { onMount } from 'svelte';
+	import { scheduleNotification, unscheduleNotification } from '$lib/push-notifications';
 	export let challenge: ChallengeV2;
 
 	let isReminding = true;
 	let nextCheckpoint;
 	let selectedDate = '';
 	export let onchanged = (date) => {};
-	const setNewNextCheckpoint = (challenge, date) => {
+	const setNewNextCheckpoint = async (challenge, date) => {
 		console.log('setNewNextCheckpoint', challenge.slug, date);
 
-		acceptChallenge(
+		const accept = await acceptChallenge(
 			challenge,
 			currentLevelForChallenge(challenge, getChallengeState(challenge.slug)),
 			date
 		);
+
+		if (date === null) {
+			unscheduleNotification(challenge.slug);
+			return;
+		}
+		let message = challenge.reminderText ?? `Erinnerung an ${challenge.title}`;
+		if (!message) {
+			console.error('no notification message found!');
+			return;
+		}
+		let oneSignalResult = await scheduleNotification(message, date, challenge.slug);
+		console.log('schedule Notification result:', oneSignalResult);
 	};
 
 	const calcDateOptionsForChallenge = (challenge: ChallengeV2) => {

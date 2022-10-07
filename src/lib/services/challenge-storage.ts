@@ -369,26 +369,6 @@ export const acceptChallenge = async (
 	} else {
 	}
 
-	let osId;
-	notificationSettingsStore.update((value) => {
-		osId = value.oneSignalSettings?.userId;
-		return value;
-	});
-
-	if (Capacitor.isNativePlatform() && acceptedChallenge.nextCheckpoint && osId) {
-		const res = await client.rpc(session, 'schedule_one_signal_notification', {
-			recipient_player_id: osId,
-			payload: challenge.reminderText ?? `$Erninngerung an "{challenge.title}"`,
-			at: acceptedChallenge.nextCheckpoint
-		});
-		if (res.payload) {
-			const notificationId = res.payload['notificaion_id'] ?? null;
-			if (notificationId != null) {
-				acceptedChallenge.notificationId = notificationId;
-			}
-		}
-	}
-
 	return await writeStorage(
 		CHALLENGE_INTERACTIONS_COLLECTION,
 		`${challenge.slug}`,

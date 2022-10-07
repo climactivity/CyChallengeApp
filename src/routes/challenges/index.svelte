@@ -117,7 +117,7 @@
 		<!-- Filter -->
 		<div class="sticky top-12 z-30">
 			<div
-				class=" select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-scroll  bg-slate-100 ring-opacity-100 "
+				class="awful-ls-hack select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-scroll  bg-slate-100 ring-opacity-100 "
 				style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 					filterShadow});
@@ -140,10 +140,11 @@
 						/>
 					{/if}
 					<div
-						class="transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
+						class="awful-ls-hack transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
 					{showSuperChallenges
-							? 'bg-gradient-to-r to-nature-light from-water2-light text-white font-bold'
+							? 'bg-gradient-to-r to-nature from-water2 text-white font-bold'
 							: 'bg-gray-50 border-storm-light text-storm bg-opacity-85'}"
+						title="Super Challenges"
 					>
 						Super Challenges
 					</div>
@@ -151,11 +152,12 @@
 				{#each tagList as tag}
 					<div
 						on:click={() => addFilterTag(tag)}
-						class="transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
 							tag
 						)
 							? 'bg-water border-0 text-white font-bold'
 							: 'bg-gray-50 border border-storm-light text-storm'}"
+						title={tags[tag]}
 					>
 						{tags[tag]}
 					</div>
@@ -234,6 +236,15 @@
 
 	.snaps-inline > * {
 		scroll-snap-align: start;
+	}
+
+	.awful-ls-hack ::before {
+		content: attr(title);
+		display: block;
+		font-weight: bold;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
 	}
 
 	// .stuck {

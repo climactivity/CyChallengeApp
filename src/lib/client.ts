@@ -1,4 +1,4 @@
-import { Client, WebSocketAdapterText, Session, type Match, type WriteStorageObject } from '@heroiclabs/nakama-js';
+import { Client, WebSocketAdapterText, Session, type Match, type WriteStorageObject, type RpcResponse } from '@heroiclabs/nakama-js';
 import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
 import { matchdata, matchstatus } from '$lib/stores/context';
@@ -16,7 +16,7 @@ export let client = new Client(
     import.meta.env.VITE_NAKAMA_HOST,
     import.meta.env.VITE_NAKAMA_PORT,
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
-    3000,
+    7000,
     true
 );
 let deviceId: string;
@@ -123,6 +123,12 @@ export const sendMatchData = (opcode, data = null, presence = null) => {
     socket.sendMatchState(matchId, opcode, data, presence)
 }
 
+/**
+ * gather stats on app usage or snitch on errors
+ * @param event the type of message i.e. "challenge-accept" 
+ * @param data the data to save 
+ * @param contextId optional id if analytics belong to a named context like a multiplayer match
+ */
 export const sendAnalytics = async (event: string, data: any, contextId?: string) => {
 
     let writeObjects: WriteStorageObject[] = [{
@@ -146,7 +152,14 @@ export const sendAnalytics = async (event: string, data: any, contextId?: string
 
 }
 
-export const makeRpc = async (rpc, payload) => {
+/**
+ * Make nakama rpcs! 
+ * Now with 100% less manual error checking 
+ * @param rpc the rpc id (check docs and/or api explorer in dashboard)
+ * @param payload a pojo containing parameters for the rpc
+ * @returns a message id or the response as object
+ */
+export const makeRpc = async (rpc, payload) : Promise<RpcResponse> => {
     let isConnected = false
      nkReady.update(state => {
         isConnected = state
@@ -157,15 +170,15 @@ export const makeRpc = async (rpc, payload) => {
         return Promise.reject("No connection to gameserver!")
     }
 
-    await client.rpc(session, rpc, payload).then((response) => {
-        console.log("RPC:", response)
-        return Promise.resolve(response)
-    }
-    ).catch(error => {
+    const response = await client.rpc(session, rpc, payload)
+    .catch(error => {
         console.log("RPC failed:", error)
-
         return Promise.reject(error.statusText ?? error.payload ?? error ?? "Internal server error")
     })
+
+    console.log(`RPC ${rpc} response:` , JSON.stringify(response))
+    return response
+
 }
 
 /**
@@ -173,11 +186,11 @@ export const makeRpc = async (rpc, payload) => {
  * to gameserver is made, use with caution
  * resolves instantly if connection is already established when called 
 */
-export const connectGuard = async () => {
-    if (session) return session; 
+export const connectGuard = async () : Promise<void> => {
+    if (session) return Promise.resolve(); 
     let promiseResolve, promiseReject;
 
-    let promise = new Promise(function(resolve, reject){
+    let promise: Promise<void> = new Promise(function(resolve, reject){
         promiseResolve = resolve;
         promiseReject = reject;
     });

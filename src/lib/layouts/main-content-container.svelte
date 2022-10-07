@@ -34,7 +34,9 @@
 	}}
 >
 	<slot />
-	<div class="h-40 findme " />
+	{#if Capacitor.getPlatform() === 'ios'}
+		<div class="h-40 findme " />
+	{/if}
 </div>
 
 <!-- {#if Capacitor.getPlatform() === 'ios'}
