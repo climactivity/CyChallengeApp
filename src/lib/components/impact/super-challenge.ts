@@ -1,3 +1,5 @@
+import type { ChallengeAccept, ChallengeInteraction } from '$lib/services/challenge-storage';
+
 export type SuperChallenge = {
 	slug: string;
 	label: string;
@@ -29,4 +31,19 @@ export const superChallenges: SuperChallenge[] = [
 export const getSuperChallengeDataForLeadChallenge = (slug) => {
 	// console.log('getting super challenge:', slug);
 	return superChallenges.find((element) => element.slug === slug);
+};
+
+export const getSuperChallengeCssClassForInteracion = (interaction: ChallengeInteraction) => {
+	if (!interaction) {
+		return 'not-accepted';
+	} else {
+		// console.log('fetched interaction', value);
+
+		if (interaction.type === 'accept') {
+			console.log(interaction);
+			if ((interaction as ChallengeAccept).completions?.length > 5) return 'complete';
+		}
+
+		return interaction.type;
+	}
 };

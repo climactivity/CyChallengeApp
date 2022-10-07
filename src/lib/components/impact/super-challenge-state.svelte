@@ -8,7 +8,7 @@
 		type ChallengeInteraction
 	} from '$lib/services/challenge-storage';
 	import type { StorageObject } from '@heroiclabs/nakama-js';
-	import type { SuperChallenge } from './super-challenge';
+	import { getSuperChallengeCssClassForInteracion, type SuperChallenge } from './super-challenge';
 
 	export let superChallenge: SuperChallenge;
 	export let index = 0;
@@ -20,14 +20,7 @@
 		} else {
 			let value: ChallengeInteraction = object.value as ChallengeInteraction;
 
-			// console.log('fetched interaction', value);
-
-			if (value.type === 'accept') {
-				console.log(value);
-				if ((value as ChallengeAccept).completions?.length > 5) return 'complete';
-			}
-
-			return value.type;
+			return getSuperChallengeCssClassForInteracion(value);
 		}
 	};
 </script>
