@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
 	export let skipped = false;
+	export let index = 0;
+
 </script>
 
-<VSection {...$$props}>
-	<div class="grid grid-flow-col mx-8 " style="grid-template-columns: 4fr 1fr;">
+	<div class="the-corner px-16 py-4 shadow-gray-200  bg-gray-50 w-full  border grid grid-flow-col animate-fadeInUp opacity-0 " style="grid-template-columns: 4fr 1fr; animation-delay: {index * ANIMATION_BASE_SPEED}ms;">
 		<div class="flex flex-col  place-content-center">
 			<div class="text-4xl font-serif font-semibold text-storm-dark">Klasse!</div>
 			<div class="text-md font-serif font-normal text-storm-dark">
@@ -14,11 +16,11 @@
 			</div>
 		</div>
 		<div
-			class="grid grid-flow-col items-center place-items-center  px-4 py-2 rounded-xl"
+			class="grid grid-flow-col items-center place-items-center  px-4 py-2 rounded-xl text-reward"
 		>
-			<div class="text-reward w-full 0">
+			<div class=" w-full 0">
 				<svg
-					class="h-16 w-16 mx-auto mr-4"
+					class="h-20 w-20 mx-auto"
 					viewBox="0 0 76 76"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -34,9 +36,8 @@
 				</svg>
 			</div>
 
-			<div class="text-4xl ">
+			<div class="text-4xl font-bold">
 				1
 			</div>
 		</div>
 	</div>
-</VSection>
