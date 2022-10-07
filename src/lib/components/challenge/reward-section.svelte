@@ -42,12 +42,7 @@
 
 <VSection {...$$props}>
 	<div class="flex flex-col gap-4">
-		<div class="text-storm-dark text-xl font-semibold ">Vom "{challenge.title}" hast du dir:</div>
-
-		<RewardDisplay
-			points={challenge.score ?? 10}
-			medals={challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions}
-		/>
+			<!-- <div class="text-storm-dark text-xl font-semibold ">Vom "{challenge.title}" hast du dir:</div> -->
 
 		{#if challenge.type === 'recurring'}
 			{#if numCompletions % 6 !== 0}
