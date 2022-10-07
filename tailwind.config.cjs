@@ -29,6 +29,9 @@ module.exports = {
             DEFAULT: '#95c11e',
             dark: '#658215',
             darkest: '#41820E'
+          },
+          reward: {
+            DEFAULT: '#37814B'
           }
         },
         fontFamily: {
