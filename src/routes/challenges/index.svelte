@@ -112,14 +112,14 @@
 			title="Challenges"
 			bind:scrollPosition={scrollY}
 		>
-			<SearchButton
+			<!-- <SearchButton
 				class="hidden"
 				slot="action"
 				path="#"
 				onClick={(e) => {
 					console.log('search');
 				}}
-			/>
+			/> -->
 		</ProportionalHeader>
 		<div class="px-4">
 			<HeroCard />

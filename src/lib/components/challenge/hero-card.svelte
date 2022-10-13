@@ -3,7 +3,7 @@
 	import { tutorialStore } from '$lib/stores/onboarding-store';
 </script>
 
-<div
+<!-- <div
 	class="grid grid-flow-col bg-white h-36 rounded overflow-clip ring-4 {$tutorialStore
 		? 'ring-nature-light'
 		: 'ring-storm-light first-letter:animate-pulse'} p-1
@@ -43,6 +43,10 @@
 			</svg>
 		</div>
 	{/if}
+</div> -->
+
+<div>
+	<img src="/icons/Start Here.png" />
 </div>
 
 <style lang="scss">
