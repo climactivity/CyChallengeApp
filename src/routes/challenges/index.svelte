@@ -48,13 +48,14 @@
 	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
 	import { Capacitor } from '@capacitor/core';
 	import { getChallenges } from '$lib/services/challenge-content';
+	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
 		hidden: false
 	});
 
-	export let data: ChallengeV2[];
+	let data: ChallengeV2[] = getChallenges();
 	export let topics;
 	export let topicList;
 	let filter = [];
@@ -176,29 +177,37 @@
 		<!-- Challenges -->
 
 		{#if filter.length > 0}
-			{#key filter}
+			{#await data then challenges}
+				{#key filter}
+					<div class="container__filter min-h-content ">
+						{#each challenges as challenge}
+							<ChallengeCard {challenge} {tags} {isHidden} />
+						{/each}
+					</div>
+				{/key}
+			{/await}
+		{:else if showSuperChallenges}
+			{#await data then challenges}
 				<div class="container__filter min-h-content ">
-					{#each data as challenge}
+					{#each challenges.filter((challenge) => challenge.lead) as challenge}
 						<ChallengeCard {challenge} {tags} {isHidden} />
 					{/each}
 				</div>
-			{/key}
-		{:else if showSuperChallenges}
-			<div class="container__filter min-h-content ">
-				{#each data.filter((challenge) => challenge.lead) as challenge}
-					<ChallengeCard {challenge} {tags} {isHidden} />
-				{/each}
-			</div>
+			{/await}
 		{:else}
 			<div class="container min-h-content overflow-visible">
 				{#each topicList as topic}
-					<ChallengeScroller
-						challenges={data.filter((challenge) => challenge.topic === topic)}
-						title={topics[topic]}
-						{tags}
-						challengeHidden={(_) => false}
-						pad
-					/>
+					{#await data}
+						<ChallengeScrollerSkeleton title={topics[topic]} length={3} />
+					{:then challenges}
+						<ChallengeScroller
+							challenges={challenges.filter((challenge) => challenge.topic === topic)}
+							title={topics[topic]}
+							{tags}
+							challengeHidden={(_) => false}
+							pad
+						/>
+					{/await}
 				{/each}
 			</div>
 		{/if}
@@ -231,8 +240,8 @@
 		margin: auto;
 		display: grid;
 		grid-auto-flow: row dense;
-		grid-auto-rows: minmax(100px, max-content);
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-auto-rows: minmax(200px, max-content);
+		grid-template-columns: minmax(0, 1fr);
 		// overflow-y: auto;
 		padding: 1rem;
 		gap: 1rem;

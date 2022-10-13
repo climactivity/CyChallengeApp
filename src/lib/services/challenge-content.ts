@@ -34,24 +34,25 @@ export const getChallenges = async () => {
 };
 
 export const getChallengeBySlug = async (slug: string) => {
-	const challenges = await loadChallenges();
-	const challenge =
-		challenges.filter((challenge) => (challenge as ChallengeV2)?.slug === slug)[0] ?? null;
-	// console.log('getChallengeBySlug', slug, challenges.objects, challenge);
-
-	return challenge;
+	return findRecord(slug);
 };
 
-export const getChallengesByTag = async (tag: string) => {
-	const challenges = await loadChallenges();
-	return challenges
-		.filter((challenge) => (challenge.value as ChallengeV2)?.tags.includes(tag))
-		.map((challenge) => challenge.value as ChallengeV2);
+export const getChallengesByTag = async (tagId: string) => {
+	try {
+		const challenges = await fetchChallenges({ tags: tagId });
+		console.log('Challenge fetch result:', challenges);
+		return challenges;
+	} catch (e) {
+		console.error('PocketBase failed fetch:', e);
+	}
 };
 
-export const getChallengesByTopic = async (topic: string) => {
-	const challenges = await loadChallenges();
-	return challenges
-		.filter((challenge) => (challenge.value as ChallengeV2)?.topic === topic)
-		.map((challenge) => challenge.value as ChallengeV2);
+export const getChallengesByTopic = async (topicId: string) => {
+	try {
+		const challenges = await fetchChallenges({ topic: topicId });
+		console.log('Challenge fetch result:', challenges);
+		return challenges;
+	} catch (e) {
+		console.error('PocketBase failed fetch:', e);
+	}
 };

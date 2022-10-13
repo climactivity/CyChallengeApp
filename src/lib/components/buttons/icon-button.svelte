@@ -53,7 +53,7 @@
 				<slot />
 			</div>
 			{#if showLabel}
-				<div class="text-xs mb-1 ">
+				<div class="text-xs mb-1 whitespace-nowrap">
 					<span>
 						{label}
 					</span>

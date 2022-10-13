@@ -2,11 +2,10 @@
 	import { availableChallenges } from '$testData/challenges';
 
 	export async function load({ params, fetch, session, stuff }) {
-		let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
 		return {
 			status: 200,
 			props: {
-				challenge: challenge
+				challenge: await getChallengeBySlug(params.slug)
 			}
 		};
 	}
@@ -30,7 +29,7 @@
 		type ChallengeInteractionType,
 		type ChallengeReject
 	} from '$lib/services/challenge-storage';
-	import { headerState } from '$lib/stores/header-store';
+	import { headerImageUrl, headerState } from '$lib/stores/header-store';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { fade } from 'svelte/transition';
 	import { LocalDateTime } from '$lib/services/luxon-proxy';
@@ -44,6 +43,8 @@
 		getSuperChallengeCssClassForInteracion,
 		getSuperChallengeDataForLeadChallenge
 	} from '$lib/components/impact/super-challenge';
+	import { getChallengeBySlug } from '$lib/services/challenge-content';
+	import { getImageUrlFromChallenge } from '$lib/util';
 	export let challenge: ChallengeV2;
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
@@ -57,6 +58,7 @@
 			history.back();
 		}
 	};
+	headerImageUrl.set(getImageUrlFromChallenge(challenge));
 	headerState.set({
 		backbutton: true,
 		title: challenge.title,
@@ -152,10 +154,12 @@
 		{#if challenge.lead}
 			<div class="mx-4 my-4 display flex flex-row items-center gap-4">
 				<div>
-					<SuperChallengeIcon
-						superChallenge={getSuperChallengeDataForLeadChallenge(challenge.slug)}
-						cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
-					/>
+					{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
+						<SuperChallengeIcon
+							{superChallenge}
+							cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
+						/>
+					{/await}
 				</div>
 				<div class="text-lg font-bold font-serif  text-opacity-80">Super-Challenge</div>
 			</div>

@@ -37,23 +37,31 @@ export const getState = <T>(writable: Writable<T>): T | null => {
 };
 
 export const getImageUrlFromChallenge = (challenge: ChallengeV2, thumbnail = false) => {
-	if (challenge.image instanceof String) {
-		return pb.records.getFileUrl(challenge, challenge.image);
-	} else {
-		if (challenge.image !== '') {
-			return '/images/not-found.webp';
-		}
+	if (challenge.image !== '') {
+		const imageUrl = pb.records.getFileUrl(
+			challenge,
+			challenge.image,
+			thumbnail ? { thumb: '512x512' } : {}
+		);
+		console.log('IMG:', imageUrl);
+		return imageUrl;
+		// } else {
+		// 	if (challenge.image !== '') {
+		// 		return '/images/not-found.webp';
+		// 	}
 
-		const img: ImageSource = challenge.image as ImageSource;
-		if (img.file) {
-			if (thumbnail) {
-				return `/${img.thumb.path}`;
-			}
-			return `/${img.file.path}`;
-		} else if (img.url) {
-			return img.url;
-		}
+		// 	const img: ImageSource = challenge.image as ImageSource;
+		// 	if (img.file) {
+		// 		if (thumbnail) {
+		// 			return `/${img.thumb.path}`;
+		// 		}
+		// 		return `/${img.file.path}`;
+		// 	} else if (img.url) {
+		// 		return img.url;
+		// 	}
 	}
+
+	return '/images/not-found.webp';
 };
 
 import type { ValidationError } from 'yup';

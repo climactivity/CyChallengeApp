@@ -2,11 +2,11 @@
 	import { availableChallenges, challenges } from '$testData/challenges';
 
 	export async function load({ params, fetch, session, stuff }) {
-		let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
+		// let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
 		return {
 			status: 200,
 			props: {
-				data: challenge
+				data: await getChallengeBySlug(params.slug)
 			}
 		};
 	}
@@ -16,17 +16,13 @@
 	import Confetti from '$lib/components/particles/confetti.svelte';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { page } from '$app/stores';
-	import { headerState } from '$lib/stores/header-store';
+	import { headerImageUrl, headerState } from '$lib/stores/header-store';
 	import { getImageUrlFromChallenge } from '$lib/util';
+	import { getChallengeBySlug } from '$lib/services/challenge-content';
 
 	export let data: ChallengeV2;
 	let imageUrl = getImageUrlFromChallenge(data);
-	headerState.set({
-		backbutton: true,
-		title: data.title,
-		hidden: false,
-		transparent: true
-	});
+
 	let playAt;
 </script>
 
@@ -36,7 +32,7 @@
 	<!-- header image-->
 	<div
 		class=" h-64 bg-red-500 w-full ch-card-sharp shadow-nature "
-		style={`background: url( ${imageUrl}); background-size: cover;`}
+		style={`background: url( ${$headerImageUrl}); background-size: cover;`}
 	/>
 
 	<slot />
