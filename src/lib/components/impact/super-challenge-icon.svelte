@@ -115,10 +115,10 @@
 	}
 
 	.accept {
-		@apply text-lime-300;
+		@apply text-gray-400;
 	}
 	.bookmark {
-		@apply text-yellow-300;
+		@apply text-gray-300;
 	}
 	.complete {
 		@apply text-green-600;

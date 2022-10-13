@@ -57,6 +57,6 @@
 		{/await}
 	</div>
 	<div class="place-self-center w-full">
-		<span class="w-full font-bold"> {superChallenge.label} </span>
+		<span class="w-full font-bold"> {superChallenge.label} > </span>
 	</div>
 </div>
