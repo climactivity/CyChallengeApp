@@ -9,7 +9,7 @@
 		return {
 			status: 200,
 			props: {
-				data: availableChallenges,
+				data: await getChallenges(),
 				// tags: availableTags,
 				// tagList: Object.keys(availableTags),
 				// topics: availableTopics,
@@ -47,6 +47,7 @@
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
 	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
 	import { Capacitor } from '@capacitor/core';
+	import { getChallenges } from '$lib/services/challenge-content';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -90,7 +91,8 @@
 		titleShadow = 0;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
 
-	onMount(() => console.log(challenges.length));
+	onMount(() => console.log(topicList));
+
 	// let challengeStates = getChallengeInteractionsUserData();
 </script>
 

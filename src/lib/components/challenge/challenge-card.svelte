@@ -53,11 +53,13 @@
 		<span class=""
 			>{challenge.Status ? challengeStatusTag(challenge.Status) : ''}{challenge.title}</span
 		>
-		{#if superChallenge}
-			<div>
-				<SuperChallengeIcon {superChallenge} cssClass={'challenge-card'} />
-			</div>
-		{/if}
+		{#await superChallenge then sc}
+			{#if superChallenge}
+				<div>
+					<SuperChallengeIcon superChallenge={sc} cssClass={'challenge-card'} />
+				</div>
+			{/if}
+		{/await}
 	</div>
 
 	<div class="flex flex-row flex-wrap items-end justify-end pl-4 w-full">

@@ -37,8 +37,14 @@ export const getState = <T>(writable: Writable<T>): T | null => {
 };
 
 export const getImageUrlFromChallenge = (challenge: ChallengeV2, thumbnail = false) => {
-	if (challenge.image !== '') {
-		const img: ImageSource = challenge.image;
+	if (challenge.image instanceof String) {
+		return pb.records.getFileUrl(challenge, challenge.image);
+	} else {
+		if (challenge.image !== '') {
+			return '/images/not-found.webp';
+		}
+
+		const img: ImageSource = challenge.image as ImageSource;
 		if (img.file) {
 			if (thumbnail) {
 				return `/${img.thumb.path}`;
@@ -48,11 +54,10 @@ export const getImageUrlFromChallenge = (challenge: ChallengeV2, thumbnail = fal
 			return img.url;
 		}
 	}
-
-	return '/images/not-found.webp';
 };
 
 import type { ValidationError } from 'yup';
+import { pb } from './pb-client';
 
 type ErrorObject = {
 	[field: string]: string;

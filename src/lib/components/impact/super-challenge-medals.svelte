@@ -13,9 +13,13 @@
 	<div class="grid grid-flow-row items-start w-full relative min-h-[24rem]">
 		<!-- <SuperChallengeMedalsSkeleton /> -->
 		{#if $nkReady}
-			{#each superChallenges as superChallenge, i}
-				<SuperChallengeState {superChallenge} index={i} />
-			{/each}
+			{#await superChallenges then scs}
+				{#each scs as superChallenge, i}
+					{#if superChallenge.frontPage}
+						<SuperChallengeState {superChallenge} index={i} />
+					{/if}
+				{/each}
+			{/await}
 		{:else}
 			<div class="absolute">
 				<SuperChallengeMedalsSkeleton />

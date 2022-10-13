@@ -1,36 +1,80 @@
+import { pb } from '$lib/pb-client';
 import type { ChallengeAccept, ChallengeInteraction } from '$lib/services/challenge-storage';
 
 export type SuperChallenge = {
 	slug: string;
 	label: string;
-	icon: string;
+	icon_path: string;
+	frontPage: boolean;
+	[key: string]: any; // allow for pb meta data
 };
 
-export const superChallenges: SuperChallenge[] = [
-	{ label: 'Ernährung', icon: '/icons/super-challenge-ernährung.svg', slug: 'iss_mehr_pflanzen' },
-	{ label: 'Strom', icon: '/icons/super-challenge-strom.svg', slug: 'wechsel_zu_oekostrom' },
-	{ label: 'Wärme', icon: '/icons/super-challenge-wärme.svg', slug: 'bleib_cool' },
+const _superChallenges: Promise<SuperChallenge[]> = Promise.resolve([
 	{
-		label: 'Bewusster Konsume',
-		icon: '/icons/super-challenge-konsum.svg',
-		slug: 'wuensch_dir_was'
+		label: 'Ernährung',
+		icon_path: '/icons/super-challenge-ernährung.svg',
+		slug: 'iss_mehr_pflanzen',
+		frontPage: true
+	},
+	{
+		label: 'Ernährung',
+		icon_path: '/icons/super-challenge-ernährung.svg',
+		slug: 'lecker_satt_werden_mit_weniger_fleisch',
+		frontPage: false
+	},
+	{
+		label: 'Strom',
+		icon_path: '/icons/super-challenge-strom.svg',
+		slug: 'wechsel_zu_oekostrom',
+		frontPage: true
+	},
+	{
+		label: 'Wärme',
+		icon_path: '/icons/super-challenge-wärme.svg',
+		slug: 'bleib_cool',
+		frontPage: true
+	},
+	{
+		label: 'Bewusster Konsum',
+		icon_path: '/icons/super-challenge-konsum.svg',
+		slug: 'wuensch_dir_was',
+		frontPage: true
 	},
 	{
 		label: 'Mobilität Land',
-		icon: '/icons/super-challenge-mobilität.svg',
-		slug: 'weniger_allein__mehr_klimaschutz'
+		icon_path: '/icons/super-challenge-mobilität.svg',
+		slug: 'weniger_allein__mehr_klimaschutz',
+		frontPage: true
 	},
-	{ label: 'Geld', icon: '/icons/super-challenge-geld.svg', slug: 'bankwechsel' },
+	{
+		label: 'Geld',
+		icon_path: '/icons/super-challenge-geld.svg',
+		slug: 'bankwechsel',
+		frontPage: true
+	},
 	{
 		label: 'Reisen & Fliegen',
-		icon: '/icons/super-challenge-travel.svg',
-		slug: 'bleib_mal_am_boden'
+		icon_path: '/icons/super-challenge-travel.svg',
+		slug: 'bleib_mal_am_boden',
+		frontPage: true
 	}
-];
+]);
 
-export const getSuperChallengeDataForLeadChallenge = (slug) => {
+export const superChallenges: Promise<SuperChallenge[]> = pb.records
+	.getList('super_challenges', 0, 100, { sort: 'index' })
+	.then((superChallengesPage) =>
+		superChallengesPage.items.map(
+			(superChallengeRecord) => (superChallengeRecord as unknown) as SuperChallenge
+		)
+	)
+	.catch((e) => {
+		console.error('PocketBase failed to fetch super challenges:', e);
+		return _superChallenges;
+	});
+
+export const getSuperChallengeDataForLeadChallenge = async (slug) => {
 	// console.log('getting super challenge:', slug);
-	return superChallenges.find((element) => element.slug === slug);
+	return (await superChallenges).find((element) => element.slug === slug);
 };
 
 export const getSuperChallengeCssClassForInteracion = (interaction: ChallengeInteraction) => {
