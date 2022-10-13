@@ -1,5 +1,10 @@
 <script lang="ts" context="module">
-	import { availableChallenges, availableTags, availableTopics } from '$testData/challenges';
+	import {
+		availableChallenges,
+		availableTags,
+		availableTopics,
+		challenges
+	} from '$testData/challenges';
 	export async function load({ params, fetch, session, stuff }) {
 		return {
 			status: 200,
@@ -41,6 +46,7 @@
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
 	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
+	import { Capacitor } from '@capacitor/core';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -77,13 +83,14 @@
 	const isHidden = (challenge: ChallengeV2) =>
 		filter.length > 0 && !filter.every((r) => challenge.tags.includes(r));
 
-	$: console.log(filter);
+	$: console.log(data.length);
 
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
 
+	onMount(() => console.log(challenges.length));
 	// let challengeStates = getChallengeInteractionsUserData();
 </script>
 
@@ -192,6 +199,10 @@
 					/>
 				{/each}
 			</div>
+		{/if}
+
+		{#if Capacitor.getPlatform() === 'ios'}
+			<div class="h-20 findme " />
 		{/if}
 	</div>
 </MainScreenLayoutBase>

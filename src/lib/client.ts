@@ -2,15 +2,26 @@ import { Client, WebSocketAdapterText, Session, type Match, type WriteStorageObj
 import { v4 } from 'uuid';
 import { writable } from 'svelte/store';
 import { matchdata, matchstatus } from '$lib/stores/context';
+import { Device } from '@capacitor/device';
 import { goto } from '$app/navigation';
 import { rewardStore } from './stores/reward-store';
+import { Capacitor } from '@capacitor/core';
+
+let deviceId: string;
+let reconnectHandle
 
 export const ssr = false;
-console.log('connecting to nakama with settings:', JSON.stringify({
-    host: import.meta.env.VITE_NAKAMA_HOST,
-    port: import.meta.env.VITE_NAKAMA_PORT,
-    useSSL: import.meta.env.VITE_NAKAMA_USE_SSL
-}));
+export let session: Session;
+export const nkReady = writable(false);
+
+
+// console.log('connecting to nakama with settings:', JSON.stringify({
+//     host: import.meta.env.VITE_NAKAMA_HOST,
+//     port: import.meta.env.VITE_NAKAMA_PORT,
+//     useSSL: import.meta.env.VITE_NAKAMA_USE_SSL
+// }));
+
+
 export let client = new Client(
     import.meta.env.VITE_NAKAMA_CLIENT_API_KEY,
     import.meta.env.VITE_NAKAMA_HOST,
@@ -19,24 +30,43 @@ export let client = new Client(
     7000,
     true
 );
-let deviceId: string;
-export let session: Session;
-let reconnectHandle
+
 export let socket = client.createSocket(
     import.meta.env.VITE_NAKAMA_USE_SSL === 'true',
     false,
     new WebSocketAdapterText()
 );
-export const nkReady = writable(false);
+
+
+/**
+ * Gets the native device id from @capacitor/device
+ * polyfills with a random (local stoarge backed) id on browsers  
+ * @returns a uuid for the device
+ */
+export const getDeviceID = async () => {
+    if (Capacitor.isNativePlatform()) {
+        let capId =  await Device.getId()
+        return capId.uuid
+    }
+
+    let lsId = await localStorage.getItem('NK_DEVICE_ID');
+    console.log("DEVICE_ID", lsId)
+    if (!lsId) {
+        lsId = v4();
+        await localStorage.setItem('NK_DEVICE_ID', lsId);
+    }
+    return lsId
+
+}
+
+
 export const init = async () => {
     if (reconnectHandle) {
         clearInterval(reconnectHandle)
     }
-    deviceId = await localStorage.getItem('NK_DEVICE_ID');
-    if (!deviceId) {
-        let deviceId = v4();
-        await localStorage.setItem('NK_DEVICE_ID', deviceId);
-    }
+
+    deviceId = await getDeviceID();
+
     session = await createSession();
     await connectSocket(session);
 

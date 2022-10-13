@@ -39,6 +39,11 @@
 	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
 	import { getContext, hasContext } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
+	import SuperChallengeIcon from '$lib/components/impact/super-challenge-icon.svelte';
+	import {
+		getSuperChallengeCssClassForInteracion,
+		getSuperChallengeDataForLeadChallenge
+	} from '$lib/components/impact/super-challenge';
 	export let challenge: ChallengeV2;
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
@@ -145,7 +150,15 @@
 		</div>
 
 		{#if challenge.lead}
-			<div class="text-lg font-bold font-serif mx-4 my-4 text-opacity-80">Super-Challenge</div>
+			<div class="mx-4 my-4 display flex flex-row items-center gap-4">
+				<div>
+					<SuperChallengeIcon
+						superChallenge={getSuperChallengeDataForLeadChallenge(challenge.slug)}
+						cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
+					/>
+				</div>
+				<div class="text-lg font-bold font-serif  text-opacity-80">Super-Challenge</div>
+			</div>
 		{/if}
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
@@ -162,7 +175,7 @@
 
 		<!-- actions -->
 		<div
-			class="sticky top-0 bg-slate-100 min-w-full px-4 pt-4 z-50 -mt-8"
+			class=" top-0 bg-slate-100 min-w-full px-4 pt-4 z-50 -mt-8"
 			style="
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * actionsShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 				actionsShadow});
