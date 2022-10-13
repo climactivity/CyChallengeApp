@@ -199,9 +199,9 @@
 				{#each topicList as topic}
 					{#await data}
 						<ChallengeScrollerSkeleton title={topics[topic]} length={3} />
-					{:then challenges}
+					{:then fetchedChallenges}
 						<ChallengeScroller
-							challenges={challenges.filter((challenge) => challenge.topic === topic)}
+							challenges={fetchedChallenges.filter((challenge) => challenge.topic === topic)}
 							title={topics[topic]}
 							{tags}
 							challengeHidden={(_) => false}

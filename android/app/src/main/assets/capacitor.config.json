@@ -9,7 +9,7 @@
 		}
 	},
 	"server": {
-		"url": "http://192.168.178.145:3000",
-		"cleartext": true
+		"url": "https://cy-challenge-app-beta.netlify.app",
+		"cleartext": false
 	}
 }
