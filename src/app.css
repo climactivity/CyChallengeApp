@@ -48,6 +48,13 @@
 		scroll-snap-align: start;
 	}
 
+	.the-corner {
+		border-radius: 0.25rem 0.25rem 0.25rem 4rem;
+		box-shadow: 0px 0.25rem 0px 0px var(--tw-shadow-color);
+
+		padding: 1.25rem;
+	}
+
 	.ch-card-sharp {
 		background: white;
 		border-radius: 0px 0px 0px 4rem;
