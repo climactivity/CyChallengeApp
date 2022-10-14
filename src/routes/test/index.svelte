@@ -1,42 +1,35 @@
 <script>
 	import JournalButton from '$lib/components/buttons/journal-button.svelte';
+	import TutorialCard from '$lib/components/challenge/tutorial-card.svelte';
 </script>
 
 <div class="min-h-screen grid place-content-center">
-	<div class="grab-attention">
-		<JournalButton path="#" />
+	<div class="absolute inset-12">
+		<TutorialCard />
 	</div>
 </div>
 
 <style lang="scss">
-	.grab-attention {
-		--highlight-color: #e8b50d;
-		animation-name: grab-attention;
-		animation-duration: 1.35s;
-		animation-fill-mode: forwards;
-		animation-timing-function: ease-in-out;
+	.text-obnoxious {
+		@apply font-bold font-serif;
+		--text-shadow-inner: #fff;
+		--text-shadow-outer: #000;
+		--shadow-spread: 0.8px;
+		text-shadow: -1px -1px 0px var(--text-shadow-inner), -1px 1px 0px var(--text-shadow-inner),
+			1px -1px 0px var(--text-shadow-inner), 1px 1px 0px var(--text-shadow-inner),
+			-1px -1px var(--shadow-spread) var(--text-shadow-outer),
+			-1px 1px var(--shadow-spread) var(--text-shadow-outer),
+			1px -1px var(--shadow-spread) var(--text-shadow-outer),
+			1px 1px var(--shadow-spread) var(--text-shadow-outer);
 	}
 
-	@keyframes grab-attention {
-		0%,
-		100% {
-			transform: rotateZ(0deg);
-			color: inherit;
-		}
+	.bg-tutorial-card {
+		background: linear-gradient(0deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
+			linear-gradient(230deg, #0077b5 10%, #95c11f 93%);
+		/* figma export broken, time to abuse box shadow*/
+		box-shadow: inset 0px 0px 1rem 0.25rem rgba(0 0 0 / 0.1),
+			inset 0px 0px 0px 0.25rem rgba(0 0 0 / 0.1);
 
-		15%,
-		85% {
-			transform: rotateZ(0deg);
-			color: var(--highlight-color, yellow);
-		}
-		33% {
-			transform: rotateZ(10deg);
-			color: var(--highlight-color, yellow);
-		}
-
-		66% {
-			transform: rotateZ(-10deg);
-			color: var(--highlight-color, yellow);
-		}
+		border-radius: 1rem;
 	}
 </style>

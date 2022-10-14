@@ -9,7 +9,7 @@
 		}
 	},
 	"server": {
-		"url": "https://cy-challenge-app-beta.netlify.app",
+		"url": "https://cy-challenge-app-beta.netlify.app/",
 		"cleartext": false
 	}
 }

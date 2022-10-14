@@ -9,7 +9,6 @@
 		return {
 			status: 200,
 			props: {
-				data: await getChallenges(),
 				// tags: availableTags,
 				// tagList: Object.keys(availableTags),
 				// topics: availableTopics,
@@ -49,13 +48,14 @@
 	import { Capacitor } from '@capacitor/core';
 	import { getChallenges } from '$lib/services/challenge-content';
 	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
+	import { tutorialStore } from '$lib/stores/onboarding-store';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
 		hidden: false
 	});
 
-	let data: ChallengeV2[] = getChallenges();
+	let data: Promise<ChallengeV2[]> = getChallenges();
 	export let topics;
 	export let topicList;
 	let filter = [];
@@ -90,7 +90,7 @@
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
-	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
+	$: filterShadow = Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 180)), 25) / 25;
 
 	onMount(() => console.log(topicList));
 
@@ -99,6 +99,12 @@
 
 <MainScreenLayoutBase>
 	<div
+		class="absolute -top-24 -left-48 right-48 h-48 bg-nature-light bg-opacity-10 rounded-full blur-2xl"
+	/>
+	<div
+		class="absolute -top-12 left-48 -right-48 h-24 bg-water2-light bg-opacity-20 rounded-full blur-2xl"
+	/>
+	<div
 		class=" overflow-y-auto overflow-x-hidden  md:mx-auto md:max-w-3xl h-safe pb-16 relative  z-20 "
 		on:scroll={(e) => {
 			scrollY = e.currentTarget.scrollTop;
@@ -106,7 +112,7 @@
 	>
 		<ProportionalHeader
 			backbutton={false}
-			shadowOffsetStart={0}
+			shadowOffsetStart={$tutorialStore ? 20 : 0}
 			shadowOffsetEnd={20}
 			transparent={false}
 			title="Challenges"
@@ -131,7 +137,7 @@
 				style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 					filterShadow});
-					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
+					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 100)), 25) / 25}
 				"
 			>
 				<div
