@@ -9,7 +9,6 @@
 		return {
 			status: 200,
 			props: {
-				data: availableChallenges,
 				// tags: availableTags,
 				// tagList: Object.keys(availableTags),
 				// topics: availableTopics,
@@ -47,13 +46,16 @@
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
 	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
 	import { Capacitor } from '@capacitor/core';
+	import { getChallenges } from '$lib/services/challenge-content';
+	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
+	import { tutorialStore } from '$lib/stores/onboarding-store';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
 		hidden: false
 	});
 
-	export let data: ChallengeV2[];
+	let data: Promise<ChallengeV2[]> = getChallenges();
 	export let topics;
 	export let topicList;
 	let filter = [];
@@ -88,13 +90,20 @@
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
-	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
+	$: filterShadow = Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 180)), 25) / 25;
 
-	onMount(() => console.log(challenges.length));
+	onMount(() => console.log(topicList));
+
 	// let challengeStates = getChallengeInteractionsUserData();
 </script>
 
 <MainScreenLayoutBase>
+	<div
+		class="absolute -top-24 -left-48 right-48 h-48 bg-nature-light bg-opacity-10 rounded-full blur-2xl"
+	/>
+	<div
+		class="absolute -top-12 left-48 -right-48 h-24 bg-water2-light bg-opacity-20 rounded-full blur-2xl"
+	/>
 	<div
 		class=" overflow-y-auto overflow-x-hidden  md:mx-auto md:max-w-3xl h-safe pb-16 relative  z-20 "
 		on:scroll={(e) => {
@@ -103,20 +112,20 @@
 	>
 		<ProportionalHeader
 			backbutton={false}
-			shadowOffsetStart={0}
+			shadowOffsetStart={$tutorialStore ? 20 : 0}
 			shadowOffsetEnd={20}
 			transparent={false}
 			title="Challenges"
 			bind:scrollPosition={scrollY}
 		>
-			<SearchButton
+			<!-- <SearchButton
 				class="hidden"
 				slot="action"
 				path="#"
 				onClick={(e) => {
 					console.log('search');
 				}}
-			/>
+			/> -->
 		</ProportionalHeader>
 		<div class="px-4">
 			<HeroCard />
@@ -128,7 +137,7 @@
 				style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 					filterShadow});
-					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
+					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 100)), 25) / 25}
 				"
 			>
 				<div
@@ -174,29 +183,37 @@
 		<!-- Challenges -->
 
 		{#if filter.length > 0}
-			{#key filter}
+			{#await data then challenges}
+				{#key filter}
+					<div class="container__filter min-h-content ">
+						{#each challenges as challenge}
+							<ChallengeCard {challenge} {tags} {isHidden} />
+						{/each}
+					</div>
+				{/key}
+			{/await}
+		{:else if showSuperChallenges}
+			{#await data then challenges}
 				<div class="container__filter min-h-content ">
-					{#each data as challenge}
+					{#each challenges.filter((challenge) => challenge.lead) as challenge}
 						<ChallengeCard {challenge} {tags} {isHidden} />
 					{/each}
 				</div>
-			{/key}
-		{:else if showSuperChallenges}
-			<div class="container__filter min-h-content ">
-				{#each data.filter((challenge) => challenge.lead) as challenge}
-					<ChallengeCard {challenge} {tags} {isHidden} />
-				{/each}
-			</div>
+			{/await}
 		{:else}
 			<div class="container min-h-content overflow-visible">
 				{#each topicList as topic}
-					<ChallengeScroller
-						challenges={data.filter((challenge) => challenge.topic === topic)}
-						title={topics[topic]}
-						{tags}
-						challengeHidden={(_) => false}
-						pad
-					/>
+					{#await data}
+						<ChallengeScrollerSkeleton title={topics[topic]} length={3} />
+					{:then fetchedChallenges}
+						<ChallengeScroller
+							challenges={fetchedChallenges.filter((challenge) => challenge.topic === topic)}
+							title={topics[topic]}
+							{tags}
+							challengeHidden={(_) => false}
+							pad
+						/>
+					{/await}
 				{/each}
 			</div>
 		{/if}
@@ -229,8 +246,8 @@
 		margin: auto;
 		display: grid;
 		grid-auto-flow: row dense;
-		grid-auto-rows: minmax(100px, max-content);
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-auto-rows: minmax(200px, max-content);
+		grid-template-columns: minmax(0, 1fr);
 		// overflow-y: auto;
 		padding: 1rem;
 		gap: 1rem;

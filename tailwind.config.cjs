@@ -71,6 +71,7 @@ module.exports = {
           cheer: "cheer 1.5s forwards ease",
           fadeInDown: "fadeInDown 0.5s forwards ease",
           fadeInUp: "fadeInUp 0.5s forwards ease",
+          fadeInBlur: "fadeInBlur 0.5s forwards ease",
           grabAttention: "grabAttention 1.35s forwards ease-in-out",
           tiltGradient: "tiltGradient 10s infinite linear"
           
@@ -143,10 +144,20 @@ module.exports = {
           },
           fade: {
             "0%": {
-              opacity: "0"
+              opacity: "0",
             },
             "100%": {
-              opacity: "1"
+              opacity: "1",
+            }
+          },
+          fadeInBlur: {
+            "0%": {
+              opacity: "0",
+              blur: "8px"
+            },
+            "100%": {
+              opacity: "1",
+              blur: "0px"
             }
           },
           fadeInDown: {

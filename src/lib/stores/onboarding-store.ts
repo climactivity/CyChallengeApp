@@ -47,6 +47,7 @@ tutorialStore.subscribe((value) => {
 });
 
 if (browser) {
-	let tutorialState = !!window.localStorage.getItem(LS_KEY_TUTORIAL) ?? false;
+	let tutorialState = false;
+	console.log(tutorialState);
 	tutorialStore.set(tutorialState);
 }

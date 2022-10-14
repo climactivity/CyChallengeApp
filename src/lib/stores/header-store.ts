@@ -11,4 +11,4 @@ export const headerState: Writable<HeaderState> = writable({
     shadowOffsetEnd: 20
 });
 
- 
+export const headerImageUrl: Writable<string> = writable('/images/not-found.webp')

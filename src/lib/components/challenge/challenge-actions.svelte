@@ -42,7 +42,10 @@
 <!-- Challenge State: {challengeState?.type} -->
 
 <div class="h-24">
-	<div class="grid grid-flow-col actions gap-2 place-content-evenly" style="place-items: baseline;">
+	<div
+		class="grid grid-flow-col actions gap-2 place-content-evenly place-items-center"
+		style="place-items: baseline; grid-template-columns: 1fr 1fr 1fr 1fr ;"
+	>
 		{#if $nkReady}
 			<!-- challenge accepted -->
 			{#if challengeState?.type === 'accept'}

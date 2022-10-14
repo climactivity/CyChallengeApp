@@ -10,6 +10,8 @@
 	export let tags = {};
 	export let pad = false;
 
+	export let sizeW = '12rem';
+	export let sizeH = '8rem';
 	onMount(() => {
 		_challenges = [
 			...challenges.sort((a, b) => {
@@ -29,8 +31,8 @@
 			? 'px-4'
 			: ''} h-scroller snaps-inline"
 		style="
-            grid-auto-columns: 6rem;
-            grid-auto-rows: 5rem;
+            grid-auto-columns: {sizeW};
+            grid-auto-rows: {sizeH};
         "
 	>
 		{#if _challenges && _challenges.length > 0}

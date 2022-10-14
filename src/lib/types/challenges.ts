@@ -39,7 +39,7 @@ export interface ImageSource {
 	};
 }
 
-export interface ChallengeV2 {
+export interface ChallengeV2 extends Record<string, any> {
 	title: string;
 	topic: string;
 	type?: ChallengeType;
@@ -52,7 +52,7 @@ export interface ChallengeV2 {
 	slug: string;
 	impact: string;
 	score: number;
-	image?: '' | ImageSource;
+	image?: '' | string | ImageSource;
 	Status?: string;
 	lead: boolean;
 	notificationDays: number[];

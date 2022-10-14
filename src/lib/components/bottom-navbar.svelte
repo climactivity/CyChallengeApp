@@ -24,9 +24,10 @@
 
 <div
 	bind:clientWidth={xSize}
-	style="--x-size: {xSize}px; --show-shadow: {shadow ? 0.05 : 0};"
-	class="relative
-		grid grid-flow-col
+	style="--x-size: {xSize}px; --show-shadow: {shadow ? 0.05 : 0};
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;"
+	class="relative max-w-xl mx-auto
+		grid 
 		px-2 gap-2 sm:gap-12
 		place-content-around sm:place-content-center
 		select-none h-16 bg-white  backdrop-blur-md z-50 menu transition-shadow"

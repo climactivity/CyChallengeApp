@@ -21,6 +21,7 @@
 </script> -->
 <script lang="ts">
 	import VSection from '$lib/components/challenge/v-section.svelte';
+	import { getChallengesByTopic } from '$lib/services/challenge-content';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { availableChallenges, availableTopics } from '$testData/challenges';
 	import ChallengesButton from '../buttons/challenges-button.svelte';
@@ -28,10 +29,10 @@
 	export let challenge: ChallengeV2;
 	export let rejected: boolean = false;
 
-	export let data = availableChallenges;
+	console.log(challenge);
 
-	export let topics = availableTopics;
-	export let tags = {};
+	export let data = getChallengesByTopic(challenge.topic);
+	// export let topics;
 </script>
 
 <VSection {...$$props} pad={false}>
@@ -41,13 +42,17 @@
 			: 'Andere Challenges, die dich auch interessieren könnten'}
 	</div> -->
 
-	<ChallengeScroller
-		challenges={data.filter((ch) => ch.slug !== challenge.slug)}
-		title={rejected
-			? 'Andere Challenges, die dich statt dessen interessieren könnten:'
-			: 'Andere Challenges, die dich auch interessieren könnten:'}
-		tags={topics}
-		challengeHidden={(_) => false}
-		pad={true}
-	/>
+	{#await data then challenges}
+		<ChallengeScroller
+			challenges={challenges.filter((ch) => ch.slug !== challenge.slug)}
+			title={rejected
+				? 'Andere Challenges, die dich statt dessen interessieren könnten:'
+				: 'Andere Challenges, die dich auch interessieren könnten:'}
+			tags={{}}
+			challengeHidden={(_) => false}
+			pad={true}
+		/>
+	{:catch e}
+		meep
+	{/await}
 </VSection>
