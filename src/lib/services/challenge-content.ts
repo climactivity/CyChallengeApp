@@ -1,4 +1,3 @@
-import PocketBase from 'pocketbase';
 import { pb } from '$lib/pb-client';
 import type { ChallengeV2 } from '$lib/types/challenges';
 import { availableChallenges } from '$testData/challenges';
@@ -88,7 +87,7 @@ const fetchChallenges = async (params = '', offset = 0, limit = 100): Promise<Ch
 export const getChallenges = async () => {
 	try {
 		const challenges = await fetchChallenges();
-		console.log('Challenge fetch result:', challenges.length);
+		// console.log('Challenge fetch result:', challenges.length);
 		return challenges;
 	} catch (e) {
 		console.error('PocketBase failed fetch:', e);
@@ -102,7 +101,7 @@ export const getChallengeBySlug = async (slug: string) => {
 export const getChallengesByTag = async (tagId: string, offset = 0, limit = 100) => {
 	try {
 		const challenges = await fetchChallenges(`tag=\"${tagId}\"`, offset, limit);
-		console.log('Challenge fetch result:', challenges);
+		// console.log('Challenge fetch result:', challenges);
 		return challenges;
 	} catch (e) {
 		console.error('PocketBase failed fetch:', e);
@@ -112,7 +111,7 @@ export const getChallengesByTag = async (tagId: string, offset = 0, limit = 100)
 export const getChallengesByTopic = async (topicId: string, offset = 0, limit = 100) => {
 	try {
 		const challenges = await fetchChallenges(`topic=\"${topicId}\"`, offset, limit);
-		console.log('Challenge fetch result:', challenges);
+		// console.log('Challenge fetch result:', challenges);
 		return challenges;
 	} catch (e) {
 		console.error('PocketBase failed fetch:', e);
