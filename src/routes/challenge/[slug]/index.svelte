@@ -174,7 +174,7 @@
 
 		<!-- front matter -->
 		<p class="text-lg  prose mx-4">
-			{challenge.frontMatter}
+			{@html challenge.frontMatter}
 		</p>
 
 		<!-- actions -->
