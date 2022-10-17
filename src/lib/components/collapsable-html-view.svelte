@@ -3,7 +3,7 @@
 	export let collapsed = false;
 	export let collapsedSize = '8rem';
 	export let canCollapse = true;
-
+	export let title;
 	const toggleCollapsed = (e) => {
 		if (canCollapse) {
 			collapsed = !collapsed;
@@ -16,6 +16,8 @@
 	on:click={toggleCollapsed}
 	style="--collapsed-size: {collapsedSize};"
 >
+	<p class="text-center font-bold text-xl pb-2">Mehr</p>
+
 	{@html content}
 </div>
 
@@ -28,7 +30,6 @@
 			bottom: 0px;
 			left: 0px;
 			right: 0px;
-			transition: all 0.5s ease-in-out;
 		}
 		&::before {
 			z-index: 10;
@@ -54,6 +55,8 @@
 		transition: max-height 0.3s ease-out;
 		&::before,
 		&::after {
+			transition: all 0s ease-in-out;
+
 			opacity: 0;
 		}
 	}
@@ -64,6 +67,8 @@
 		overflow: hidden;
 		&::before,
 		&::after {
+			transition: all 0.5s ease-in-out;
+
 			opacity: 1;
 		}
 	}

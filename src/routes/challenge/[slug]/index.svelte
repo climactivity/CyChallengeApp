@@ -45,7 +45,9 @@
 	} from '$lib/components/impact/super-challenge';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import { getImageUrlFromChallenge } from '$lib/util';
+	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
 	export let challenge: ChallengeV2;
+	console.log('Challenge:', challenge);
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
 	let showMore = false;
@@ -247,7 +249,13 @@
 		{/if}
 		<!-- more infos -->
 
-		<div class="mx-4 rounded-xl p-2 bg-white">
+		<CollapsableHtmlView
+			content={challenge.content}
+			collapsed={challengeState && challengeState.type !== 'accept'}
+			canCollapse={true}
+			title="Mehr"
+		/>
+		<!-- <div class="mx-4 rounded-xl p-2 bg-white">
 			<p class="text-center font-bold text-xl pb-2">Mehr</p>
 			{#if !challengeState || challengeState.type !== 'accept'}
 				<p class="align-middle text-md pb-2">
@@ -258,7 +266,7 @@
 					{challenge.content}
 				</p>
 			{/if}
-		</div>
+		</div> -->
 	</div>
 	<!-- related challenges -->
 	<RecommendedChallengesSection {challenge} />
