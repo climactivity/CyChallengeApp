@@ -1,7 +1,9 @@
-let pocketbase = await import('pocketbase');
-let Client = pocketbase.default;
+import PocketBase from 'pocketbase';
+// let pocketbase = await import('pocketbase');
+// let Client = pocketbase.default;
+export const pb = new PocketBase(import.meta.env.VITE_PB_BASE_URL);
 
-export const pb = new Client(import.meta.env.VITE_PB_BASE_URL);
+// export const pb = new Client(import.meta.env.VITE_PB_BASE_URL);
 
 // let pb = null;
 

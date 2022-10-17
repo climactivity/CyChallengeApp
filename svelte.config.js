@@ -18,8 +18,9 @@ const config = {
 		}),
 		vite: {
 			ssr: {
-				noExternal: ['@heroiclabs/nakama-js', '@fortawesome/free-brands-svg-icons', '@fortawesome/free-solid-svg-icons', 'onesignal-cordova-plugin']
+				noExternal: ['@heroiclabs/nakama-js', '@fortawesome/free-brands-svg-icons', 'pocketbase', '@fortawesome/free-solid-svg-icons', 'onesignal-cordova-plugin']
 			},
+			
 			resolve: {
 				alias: {
 					"$testData": path.resolve("./src/testData"),
