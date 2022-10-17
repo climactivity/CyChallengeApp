@@ -1,35 +1,21 @@
 <script>
 	import JournalButton from '$lib/components/buttons/journal-button.svelte';
 	import TutorialCard from '$lib/components/challenge/tutorial-card.svelte';
+	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
 </script>
 
-<div class="min-h-screen grid place-content-center">
-	<div class="absolute inset-12">
-		<TutorialCard />
+<div class="min-h-screen grid place-content-start">
+	<div>
+		<CollapsableHtmlView
+			collapsed={false}
+			canCollapse={true}
+			collapsedSize={'8rem'}
+			content={`<p>Die Ernährung trägt <b>weltweit</b> auch in Deutschland mit ca. 15% zur globalen Treibhausgas-Emission bei. Soll dieser CO2-Fußabdruck gesenkt werden, müssen sich unsere Ernährungsgewohnheiten und folglich auch die Landwirtschaft ändern. Dafür eignet sich sich eine "Klimatarische Ernährung". </p>
+		<p> Im Gegensatz zu einer veganen Ernährung musst du bei einer klimatarischen Ernährung den Verzehr von tierischen Produkten zwar auch deutlich reduzieren, aber nicht gänzlich darauf verzichten. Dennoch lohnt es sich zur Ernährungsumstellung auch mal Dinnerpartys zu veranstalten, die ganz ohne tierische Produkte <a href="https://google.com">auskommen</a>, um deine Gewohnheiten und die deiner Gäste zu verändern. </p> 
+		<p> Im Gegensatz zu einer veganen Ernährung musst du bei einer klimatarischen Ernährung den Verzehr von tierischen Produkten zwar auch deutlich reduzieren, aber nicht gänzlich darauf verzichten. Dennoch lohnt es sich zur Ernährungsumstellung auch mal Dinnerpartys zu veranstalten, die ganz ohne tierische Produkte auskommen, um deine Gewohnheiten und die deiner Gäste zu verändern. </p> 
+		
+		
+		 `}
+		/>
 	</div>
 </div>
-
-<style lang="scss">
-	.text-obnoxious {
-		@apply font-bold font-serif;
-		--text-shadow-inner: #fff;
-		--text-shadow-outer: #000;
-		--shadow-spread: 0.8px;
-		text-shadow: -1px -1px 0px var(--text-shadow-inner), -1px 1px 0px var(--text-shadow-inner),
-			1px -1px 0px var(--text-shadow-inner), 1px 1px 0px var(--text-shadow-inner),
-			-1px -1px var(--shadow-spread) var(--text-shadow-outer),
-			-1px 1px var(--shadow-spread) var(--text-shadow-outer),
-			1px -1px var(--shadow-spread) var(--text-shadow-outer),
-			1px 1px var(--shadow-spread) var(--text-shadow-outer);
-	}
-
-	.bg-tutorial-card {
-		background: linear-gradient(0deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)),
-			linear-gradient(230deg, #0077b5 10%, #95c11f 93%);
-		/* figma export broken, time to abuse box shadow*/
-		box-shadow: inset 0px 0px 1rem 0.25rem rgba(0 0 0 / 0.1),
-			inset 0px 0px 0px 0.25rem rgba(0 0 0 / 0.1);
-
-		border-radius: 1rem;
-	}
-</style>

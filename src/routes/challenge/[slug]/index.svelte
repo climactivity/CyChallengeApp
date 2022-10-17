@@ -45,7 +45,9 @@
 	} from '$lib/components/impact/super-challenge';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import { getImageUrlFromChallenge } from '$lib/util';
+	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
 	export let challenge: ChallengeV2;
+	console.log('Challenge:', challenge);
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
 	let showMore = false;
@@ -174,7 +176,7 @@
 
 		<!-- front matter -->
 		<p class="text-lg  prose mx-4">
-			{challenge.frontMatter}
+			{@html challenge.frontMatter}
 		</p>
 
 		<!-- actions -->
@@ -239,15 +241,42 @@
 				{/if}
 			{/if}
 		</div>
+
 		<!-- todos for currently accepted challenge-->
 		{#if challengeState && challengeState.type === 'accept'}
 			<div class="mx-4">
 				<ChallengeV2Todos {challenge} {challengeState} />
 			</div>
 		{/if}
+
 		<!-- more infos -->
 
-		<div class="mx-4 rounded-xl p-2 bg-white">
+		{#if challenge.summary}
+			<CollapsableHtmlView
+				content={challenge.summary}
+				collapsed={false}
+				canCollapse={false}
+				title="Warum"
+			/>
+		{/if}
+		{#if challenge.tips}
+			<CollapsableHtmlView
+				content={challenge.tips}
+				collapsed={!!challengeState || (challengeState && challengeState.type !== 'accept')}
+				canCollapse={!!challengeState}
+				title="Tips"
+			/>
+		{/if}
+
+		{#if challenge.content}
+			<CollapsableHtmlView
+				content={challenge.content}
+				collapsed={!!challengeState || (challengeState && challengeState.type !== 'accept')}
+				canCollapse={!!challengeState}
+				title="Mehr"
+			/>
+		{/if}
+		<!-- <div class="mx-4 rounded-xl p-2 bg-white">
 			<p class="text-center font-bold text-xl pb-2">Mehr</p>
 			{#if !challengeState || challengeState.type !== 'accept'}
 				<p class="align-middle text-md pb-2">
@@ -258,7 +287,7 @@
 					{challenge.content}
 				</p>
 			{/if}
-		</div>
+		</div> -->
 	</div>
 	<!-- related challenges -->
 	<RecommendedChallengesSection {challenge} />
