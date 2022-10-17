@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let content;
 	export let collapsed = false;
-	export let collapsedSize = '8rem';
+	export let collapsedSize = '12rem';
 	export let canCollapse = true;
 	export let title;
 	const toggleCollapsed = (e) => {
@@ -12,18 +12,20 @@
 </script>
 
 <div
-	class="prose mx-4 rounded-xl p-2 bg-white collapsable {collapsed ? 'collapsed' : 'expanded'}"
+	class="prose mx-4 rounded-xl px-4 py-2 bg-white collapsable {collapsed
+		? 'collapsed'
+		: 'expanded'}"
 	on:click={toggleCollapsed}
 	style="--collapsed-size: {collapsedSize};"
 >
-	<p class="text-center font-bold text-xl pb-2">Mehr</p>
+	<p class="font-bold text-xl py-2">{title}</p>
 
 	{@html content}
 </div>
 
 <style lang="scss">
 	.collapsable {
-		--collapsed-size: 8rem;
+		--collapsed-size: 12rem;
 		&::after,
 		&::before {
 			position: absolute;

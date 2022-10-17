@@ -241,20 +241,41 @@
 				{/if}
 			{/if}
 		</div>
+
 		<!-- todos for currently accepted challenge-->
 		{#if challengeState && challengeState.type === 'accept'}
 			<div class="mx-4">
 				<ChallengeV2Todos {challenge} {challengeState} />
 			</div>
 		{/if}
+
 		<!-- more infos -->
 
-		<CollapsableHtmlView
-			content={challenge.content}
-			collapsed={challengeState && challengeState.type !== 'accept'}
-			canCollapse={true}
-			title="Mehr"
-		/>
+		{#if challenge.summary}
+			<CollapsableHtmlView
+				content={challenge.summary}
+				collapsed={false}
+				canCollapse={false}
+				title="Warum"
+			/>
+		{/if}
+		{#if challenge.tips}
+			<CollapsableHtmlView
+				content={challenge.tips}
+				collapsed={!!challengeState || (challengeState && challengeState.type !== 'accept')}
+				canCollapse={!!challengeState}
+				title="Tips"
+			/>
+		{/if}
+
+		{#if challenge.content}
+			<CollapsableHtmlView
+				content={challenge.content}
+				collapsed={!!challengeState || (challengeState && challengeState.type !== 'accept')}
+				canCollapse={!!challengeState}
+				title="Mehr"
+			/>
+		{/if}
 		<!-- <div class="mx-4 rounded-xl p-2 bg-white">
 			<p class="text-center font-bold text-xl pb-2">Mehr</p>
 			{#if !challengeState || challengeState.type !== 'accept'}
