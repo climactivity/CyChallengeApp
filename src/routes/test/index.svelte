@@ -7,6 +7,7 @@
 <div class="min-h-screen grid place-content-start">
 	<div>
 		<CollapsableHtmlView
+			title={'Test View'}
 			collapsed={false}
 			canCollapse={true}
 			collapsedSize={'8rem'}
