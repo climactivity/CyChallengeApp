@@ -146,7 +146,7 @@
 				: 'https://picsum.photos/1000'
 		}); background-size: cover;`}
 	/> -->
-	<div class="space-y-8">
+	<div class="space-y-8 mx-auto">
 		<!-- title -->
 
 		<div class="text-4xl font-bold font-serif mx-4 my-4 text-black ">
@@ -175,7 +175,8 @@
 		{/if}
 
 		<!-- front matter -->
-		<p class="text-lg  prose mx-4">
+		<p class="text-lg  prose mx-auto mt-4">
+			Hello
 			{@html challenge.frontMatter}
 		</p>
 

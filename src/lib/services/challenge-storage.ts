@@ -1,4 +1,4 @@
-import type { ChallengeV2 } from '$lib/types/challenges';
+import type { ChallengeV2, Difficulty } from '$lib/types/challenges';
 import {
 	dropStorage,
 	listStorage,
@@ -16,7 +16,7 @@ import { update_await_block_branch } from 'svelte/internal';
 import { object } from 'yup';
 import { rewardStore } from '$lib/stores/reward-store';
 
-export type DifficultyName = 'easy' | 'medium' | 'hard';
+export type DifficultyName = string;
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
 export type ChallengeImpact = 'bigpoint' | 'peanut';
@@ -101,6 +101,7 @@ export function instanceOfChallengeComplete(value): value is ChallengeComplete {
 }
 
 const compareDifficulty = (a: DifficultyName, b: DifficultyName) => {
+	return a > b;
 	if (a === 'easy') {
 		return b === 'easy' ? 0 : -1;
 	} else if (a === 'medium') {
@@ -112,8 +113,37 @@ const compareDifficulty = (a: DifficultyName, b: DifficultyName) => {
 
 export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
+const findHighestCompletion = (completions: ChallengeCompletion[], difficulties: Difficulty[]) =>
+	completions.reduce((acc, cur) => {
+		return compareDifficulty(acc, cur.level) > 0 ? acc : cur.level;
+	}, difficulties[0].name);
+
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
-	console.log(challengeState);
+	// nothing more to do if challenge is completed
+	if (challengeState.type === 'completed') {
+		return null;
+	}
+
+	// gets the second lowest difficulty, because even if the challenge is not yet
+	// interacted the lowest difficulty is treated as the current difficulty
+	const getLowestNextChallenge = (diffs) => {
+		if (diffs.length > 1) {
+			return diffs[1].name;
+		} else {
+			return null;
+		}
+	};
+
+	// this should have been in the data model, but i don't feel like converting
+	// all challenges by hand
+	const difficultyArray = Object.values(challenge.difficulties);
+
+	// bounce if the challenge doesn't have difficulties yet, should not happen
+	// in prod, but maybe while editing challenges this is usefull
+	if (difficultyArray.length < 1) {
+		return null;
+	}
+
 	if (
 		challengeState === undefined ||
 		challengeState === null ||
@@ -122,37 +152,17 @@ export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): D
 		(challengeState.type === 'accept' &&
 			(challengeState as ChallengeAccept).completions === undefined)
 	) {
-		return challenge.difficulties['easy']
-			? 'medium'
-			: challenge.difficulties['medium']
-			? 'hard'
-			: null;
-	}
-
-	if (challengeState.type === 'completed') {
-		return null;
+		return getLowestNextChallenge(difficultyArray);
 	}
 
 	if (challengeState.type === 'accept') {
 		const { completions } = challengeState as ChallengeAccept;
 		if (completions === undefined) {
-			return challenge.difficulties['easy']
-				? 'medium'
-				: challenge.difficulties['medium']
-				? 'hard'
-				: null;
+			return getLowestNextChallenge(difficultyArray);
 		}
-		const highestCompletion = completions.reduce(
-			(acc, cur) => {
-				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
-			},
-			{ level: 'easy' as DifficultyName }
-		);
-		return highestCompletion.level === 'easy'
-			? 'medium'
-			: highestCompletion.level === 'medium'
-			? 'hard'
-			: null;
+
+		const highestCompletion = findHighestCompletion(completions, difficultyArray);
+		return difficultyArray.find((diff) => diff.name > highestCompletion).name ?? null;
 	}
 };
 
@@ -160,14 +170,15 @@ export const currentLevelForChallenge = (
 	challenge: ChallengeV2,
 	challengeState
 ): DifficultyName => {
+	const initialDifficulty = Object.values(challenge.difficulties)[0]?.name ?? null;
+	const difficultyArray = Object.values(challenge.difficulties);
+
+	if (initialDifficulty === null) {
+		return null;
+	}
+
 	if (null || challengeState.type === 'bookmark' || challengeState.type === 'reject') {
-		return challenge.difficulties['easy']
-			? 'easy'
-			: challenge.difficulties['medium']
-			? 'medium'
-			: challenge.difficulties['hard']
-			? 'hard'
-			: null;
+		return initialDifficulty;
 	}
 
 	if (challengeState.type === 'completed') {
@@ -177,21 +188,9 @@ export const currentLevelForChallenge = (
 	if (challengeState.type === 'accept') {
 		const { completions } = challengeState as ChallengeAccept;
 		if (completions === undefined) {
-			return challenge.difficulties['easy']
-				? 'easy'
-				: challenge.difficulties['medium']
-				? 'medium'
-				: challenge.difficulties['hard']
-				? 'hard'
-				: null;
+			return initialDifficulty;
 		}
-		const highestCompletion = completions.reduce(
-			(acc, cur) => {
-				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
-			},
-			{ level: 'easy' as DifficultyName }
-		);
-		return highestCompletion.level;
+		return findHighestCompletion(completions, difficultyArray);
 	}
 };
 

@@ -63,8 +63,11 @@ export interface Difficulties {
 }
 
 export interface Difficulty {
-	taskDescription: string;
-	todos: Todo[];
+	name?: string;
+	key?: number;
+	taskDescription?: string;
+	todos?: Todo[];
+	upgradeText?: string;
 }
 
 export interface Todo {
