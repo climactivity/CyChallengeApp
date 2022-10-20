@@ -75,6 +75,7 @@
     "@fontsource/roboto-condensed": "^4.5.8",
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@heise/embetty": "^3.0.8",
     "@heroiclabs/nakama-js": "^2.3.0",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-svelte-csf": "^2.0.4",
