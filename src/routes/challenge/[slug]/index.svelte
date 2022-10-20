@@ -175,8 +175,7 @@
 		{/if}
 
 		<!-- front matter -->
-		<p class="text-lg  prose mx-auto mt-4">
-			Hello
+		<p class="text-lg  prose mx-auto p-4 mt-4">
 			{@html challenge.frontMatter}
 		</p>
 

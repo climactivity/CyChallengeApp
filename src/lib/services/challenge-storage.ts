@@ -9,11 +9,7 @@ import {
 import { DateTime } from 'luxon';
 import type { StorageObject, StorageObjects } from '@heroiclabs/nakama-js';
 import { armSoftNotificationTrigger } from '$lib/push-notifications';
-import { notificationSettingsStore } from '$lib/stores/notification-config';
-import { Capacitor } from '@capacitor/core';
-import { client, nkReady, session } from '$lib/client';
-import { update_await_block_branch } from 'svelte/internal';
-import { object } from 'yup';
+import { nkReady } from '$lib/client';
 import { rewardStore } from '$lib/stores/reward-store';
 
 export type DifficultyName = string;
@@ -101,14 +97,8 @@ export function instanceOfChallengeComplete(value): value is ChallengeComplete {
 }
 
 const compareDifficulty = (a: DifficultyName, b: DifficultyName) => {
-	return a > b;
-	if (a === 'easy') {
-		return b === 'easy' ? 0 : -1;
-	} else if (a === 'medium') {
-		return b === 'easy' ? 1 : b === 'medium' ? 0 : -1;
-	} else {
-		return b === 'easy' ? 1 : b === 'medium' ? 1 : b === 'hard' ? 0 : -1;
-	}
+	if (a === b) return 0;
+	return a > b ? 1 : -1;
 };
 
 export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
