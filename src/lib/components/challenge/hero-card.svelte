@@ -4,7 +4,9 @@
 	import TutorialCard from './tutorial-card.svelte';
 </script>
 
-{#if $tutorialStore}{:else}
+{#if $tutorialStore}
+	<div>Todo: Display monthly challenge when tutorial is completed</div>
+{:else}
 	<div
 		class="px-8"
 		on:click={(e) => {
