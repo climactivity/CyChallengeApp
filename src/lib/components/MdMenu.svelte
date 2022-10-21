@@ -31,7 +31,13 @@
 			class=" opacity-100  right-8 bottom-24  
                      absolute  grid grid-flow-row gap-2 place-content-center transition-all"
 		>
-			<a href="/info/about-us" class="overflow-menu-item">Über Climactivity</a>
+			<!-- <a href="/info/about-us" class="overflow-menu-item">Über Climactivity</a> -->
+			<span
+				on:click={(e) => openInappBrowser('https://climactivity.de/ueber-uns/')}
+				class="overflow-menu-item">Über Climactivity</span
+			>
+			<hr class="my-4 border-1 border-black rounded-full" />
+
 			<!-- <a href="/info/about" class="overflow-menu-item">Über diese App</a> -->
 			<a href="/info/changelog" class="overflow-menu-item">Versionsgeschichte</a>
 
