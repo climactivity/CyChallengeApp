@@ -1,22 +1,32 @@
 <script lang="ts">
+	import { pb } from '$lib/pb-client';
 	import { headerState } from '$lib/stores/header-store';
+	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	headerState.set({
 		backbutton: true,
-		title: 'changelog',
+		title: 'Änderungen',
 		hidden: false
 	});
+	const changelog = pb.records.getFullList('changelogs');
+	const formatDate = (date) => {
+		console.log(date);
+		return date.split(' ')[0];
+	};
 </script>
 
-<div class="prose mx-4 p-4 rounded shadow bg-white">
-	<p>
-		<strong>22-08-08</strong> - Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, odit
-		corporis voluptatibus, minus totam perspiciatis incidunt iste soluta, nostrum quo blanditiis consequatur
-		earum ad esse? Ipsa asperiores rerum vitae debitis
-	</p>
-	<hr />
-	<p>
-		<strong>22-08-19</strong> - Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, odit
-		corporis voluptatibus, minus totam perspiciatis incidunt iste soluta, nostrum quo blanditiis consequatur
-		earum ad esse? Ipsa asperiores rerum vitae debitis.
-	</p>
+<div class="">
+	{#await changelog}
+		Lade Änderungen...
+	{:then changes}
+		{#each changes as change}
+			<div class="p-4 mx-4 flex flex-col prose bg-white rounded shadow">
+				<span class="font-bold">{formatDate(change.showAt)}</span>
+				{@html change.content}
+			</div>
+		{/each}
+	{/await}
+
+	<div class="text-center text-zinc-400 text-sm p-4">
+		App Version {import.meta.env.VITE_CURRENT_VERSION}
+	</div>
 </div>

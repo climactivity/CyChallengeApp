@@ -39,7 +39,7 @@
 			<hr class="my-4 border-1 border-black rounded-full" />
 
 			<!-- <a href="/info/about" class="overflow-menu-item">Über diese App</a> -->
-			<a href="/info/changelog" class="overflow-menu-item">Versionsgeschichte</a>
+			<a href="/info/changelog" class="overflow-menu-item">Änderungen</a>
 
 			<a href="/info/settings" class="overflow-menu-item">Einstellungen</a>
 
