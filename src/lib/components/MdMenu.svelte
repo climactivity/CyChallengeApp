@@ -36,6 +36,8 @@
 				on:click={(e) => openInappBrowser('https://climactivity.de/ueber-uns/')}
 				class="overflow-menu-item">Über Climactivity</span
 			>
+			<a href="/info/partners" class="overflow-menu-item">Unsere Parter</a>
+
 			<hr class="my-4 border-1 border-black rounded-full" />
 
 			<!-- <a href="/info/about" class="overflow-menu-item">Über diese App</a> -->
