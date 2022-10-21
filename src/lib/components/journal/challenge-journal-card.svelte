@@ -4,17 +4,12 @@
 	import type { ChallengeInteraction } from '$lib/services/challenge-storage';
 
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { randomIntBetween } from '$lib/util';
+	import { getImageUrlFromChallenge, randomIntBetween } from '$lib/util';
 
 	export let index = 0;
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeInteraction;
-	let imageUrl = 'https://picsum.photos/id/' + randomIntBetween(1, 1000) + '/200/200';
-	$: {
-		imageUrl =
-			challenge && challenge.image != '' ? challenge.image?.file?.path ?? undefined : undefined;
-		// console.log('image', challenge.image?.file?.path, $page.url);
-	}
+	let imageUrl = getImageUrlFromChallenge(challenge, true);
 
 	export let onClick = () => {};
 </script>
@@ -28,7 +23,7 @@
 	<div
 		class="image-element z-10 card-container shadow-storm-light"
 		style={imageUrl
-			? `--bg-image: url(${$page.url.origin + '/' + imageUrl})`
+			? `--bg-image: url(${imageUrl})`
 			: `--bg-image: url("/images/not-found.webp")`}
 	/>
 	<div class="relative">
