@@ -27,6 +27,10 @@
 	import EndChallengeButton from '../buttons/end-challenge-button.svelte';
 	import NotificationButton from '../buttons/notification-button.svelte';
 	import { goto } from '$app/navigation';
+	import { Capacitor } from '@capacitor/core';
+	import { Share } from '@capacitor/share';
+	import ShareAppButton from '../buttons/share-app-button.svelte';
+	import { page } from '$app/stores';
 
 	export let nextState: (string, ...args) => void;
 	export let refetch: () => void;
@@ -130,9 +134,18 @@
 				{/if}
 
 				<InviteFriendButton
-					onClick={(e) => {
+					onClick={async (e) => {
 						console.log('invite friend to challenge');
-						nextState('invite');
+						if (Capacitor.isNativePlatform() && (await Share.canShare())) {
+							await Share.share({
+								title: `${challenge.title} bei climactivity`,
+								text: `Möchtest du bei ${challenge.title} mitmachen?`,
+								url: $page.url.href,
+								dialogTitle: `${challenge.title} bei climactivity`
+							});
+						} else {
+							nextState('invite');
+						}
 					}}
 				/>
 			{:else}
