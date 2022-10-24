@@ -170,6 +170,7 @@ export const currentLevelForChallenge = (
 		console.warn('Loaded challenge without levels!');
 		return null;
 	}
+	if (!challengeState) return levelsArr[0].name;
 
 	// challenge is completed, show no more todos
 	if (challengeState.type === 'completed') {

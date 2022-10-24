@@ -32,8 +32,10 @@
 
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeAccept;
+
+	export let interactable = true;
 	let difficulty: DifficultyName;
-	difficulty = difficulty ?? challengeState.lastDifficulty;
+	difficulty = difficulty ?? challengeState?.lastDifficulty;
 	let _difficulty: Difficulty =
 		challenge.difficulties[currentLevelForChallenge(challenge, challengeState)];
 
@@ -49,6 +51,7 @@
 			{#each _difficulty.todos as step}
 				<div
 					on:click={async (e) => {
+						if (!interactable) return;
 						let completed = await completeStep(challengeState, step);
 						challengeState = completed;
 						if (challengeState.currentSteps.find((step) => step.name === step.name)) {
@@ -60,12 +63,14 @@
 					<p class="align-middle prose p">
 						{@html detectLinks(step.name)}
 					</p>
-					<button>
-						<Fa
-							icon={faCircleCheck}
-							class={stepCompleted(challengeState, step) ? 'text-nature' : 'text-storm-light'}
-						/>
-					</button>
+					{#if interactable}
+						<button>
+							<Fa
+								icon={faCircleCheck}
+								class={stepCompleted(challengeState, step) ? 'text-nature' : 'text-storm-light'}
+							/>
+						</button>
+					{/if}
 				</div>
 			{/each}
 		{:else}

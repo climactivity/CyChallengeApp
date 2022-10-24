@@ -243,11 +243,13 @@
 		</div>
 
 		<!-- todos for currently accepted challenge-->
-		{#if challengeState && challengeState.type === 'accept'}
-			<div class="mx-4">
-				<ChallengeV2Todos {challenge} {challengeState} />
-			</div>
-		{/if}
+		<div class="mx-4">
+			<ChallengeV2Todos
+				{challenge}
+				{challengeState}
+				interactable={challengeState && challengeState.type === 'accept'}
+			/>
+		</div>
 
 		<!-- more infos -->
 
