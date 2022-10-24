@@ -16,6 +16,7 @@
 	import { init, nkReady } from '$lib/client';
 	import { insets } from '$lib/stores/context';
 	import { oneSignalInit } from '$lib/push-notifications';
+	import { headerState } from '$lib/stores/header-store';
 
 	setContext('insets', insets);
 
@@ -122,7 +123,7 @@
 		id="safe-area"
 		class="area"
 		style="
-        top: {Capacitor.getPlatform() === 'android' ? '0' : $insets.top}px;
+        top: {$insets.top}px;
         left: {$insets.left}px;
         right: {$insets.right}px;
 		bottom: {$insets.bottom}px;
@@ -133,8 +134,8 @@
 			class="absolute
 	top-0
 	w-full 
-	bg-water2-dark z-10"
-			style="padding-top: {Capacitor.getPlatform() === 'android' ? '0' : $insets.top}px"
+	bg-gray-100  {$headerState.transparent ? 'opacity-0' : 'opacity-100'} z-10"
+			style="padding-top: {$insets.top}px"
 		/>
 		<main class="pb-12">
 			<div class="h-full relative ">
