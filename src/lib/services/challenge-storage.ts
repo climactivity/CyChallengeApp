@@ -1,4 +1,4 @@
-import type { ChallengeV2 } from '$lib/types/challenges';
+import type { ChallengeV2, Difficulties, Difficulty } from '$lib/types/challenges';
 import {
 	dropStorage,
 	listStorage,
@@ -16,7 +16,7 @@ import { update_await_block_branch } from 'svelte/internal';
 import { object } from 'yup';
 import { rewardStore } from '$lib/stores/reward-store';
 
-export type DifficultyName = 'easy' | 'medium' | 'hard';
+export type DifficultyName = string;
 
 export type ChallengeInteractionType = 'accept' | 'bookmark' | 'complete' | 'reject';
 export type ChallengeImpact = 'bigpoint' | 'peanut';
@@ -101,58 +101,61 @@ export function instanceOfChallengeComplete(value): value is ChallengeComplete {
 }
 
 const compareDifficulty = (a: DifficultyName, b: DifficultyName) => {
-	if (a === 'easy') {
-		return b === 'easy' ? 0 : -1;
-	} else if (a === 'medium') {
-		return b === 'easy' ? 1 : b === 'medium' ? 0 : -1;
-	} else {
-		return b === 'easy' ? 1 : b === 'medium' ? 1 : b === 'hard' ? 0 : -1;
-	}
+	if (a === b) return 0;
+	return a > b ? -1 : 1;
+
+	// if (a === 'easy') {
+	// 	return b === 'easy' ? 0 : -1;
+	// } else if (a === 'medium') {
+	// 	return b === 'easy' ? 1 : b === 'medium' ? 0 : -1;
+	// } else {
+	// 	return b === 'easy' ? 1 : b === 'medium' ? 1 : b === 'hard' ? 0 : -1;
+	// }
 };
 
 export const CHALLENGE_INTERACTIONS_COLLECTION = 'challenge-interactions';
 
+const highestCompletion = (completions: ChallengeCompletion[], levels: Difficulty[]) => {
+	return completions.reduce((acc, cur) => {
+		return compareDifficulty(acc, cur.level) > 0 ? acc : cur.level;
+	}, levels[0].name);
+};
+
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
-	console.log(challengeState);
-	if (
-		challengeState === undefined ||
-		challengeState === null ||
-		challengeState.type === 'bookmark' ||
-		challengeState.type === 'reject' ||
-		(challengeState.type === 'accept' &&
-			(challengeState as ChallengeAccept).completions === undefined)
-	) {
-		return challenge.difficulties['easy']
-			? 'medium'
-			: challenge.difficulties['medium']
-			? 'hard'
-			: null;
+	const levelsArr = Object.values(challenge.difficulties);
+
+	// challenge is incomplete and has no todos
+	if (!levelsArr || levelsArr.length == 0) {
+		console.warn('Loaded challenge without levels!');
+		return null;
+	}
+
+	// challenge has only one level, no next level can be selected
+	if (levelsArr.length <= 1) {
+		return null;
 	}
 
 	if (challengeState.type === 'completed') {
 		return null;
 	}
 
+	const currentLevel = currentLevelForChallenge(challenge, challengeState);
+
+	if (currentLevel == null) {
+		return levelsArr[1].name;
+	}
+
 	if (challengeState.type === 'accept') {
 		const { completions } = challengeState as ChallengeAccept;
 		if (completions === undefined) {
-			return challenge.difficulties['easy']
-				? 'medium'
-				: challenge.difficulties['medium']
-				? 'hard'
-				: null;
+			return levelsArr[1].name;
 		}
-		const highestCompletion = completions.reduce(
-			(acc, cur) => {
-				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
-			},
-			{ level: 'easy' as DifficultyName }
-		);
-		return highestCompletion.level === 'easy'
-			? 'medium'
-			: highestCompletion.level === 'medium'
-			? 'hard'
-			: null;
+		const _completion = highestCompletion(completions, levelsArr);
+		const position = levelsArr.findIndex((v) => v.name === _completion);
+		if (position < levelsArr.length - 1) {
+			return levelsArr[position + 1].name;
+		}
+		return null;
 	}
 };
 
@@ -160,38 +163,35 @@ export const currentLevelForChallenge = (
 	challenge: ChallengeV2,
 	challengeState
 ): DifficultyName => {
-	if (null || challengeState.type === 'bookmark' || challengeState.type === 'reject') {
-		return challenge.difficulties['easy']
-			? 'easy'
-			: challenge.difficulties['medium']
-			? 'medium'
-			: challenge.difficulties['hard']
-			? 'hard'
-			: null;
+	const levelsArr = Object.values(challenge.difficulties);
+
+	// challenge is incomplte and has no todos
+	if (!levelsArr || levelsArr.length == 0) {
+		console.warn('Loaded challenge without levels!');
+		return null;
 	}
 
+	// challenge is completed, show no more todos
 	if (challengeState.type === 'completed') {
 		return null;
 	}
 
+	// challenge has not yet been started, so show the lowest diffifculty
+	if (null || challengeState.type === 'bookmark' || challengeState.type === 'reject') {
+		return levelsArr[0].name;
+	}
+
+	// challenge has been accepted, show the current difficulty
 	if (challengeState.type === 'accept') {
 		const { completions } = challengeState as ChallengeAccept;
+
+		// challenge has been accepted, but no previous levels have been completed
 		if (completions === undefined) {
-			return challenge.difficulties['easy']
-				? 'easy'
-				: challenge.difficulties['medium']
-				? 'medium'
-				: challenge.difficulties['hard']
-				? 'hard'
-				: null;
+			return levelsArr[0].name;
 		}
-		const highestCompletion = completions.reduce(
-			(acc, cur) => {
-				return compareDifficulty(acc.level, cur.level) > 0 ? acc : cur;
-			},
-			{ level: 'easy' as DifficultyName }
-		);
-		return highestCompletion.level;
+
+		// challenge has been completed before,find the highest completion so far
+		return highestCompletion(completions, levelsArr);
 	}
 };
 

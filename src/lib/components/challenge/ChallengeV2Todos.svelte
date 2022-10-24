@@ -70,7 +70,7 @@
 			{/each}
 		{:else}
 			<pre>
-				{JSON.stringify({ difficulty, _difficulty }, null, 2)}
+				{JSON.stringify(_difficulty, null, 2)}
 			</pre>
 		{/if}
 	</div>

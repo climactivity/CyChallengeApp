@@ -65,6 +65,7 @@ export interface Difficulties {
 export interface Difficulty {
 	taskDescription: string;
 	todos: Todo[];
+	name: string;
 }
 
 export interface Todo {
