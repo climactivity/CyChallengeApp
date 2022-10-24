@@ -125,9 +125,10 @@
         top: {Capacitor.getPlatform() === 'android' ? '0' : $insets.top}px;
         left: {$insets.left}px;
         right: {$insets.right}px;
-        bottom: {iOSSafari ? `${$insets.bottom}px` : 'h-[100vh]'}
+		bottom: {$insets.bottom}px;
         "
 	>
+		<!-- bottom: {iOSSafari ? `${$insets.bottom}px` : 'h-[100vh]'} -->
 		<div
 			class="absolute
 	top-0
