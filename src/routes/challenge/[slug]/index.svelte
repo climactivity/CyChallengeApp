@@ -12,6 +12,8 @@
 </script>
 
 <script lang="ts">
+	import RewardDisplay2 from '../../../lib/components/challenge/RewardDisplay2.svelte';
+
 	import { goto, prefetch } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { nkReady } from '$lib/client';
@@ -200,13 +202,7 @@
 
 		<!-- completions -->
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-			<div class="mx-4">
-				<div>Durch diese Challenge erhaltene Punkte</div>
-				<div>
-					<RewardDisplay {medals} points={challenge.score * medals} />
-					Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
-				</div>
-			</div>
+			<RewardDisplay2 {medals} lastCompleted={getLastCompletion(challengeState).toRelative()} />
 		{/if}
 
 		<div class="mx-4">
