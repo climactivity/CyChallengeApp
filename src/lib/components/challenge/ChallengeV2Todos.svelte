@@ -39,44 +39,57 @@
 	let _difficulty: Difficulty =
 		challenge.difficulties[currentLevelForChallenge(challenge, challengeState)];
 
-	let playAt = () => console.warn('playAt undefined');
+	export let playAt = (e) => console.warn('playAt undefined');
 </script>
 
 <div>
-	<div class="text-center mx-auto font-serif font-semibold text-2xl">Todos</div>
-	<div class="grid grid-flow-row text-md items-center  gap-2">
-		<!-- <Confetti b	ind:playAt /> -->
+	<!-- <Confetti b	ind:playAt /> -->
 
-		{#if _difficulty && _difficulty.todos}
-			{#each _difficulty.todos as step}
-				<div
-					on:click={async (e) => {
-						if (!interactable) return;
-						let completed = await completeStep(challengeState, step);
-						challengeState = completed;
-						if (challengeState.currentSteps.find((step) => step.name === step.name)) {
-							playAt(e);
-						}
-					}}
-					class="flex items-center place-content-between select-none cursor-pointer py-4 bg-white px-2 rounded-lg"
-				>
-					<p class="align-middle prose p">
-						{@html detectLinks(step.name)}
-					</p>
-					{#if interactable}
+	{#if _difficulty && _difficulty.todos}
+		{#if interactable}
+			<div class="text-center mx-auto font-serif font-semibold text-2xl">Todos</div>
+			<div class="grid grid-flow-row text-md items-center  gap-2">
+				{#each _difficulty.todos as step}
+					<div
+						on:click={async (e) => {
+							let completed = await completeStep(challengeState, step);
+							challengeState = completed;
+							console.log(challengeState.currentSteps);
+							if (challengeState.currentSteps.find((_step) => _step.name === step.name)) {
+								playAt(e);
+							}
+						}}
+						class="flex items-center place-content-between select-none cursor-pointer py-4 bg-white px-2 rounded-lg"
+					>
+						<p class="align-middle prose p">
+							{@html detectLinks(step.name)}
+						</p>
 						<button>
 							<Fa
 								icon={faCircleCheck}
-								class={stepCompleted(challengeState, step) ? 'text-nature' : 'text-storm-light'}
+								class="{stepCompleted(challengeState, step)
+									? 'text-nature'
+									: 'text-storm-light'} transition-all duration-150"
 							/>
 						</button>
-					{/if}
-				</div>
-			{/each}
+					</div>
+				{/each}
+			</div>
 		{:else}
-			<pre>
+			<div class="prose  rounded-xl px-4 py-2 bg-white">
+				<p class="font-bold text-xl py-2">Todos</p>
+				<ul>
+					{#each _difficulty.todos as step}
+						<li>
+							{@html detectLinks(step.name)}
+						</li>
+					{/each}
+				</ul>
+			</div>
+		{/if}
+	{:else}
+		<pre>
 				{JSON.stringify(_difficulty, null, 2)}
 			</pre>
-		{/if}
-	</div>
+	{/if}
 </div>

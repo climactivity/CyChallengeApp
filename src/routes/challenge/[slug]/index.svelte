@@ -46,6 +46,7 @@
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import { getImageUrlFromChallenge } from '$lib/util';
 	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
+	import Confetti from '$lib/components/particles/confetti.svelte';
 	export let challenge: ChallengeV2;
 	console.log('Challenge:', challenge);
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
@@ -97,7 +98,7 @@
 		}
 	});
 
-	let playAt;
+	let playAt = (e) => console.log(e);
 
 	const refetch = async () => {
 		if ($nkReady) {
@@ -135,7 +136,7 @@
 </script>
 
 <div transition:fade={{ duration: 250 }}>
-	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
+	<Confetti id="challenge_accept_particles" bind:playAt />
 
 	<!-- header image-->
 	<!-- <div
@@ -247,6 +248,7 @@
 			<ChallengeV2Todos
 				{challenge}
 				{challengeState}
+				bind:playAt
 				interactable={challengeState && challengeState.type === 'accept'}
 			/>
 		</div>

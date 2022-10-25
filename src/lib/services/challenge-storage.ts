@@ -135,6 +135,8 @@ export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): D
 		return null;
 	}
 
+	if (!challengeState) return levelsArr[1].name;
+
 	if (challengeState.type === 'completed') {
 		return null;
 	}
