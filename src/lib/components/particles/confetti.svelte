@@ -171,11 +171,11 @@
 			},
 			rate: {
 				delay: 0,
-				quantity: 350
+				quantity: 35
 			},
 			size: {
 				width: 200,
-				height: 0
+				height: 5
 			},
 			position
 		});
