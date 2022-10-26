@@ -58,6 +58,12 @@
 				class="overflow-menu-item-boring">Datenschutzerklärung</span
 			>
 
+			<span
+				on:click={(e) =>
+					openInappBrowser('https://climactivity.de/ueber-uns/#kooperationspartnerinnen')}
+				class="overflow-menu-item-boring">Unsere Partner</span
+			>
+
 			<hr class="my-2 border-0 border-black rounded-full" />
 			<SocialLinks />
 		</div>
