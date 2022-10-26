@@ -11,7 +11,6 @@
 
 	let activeChallenge = [];
 	let initialFetch = false;
-
 	nkReady.subscribe(async (value) => {
 		if (value) {
 			let { interactions, cursor } = await getAcceptedChallenges();
