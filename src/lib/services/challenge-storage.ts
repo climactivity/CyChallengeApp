@@ -640,9 +640,16 @@ export const getAcceptedChallenges = async (cursor?: string, limit?: number) => 
 export const getTopicBigointChallengeState = async (
 	topic: string
 ): Promise<ChallengeInteraction> => {
-	console.log('getTopicBigointChallengeState', topic, 'not implemented yet');
+	const { objects: interactions } = await getChallengeInteractionsUserData();
+	const filteredInteractions = interactions
+		.map(({ value }) => value as ChallengeInteraction)
+		.filter((value) => value.challengeTopic === topic && value.challengeImpact !== 'peanut');
 
-	return null;
+	if (filteredInteractions.length > 0) {
+		return filteredInteractions[0];
+	}
+
+	return undefined;
 };
 
 export const stepCompleted = (challengeInteraction, step) => {

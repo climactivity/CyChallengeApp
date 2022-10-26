@@ -33,12 +33,12 @@
 	} from '$lib/services/challenge-storage';
 	import { headerImageUrl, headerState } from '$lib/stores/header-store';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { LocalDateTime } from '$lib/services/luxon-proxy';
 	import { DateTime } from 'luxon';
 	import RewardDisplay from '$lib/components/challenge/reward-display.svelte';
 	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
-	import { getContext, hasContext } from 'svelte';
+	import { getContext, hasContext, onMount } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	import SuperChallengeIcon from '$lib/components/impact/super-challenge-icon.svelte';
 	import {
@@ -109,14 +109,14 @@
 		}
 	};
 
-	let showBigpointReminder =
-		challenge.impact === 'peanut' && getTopicBigointChallengeState(challenge.topic);
+	let showBigpointReminder = false;
 
 	let numCompletions, medals;
 	$: {
 		numCompletions = challengeState?.completions?.length ?? 0;
 		medals = challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions;
 		console.log('medals', medals);
+		console.log(!getTopicBigointChallengeState(challenge.topic));
 	}
 
 	const scrollPosition: Writable<number> = hasContext('scrollPosition')
@@ -135,6 +135,11 @@
 			headerState.update((headerState) => ({ ...headerState, transparent: true }));
 		}
 	}
+
+	onMount(async () => {
+		showBigpointReminder =
+			challenge.impact === 'peanut' && !(await getTopicBigointChallengeState(challenge.topic));
+	});
 </script>
 
 <div transition:fade={{ duration: 250 }}>
@@ -171,8 +176,10 @@
 		{/if}
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
-			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4">
-				<button class="absolute top-0 right-2">x</button>
+			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4" out:slide>
+				<button class="absolute top-0 right-2" on:click={() => (showBigpointReminder = false)}
+					>x</button
+				>
 				Hey, du hast den Bigpoint in diesem Bereich nicht angenommen. Mach doch erstmal den!
 			</div>
 		{/if}
