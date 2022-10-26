@@ -49,6 +49,7 @@
 	import { getChallenges } from '$lib/services/challenge-content';
 	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
 	import { tutorialStore } from '$lib/stores/onboarding-store';
+	import { pb } from '$lib/pb-client';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -66,7 +67,7 @@
 		save_money: 'Save Money',
 		empty_tag: 'Empty Tag'
 	};
-	export let tagList;
+	let tagList = pb.records.getFullList('tags');
 
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
@@ -165,19 +166,21 @@
 						Super Challenges
 					</div>
 				</div>
-				{#each tagList as tag}
-					<div
-						on:click={() => addFilterTag(tag)}
-						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
-							tag
-						)
-							? 'bg-water border-0 text-white font-bold'
-							: 'bg-gray-50 border border-storm-light text-storm'}"
-						title={tags[tag]}
-					>
-						{tags[tag]}
-					</div>
-				{/each}
+				{#await tagList then tagListResolved}
+					{#each tagListResolved as tag}
+						<div
+							on:click={() => addFilterTag(tag.tag)}
+							class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
+								tag.tag
+							)
+								? 'bg-water border-0 text-white font-bold'
+								: 'bg-gray-50 border border-storm-light text-storm'}"
+							title={tag.label}
+						>
+							{tag.label}
+						</div>
+					{/each}
+				{/await}
 			</div>
 		</div>
 		<!-- Challenges -->
