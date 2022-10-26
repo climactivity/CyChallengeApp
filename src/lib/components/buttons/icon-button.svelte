@@ -42,7 +42,7 @@
 
 <div
 	lang="de"
-	class="focus:outline-none cursor-pointer  transition-all duration-150 {selected
+	class=" w-full focus:outline-none cursor-pointer  transition-all duration-150 {selected
 		? 'selected'
 		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button break-words"
 	style="hyphens: auto;"
