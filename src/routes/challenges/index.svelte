@@ -49,6 +49,7 @@
 	import { getChallenges } from '$lib/services/challenge-content';
 	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
 	import { tutorialStore } from '$lib/stores/onboarding-store';
+	import { pb } from '$lib/pb-client';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -57,7 +58,7 @@
 
 	let data: Promise<ChallengeV2[]> = getChallenges();
 	export let topics;
-	export let topicList;
+	let topicList = pb.records.getFullList('topics');
 	let filter = [];
 	let showSuperChallenges = false;
 	export let tags = {
@@ -66,7 +67,7 @@
 		save_money: 'Save Money',
 		empty_tag: 'Empty Tag'
 	};
-	export let tagList;
+	let tagList = pb.records.getFullList('tags');
 
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
@@ -165,19 +166,36 @@
 						Super Challenges
 					</div>
 				</div>
-				{#each tagList as tag}
+				{#await tagList}
 					<div
-						on:click={() => addFilterTag(tag)}
-						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
-							tag
-						)
-							? 'bg-water border-0 text-white font-bold'
-							: 'bg-gray-50 border border-storm-light text-storm'}"
-						title={tags[tag]}
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none 
+					 bg-storm-light border border-storm-light text-storm w-56 h-[80%] animate-pulse"
 					>
-						{tags[tag]}
+						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</div>
-				{/each}
+					<div
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none 
+					 bg-storm-light border border-storm-light text-storm w-56 h-[80%] animate-pulse"
+					>
+						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+				{:then tagListResolved}
+					{#each tagListResolved as tag}
+						<div
+							on:click={() => addFilterTag(tag.tag)}
+							class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
+								tag.tag
+							)
+								? 'bg-water border-0 text-white font-bold'
+								: 'bg-gray-50 border border-storm-light text-storm'}"
+							title={tag.label}
+						>
+							{tag.label}
+						</div>
+					{/each}
+				{/await}
 			</div>
 		</div>
 		<!-- Challenges -->
@@ -202,19 +220,29 @@
 			{/await}
 		{:else}
 			<div class="container min-h-content overflow-visible">
-				{#each topicList as topic}
-					{#await data}
-						<ChallengeScrollerSkeleton title={topics[topic]} length={3} />
-					{:then fetchedChallenges}
-						<ChallengeScroller
-							challenges={fetchedChallenges.filter((challenge) => challenge.topic === topic)}
-							title={topics[topic]}
-							{tags}
-							challengeHidden={(_) => false}
-							pad
-						/>
-					{/await}
-				{/each}
+				{#await topicList}
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+				{:then topicListResolved}
+					{#each topicListResolved as topic}
+						{#await data}
+							<ChallengeScrollerSkeleton title={topic.label} length={3} />
+						{:then fetchedChallenges}
+							<ChallengeScroller
+								challenges={fetchedChallenges.filter(
+									(challenge) => challenge.topic === topic.topic
+								)}
+								title={topic.label}
+								{tags}
+								challengeHidden={(_) => false}
+								pad
+							/>
+						{/await}
+					{/each}
+				{/await}
 			</div>
 		{/if}
 

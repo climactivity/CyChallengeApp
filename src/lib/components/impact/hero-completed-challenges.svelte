@@ -33,7 +33,7 @@
 
 	<div class="font-serif font-bold text-lg">Abgeschlossene Challenges</div>
 	<div class="grid grid-flow-col place-items-center gap-20">
-		<div class="text-[#37814B]">
+		<div class="text-reward">
 			<svg
 				class="h-24 w-24 mx-auto"
 				viewBox="0 0 76 76"
@@ -50,7 +50,7 @@
 				/>
 			</svg>
 		</div>
-		<div class="text-4xl text-[#37814B] font-bold font-serif">
+		<div class="text-4xl text-reward font-bold font-serif">
 			{#if $nkReady}
 				{#await updateMedals()}
 					00
