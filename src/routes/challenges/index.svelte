@@ -58,7 +58,7 @@
 
 	let data: Promise<ChallengeV2[]> = getChallenges();
 	export let topics;
-	export let topicList;
+	let topicList = pb.records.getFullList('topics');
 	let filter = [];
 	let showSuperChallenges = false;
 	export let tags = {
@@ -166,7 +166,22 @@
 						Super Challenges
 					</div>
 				</div>
-				{#await tagList then tagListResolved}
+				{#await tagList}
+					<div
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none 
+					 bg-storm-light border border-storm-light text-storm w-56 h-[80%] animate-pulse"
+					>
+						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+					<div
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none 
+					 bg-storm-light border border-storm-light text-storm w-56 h-[80%] animate-pulse"
+					>
+						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+				{:then tagListResolved}
 					{#each tagListResolved as tag}
 						<div
 							on:click={() => addFilterTag(tag.tag)}
@@ -205,19 +220,29 @@
 			{/await}
 		{:else}
 			<div class="container min-h-content overflow-visible">
-				{#each topicList as topic}
-					{#await data}
-						<ChallengeScrollerSkeleton title={topics[topic]} length={3} />
-					{:then fetchedChallenges}
-						<ChallengeScroller
-							challenges={fetchedChallenges.filter((challenge) => challenge.topic === topic)}
-							title={topics[topic]}
-							{tags}
-							challengeHidden={(_) => false}
-							pad
-						/>
-					{/await}
-				{/each}
+				{#await topicList}
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+				{:then topicListResolved}
+					{#each topicListResolved as topic}
+						{#await data}
+							<ChallengeScrollerSkeleton title={topic.label} length={3} />
+						{:then fetchedChallenges}
+							<ChallengeScroller
+								challenges={fetchedChallenges.filter(
+									(challenge) => challenge.topic === topic.topic
+								)}
+								title={topic.label}
+								{tags}
+								challengeHidden={(_) => false}
+								pad
+							/>
+						{/await}
+					{/each}
+				{/await}
 			</div>
 		{/if}
 
