@@ -44,6 +44,17 @@
 
 		console.log('calcDateOptionsForChallenge', challenge);
 		if (type === 'one-time' || type === 'repeatable') {
+			// terrible fix for "" notification days (which should not be a thing, b/c types)
+			if ((notificationDays as unknown as string) === '') {
+				const result = dateTime.plus({ days: 7 }).startOf('day').plus({ hours: 16 });
+
+				return [
+					{
+						value: result.toFormat("yyyy-MM-dd'T'HH:mm"),
+						display: `${result.toRelativeCalendar()}`
+					}
+				];
+			}
 			return notificationDays.map((days) => {
 				const result = dateTime.plus({ days }).startOf('day').plus({ hours: 16 });
 				//.toUTC()
