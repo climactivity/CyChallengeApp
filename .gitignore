@@ -12,3 +12,4 @@ node_modules
 .netlify
 # static/images/**/*
 .blend1
+Appfile
