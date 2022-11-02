@@ -10,12 +10,16 @@
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { onMount } from 'svelte';
 	import { scheduleNotification, unscheduleNotification } from '$lib/push-notifications';
+	import { slide, fade } from 'svelte/transition';
+
 	export let challenge: ChallengeV2;
+	export let initialCheckpoint = false;
+	export let onchanged = (date) => {};
 
 	let isReminding = true;
 	let nextCheckpoint;
 	let selectedDate = '';
-	export let onchanged = (date) => {};
+
 	const setNewNextCheckpoint = async (challenge, date) => {
 		console.log('setNewNextCheckpoint', challenge.slug, date);
 
@@ -69,11 +73,20 @@
 		return [];
 	};
 
+	const displayDate = (date) => {
+		console.log('displayDate:', date);
+		if (!date) return '';
+		const dateTime = DateTime.fromISO(date).setZone('Europe/Berlin');
+		console.log(dateTime);
+		return dateTime.toRelativeCalendar();
+	};
+
 	const toggleReminder = () => {
 		if (isReminding) {
 			setNewNextCheckpoint(challenge, null);
 			isReminding = false;
 			onchanged(null);
+			selectedDate = null;
 		} else {
 			let days = 7;
 			const date = DateTime.now()
@@ -84,7 +97,7 @@
 				.toFormat("yyyy-MM-dd'T'HH:mm");
 
 			onchanged(date);
-
+			selectedDate = date;
 			setNewNextCheckpoint(challenge, date);
 			isReminding = true;
 		}
@@ -94,31 +107,42 @@
 		let challengeState = await getChallengeState(challenge.slug);
 		nextCheckpoint = challengeState.nextCheckpoint ?? null;
 		isReminding = nextCheckpoint !== null;
+		console.log('DATE:', nextCheckpoint, isReminding, challengeState);
+		// set initial checkpoint
+		if (!isReminding && initialCheckpoint) {
+			toggleReminder();
+		} else {
+			selectedDate = nextCheckpoint;
+		}
 	});
 </script>
 
 <VSection {...$$props}>
-	<div class="mx-4 space-y-4">
+	<div class="mx-4 ">
 		{#if challenge.type === 'one-time' || challenge.type === 'repeatable'}
-			<form class="space-y-4">
-				<label for="date-select" class="block text-2xl text-bold font-semibold font-serif">
-					Wir gucken wie es dir geht am:
+			<form class="">
+				<label for="date-select" class="block text-2xl  font-serif">
+					Wir gucken wie es dir geht...
 				</label>
 
-				<select
-					name="dates"
-					id="date-select"
-					class="w-full border border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-water2 focus:outline-none focus:border-water2-light"
-					bind:value={selectedDate}
-					on:change={() => {
-						onchanged(selectedDate);
-						setNewNextCheckpoint(challenge, selectedDate);
-					}}
-				>
-					{#each calcDateOptionsForChallenge(challenge) as day}
-						<option value={day.value}>{day.display}</option>
-					{/each}
-				</select>
+				{#if selectedDate}
+					<select
+						transition:fade
+						name="dates"
+						id="date-select"
+						class="w-full border border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-water2 focus:outline-none focus:border-water2-light"
+						bind:value={selectedDate}
+						on:change={() => {
+							onchanged(selectedDate);
+							setNewNextCheckpoint(challenge, selectedDate);
+						}}
+					>
+						<!-- <option value={selectedDate} disabled selected>{displayDate(selectedDate)}</option> -->
+						{#each calcDateOptionsForChallenge(challenge) as day}
+							<option value={day.value}>{day.display}</option>
+						{/each}
+					</select>
+				{/if}
 
 				<!-- todo replace -->
 				<!-- <input
@@ -152,7 +176,10 @@
 		{/if}
 
 		<div class="flex flex-row-reverse">
-			<button class="block text-sm text-water2" on:click={toggleReminder}>
+			<button
+				class="block {isReminding ? 'text-sm' : 'text-xl'} transition-all text-water2"
+				on:click={toggleReminder}
+			>
 				Erinnere mich {isReminding ? 'nicht' : ''}
 			</button>
 		</div>
