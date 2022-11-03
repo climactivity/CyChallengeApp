@@ -22,8 +22,6 @@
 	let cheer = false;
 	const setNewNextCheckpoint = async (challenge, date) => {
 		console.log('setNewNextCheckpoint', challenge.slug, date);
-		cheer = true;
-		setTimeout(() => (cheer = false), 3000);
 		const accept = await acceptChallenge(
 			challenge,
 			currentLevelForChallenge(challenge, getChallengeState(challenge.slug)),
@@ -34,6 +32,10 @@
 			unscheduleNotification(challenge.slug).catch((e) => console.log(e));
 			return;
 		}
+
+		cheer = true;
+		setTimeout(() => (cheer = false), 3000);
+
 		let message = challenge.reminderText ?? `Erinnerung an ${challenge.title}`;
 		if (!message) {
 			console.error('no notification message found!');
