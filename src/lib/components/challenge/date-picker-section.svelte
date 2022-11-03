@@ -10,7 +10,7 @@
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { onMount } from 'svelte';
 	import { scheduleNotification, unscheduleNotification } from '$lib/push-notifications';
-	import { slide, fade } from 'svelte/transition';
+	import { slide, fade, fly, blur } from 'svelte/transition';
 
 	export let challenge: ChallengeV2;
 	export let initialCheckpoint = false;
@@ -19,10 +19,11 @@
 	let isReminding = true;
 	let nextCheckpoint;
 	let selectedDate = '';
-
+	let cheer = false;
 	const setNewNextCheckpoint = async (challenge, date) => {
 		console.log('setNewNextCheckpoint', challenge.slug, date);
-
+		cheer = true;
+		setTimeout(() => (cheer = false), 3000);
 		const accept = await acceptChallenge(
 			challenge,
 			currentLevelForChallenge(challenge, getChallengeState(challenge.slug)),
@@ -30,7 +31,7 @@
 		);
 
 		if (date === null) {
-			unscheduleNotification(challenge.slug);
+			unscheduleNotification(challenge.slug).catch((e) => console.log(e));
 			return;
 		}
 		let message = challenge.reminderText ?? `Erinnerung an ${challenge.title}`;
@@ -118,31 +119,75 @@
 </script>
 
 <VSection {...$$props}>
-	<div class="mx-4 ">
+	<div class="mx-4 relative">
+		{#if cheer}
+			<div class="relative" aria-disabled>
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-8 w-8 absolute top-12 z-20 left-12 animate-cheer-particle animation-delay-250 opacity-0"
+					alt="checkmark particle"
+				/>
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-8 w-8 absolute top-12 z-20 left-32 animate-cheer-particle animation-delay-500 opacity-0"
+					alt="checkmark particle"
+				/>
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-8 w-8 absolute top-12 z-20 left-48 animate-cheer-particle animation-delay-750 opacity-0"
+					alt="checkmark particle"
+				/>
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-8 w-8 absolute top-12 z-20 left-64 animate-cheer-particle animation-delay-1000 opacity-0"
+					alt="checkmark particle"
+				/>
+
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-6 w-6 absolute top-8 z-20 left-24 animate-cheer-particle animation-delay-500 opacity-0"
+					alt="checkmark particle"
+				/>
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-6 w-6 absolute top-8 z-20 left-40 animate-cheer-particle animation-delay-250 opacity-0"
+					alt="checkmark particle"
+				/>
+				<img
+					src="/icons/accept-icon.svg"
+					class="min-h-6 w-6 absolute top-8 z-20 left-56animate-cheer-particle  animation-delay-750 opacity-0"
+					alt="checkmark particle"
+				/>
+			</div>
+		{/if}
 		{#if challenge.type === 'one-time' || challenge.type === 'repeatable'}
 			<form class="">
 				<label for="date-select" class="block text-2xl  font-serif">
-					Wir gucken wie es dir geht...
+					{selectedDate
+						? 'Wir gucken wie es dir geht...'
+						: 'Möchstest du an diese Challenge erninnert werden?'}
 				</label>
 
-				{#if selectedDate}
-					<select
-						transition:fade
-						name="dates"
-						id="date-select"
-						class="w-full border border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-water2 focus:outline-none focus:border-water2-light"
-						bind:value={selectedDate}
-						on:change={() => {
-							onchanged(selectedDate);
-							setNewNextCheckpoint(challenge, selectedDate);
-						}}
-					>
-						<!-- <option value={selectedDate} disabled selected>{displayDate(selectedDate)}</option> -->
-						{#each calcDateOptionsForChallenge(challenge) as day}
-							<option value={day.value}>{day.display}</option>
-						{/each}
-					</select>
-				{/if}
+				<div class="h-12">
+					{#if selectedDate}
+						<select
+							transition:fly={{ y: -10 }}
+							name="dates"
+							id="date-select"
+							class="w-full border border-gray-300 rounded-lg shadow-sm focus:ring-1 focus:ring-water2 focus:outline-none focus:border-water2-light"
+							bind:value={selectedDate}
+							on:change={() => {
+								onchanged(selectedDate);
+								setNewNextCheckpoint(challenge, selectedDate);
+							}}
+						>
+							<!-- <option value={selectedDate} disabled selected>{displayDate(selectedDate)}</option> -->
+							{#each calcDateOptionsForChallenge(challenge) as day}
+								<option value={day.value}>{day.display}</option>
+							{/each}
+						</select>
+					{/if}
+				</div>
 
 				<!-- todo replace -->
 				<!-- <input
