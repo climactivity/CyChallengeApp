@@ -19,11 +19,20 @@
 	import { headerImageUrl, headerState } from '$lib/stores/header-store';
 	import { getImageUrlFromChallenge } from '$lib/util';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
+	import { setContext } from 'svelte';
 
 	export let data: ChallengeV2;
 	let imageUrl = getImageUrlFromChallenge(data);
 
 	let playAt;
+	setContext('confetti', { ref: playAt });
+	headerImageUrl.set(getImageUrlFromChallenge(data));
+	headerState.set({
+		backbutton: true,
+		title: data.title,
+		hidden: false,
+		transparent: true
+	});
 </script>
 
 <div class=" pb-20">

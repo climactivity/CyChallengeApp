@@ -73,11 +73,24 @@ module.exports = {
           fadeInUp: "fadeInUp 0.5s forwards ease",
           fadeInBlur: "fadeInBlur 0.5s forwards ease",
           grabAttention: "grabAttention 1.35s forwards ease-in-out",
-          tiltGradient: "tiltGradient 10s infinite linear"
-          
+          tiltGradient: "tiltGradient 10s infinite linear",
+          "cheer-particle": "cheer-particle 0.7s ease-in"
 
         },
         keyframes: {
+          "cheer-particle": {
+            "0%": {
+              opacity: "0",
+              transform: "translate(0rem, 0rem);"
+            },
+            "75%": {
+              opacity: "1"
+            }, 
+            "100%": {
+              opacity: "0",
+              transform: "translate(0rem, -2rem);"
+            }
+          },
           tiltGradient: {
             "0%" : {
               transform: "rotateZ(0deg);"
