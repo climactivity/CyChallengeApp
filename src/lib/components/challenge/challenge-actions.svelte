@@ -5,6 +5,7 @@
 		acceptChallenge,
 		bookmarkChallenge,
 		completeChallenge,
+		currentLevelForChallenge,
 		nextLevelForChallenge,
 		rejectChallenge,
 		unbookmarkChallenge,
@@ -221,7 +222,7 @@
 					skip
 					onClick={(e) => {
 						console.log('already doing challenge');
-						completeChallenge(challenge)
+						completeChallenge(challenge, currentLevelForChallenge(challenge, challengeState))
 							.then((value) => {
 								console.log(value);
 								if (value === null) {

@@ -1,12 +1,11 @@
 <script lang="ts" context="module">
-	import { availableChallenges, challenges } from '$testData/challenges';
+	import { getChallengeBySlug } from '$lib/services/challenge-content';
 
 	export async function load({ params, fetch, session, stuff }) {
-		let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
 		return {
 			status: 200,
 			props: {
-				challenge
+				challenge: await getChallengeBySlug(params.slug)
 			}
 		};
 	}
@@ -22,14 +21,17 @@
 	import CongratulationSection from '$lib/components/challenge/congratulation-section.svelte';
 	import RewardSection from '$lib/components/challenge/reward-section.svelte';
 	import { nkReady } from '$lib/client';
-	import { getChallengeState } from '$lib/services/challenge-storage';
+	import { currentLevelForChallenge, getChallengeState } from '$lib/services/challenge-storage';
+	import { challenges } from '$testData/challenges';
 	export let challenge: ChallengeV2;
-
 	let challengeState;
+	let level;
 	nkReady.subscribe(async (val) => {
 		if (val) {
 			challengeState = await getChallengeState(challenge.slug);
 			console.log('challengeState', challengeState);
+			level = currentLevelForChallenge(challenge, challengeState);
+			console.log(level);
 		}
 	});
 </script>
@@ -37,6 +39,11 @@
 <div class="flex flex-col pt-8">
 	<CongratulationSection {challenge} index={0} />
 	<RewardSection {challenge} {challengeState} index={1} />
+	{#if level}
+		<pre>
+		{JSON.stringify(challenge.difficulties[level], null, 2)}
+	</pre>
+	{/if}
 	<ShareToSocialMediaSection {challenge} index={5} />
 	<RecommendedChallengesSection {challenge} index={4} />
 	<BackToChallengesPageSection last={true} index={5} />

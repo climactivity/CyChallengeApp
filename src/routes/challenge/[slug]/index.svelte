@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-	import { availableChallenges } from '$testData/challenges';
-
 	export async function load({ params, fetch, session, stuff }) {
 		return {
 			status: 200,
