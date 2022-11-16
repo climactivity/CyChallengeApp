@@ -315,6 +315,7 @@ export const acceptChallenge = async (
 	nextCheckpoint?: Date
 ) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
+	console.log(difficulty);
 	armSoftNotificationTrigger();
 	let acceptedChallenge: ChallengeAccept = {
 		type: 'accept',

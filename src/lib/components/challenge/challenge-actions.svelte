@@ -111,7 +111,7 @@
 						repeat
 						onClick={async (e) => {
 							console.log('accept challenge');
-							acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
+							acceptChallenge(challenge, currentLevelForChallenge(challenge, challengeState))
 								.then((value) => {
 									console.log(value);
 									if (value === null) {
@@ -154,7 +154,7 @@
 				<AcceptButton
 					onClick={async (e) => {
 						console.log('accept challenge');
-						acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
+						acceptChallenge(challenge, currentLevelForChallenge(challenge, challengeState))
 							.then((value) => {
 								console.log(value);
 								if (value === null) {
