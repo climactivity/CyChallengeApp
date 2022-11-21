@@ -15,6 +15,7 @@ import { client, nkReady, session } from '$lib/client';
 import { update_await_block_branch } from 'svelte/internal';
 import { object } from 'yup';
 import { rewardStore } from '$lib/stores/reward-store';
+import { challenges } from '$testData/challenges';
 
 export type DifficultyName = string;
 
@@ -124,6 +125,7 @@ const highestCompletion = (completions: ChallengeCompletion[], levels: Difficult
 export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): DifficultyName => {
 	const levelsArr = Object.values(challenge.difficulties);
 
+	console.log('nextLevelForChallenge 1', levelsArr, challenge);
 	// challenge is incomplete and has no todos
 	if (!levelsArr || levelsArr.length == 0) {
 		console.warn('Loaded challenge without levels!');
@@ -135,13 +137,18 @@ export const nextLevelForChallenge = (challenge: ChallengeV2, challengeState): D
 		return null;
 	}
 
-	if (!challengeState) return levelsArr[1].name;
+	if (!challengeState) {
+		console.log('nextLevelForChallenge 2', levelsArr[1].name);
+		return levelsArr[1].name;
+	}
 
 	if (challengeState.type === 'completed') {
 		return null;
 	}
 
 	const currentLevel = currentLevelForChallenge(challenge, challengeState);
+
+	console.log('nextLevelForChallenge 3', currentLevel);
 
 	if (currentLevel == null) {
 		return levelsArr[1].name;
@@ -176,7 +183,7 @@ export const currentLevelForChallenge = (
 
 	// challenge is completed, show no more todos
 	if (challengeState.type === 'completed') {
-		return null;
+		return challengeState.currentLevel;
 	}
 
 	// challenge has not yet been started, so show the lowest diffifculty
@@ -186,6 +193,8 @@ export const currentLevelForChallenge = (
 
 	// challenge has been accepted, show the current difficulty
 	if (challengeState.type === 'accept') {
+		return challengeState.currentLevel;
+
 		const { completions } = challengeState as ChallengeAccept;
 
 		// challenge has been accepted, but no previous levels have been completed
@@ -306,6 +315,7 @@ export const acceptChallenge = async (
 	nextCheckpoint?: Date
 ) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
+	console.log(difficulty);
 	armSoftNotificationTrigger();
 	let acceptedChallenge: ChallengeAccept = {
 		type: 'accept',
@@ -482,11 +492,7 @@ export const unrejectChallenge = async (challenge: ChallengeV2) => {
 	return false;
 };
 
-export const completeChallenge = async (
-	challenge: ChallengeV2,
-	level: DifficultyName = 'easy',
-	finalize = false
-) => {
+export const completeChallenge = async (challenge: ChallengeV2, level, finalize = false) => {
 	const challengeState = await getChallengeUserData(challenge.slug);
 
 	if (challengeState !== null) {
