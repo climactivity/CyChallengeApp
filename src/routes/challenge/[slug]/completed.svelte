@@ -39,8 +39,8 @@
 </script>
 
 <div class="flex flex-col pt-8">
-	<CongratulationSection {challenge} index={0} />
-	<RewardSection {challenge} {challengeState} index={1} />
+	<CongratulationSection {challenge} {challengeState} index={0} />
+	<!-- <RewardSection {challenge} {challengeState} index={1} /> -->
 	{#if level}
 		{#if level.upgradeText}
 			<div class="prose px-4">

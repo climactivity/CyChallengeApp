@@ -68,6 +68,7 @@
 
 					let result = await acceptChallenge(challenge, newDifficulty);
 					console.log('upgrade ', newDifficulty, result);
+					goto('/challenge/' + challenge.slug);
 				}}
 			>
 				Einsatz erhöhen

@@ -159,19 +159,27 @@
 			{challenge.title}
 		</div>
 
-		{#if challenge.lead}
-			<div class="mx-4 my-4 display flex flex-row items-center gap-4">
-				<div>
-					{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
-						<SuperChallengeIcon
-							{superChallenge}
-							cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
-						/>
-					{/await}
+		<div>
+			{#if challenge.lead}
+				<div class="mx-4 my-4 display flex flex-row items-center gap-3">
+					<div>
+						{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
+							<SuperChallengeIcon
+								{superChallenge}
+								cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
+							/>
+						{/await}
+					</div>
+					<div class=" font-bold font-serif text-storm-dark ">Super-Challenge</div>
 				</div>
-				<div class="text-lg font-bold font-serif  text-opacity-80">Super-Challenge</div>
-			</div>
-		{/if}
+			{/if}
+
+			<!-- completions -->
+			{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
+				<RewardDisplay2 {medals} lastCompleted={getLastCompletion(challengeState).toRelative()} />
+			{/if}
+		</div>
+
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
 			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4" out:slide>
@@ -204,11 +212,6 @@
 				{refetch}
 			/>
 		</div>
-
-		<!-- completions -->
-		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-			<RewardDisplay2 {medals} lastCompleted={getLastCompletion(challengeState).toRelative()} />
-		{/if}
 
 		<div class="mx-4">
 			{#if !challengeState || challengeState.type !== 'accept'}
