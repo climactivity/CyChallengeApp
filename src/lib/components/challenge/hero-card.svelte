@@ -1,11 +1,12 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { tutorialStore } from '$lib/stores/onboarding-store';
+	import MonthyChallengeCard from './monthy-challenge-card.svelte';
 	import TutorialCard from './tutorial-card.svelte';
 </script>
 
 {#if $tutorialStore}
-	<div>Todo: Display monthly challenge when tutorial is completed</div>
+	<MonthyChallengeCard />
 {:else}
 	<div
 		class="px-8"

@@ -87,3 +87,18 @@ export function isAccepted(
 ): challenge is AcceptedChallenge {
 	return (<AcceptedChallenge>challenge).accepted !== undefined;
 }
+
+export interface MonthlyChallenge {
+	id?: string;
+	from: string;
+	to: string;
+	challenges: string[]; //
+	title: string;
+	body: string;
+	sources?: string;
+	updated?: Date;
+	'@collectionId'?: string;
+	'@collectionName'?: string;
+	headerImage?: string;
+	published?: boolean;
+}
