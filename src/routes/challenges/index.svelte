@@ -36,7 +36,7 @@
 	import FilterIcon from '$lib/components/icons/filter-icon.svelte';
 	import { randomIntBetween } from '$lib/util';
 	import SearchButton from '$lib/components/buttons/search-button.svelte';
-	import HeroCard from '$lib/components/challenge/hero-card.svelte';
+	import HeroCard from '$lib/components/monthly-challenge/hero-card.svelte';
 	import ChallengeCard from '$lib/components/challenge/challenge-card.svelte';
 	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
 	import { linear, cubicIn, cubicOut } from 'svelte/easing';
@@ -48,7 +48,6 @@
 	import { Capacitor } from '@capacitor/core';
 	import { getChallenges } from '$lib/services/challenge-content';
 	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
-	import { tutorialStore } from '$lib/stores/onboarding-store';
 	import { pb } from '$lib/pb-client';
 	headerState.set({
 		backbutton: false,
@@ -91,7 +90,7 @@
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
-	$: filterShadow = Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 180)), 25) / 25;
+	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
 
 	onMount(() => console.log(topicList));
 
@@ -113,7 +112,7 @@
 	>
 		<ProportionalHeader
 			backbutton={false}
-			shadowOffsetStart={$tutorialStore ? 20 : 0}
+			shadowOffsetStart={0}
 			shadowOffsetEnd={20}
 			transparent={false}
 			title="Challenges"
@@ -138,7 +137,7 @@
 				style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 					filterShadow});
-					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 100)), 25) / 25}
+					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
 				"
 			>
 				<div
