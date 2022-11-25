@@ -89,7 +89,7 @@ export function isAccepted(
 }
 
 export interface MonthlyChallenge {
-	id?: string;
+	id: string;
 	from: string;
 	to: string;
 	challenges: string[]; //

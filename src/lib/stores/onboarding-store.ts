@@ -49,7 +49,7 @@ tutorialStore.subscribe((value) => {
 if (browser) {
 	let tutorialState;
 
-	if (import.meta.env.VITE_ALWAYS_SHOW_TUTORIAL === true) {
+	if (import.meta.env.VITE_ALWAYS_SHOW_TUTORIAL === 'true') {
 		tutorialState = false;
 	} else {
 		tutorialState = !!window.localStorage.getItem(LS_KEY_TUTORIAL);

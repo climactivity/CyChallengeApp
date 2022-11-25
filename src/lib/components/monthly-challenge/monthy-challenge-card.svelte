@@ -12,7 +12,7 @@
 </script>
 
 <div
-	on:click={(e) => goto(`/monthly-challenge/${currentMonthlyChallenge.id}`)}
+	on:click={(e) => goto(`/challenges/monthly-challenge/${currentMonthlyChallenge.id}`)}
 	class="relative overflow-hidden rounded-xl max-w-[24rem] min-h-[7.5rem] mx-auto active:pressed transition shadow grid "
 >
 	<div
