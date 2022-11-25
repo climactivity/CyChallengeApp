@@ -1,8 +1,8 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { tutorialStore } from '$lib/stores/onboarding-store';
-	import MonthyChallengeCard from './monthy-challenge-card.svelte';
-	import TutorialCard from './tutorial-card.svelte';
+	import MonthyChallengeCard from '$lib/components/monthly-challenge/monthy-challenge-card.svelte';
+	import TutorialCard from '$lib/components/monthly-challenge/tutorial-card.svelte';
 
 	let currentMonthlyChallengeRequest = fetch(
 		import.meta.env.VITE_PB_BASE_URL + '/current-monthly-challenge'

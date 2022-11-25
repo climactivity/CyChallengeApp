@@ -5,6 +5,7 @@
 		acceptChallenge,
 		bookmarkChallenge,
 		completeChallenge,
+		currentLevelForChallenge,
 		nextLevelForChallenge,
 		rejectChallenge,
 		unbookmarkChallenge,
@@ -110,7 +111,7 @@
 						repeat
 						onClick={async (e) => {
 							console.log('accept challenge');
-							acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
+							acceptChallenge(challenge, currentLevelForChallenge(challenge, challengeState))
 								.then((value) => {
 									console.log(value);
 									if (value === null) {
@@ -153,7 +154,7 @@
 				<AcceptButton
 					onClick={async (e) => {
 						console.log('accept challenge');
-						acceptChallenge(challenge, nextLevelForChallenge(challenge, challengeState))
+						acceptChallenge(challenge, currentLevelForChallenge(challenge, challengeState))
 							.then((value) => {
 								console.log(value);
 								if (value === null) {
@@ -221,7 +222,7 @@
 					skip
 					onClick={(e) => {
 						console.log('already doing challenge');
-						completeChallenge(challenge)
+						completeChallenge(challenge, currentLevelForChallenge(challenge, challengeState))
 							.then((value) => {
 								console.log(value);
 								if (value === null) {

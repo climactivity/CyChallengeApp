@@ -43,7 +43,7 @@ export const getImageUrlFromChallenge = (challenge: ChallengeV2, thumbnail = fal
 			challenge.image,
 			thumbnail ? { thumb: '512x512' } : {}
 		);
-		console.log('IMG:', imageUrl);
+		// console.log('IMG:', imageUrl);
 		return imageUrl;
 		// } else {
 		// 	if (challenge.image !== '') {

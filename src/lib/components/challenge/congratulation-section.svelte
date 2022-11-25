@@ -1,23 +1,67 @@
 <script lang="ts">
 	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
 	import VSection from '$lib/components/challenge/v-section.svelte';
+	import type { ChallengeComplete, ChallengeInteraction } from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
+	export let challengeState: ChallengeComplete;
 	export let skipped = false;
 	export let index = 0;
 
+	const getNumCompletions = (challengeState: ChallengeComplete): string => {
+		if (!challengeState) {
+			return '0';
+		}
+		if (challengeState.completions) {
+			const compl = challengeState.completions.length;
+			if (compl > 6) {
+				return `${Math.floor(compl / 6)}`;
+			} else {
+				return `${compl}/6`;
+			}
+		} else {
+			if (challengeState.type === 'complete') {
+				return '1';
+			} else {
+				return '0';
+			}
+		}
+	};
+
+	const isFractionalCompletion = (challengeState: ChallengeComplete) => {
+		if (!challengeState) {
+			return false;
+		}
+		if (challengeState.completions) {
+			const compl = challengeState.completions.length;
+			if (compl < 6) {
+				return true;
+			}
+		}
+		return false;
+	};
+	let fractionalCompletion = false;
+	let numCompletions = '0';
+	$: fractionalCompletion = isFractionalCompletion(challengeState);
+	$: numCompletions = getNumCompletions(challengeState);
 </script>
 
-	<div class="the-corner px-16 py-4 shadow-gray-200  bg-gray-50 w-full  border grid grid-flow-col animate-fadeInUp opacity-0 " style="grid-template-columns: 4fr 1fr; animation-delay: {index * ANIMATION_BASE_SPEED}ms;">
-		<div class="flex flex-col  place-content-center">
-			<div class="text-4xl font-serif font-semibold text-storm-dark">Klasse!</div>
-			<div class="text-md font-serif font-normal text-storm-dark">
-				{skipped ? 'Das machst du schon' : 'Du hast es geschafft'}
-			</div>
+<div
+	class="px-4 py-4  w-full  grid grid-flow-col animate-fadeInUp opacity-0 "
+	style="grid-template-columns: 4fr 1fr; animation-delay: {index * ANIMATION_BASE_SPEED}ms;"
+>
+	<div class="flex flex-col  place-content-center">
+		<div class="text-4xl font-serif font-semibold text-storm-dark">Klasse!</div>
+		<div class="text-md font-serif font-normal text-storm-dark">
+			{skipped ? 'Das machst du schon' : 'Du hast es geschafft'}
 		</div>
-		<div
-			class="grid grid-flow-col items-center place-items-center  px-4 py-2 rounded-xl text-reward"
-		>
+	</div>
+	<div
+		class="grid grid-flow-col items-center place-items-center  px-4 py-2 rounded-xl text-reward border"
+	>
+		{#if isFractionalCompletion}
+			{''}
+		{:else}
 			<div class=" w-full 0">
 				<svg
 					class="h-20 w-20 mx-auto"
@@ -35,9 +79,11 @@
 					/>
 				</svg>
 			</div>
-
-			<div class="text-4xl font-bold">
-				1
-			</div>
-		</div>
+		{/if}
+		{#if challenge.type === 'recurring'}
+			<div class="text-4xl font-bold">{numCompletions}</div>
+		{:else}
+			<div class="text-4xl font-bold">1</div>
+		{/if}
 	</div>
+</div>

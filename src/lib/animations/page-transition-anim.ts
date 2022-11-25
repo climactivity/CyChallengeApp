@@ -104,8 +104,8 @@ const css = (
 		'overflow: hidden; position: absolute;' +
 		`width: ${width}px;` +
 		`height: ${height}px;` +
-		`opacity: ${Math.min(t * 20, 1) * opacity};`;
-
+		// `opacity: ${Math.min(t * 20, 1) * opacity};
+		``;
 	switch (currentAnimDirection) {
 		case AnimationDirection.left: {
 			const direction = currentRole === AnimationRole.to ? -1 : 1;
