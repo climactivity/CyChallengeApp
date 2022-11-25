@@ -29,7 +29,7 @@
 {:then monthlyChallenge}
 	<div class="space-y-6">
 		<div
-			class="relative overflow-hidden rounded-xl max-w-[24rem] min-h-[20vh] mx-auto active:pressed transition shadow grid "
+			class="relative overflow-hidden the-corner max-w-[24rem] min-h-[20vh] mx-auto active:pressed transition grid "
 		>
 			<!-- <div
 			class="grid grid-flow-row h-full z-10 p-4 relative content-end bg-gradient-to-br from-transparent via-white to-white bg-opacity-0"
