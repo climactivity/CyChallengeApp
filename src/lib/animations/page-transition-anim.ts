@@ -64,12 +64,12 @@ const currentAnimDirection = (navigation): AnimationDirection => {
 		}
 	}
 
-	if (originPathBase === screenOrder.challenges && targetPathBase === screenOrder.challenges) {
-		// console.log('challenges', originPathDepth, targetPathDepth);
-		if (originPathDepth === 3 || targetPathDepth === 4) {
-			return AnimationDirection.neutral;
-		}
-	}
+	// if (originPathBase === screenOrder.challenges && targetPathBase === screenOrder.challenges) {
+	// 	// console.log('challenges', originPathDepth, targetPathDepth);
+	// 	if (originPathDepth === 3 || targetPathDepth === 4) {
+	// 		return AnimationDirection.neutral;
+	// 	}
+	// }
 
 	if (originPathBase === screenOrder.journal && targetPathBase === screenOrder.journal) {
 		return AnimationDirection.neutral;

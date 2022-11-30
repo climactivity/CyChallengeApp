@@ -1,5 +1,5 @@
 import { pb } from '$lib/pb-client';
-import type { ChallengeAccept, ChallengeInteraction } from '$lib/services/challenge-storage';
+import { getChallengeUserData, type ChallengeAccept, type ChallengeInteraction } from '$lib/services/challenge-storage';
 
 export type SuperChallenge = {
 	slug: string;
@@ -91,3 +91,35 @@ export const getSuperChallengeCssClassForInteracion = (interaction: ChallengeInt
 		return interaction.type;
 	}
 };
+
+export const hasSuperChallengeCompletions = (interaction: ChallengeInteraction) : boolean => {
+	if (!interaction) {
+		return false;
+	} else {
+		// console.log('fetched interaction', value);
+
+		if (interaction.type === 'accept') {
+			console.log(interaction);
+			if ((interaction as ChallengeAccept).completions?.length > 5) return true;
+		}
+
+		if (interaction.type === 'complete') {
+			console.log(interaction);
+			return true
+		}	
+	}
+
+	return false
+};
+
+export const isAllSuperChallengesCompelted = async () : Promise<boolean> => {
+
+	const _superChallengens = await superChallenges; 
+	const _challengeStates = await Promise.all(_superChallengens.map((superChallenge) => getChallengeUserData(superChallenge.slug)))
+
+	if (_challengeStates.some((so) => so == null))
+		return false
+
+	const result = _challengeStates.every((superChallengeInteraction) => hasSuperChallengeCompletions(superChallengeInteraction))
+	return result 
+}
