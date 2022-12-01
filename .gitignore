@@ -13,3 +13,4 @@ node_modules
 # static/images/**/*
 .blend1
 Appfile
+android/fastlane/Appfile

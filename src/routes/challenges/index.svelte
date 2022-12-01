@@ -36,7 +36,7 @@
 	import FilterIcon from '$lib/components/icons/filter-icon.svelte';
 	import { randomIntBetween } from '$lib/util';
 	import SearchButton from '$lib/components/buttons/search-button.svelte';
-	import HeroCard from '$lib/components/challenge/hero-card.svelte';
+	import HeroCard from '$lib/components/monthly-challenge/hero-card.svelte';
 	import ChallengeCard from '$lib/components/challenge/challenge-card.svelte';
 	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
 	import { linear, cubicIn, cubicOut } from 'svelte/easing';
@@ -48,7 +48,7 @@
 	import { Capacitor } from '@capacitor/core';
 	import { getChallenges } from '$lib/services/challenge-content';
 	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
-	import { tutorialStore } from '$lib/stores/onboarding-store';
+	import { pb } from '$lib/pb-client';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -57,7 +57,7 @@
 
 	let data: Promise<ChallengeV2[]> = getChallenges();
 	export let topics;
-	export let topicList;
+	let topicList = pb.records.getFullList('topics');
 	let filter = [];
 	let showSuperChallenges = false;
 	export let tags = {
@@ -66,7 +66,7 @@
 		save_money: 'Save Money',
 		empty_tag: 'Empty Tag'
 	};
-	export let tagList;
+	let tagList = pb.records.getFullList('tags');
 
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
@@ -90,7 +90,7 @@
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
-	$: filterShadow = Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 180)), 25) / 25;
+	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
 
 	onMount(() => console.log(topicList));
 
@@ -112,7 +112,7 @@
 	>
 		<ProportionalHeader
 			backbutton={false}
-			shadowOffsetStart={$tutorialStore ? 20 : 0}
+			shadowOffsetStart={0}
 			shadowOffsetEnd={20}
 			transparent={false}
 			title="Challenges"
@@ -137,7 +137,7 @@
 				style="
 					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
 					filterShadow});
-					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - ($tutorialStore ? 0 : 100)), 25) / 25}
+					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
 				"
 			>
 				<div
@@ -165,19 +165,36 @@
 						Super Challenges
 					</div>
 				</div>
-				{#each tagList as tag}
+				{#await tagList}
 					<div
-						on:click={() => addFilterTag(tag)}
-						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
-							tag
-						)
-							? 'bg-water border-0 text-white font-bold'
-							: 'bg-gray-50 border border-storm-light text-storm'}"
-						title={tags[tag]}
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none 
+					 bg-storm-light border border-storm-light text-storm w-56 h-[80%] animate-pulse"
 					>
-						{tags[tag]}
+						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</div>
-				{/each}
+					<div
+						class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none 
+					 bg-storm-light border border-storm-light text-storm w-56 h-[80%] animate-pulse"
+					>
+						&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+				{:then tagListResolved}
+					{#each tagListResolved as tag}
+						<div
+							on:click={() => addFilterTag(tag.tag)}
+							class=" awful-ls-hack transition font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full  cursor-pointer select-none {filter.includes(
+								tag.tag
+							)
+								? 'bg-water border-0 text-white font-bold'
+								: 'bg-gray-50 border border-storm-light text-storm'}"
+							title={tag.label}
+						>
+							{tag.label}
+						</div>
+					{/each}
+				{/await}
 			</div>
 		</div>
 		<!-- Challenges -->
@@ -202,19 +219,29 @@
 			{/await}
 		{:else}
 			<div class="container min-h-content overflow-visible">
-				{#each topicList as topic}
-					{#await data}
-						<ChallengeScrollerSkeleton title={topics[topic]} length={3} />
-					{:then fetchedChallenges}
-						<ChallengeScroller
-							challenges={fetchedChallenges.filter((challenge) => challenge.topic === topic)}
-							title={topics[topic]}
-							{tags}
-							challengeHidden={(_) => false}
-							pad
-						/>
-					{/await}
-				{/each}
+				{#await topicList}
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+					<ChallengeScrollerSkeleton length={3} />
+				{:then topicListResolved}
+					{#each topicListResolved as topic}
+						{#await data}
+							<ChallengeScrollerSkeleton title={topic.label} length={3} />
+						{:then fetchedChallenges}
+							<ChallengeScroller
+								challenges={fetchedChallenges.filter(
+									(challenge) => challenge.topic === topic.topic
+								)}
+								title={topic.label}
+								{tags}
+								challengeHidden={(_) => false}
+								pad
+							/>
+						{/await}
+					{/each}
+				{/await}
 			</div>
 		{/if}
 

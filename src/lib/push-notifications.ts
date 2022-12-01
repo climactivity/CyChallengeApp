@@ -76,8 +76,8 @@ export const unscheduleNotification = async (context) => {
 	console.log(`Unschedule notification ${context}`);
 	const previousContext = await readStorage('planned-notifications', context);
 
-	if ((previousContext as Error).message) {
-		console.warn('previousContext:', (previousContext as Error).message);
+	if (!previousContext) {
+		console.warn('No prior message to unscheduled!');
 		return Promise.reject('No notification for context found!');
 	}
 

@@ -5,13 +5,16 @@
 	import { loadConfettiPreset } from 'tsparticles-preset-confetti';
 	let ParticlesComponent;
 	import ParticlesContainer from 'svelte-particles';
+
+	export let quantity = 35,
+		height = 5;
 	let confettiConfig = {
 		particles: {
 			number: {
 				value: 0
 			},
 			color: {
-				value: ['#ff00ff', '#00ffff', '#ffff00']
+				value: ['#e40045', '#8BB9C3', '#95c11e']
 			},
 			shape: {
 				type: ['circle', 'square'],
@@ -137,14 +140,14 @@
 	onMount(async () => {
 		const module = await import('svelte-particles');
 
-		console.log('imported confetti');
+		// console.log('imported confetti');
 		ParticlesComponent = module.default;
 	});
 
 	let particlesContainer;
 	let onParticlesLoaded = (event) => {
 		particlesContainer = event.detail.particles;
-		console.log('loaded');
+		console.log('Confetti particle system initialized!');
 		// you can use particlesContainer to call all the Container class
 		// (from the core library) methods like play, pause, refresh, start, stop
 	};
@@ -152,12 +155,12 @@
 	export let id = 'tsParticles';
 	export const playAt = (e: MouseEvent) => {
 		let y = (100 * e.clientY) / window.innerHeight;
-		console.log(e, e.clientY, window.innerHeight, y);
+		// console.log(e, e.clientY, window.innerHeight, y);
 		play({ x: 0, y });
 	};
 
 	export const play = (position) => {
-		console.log(particlesContainer);
+		// console.log(particlesContainer);
 		if (!particlesContainer) {
 			console.error('ParticlesComponent not initialized');
 			return;
@@ -171,11 +174,11 @@
 			},
 			rate: {
 				delay: 0,
-				quantity: 350
+				quantity
 			},
 			size: {
 				width: 200,
-				height: 0
+				height
 			},
 			position
 		});

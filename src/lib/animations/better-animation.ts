@@ -1,5 +1,5 @@
 import { flip } from 'svelte/animate';
-import { fly } from 'svelte/transition';
+import { fade, fly } from 'svelte/transition';
 
 /**
  * We are resetting the styles if animation already exists
@@ -37,4 +37,10 @@ export function customFlyOut(node) {
 export function customFly(node, { y, duration }) {
 	if (node.style.animation) return;
 	return fly(node, { y, duration });
+}
+
+export function customFade(node, { duration = 1 }) {
+	if (node.style.animation) return;
+	node.style.position = 'absolute';
+	return fade(node, { duration });
 }

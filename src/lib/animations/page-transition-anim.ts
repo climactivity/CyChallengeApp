@@ -64,12 +64,12 @@ const currentAnimDirection = (navigation): AnimationDirection => {
 		}
 	}
 
-	if (originPathBase === screenOrder.challenges && targetPathBase === screenOrder.challenges) {
-		// console.log('challenges', originPathDepth, targetPathDepth);
-		if (originPathDepth === 3 || targetPathDepth === 4) {
-			return AnimationDirection.neutral;
-		}
-	}
+	// if (originPathBase === screenOrder.challenges && targetPathBase === screenOrder.challenges) {
+	// 	// console.log('challenges', originPathDepth, targetPathDepth);
+	// 	if (originPathDepth === 3 || targetPathDepth === 4) {
+	// 		return AnimationDirection.neutral;
+	// 	}
+	// }
 
 	if (originPathBase === screenOrder.journal && targetPathBase === screenOrder.journal) {
 		return AnimationDirection.neutral;
@@ -104,8 +104,8 @@ const css = (
 		'overflow: hidden; position: absolute;' +
 		`width: ${width}px;` +
 		`height: ${height}px;` +
-		`opacity: ${Math.min(t * 20, 1) * opacity};`;
-
+		// `opacity: ${Math.min(t * 20, 1) * opacity};
+		``;
 	switch (currentAnimDirection) {
 		case AnimationDirection.left: {
 			const direction = currentRole === AnimationRole.to ? -1 : 1;

@@ -3,7 +3,7 @@
 	export let collapsed = false;
 	export let collapsedSize = '12rem';
 	export let canCollapse = true;
-	export let title;
+	export let title = null;
 	const toggleCollapsed = (e) => {
 		if (canCollapse) {
 			collapsed = !collapsed;
@@ -18,8 +18,9 @@
 	on:click={toggleCollapsed}
 	style="--collapsed-size: {collapsedSize};"
 >
-	<p class="font-bold text-xl py-2">{title}</p>
-
+	{#if title}
+		<p class="font-bold text-xl py-2">{title}</p>
+	{/if}
 	{@html content}
 </div>
 

@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-	import { availableChallenges } from '$testData/challenges';
-
 	export async function load({ params, fetch, session, stuff }) {
 		return {
 			status: 200,
@@ -12,6 +10,8 @@
 </script>
 
 <script lang="ts">
+	import RewardDisplay2 from '../../../lib/components/challenge/RewardDisplay2.svelte';
+
 	import { goto, prefetch } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { nkReady } from '$lib/client';
@@ -31,12 +31,12 @@
 	} from '$lib/services/challenge-storage';
 	import { headerImageUrl, headerState } from '$lib/stores/header-store';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import { LocalDateTime } from '$lib/services/luxon-proxy';
 	import { DateTime } from 'luxon';
 	import RewardDisplay from '$lib/components/challenge/reward-display.svelte';
 	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
-	import { getContext, hasContext } from 'svelte';
+	import { getContext, hasContext, onMount } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
 	import SuperChallengeIcon from '$lib/components/impact/super-challenge-icon.svelte';
 	import {
@@ -46,6 +46,7 @@
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import { getImageUrlFromChallenge } from '$lib/util';
 	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
+	import Confetti from '$lib/components/particles/confetti.svelte';
 	export let challenge: ChallengeV2;
 	console.log('Challenge:', challenge);
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
@@ -97,7 +98,7 @@
 		}
 	});
 
-	let playAt;
+	let playAt = (e) => console.log(e);
 
 	const refetch = async () => {
 		if ($nkReady) {
@@ -106,14 +107,14 @@
 		}
 	};
 
-	let showBigpointReminder =
-		challenge.impact === 'peanut' && getTopicBigointChallengeState(challenge.topic);
+	let showBigpointReminder = false;
 
 	let numCompletions, medals;
 	$: {
 		numCompletions = challengeState?.completions?.length ?? 0;
 		medals = challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions;
 		console.log('medals', medals);
+		console.log(!getTopicBigointChallengeState(challenge.topic));
 	}
 
 	const scrollPosition: Writable<number> = hasContext('scrollPosition')
@@ -132,10 +133,15 @@
 			headerState.update((headerState) => ({ ...headerState, transparent: true }));
 		}
 	}
+
+	onMount(async () => {
+		showBigpointReminder =
+			challenge.impact === 'peanut' && !(await getTopicBigointChallengeState(challenge.topic));
+	});
 </script>
 
 <div transition:fade={{ duration: 250 }}>
-	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
+	<Confetti id="challenge_accept_particles" bind:playAt />
 
 	<!-- header image-->
 	<!-- <div
@@ -153,23 +159,33 @@
 			{challenge.title}
 		</div>
 
-		{#if challenge.lead}
-			<div class="mx-4 my-4 display flex flex-row items-center gap-4">
-				<div>
-					{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
-						<SuperChallengeIcon
-							{superChallenge}
-							cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
-						/>
-					{/await}
+		<div>
+			{#if challenge.lead}
+				<div class="mx-4 my-4 display flex flex-row items-center gap-3">
+					<div>
+						{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
+							<SuperChallengeIcon
+								{superChallenge}
+								cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
+							/>
+						{/await}
+					</div>
+					<div class=" font-bold font-serif text-storm-dark ">Super-Challenge</div>
 				</div>
-				<div class="text-lg font-bold font-serif  text-opacity-80">Super-Challenge</div>
-			</div>
-		{/if}
+			{/if}
+
+			<!-- completions -->
+			{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
+				<RewardDisplay2 {medals} lastCompleted={getLastCompletion(challengeState).toRelative()} />
+			{/if}
+		</div>
+
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
-			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4">
-				<button class="absolute top-0 right-2">x</button>
+			<div class="bg-water2-light rounded-md shadow-md p-4 relative mx-4" out:slide>
+				<button class="absolute top-0 right-2" on:click={() => (showBigpointReminder = false)}
+					>x</button
+				>
 				Hey, du hast den Bigpoint in diesem Bereich nicht angenommen. Mach doch erstmal den!
 			</div>
 		{/if}
@@ -196,17 +212,6 @@
 				{refetch}
 			/>
 		</div>
-
-		<!-- completions -->
-		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-			<div class="mx-4">
-				<div>Durch diese Challenge erhaltene Punkte</div>
-				<div>
-					<RewardDisplay {medals} points={challenge.score * medals} />
-					Zuletzt geschaft {getLastCompletion(challengeState).toRelative()}
-				</div>
-			</div>
-		{/if}
 
 		<div class="mx-4">
 			{#if !challengeState || challengeState.type !== 'accept'}
@@ -243,11 +248,14 @@
 		</div>
 
 		<!-- todos for currently accepted challenge-->
-		{#if challengeState && challengeState.type === 'accept'}
-			<div class="mx-4">
-				<ChallengeV2Todos {challenge} {challengeState} />
-			</div>
-		{/if}
+		<div class="mx-4">
+			<ChallengeV2Todos
+				{challenge}
+				{challengeState}
+				bind:playAt
+				interactable={challengeState && challengeState.type === 'accept'}
+			/>
+		</div>
 
 		<!-- more infos -->
 
