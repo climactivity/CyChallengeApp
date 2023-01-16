@@ -115,11 +115,30 @@ export const hasSuperChallengeCompletions = (interaction: ChallengeInteraction) 
 export const isAllSuperChallengesCompelted = async () : Promise<boolean> => {
 
 	const _superChallengens = await superChallenges; 
-	const _challengeStates = await Promise.all(_superChallengens.map((superChallenge) => getChallengeUserData(superChallenge.slug)))
+	let _challengeStateSOs = await Promise.all(_superChallengens.map((superChallenge) => 
+		getChallengeUserData(superChallenge.slug)
+	))
 
-	if (_challengeStates.some((so) => so == null))
+	let skippedOne = false 
+	const _head = _challengeStateSOs.slice(0, 2).reduce((acc, so) => {
+		if (so != null) {
+			return so
+		} else {
+			return acc
+		}
+	}, null)
+
+	_challengeStateSOs = [_head, ..._challengeStateSOs.slice(2)]
+
+	if (_challengeStateSOs.some((so, index) => so == null)) {
 		return false
+	}
+	console.log(_challengeStateSOs)
 
-	const result = _challengeStates.every((superChallengeInteraction) => hasSuperChallengeCompletions(superChallengeInteraction))
+	const _challengeStates = _challengeStateSOs.map((so) => so.value as ChallengeInteraction)
+
+	const result = _challengeStates.every((superChallengeInteraction) => 
+		hasSuperChallengeCompletions(superChallengeInteraction)
+	)
 	return result 
 }

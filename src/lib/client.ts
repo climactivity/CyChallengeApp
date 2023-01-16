@@ -10,9 +10,12 @@ import { Capacitor } from '@capacitor/core';
 let deviceId: string;
 let reconnectHandle
 
+export const HEARTBEAT_INTERVAL = 2000 /* ms */
+
 export const ssr = false;
 export let session: Session;
 export const nkReady = writable(false);
+
 
 
 // console.log('connecting to nakama with settings:', JSON.stringify({
@@ -61,25 +64,38 @@ export const getDeviceID = async () => {
 
 
 export const init = async () => {
-    if (reconnectHandle) {
-        clearInterval(reconnectHandle)
+    try {
+        deviceId = await getDeviceID();
+
+        session = await createSession();
+        await connectSocket(session);
+    
+        if (reconnectHandle) {
+            clearInterval(reconnectHandle)
+        }
+
+        nkReady.set(true);
+        console.log(session.token);
+        return session;
+    
+    } catch (error) {
+        console.log(error)
+        onIsDisconnected()
     }
-
-    deviceId = await getDeviceID();
-
-    session = await createSession();
-    await connectSocket(session);
-
-    nkReady.set(true);
-    console.log(session.token);
-    return session;
+    return null
 };
 
 export const createSession = async () => {
     var create = true;
-    let session = await client.authenticateDevice(deviceId, create, deviceId);
-    console.info('Successfully authenticated:', session);
-    return session;
+    try {
+        let session = await client.authenticateDevice(deviceId, create, deviceId);
+        console.info('Successfully authenticated:', session);
+        return session;
+    
+    } catch (error) {
+        console.log("couldn't create session!", error)
+        return null
+    }
 };
 
 export const connectSocket = async (session) => {
@@ -93,6 +109,16 @@ export const connectSocket = async (session) => {
     session = await socket.connect(session, appearOnline);
     return socket;
 };
+
+
+const onIsDisconnected = () => {
+    reconnectHandle = setInterval( async () => {
+        const conntectionState = await init();
+        if (conntectionState == null) {
+
+        }
+    }, HEARTBEAT_INTERVAL)
+}
 
 socket.ondisconnect = (e) => {
     console.log('connection to gameserver lost!');
