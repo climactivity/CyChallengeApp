@@ -112,7 +112,7 @@ export const connectSocket = async (session) => {
 
 
 const onIsDisconnected = () => {
-    reconnectHandle = setInterval( async () => {
+    setTimeout( async () => {
         const conntectionState = await init();
         if (conntectionState == null) {
 
