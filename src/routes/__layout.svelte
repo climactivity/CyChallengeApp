@@ -17,6 +17,7 @@
 	import { insets } from '$lib/stores/context';
 	import { oneSignalInit } from '$lib/push-notifications';
 	import { headerState } from '$lib/stores/header-store';
+	import NetworkError from '$lib/components/dialogs/network-error.svelte';
 
 	setContext('insets', insets);
 
@@ -153,6 +154,7 @@
 		>
 			<BottomNavbar />
 		</nav>
+		<NetworkError />
 
 		<MdMenu />
 	</safe-area>

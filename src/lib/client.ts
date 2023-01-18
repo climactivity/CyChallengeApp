@@ -16,7 +16,7 @@ export const ssr = false;
 export let session: Session;
 export const nkReady = writable(false);
 
-
+export const hasError = writable(null);
 
 // console.log('connecting to nakama with settings:', JSON.stringify({
 //     host: import.meta.env.VITE_NAKAMA_HOST,
@@ -76,6 +76,8 @@ export const init = async () => {
 
         nkReady.set(true);
         console.log(session.token);
+        hasError.set(null);
+
         return session;
     
     } catch (error) {
@@ -94,6 +96,11 @@ export const createSession = async () => {
     
     } catch (error) {
         console.log("couldn't create session!", error)
+        hasError.set({
+            error: "Keine Verbindung",
+            description: "Die App verbindet sich automatisch neu, wenn eine Netzwerkverbindung hergestellt werden kann"
+        });
+
         return null
     }
 };
@@ -126,6 +133,10 @@ socket.ondisconnect = (e) => {
 
     reconnectHandle = setInterval(() => {
         console.log('attempting to reconnect');
+        hasError.set({
+            error: "Keine Verbindung",
+            description: "Die App verbindet sich automatisch neu, wenn eine Netzwerkverbindung hergestellt werden kann"
+        });
         init();
     }, 3000);
 };

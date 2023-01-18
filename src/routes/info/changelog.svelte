@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { pb } from '$lib/pb-client';
 	import { headerState } from '$lib/stores/header-store';
-	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 	headerState.set({
 		backbutton: true,
 		title: 'Änderungen',

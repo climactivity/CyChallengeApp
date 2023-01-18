@@ -4,7 +4,6 @@
 	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
 	import { pb } from '$lib/pb-client';
 	import { headerState } from '$lib/stores/header-store';
-	import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 	let monthlyChallengeReq = pb.records
 		.getOne('monthly_challenges', $page.params.id, { expand: 'challenges' })
