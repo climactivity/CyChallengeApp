@@ -196,14 +196,7 @@
 		</p>
 
 		<!-- actions -->
-		<div
-			class=" top-0 bg-slate-100 min-w-full px-4 pt-4 z-50 -mt-8"
-			style="
-		box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * actionsShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
-				actionsShadow});
-		--tw-bg-opacity: {actionsShadow}
-	"
-		>
+		<div class=" top-0 bg-slate-100 min-w-full px-4 pt-4 z-50 -mt-8">
 			<ChallengeActions
 				{challenge}
 				nextState={action}

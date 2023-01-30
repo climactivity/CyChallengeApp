@@ -26,15 +26,24 @@
 	bind:clientWidth={xSize}
 	style="--x-size: {xSize}px; --show-shadow: {shadow ? 0.05 : 0};
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;"
-	class="relative max-w-xl mx-auto
+	class="relative 
+		z-50
+		h-16
+		max-w-xl
+		mx-auto	
 		grid 
-		px-2 gap-2 sm:gap-12
-		place-content-around sm:place-content-center
-		select-none h-16 bg-white  backdrop-blur-md z-50 menu transition-shadow"
-	class:home={!!$page.routeId?.startsWith('challenge')}
+		px-2 
+		gap-2 sm:gap-12
+		place-content-end sm:place-content-center
+		transition-shadow
+		bg-white  backdrop-blur-md
+		select-none  menu   "
+	class:home={!!$page.routeId?.startsWith('impact')}
+	class:challegne={!!$page.routeId?.startsWith('challenges')}
 	class:journal={!!$page.routeId?.startsWith('journal')}
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}
+	class:feed={!!$page.routeId?.startsWith('feed')}
 >
 	<!-- <HomeButton path="/home"  /> -->
 	<ImpactButton path="/impact" />
@@ -48,35 +57,42 @@
 </div>
 
 <style lang="scss">
-	// .menu::after {
-	// 	--marker-width: 2rem;
-	// 	content: '';
-	// 	position: absolute;
-	// 	margin: 0 calc(1.5rem);
-	// 	top: 0.15rem;
-	// 	height: 0.25rem;
-	// 	border-radius: 1rem;
-	// 	background: #466f82;
-	// 	transition: all 200ms;
-	// 	width: var(--marker-width);
-	// 	transition-timing-function: cubic-bezier(0.065, 1.65, 0.74, 0.845);
-	// }
+	.menu::after {
+		--marker-width: 2rem;
+		content: '';
+		position: absolute;
+		margin: 0 6%;
+		top: 0.15rem;
+		height: 0.25rem;
+		border-radius: 1rem;
+		background: #466f82;
+		transition: all 200ms;
+		width: var(--marker-width);
+		transition-timing-function: cubic-bezier(0.065, 1.65, 0.74, 0.845);
+	}
 
-	// .menu.home::after {
-	// 	left: calc(0%);
-	// }
+	.menu.home::after {
+		left: calc(0%);
+	}
 
-	// .menu.journal::after {
-	// 	left: calc(20%);
-	// }
+	.menu.journal::after {
+		left: calc(20%);
+	}
 
-	// .menu.stats::after {
-	// 	left: calc(40%);
-	// }
+	.menu.stats::after {
+		left: calc(40%);
+	}
 
-	// .menu.social::after {
-	// 	left: calc(60%);
-	// }
+	.menu.challegne::after {
+		left: calc(40%);
+	}
+	.menu.social::after {
+		left: calc(60%);
+	}
+
+	.menu.feed::after {
+		left: calc(60%);
+	}
 
 	.menu {
 		box-shadow: 0px -3px 3px 0px rgba(0, 0, 0, var(--show-shadow, 0.05));

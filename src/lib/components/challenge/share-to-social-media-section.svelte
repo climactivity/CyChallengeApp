@@ -15,33 +15,30 @@
 
 <VSection {...$$props}>
 	{#if challenge}
-	<div class="font-serif font-semibold text-xl">
-		Erzähle deinen Freund:innen von der Challenge „{challenge?.title}“
-	</div>
+		<div class="font-serif font-semibold text-xl">
+			Erzähle deinen Freund:innen von der Challenge „{challenge?.title}“
+		</div>
 	{:else}
-	<div class="font-serif font-semibold text-xl">
-		oder auf Social Media teilen:
-	</div>
+		<div class="font-serif font-semibold text-xl">oder auf Social Media teilen:</div>
 	{/if}
 	<div class="flex flex-row gap-6 py-4 mx-auto place-content-evenly">
 		<a
 			href={`https://www.instagram.com/?url=${$page.url.href}`}
 			target="_blank"
 			rel="noopener"
-			class="text-5xl z-20 block  text-black "><Fa icon={faInstagram} /></a
+			class="text-5xl z-20 block  text-black "><Fa size="lg" icon={faInstagram} /></a
 		>
 		<a
 			href={`href="https://www.facebook.com/sharer/sharer.php?u=${$page.url.href}`}
 			target="_blank"
 			rel="noopener"
-			class="text-5xl  z-20 text-black "><Fa icon={faFacebook} /></a
+			class="text-5xl  z-20 text-black "><Fa size="lg" icon={faFacebook} /></a
 		>
 		<a
 			href={`https://twitter.com/intent/tweet?text=${$page.url.href}`}
 			target="_blank"
 			rel="noopener"
-			class="text-5xl  z-20 text-black "><Fa icon={faTwitter} /></a
+			class="text-5xl  z-20 text-black "><Fa size="lg" icon={faTwitter} /></a
 		>
 	</div>
 </VSection>
-

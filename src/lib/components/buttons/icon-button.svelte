@@ -48,12 +48,12 @@
 	style="hyphens: auto;"
 >
 	{#if path !== '#'}
-		<div href={path} aria-label={label} class="grid place-items-center" on:click={navigateJankfree}>
+		<div aria-label={label} class="grid place-items-center" on:click={navigateJankfree}>
 			<div class="h-7 grid place-content-center">
 				<slot />
 			</div>
 			{#if showLabel}
-				<div class="text-xs mb-1 whitespace-nowrap">
+				<div class="text-xs mt-1 mb-1 whitespace-nowrap">
 					<span>
 						{label}
 					</span>
@@ -61,7 +61,7 @@
 			{/if}
 		</div>
 	{:else}
-		<button aria-label={label} class="grid place-items-center" on:click={(e) => onClick(e)}>
+		<button aria-label={label} class="grid place-items-center gap-2  " on:click={(e) => onClick(e)}>
 			<slot />
 			{#if showLabel}
 				<div class="text-sm text-storm-darkest">
