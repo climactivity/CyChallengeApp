@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { isAllSuperChallengesCompelted } from '$lib/components/impact/super-challenge';
-	import { Share, type ShareResult, type ShareOptions } from '@capacitor/share';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { Share, type ShareOptions, type ShareResult } from '@capacitor/share';
+	import { fly } from 'svelte/transition';
 
 	const shareState: ShareOptions = {
 		dialogTitle: 'climactivity Super Challenge',

@@ -1,11 +1,9 @@
-import { Client, WebSocketAdapterText, Session, type Match, type WriteStorageObject, type RpcResponse } from '@heroiclabs/nakama-js';
-import { v4 } from 'uuid';
-import { writable } from 'svelte/store';
 import { matchdata, matchstatus } from '$lib/stores/context';
-import { Device } from '@capacitor/device';
-import { goto } from '$app/navigation';
-import { rewardStore } from './stores/reward-store';
 import { Capacitor } from '@capacitor/core';
+import { Device } from '@capacitor/device';
+import { Client, Session, WebSocketAdapterText, type Match, type RpcResponse, type WriteStorageObject } from '@heroiclabs/nakama-js';
+import { writable } from 'svelte/store';
+import { v4 } from 'uuid';
 
 let deviceId: string;
 let reconnectHandle

@@ -62,7 +62,7 @@
 						class="flex items-center place-content-between select-none cursor-pointer py-4 bg-white px-2 rounded-lg"
 					>
 						<p class="align-middle prose p">
-							{@html detectLinks(step.name)}
+							{@html step.name}
 						</p>
 						<button>
 							<Fa
@@ -81,7 +81,7 @@
 				<ul>
 					{#each _difficulty.todos as step}
 						<li>
-							{@html detectLinks(step.name)}
+							{@html step.name}
 						</li>
 					{/each}
 				</ul>

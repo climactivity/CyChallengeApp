@@ -2,9 +2,9 @@
 	import { hasError } from '$lib/client';
 	import {
 		Dialog,
+		DialogDescription,
 		DialogOverlay,
-		DialogTitle,
-		DialogDescription
+		DialogTitle
 	} from '@rgossiaux/svelte-headlessui';
 
 	let isOpen = false;

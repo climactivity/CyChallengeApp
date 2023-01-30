@@ -1,9 +1,6 @@
 import { client, connectGuard, session } from '$lib/client';
 import type { StorageObject, StorageObjects, WriteStorageObject } from '@heroiclabs/nakama-js';
-import type {
-	ApiDeleteStorageObjectsRequest,
-	ApiReadStorageObjectsRequest
-} from '@heroiclabs/nakama-js/dist/api.gen';
+import type { ApiReadStorageObjectsRequest } from '@heroiclabs/nakama-js/dist/api.gen';
 
 const writeManyStorage = async (
 	collection: string,
