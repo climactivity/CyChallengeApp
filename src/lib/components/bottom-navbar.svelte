@@ -39,7 +39,8 @@
 		bg-white  backdrop-blur-md
 		select-none  menu   "
 	class:home={!!$page.routeId?.startsWith('impact')}
-	class:challegne={!!$page.routeId?.startsWith('challenges')}
+	class:challegne={!!$page.routeId?.startsWith('challenges') ||
+		!!$page.routeId?.startsWith('challenge')}
 	class:journal={!!$page.routeId?.startsWith('journal')}
 	class:stats={!!$page.routeId?.startsWith('stats')}
 	class:social={!!$page.routeId?.startsWith('social')}
@@ -61,7 +62,7 @@
 		--marker-width: 2rem;
 		content: '';
 		position: absolute;
-		margin: 0 6%;
+		margin: 0 1.6rem; /* FIXME awful magic number */
 		top: 0.15rem;
 		height: 0.25rem;
 		border-radius: 1rem;
@@ -100,19 +101,19 @@
 
 	@media (min-width: 640px) {
 		.menu.home::after {
-			left: calc(0% + 2.5rem + 4px);
+			left: calc(0%);
 		}
 
 		.menu.journal::after {
-			left: calc(20% + 2.5rem);
+			left: calc(21.5%);
 		}
 
-		.menu.stats::after {
-			left: calc(40% + 2.5rem);
+		.menu.challegne::after {
+			left: calc(42.5%);
 		}
 
-		.menu.social::after {
-			left: calc(60% + 2.5rem);
+		.menu.feed::after {
+			left: calc(64%);
 		}
 	}
 </style>
