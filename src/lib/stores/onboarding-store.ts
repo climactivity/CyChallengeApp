@@ -12,6 +12,7 @@ const LS_KEY_TUTORIAL = 'cy-onboarding-tutorial';
 const initialValue = browser ? window.localStorage.getItem(LS_KEY_ONBOARDING) ?? false : false;
 let currentValue = initialValue ? JSON.parse(initialValue) : {};
 export const onboarding = writable<OnboardingState>(currentValue);
+export const initialPathReturing = '/challenges';
 
 onboarding.subscribe((value) => {
 	if (browser) {
@@ -27,8 +28,8 @@ export const onboardingGuard = async () => {
 		goto('/welcome');
 	} else if (onboardingOverride === 'skip' || currentValue.hasOnboarded) {
 		try {
-			await prefetch('/impact');
-			goto('/impact');
+			await prefetch(initialPathReturing);
+			goto(initialPathReturing);
 		} catch (e) {
 			console.log('onboardingGuard', e);
 		}
