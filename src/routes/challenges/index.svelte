@@ -1,10 +1,5 @@
 <script lang="ts" context="module">
-	import {
-		availableChallenges,
-		availableTags,
-		availableTopics,
-		challenges
-	} from '$testData/challenges';
+	import { availableTags, availableTopics } from '$testData/challenges';
 	export async function load({ params, fetch, session, stuff }) {
 		return {
 			status: 200,
@@ -23,32 +18,24 @@
 </script>
 
 <script lang="ts">
-	import type { AcceptedChallenge, ChallengeV2 } from '$lib/types/challenges';
-	import { fly, scale, slide } from 'svelte/transition';
+	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { scale } from 'svelte/transition';
 
 	let insets: Writable<any> = getContext('insets');
 
-	import { headerState } from '$lib/stores/header-store';
-	import type { Writable } from 'svelte/store';
-	import { getContext, onMount } from 'svelte';
-	import { goto } from '$app/navigation';
-	import Confetti from '$lib/components/particles/confetti.svelte';
-	import FilterIcon from '$lib/components/icons/filter-icon.svelte';
-	import { randomIntBetween } from '$lib/util';
-	import SearchButton from '$lib/components/buttons/search-button.svelte';
-	import HeroCard from '$lib/components/monthly-challenge/hero-card.svelte';
 	import ChallengeCard from '$lib/components/challenge/challenge-card.svelte';
-	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
-	import { linear, cubicIn, cubicOut } from 'svelte/easing';
-	import { navigating } from '$app/stores';
-	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
-	import ProportionalHeader from '$lib/components/proportional-header.svelte';
-	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
-	import { getChallengeInteractionsUserData } from '$lib/services/challenge-storage';
-	import { Capacitor } from '@capacitor/core';
-	import { getChallenges } from '$lib/services/challenge-content';
 	import ChallengeScrollerSkeleton from '$lib/components/challenge/challenge-scroller-skeleton.svelte';
+	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
+	import FilterIcon from '$lib/components/icons/filter-icon.svelte';
+	import HeroCard from '$lib/components/monthly-challenge/hero-card.svelte';
+	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import { pb } from '$lib/pb-client';
+	import { getChallenges } from '$lib/services/challenge-content';
+	import { headerState } from '$lib/stores/header-store';
+	import { Capacitor } from '@capacitor/core';
+	import { getContext, onMount } from 'svelte';
+	import type { Writable } from 'svelte/store';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -60,14 +47,15 @@
 	let topicList = pb.records.getFullList('topics');
 	let filter = [];
 	let showSuperChallenges = false;
-	export let tags = {
-		big_point: 'Big Point',
-		easy_action: 'Easy Action',
-		save_money: 'Save Money',
-		empty_tag: 'Empty Tag'
-	};
-	let tagList = pb.records.getFullList('tags');
-
+	let tags = pb.records.getFullList('tags').then((tagRecords) => {
+		let tagValues = {};
+		tagRecords.forEach((value) => (tagValues[value.tag] = value.label));
+		return tagValues;
+	});
+	let tagList = pb.records.getFullList('tags').then((tagRecords) => {
+		return tagRecords;
+	});
+	console.log(tagList);
 	const addFilterTag = (tag: string) => {
 		filter = filter.includes(tag) ? filter.filter((item) => item !== tag) : [tag];
 		if (filter.length > 0) {

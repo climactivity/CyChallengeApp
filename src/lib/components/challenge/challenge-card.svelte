@@ -5,6 +5,11 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import {
+		getChallengeState,
+		getChallengeUserData,
+		instanceOfChallengeAccept,
+		instanceOfChallengeBookmark,
+		instanceOfChallengeComplete,
 		instanceOfChallengeReject,
 		type ChallengeInteraction
 	} from '$lib/services/challenge-storage';
@@ -12,7 +17,7 @@
 	import { getSuperChallengeDataForLeadChallenge } from '../impact/super-challenge';
 
 	export let challenge: ChallengeV2;
-	export let challengeState: ChallengeInteraction = undefined;
+	let challengeStatePromise = getChallengeState(challenge.slug);
 	let imageUrl = getImageUrlFromChallenge(challenge, true);
 	// $: {
 	// 	// imageUrl = challenge.image != 'imageUrl' ? challenge.image?.file?.path ?? undefined : undefined;
@@ -21,7 +26,7 @@
 	// }
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
 	export let tags = {};
-
+	console.log(tags);
 	const challengeStatusTag = (status: string) => {
 		if (status !== '') {
 			status = status.toLowerCase().trim();
@@ -39,45 +44,54 @@
 		: undefined;
 </script>
 
-<div
-	class:hidden={isHidden(challenge)}
-	class="ch-card-sharp shadow-storm-light animate-fadeInBlur flex  bg-image 
-	{instanceOfChallengeReject(challengeState) ? 'bg-red-500' : ''}"
-	style={`--bg-image: url(${imageUrl})`}
-	rel="preload"
-	on:click={() => {
-		goto(`/challenge/${challenge.slug}`);
-	}}
->
-	<div class="grid grid-flow-col place-content-between w-full">
-		<span class=""
-			>{challenge.Status ? challengeStatusTag(challenge.Status) : ''}{challenge.title}</span
+{#await challengeStatePromise then challengeState}
+	<div
+		class:hidden={isHidden(challenge)}
+		class="ch-card-sharp shadow-storm-light animate-fadeInBlur flex  bg-image  relative
+				{instanceOfChallengeReject(challengeState) ? 'bg-red-500 shadow-red-500' : ''}
+				{instanceOfChallengeBookmark(challengeState) ? 'bg-yellow-500 shadow-yellow-500' : ''}
+				{instanceOfChallengeComplete(challengeState) ? 'bg-green-500 shadow-green-500' : ''}
+				{instanceOfChallengeAccept(challengeState) ? 'bg-nature shadow-nature' : ''}
+				"
+		style={`--bg-image: url(${imageUrl})`}
+		rel="preload"
+		on:click={() => {
+			goto(`/challenge/${challenge.slug}`);
+		}}
+	>
+		<div class="grid grid-flow-col place-content-between w-full">
+			<span class=""
+				>{challenge.Status ? challengeStatusTag(challenge.Status) : ''}{challenge.title}</span
+			>
+			{#await superChallenge then sc}
+				{#if superChallenge}
+					<div>
+						<SuperChallengeIcon superChallenge={sc} cssClass={'challenge-card'} />
+					</div>
+				{/if}
+			{/await}
+		</div>
+
+		<div
+			class="grid grid-flow-row-dense place-content-end items-end justify-end w-full absolute inset-0"
 		>
-		{#await superChallenge then sc}
-			{#if superChallenge}
-				<div>
-					<SuperChallengeIcon superChallenge={sc} cssClass={'challenge-card'} />
-				</div>
-			{/if}
-		{/await}
-	</div>
+			<!-- {#each challenge.topic as topic} -->
+			<!-- {#if tags[challenge.topic]} -->
 
-	<div class="flex flex-row flex-wrap items-end justify-end pl-4 w-full">
-		<!-- {#each challenge.topic as topic} -->
-		<!-- {#if tags[challenge.topic]} -->
-		{#each challenge.tags as tag}
-			{#if challenge.impact === 'Big Point'}
-				<div class="card_tag ">{tags[tag] ?? ''}</div>
-			{:else}
-				<div class="card_tag ">{tags[tag] ?? ''}</div>
-			{/if}
-		{/each}
-		<!-- {/if} -->
-		<!-- {/each} -->
+			{#await tags then tagsResloved}
+				{#each challenge.tags as tag}
+					{#if challenge.impact === 'Big Point'}
+						<div class="card_tag ">{tagsResloved[tag] ?? tag}</div>
+					{:else}
+						<div class="card_tag ">{tagsResloved[tag] ?? tag}</div>
+					{/if}
+				{/each}
+			{/await}
+			<!-- {/if} -->
+			<!-- {/each} -->
+		</div>
 	</div>
-
-	<!-- {JSON.stringify(tags)} -->
-</div>
+{/await}
 
 <style lang="scss">
 	.fadedownin {
@@ -133,7 +147,7 @@
 	.card_tag {
 		white-space: nowrap;
 		font-weight: 300;
-		@apply text-xs text-black font-medium bg-gray-100 rounded-full my-1 mx-1 px-1;
+		@apply text-[.6rem] text-black font-medium bg-gray-100 rounded-full my-[0.125rem] mx-1 px-1;
 	}
 
 	.card_tag_inverted {
