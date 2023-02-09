@@ -51,12 +51,11 @@
 		/>
 	{:then challengeState}
 		<div
-			class=" h-48  w-full header-img shadow-gray-500 {instanceOfChallengeReject(challengeState)
-				? 'bg-red-500 shadow-red-500'
-				: ''}
+			class=" h-48  w-full header-img  
+			{instanceOfChallengeReject(challengeState) ? 'bg-red-500 shadow-red-500' : ''}
 			{instanceOfChallengeBookmark(challengeState) ? 'bg-yellow-500 shadow-yellow-500' : ''}
 			{instanceOfChallengeComplete(challengeState) ? 'bg-green-500 shadow-green-500' : ''}
-			{instanceOfChallengeAccept(challengeState) ? 'bg-nature shadow-nature' : ''}  "
+			{instanceOfChallengeAccept(challengeState) ? 'bg-nature shadow-nature' : ''}   "
 			style={`background-image: url( ${$headerImageUrl}); `}
 		/>
 	{/await}
@@ -71,7 +70,7 @@
 		background-size: cover;
 		border-radius: 0px 0px 0px 4rem;
 		padding: 6px;
-		box-shadow: inset 0rem -0.4rem 0px 0px var(--tw-shadow-color);
+		box-shadow: inset 0rem -0.4rem 0px 0px var(--tw-shadow-color, rgba(0 0 0 / 0.4));
 
 		scroll-snap-align: start;
 	}

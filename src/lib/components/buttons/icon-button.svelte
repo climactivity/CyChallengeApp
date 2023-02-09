@@ -84,7 +84,7 @@
 			transition-duration: 150ms;
 			transition-timing-function: ease-out;
 
-			@apply -top-3 left-4 right-4 h-1 bg-heart rounded-full;
+			@apply -top-[20%] left-4 right-4 h-1 bg-heart rounded-full;
 		}
 	}
 	.selected {
