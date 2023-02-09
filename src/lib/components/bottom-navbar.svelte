@@ -58,11 +58,12 @@
 </div>
 
 <style lang="scss">
-	.menu::after {
+	.menu > div::after {
 		--marker-width: 2rem;
+
 		content: '';
 		position: absolute;
-		margin: 0 1.6rem; /* FIXME awful magic number */
+		margin: 0 0rem; /* FIXME awful magic number */
 		top: 0.15rem;
 		height: 0.25rem;
 		border-radius: 1rem;
