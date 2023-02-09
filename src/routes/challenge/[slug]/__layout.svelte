@@ -20,9 +20,14 @@
 	import { getImageUrlFromChallenge } from '$lib/util';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import { setContext } from 'svelte';
-
+	import {
+		getChallengeState,
+		instanceOfChallengeAccept,
+		instanceOfChallengeBookmark,
+		instanceOfChallengeComplete,
+		instanceOfChallengeReject
+	} from '$lib/services/challenge-storage';
 	export let data: ChallengeV2;
-	let imageUrl = getImageUrlFromChallenge(data);
 
 	let playAt;
 	setContext('confetti', { ref: playAt });
@@ -33,27 +38,40 @@
 		hidden: false,
 		transparent: true
 	});
+	let challengeStatePromise = getChallengeState(data.slug);
 </script>
 
 <div class=" pb-20">
-	<Confetti id="challenge_accept_particles" bind:playAt />
+	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
 
+	{#await challengeStatePromise}
+		<div
+			class=" h-48 bg-gray-50 w-full header-img  "
+			style={`background-image: url( ${$headerImageUrl}); `}
+		/>
+	{:then challengeState}
+		<div
+			class=" h-48  w-full header-img shadow-gray-500 {instanceOfChallengeReject(challengeState)
+				? 'bg-red-500 shadow-red-500'
+				: ''}
+			{instanceOfChallengeBookmark(challengeState) ? 'bg-yellow-500 shadow-yellow-500' : ''}
+			{instanceOfChallengeComplete(challengeState) ? 'bg-green-500 shadow-green-500' : ''}
+			{instanceOfChallengeAccept(challengeState) ? 'bg-nature shadow-nature' : ''}  "
+			style={`background-image: url( ${$headerImageUrl}); `}
+		/>
+	{/await}
 	<!-- header image-->
-	<div
-		class=" h-48 bg-red-500 w-full header-img  "
-		style={`background-image: url( ${$headerImageUrl}); `}
-	/>
 
 	<slot />
 </div>
 
 <style lang="scss">
 	.header-img {
-		background: white;
+		// background: white;
 		background-size: cover;
 		border-radius: 0px 0px 0px 4rem;
 		padding: 6px;
-		box-shadow: inset 0rem -0.4rem 0px 0px rgba(0 0 0 / 0.3);
+		box-shadow: inset 0rem -0.4rem 0px 0px var(--tw-shadow-color);
 
 		scroll-snap-align: start;
 	}
