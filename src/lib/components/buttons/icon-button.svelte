@@ -44,16 +44,16 @@
 	lang="de"
 	class=" w-full focus:outline-none cursor-pointer  transition-all duration-150 {selected
 		? 'selected'
-		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button break-words"
+		: 'unselected'} grid place-content-center grid-flow-col gap-2 menu-button break-words button-wrapper"
 	style="hyphens: auto;"
 >
 	{#if path !== '#'}
-		<div href={path} aria-label={label} class="grid place-items-center" on:click={navigateJankfree}>
+		<div aria-label={label} class="grid place-items-center" on:click={navigateJankfree}>
 			<div class="h-7 grid place-content-center">
 				<slot />
 			</div>
 			{#if showLabel}
-				<div class="text-xs mb-1 whitespace-nowrap">
+				<div class="text-xs mt-1 mb-1 whitespace-nowrap">
 					<span>
 						{label}
 					</span>
@@ -61,7 +61,7 @@
 			{/if}
 		</div>
 	{:else}
-		<button aria-label={label} class="grid place-items-center" on:click={(e) => onClick(e)}>
+		<button aria-label={label} class="grid place-items-center gap-2  " on:click={(e) => onClick(e)}>
 			<slot />
 			{#if showLabel}
 				<div class="text-sm text-storm-darkest">
@@ -75,17 +75,36 @@
 </div>
 
 <style lang="scss">
+	.button-wrapper {
+		position: relative;
+		&:after {
+			position: absolute;
+			content: '';
+			transition-property: transform;
+			transition-duration: 150ms;
+			transition-timing-function: ease-out;
+
+			@apply -top-3 left-4 right-4 h-1 bg-water2 rounded-full;
+		}
+	}
 	.selected {
 		position: relative;
 		fill: #5689a0;
 		color: #5689a0;
 		// animation: select 150ms ease forwards;
 		--fill: #5689a0;
+
+		&::after {
+			transform: scaleX(1);
+		}
 	}
 
 	.unselected {
 		fill: #000000;
 		// --fill: #000000;
+		&::after {
+			transform: scaleX(0);
+		}
 	}
 
 	.menu-button {

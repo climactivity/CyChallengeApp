@@ -5,6 +5,7 @@
 
 	import { rewardStore } from '$lib/stores/reward-store';
 	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 
 	let medals = '0';
 

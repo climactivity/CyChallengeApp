@@ -8,6 +8,8 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import tools.fastlane.screengrab.Screengrab;
+
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -22,5 +24,11 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         assertEquals("com.getcapacitor.app", appContext.getPackageName());
+    }
+
+    @Test
+    public void captureScreengrab() throws Exception {
+        Thread.sleep(500);
+        Screengrab.screenshot("Test");
     }
 }

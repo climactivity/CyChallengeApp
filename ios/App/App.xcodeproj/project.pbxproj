@@ -16,8 +16,21 @@
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
 		546E26132893227000DC09C8 /* NativeBackGesturePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546E26122893227000DC09C8 /* NativeBackGesturePlugin.swift */; };
 		54707257289323F50014D5E8 /* NativeBackGesturePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 54707256289323F50014D5E8 /* NativeBackGesturePlugin.m */; };
+		54D39C502907F370007BCE2D /* FSScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D39C4F2907F370007BCE2D /* FSScreenshots.swift */; };
+		54D39C522907F370007BCE2D /* FSScreenshotsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D39C512907F370007BCE2D /* FSScreenshotsLaunchTests.swift */; };
+		54D39C592907F488007BCE2D /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D39C582907F488007BCE2D /* SnapshotHelper.swift */; };
 		A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		54D39C532907F370007BCE2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 504EC2FC1FED79650016851F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 504EC3031FED79650016851F;
+			remoteInfo = App;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
@@ -33,6 +46,10 @@
 		546E26122893227000DC09C8 /* NativeBackGesturePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeBackGesturePlugin.swift; sourceTree = "<group>"; };
 		54707255289323F50014D5E8 /* App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App-Bridging-Header.h"; sourceTree = "<group>"; };
 		54707256289323F50014D5E8 /* NativeBackGesturePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeBackGesturePlugin.m; sourceTree = "<group>"; };
+		54D39C4D2907F370007BCE2D /* FSScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		54D39C4F2907F370007BCE2D /* FSScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSScreenshots.swift; sourceTree = "<group>"; };
+		54D39C512907F370007BCE2D /* FSScreenshotsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSScreenshotsLaunchTests.swift; sourceTree = "<group>"; };
+		54D39C582907F488007BCE2D /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -44,6 +61,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54D39C4A2907F370007BCE2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				504EC3061FED79650016851F /* App */,
+				54D39C4E2907F370007BCE2D /* FSScreenshots */,
 				504EC3051FED79650016851F /* Products */,
 				7F8756D8B27F46E3366F6CEA /* Pods */,
 				27E2DDA53C4D2A4D1A88CE4A /* Frameworks */,
@@ -72,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				504EC3041FED79650016851F /* App.app */,
+				54D39C4D2907F370007BCE2D /* FSScreenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +119,16 @@
 				54707255289323F50014D5E8 /* App-Bridging-Header.h */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		54D39C4E2907F370007BCE2D /* FSScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				54D39C582907F488007BCE2D /* SnapshotHelper.swift */,
+				54D39C4F2907F370007BCE2D /* FSScreenshots.swift */,
+				54D39C512907F370007BCE2D /* FSScreenshotsLaunchTests.swift */,
+			);
+			path = FSScreenshots;
 			sourceTree = "<group>";
 		};
 		7F8756D8B27F46E3366F6CEA /* Pods */ = {
@@ -126,19 +162,42 @@
 			productReference = 504EC3041FED79650016851F /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		54D39C4C2907F370007BCE2D /* FSScreenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 54D39C572907F370007BCE2D /* Build configuration list for PBXNativeTarget "FSScreenshots" */;
+			buildPhases = (
+				54D39C492907F370007BCE2D /* Sources */,
+				54D39C4A2907F370007BCE2D /* Frameworks */,
+				54D39C4B2907F370007BCE2D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54D39C542907F370007BCE2D /* PBXTargetDependency */,
+			);
+			name = FSScreenshots;
+			productName = FSScreenshots;
+			productReference = 54D39C4D2907F370007BCE2D /* FSScreenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		504EC2FC1FED79650016851F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
 					504EC3031FED79650016851F = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1340;
 						ProvisioningStyle = Automatic;
+					};
+					54D39C4C2907F370007BCE2D = {
+						CreatedOnToolsVersion = 14.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 504EC3031FED79650016851F;
 					};
 				};
 			};
@@ -156,6 +215,7 @@
 			projectRoot = "";
 			targets = (
 				504EC3031FED79650016851F /* App */,
+				54D39C4C2907F370007BCE2D /* FSScreenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -171,6 +231,13 @@
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
 				504EC30D1FED79650016851F /* Main.storyboard in Resources */,
 				2FAD9763203C412B000D30F8 /* config.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54D39C4B2907F370007BCE2D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +290,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		54D39C492907F370007BCE2D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54D39C502907F370007BCE2D /* FSScreenshots.swift in Sources */,
+				54D39C522907F370007BCE2D /* FSScreenshotsLaunchTests.swift in Sources */,
+				54D39C592907F488007BCE2D /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		54D39C542907F370007BCE2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 504EC3031FED79650016851F /* App */;
+			targetProxy = 54D39C532907F370007BCE2D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		504EC30B1FED79650016851F /* Main.storyboard */ = {
@@ -406,6 +491,55 @@
 			};
 			name = Release;
 		};
+		54D39C552907F370007BCE2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BGH588JJJP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.climacitivty.FSScreenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = App;
+			};
+			name = Debug;
+		};
+		54D39C562907F370007BCE2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BGH588JJJP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.climacitivty.FSScreenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = App;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -423,6 +557,15 @@
 			buildConfigurations = (
 				504EC3171FED79650016851F /* Debug */,
 				504EC3181FED79650016851F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		54D39C572907F370007BCE2D /* Build configuration list for PBXNativeTarget "FSScreenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				54D39C552907F370007BCE2D /* Debug */,
+				54D39C562907F370007BCE2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

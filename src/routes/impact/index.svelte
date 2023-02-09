@@ -1,23 +1,35 @@
 <script>
+	import SuperChallengeTrophy from '$lib/components/impact/super-challenge-trophy.svelte';
+
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import ShareAppButton from '$lib/components/buttons/share-app-button.svelte';
 	import HeroCompletedChallenges from '$lib/components/impact/hero-completed-challenges.svelte';
+	import { isAllSuperChallengesCompelted } from '$lib/components/impact/super-challenge';
 	import SuperChallengeMedals from '$lib/components/impact/super-challenge-medals.svelte';
+	import { fade, fly } from 'svelte/transition';
 </script>
 
+<!-- Super Challenge Pokal-->
+
+<SuperChallengeTrophy />
+
 <!-- abgeschlossene Challenges -->
-<div class="transparent-card" on:click={() => goto('/journal/achievements')}>
+<div
+	class="transparent-card animate-fade opacity-0 "
+	style="animation-delay: 350ms;"
+	on:click={() => goto('/journal/achievements')}
+>
 	<HeroCompletedChallenges />
 </div>
 
-<!-- Super Challenge Abzeichen-->
-<div class="transparent-card">
+<!-- Super Challenge Abzeichen -->
+<div class="transparent-card animate-fade opacity-0 " style="animation-delay: 550ms;">
 	<SuperChallengeMedals />
 </div>
 
 <!-- Explanation -->
-<div class="mx-4 grid gap-4 pb-8">
+<div class="mx-4 grid gap-4 pb-8 animate-fade opacity-0" style="animation-delay: 1500ms;">
 	<p>
 		Mit <em>abgeschlossene Challenges</em> siehst du wie viele Aktionen du für die Umwelt unternommen
 		hast. Jede Challenge, die du annimmst, macht einen Unterschied!
@@ -43,5 +55,10 @@
 
 	.transparent-card {
 		@apply m-4 p-4 border border-black border-opacity-10 rounded-lg;
+	}
+
+	.super-challenge-trophy-card {
+		border-radius: 0.25rem 0.25rem 0.25rem 4rem;
+		@apply m-4 p-4 border-2 border-black border-opacity-20 bg-white bg-opacity-80 shadow-md;
 	}
 </style>

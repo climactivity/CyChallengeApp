@@ -1,19 +1,20 @@
-import { Client, WebSocketAdapterText, Session, type Match, type WriteStorageObject, type RpcResponse } from '@heroiclabs/nakama-js';
-import { v4 } from 'uuid';
-import { writable } from 'svelte/store';
 import { matchdata, matchstatus } from '$lib/stores/context';
-import { Device } from '@capacitor/device';
-import { goto } from '$app/navigation';
-import { rewardStore } from './stores/reward-store';
 import { Capacitor } from '@capacitor/core';
+import { Device } from '@capacitor/device';
+import { Client, Session, WebSocketAdapterText, type Match, type RpcResponse, type WriteStorageObject } from '@heroiclabs/nakama-js';
+import { writable } from 'svelte/store';
+import { v4 } from 'uuid';
 
 let deviceId: string;
 let reconnectHandle
+
+export const HEARTBEAT_INTERVAL = 2000 /* ms */
 
 export const ssr = false;
 export let session: Session;
 export const nkReady = writable(false);
 
+export const hasError = writable(null);
 
 // console.log('connecting to nakama with settings:', JSON.stringify({
 //     host: import.meta.env.VITE_NAKAMA_HOST,
@@ -61,25 +62,45 @@ export const getDeviceID = async () => {
 
 
 export const init = async () => {
-    if (reconnectHandle) {
-        clearInterval(reconnectHandle)
+    try {
+        deviceId = await getDeviceID();
+
+        session = await createSession();
+        await connectSocket(session);
+    
+        if (reconnectHandle) {
+            clearInterval(reconnectHandle)
+        }
+
+        nkReady.set(true);
+        console.log(session.token);
+        hasError.set(null);
+
+        return session;
+    
+    } catch (error) {
+        console.log(error)
+        onIsDisconnected()
     }
-
-    deviceId = await getDeviceID();
-
-    session = await createSession();
-    await connectSocket(session);
-
-    nkReady.set(true);
-    console.log(session.token);
-    return session;
+    return null
 };
 
 export const createSession = async () => {
     var create = true;
-    let session = await client.authenticateDevice(deviceId, create, deviceId);
-    console.info('Successfully authenticated:', session);
-    return session;
+    try {
+        let session = await client.authenticateDevice(deviceId, create, deviceId);
+        console.info('Successfully authenticated:', session);
+        return session;
+    
+    } catch (error) {
+        console.log("couldn't create session!", error)
+        hasError.set({
+            error: "Keine Verbindung",
+            description: "Die App verbindet sich automatisch neu, wenn eine Netzwerkverbindung hergestellt werden kann"
+        });
+
+        return null
+    }
 };
 
 export const connectSocket = async (session) => {
@@ -94,12 +115,26 @@ export const connectSocket = async (session) => {
     return socket;
 };
 
+
+const onIsDisconnected = () => {
+    setTimeout( async () => {
+        const conntectionState = await init();
+        if (conntectionState == null) {
+
+        }
+    }, HEARTBEAT_INTERVAL)
+}
+
 socket.ondisconnect = (e) => {
     console.log('connection to gameserver lost!');
     nkReady.set(false);
 
     reconnectHandle = setInterval(() => {
         console.log('attempting to reconnect');
+        hasError.set({
+            error: "Keine Verbindung",
+            description: "Die App verbindet sich automatisch neu, wenn eine Netzwerkverbindung hergestellt werden kann"
+        });
         init();
     }, 3000);
 };

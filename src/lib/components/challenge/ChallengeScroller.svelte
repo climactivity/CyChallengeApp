@@ -10,7 +10,7 @@
 	export let tags = {};
 	export let pad = false;
 
-	export let sizeW = '12rem';
+	export let sizeW = '11rem';
 	export let sizeH = '8rem';
 	onMount(() => {
 		_challenges = [

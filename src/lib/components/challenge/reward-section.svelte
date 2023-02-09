@@ -1,19 +1,8 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
 	import VSection from '$lib/components/challenge/v-section.svelte';
-	import {
-		acceptChallenge,
-		nextLevelForChallenge,
-		type ChallengeAccept,
-		type ChallengeComplete,
-		type ChallengeInteraction
-	} from '$lib/services/challenge-storage';
+	import type { ChallengeAccept, ChallengeComplete } from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { onMount } from 'svelte';
-	import ButtonPrimaryCta from '../buttons/button-primary-cta.svelte';
-	import RecommendedChallengesSection from './recommended-challenges-section.svelte';
-	import RewardDisplay from './reward-display.svelte';
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeComplete | ChallengeAccept;
 
@@ -34,10 +23,6 @@
 			console.log(challenge, challengeState, lastCompletion);
 		}
 	}
-
-	onMount(() => {
-		console.log(challenge, challengeState, lastCompletion);
-	});
 </script>
 
 <VSection {...$$props}>

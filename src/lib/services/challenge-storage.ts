@@ -11,7 +11,7 @@ import type { StorageObject, StorageObjects } from '@heroiclabs/nakama-js';
 import { armSoftNotificationTrigger } from '$lib/push-notifications';
 import { notificationSettingsStore } from '$lib/stores/notification-config';
 import { Capacitor } from '@capacitor/core';
-import { client, nkReady, session } from '$lib/client';
+import { client, connectGuard, nkReady, session } from '$lib/client';
 import { update_await_block_branch } from 'svelte/internal';
 import { object } from 'yup';
 import { rewardStore } from '$lib/stores/reward-store';
@@ -237,13 +237,15 @@ export const getChallengeUserDataSummary = async () => {
 	// this whole thing is stupid and should be precomputed/chached on the server
 
 	console.log('getChallengeUserDataSummary');
+	await connectGuard();
 
-	let isConnected = false;
-	nkReady.update((state) => {
-		isConnected = state;
-		return state;
-	});
+	let isConnected = !!session;
+	// nkReady.update((state) => {
+	// 	isConnected = state;
+	// 	return state;
+	// });
 
+	console.log(isConnected);
 	if (!isConnected) {
 		rewardStore.update((updater) => {
 			updater.medal = 0;
@@ -251,6 +253,7 @@ export const getChallengeUserDataSummary = async () => {
 		});
 		return;
 	}
+
 	const challengeStatesList = await listStorage(CHALLENGE_INTERACTIONS_COLLECTION);
 	const challengeStatesObjects = await readManyStorage(challengeStatesList.objects);
 	if ((challengeStatesObjects as Error).cause) {
