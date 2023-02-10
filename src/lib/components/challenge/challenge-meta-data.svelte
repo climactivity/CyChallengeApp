@@ -36,7 +36,10 @@
 	}
 </script>
 
-<div class="grid grid-flow-col mx-4 my-4">
+<div
+	class="grid grid-flow-col mx-4 my-4 items-start"
+	style="grid-template-columns: repeat(4, 1fr);"
+>
 	<div class="flex flex-col justify-center items-center ">
 		{#if challenge.lead}
 			<div
@@ -138,7 +141,7 @@
 					/>
 				</svg>
 			</div>
-			<span class="text-sm font-sans text-center"> wöchtenlich </span>
+			<span class="text-sm font-sans text-center"> wöchentlich </span>
 		{:else if challenge.type === 'repeatable'}
 			<div
 				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
