@@ -40,7 +40,7 @@
 	<div class="flex flex-col justify-center items-center ">
 		{#if challenge.lead}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
 			>
 				{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
 					<SuperChallengeIcon
@@ -53,7 +53,7 @@
 			</div>
 		{:else}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm text-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm text-storm"
 			>
 				{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
 					<svg
@@ -80,7 +80,7 @@
 	<div class="flex flex-col justify-center items-center">
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
 			>
 				<div class="text-green-600 w-full ">
 					<MedalIcon />
@@ -89,7 +89,7 @@
 			<span class="text-sm font-sans text-center">Geschafft</span>
 		{:else}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
 			>
 				<div class="text-storm-dark w-full ">
 					<MedalIcon />
@@ -101,7 +101,7 @@
 	<div class="flex flex-col justify-center items-center">
 		{#if challenge.type === 'one-time'}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					class="w-14 h-14"
+					class="w-12 h-12"
 				>
 					<path
 						stroke-linecap="round"
@@ -121,7 +121,7 @@
 			<span class="text-sm font-sans text-center"> einmal </span>
 		{:else if challenge.type === 'recurring'}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					class="w-14 h-14"
+					class="w-12 h-12"
 				>
 					<path
 						stroke-linecap="round"
@@ -141,7 +141,7 @@
 			<span class="text-sm font-sans text-center"> wöchtenlich </span>
 		{:else if challenge.type === 'repeatable'}
 			<div
-				class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@
 					viewBox="0 0 24 24"
 					stroke-width="1.5"
 					stroke="currentColor"
-					class="w-14 h-14"
+					class="w-12 h-12"
 				>
 					<path
 						stroke-linecap="round"
@@ -163,7 +163,7 @@
 	</div>
 	<div class="flex flex-col justify-center items-center">
 		<div
-			class="w-20 h-20 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm text-bla"
+			class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm text-bla"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,7 @@
 				viewBox="1 -1 8 11"
 				stroke-width=".7"
 				stroke="currentColor"
-				class="w-14 h-14"
+				class="w-12 h-12"
 			>
 				<path
 					stroke-linecap="round"
