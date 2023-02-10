@@ -17,6 +17,7 @@
 	} from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import MedalIcon from './medal-icon.svelte';
+	import ChallengeHelpActionSheet from './challenge-help-action-sheet.svelte';
 
 	export let challenge: ChallengeV2;
 	export let challengeState:
@@ -34,12 +35,23 @@
 		console.log('medals', medals);
 		console.log(!getTopicBigointChallengeState(challenge.topic));
 	}
+
+	let openDialog;
 </script>
 
 <div
-	class="grid grid-flow-col mx-4 my-4 items-start"
+	class="grid grid-flow-col mx-4 my-4 items-start relative"
 	style="grid-template-columns: repeat(4, 1fr);"
+	on:click={() => {
+		openDialog();
+	}}
 >
+	<div
+		class="absolute -top-2 right-0 ring-1 rounded-full w-4 h-4 text-center grid place-content-center"
+	>
+		i
+	</div>
+
 	<div class="flex flex-col justify-center items-center ">
 		{#if challenge.lead}
 			<div
@@ -203,6 +215,8 @@
 		</span>
 	</div>
 </div>
+
+<ChallengeHelpActionSheet bind:open={openDialog} />
 
 <div>
 	<!-- {#if challenge.lead}
