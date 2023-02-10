@@ -26,7 +26,7 @@
 	// }
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
 	export let tags = {};
-	console.log(tags);
+	// console.log(tags);
 	const challengeStatusTag = (status: string) => {
 		if (status !== '') {
 			status = status.toLowerCase().trim();

@@ -73,14 +73,14 @@
 	const isHidden = (challenge: ChallengeV2) =>
 		filter.length > 0 && !filter.every((r) => challenge.tags.includes(r));
 
-	$: console.log(data.length);
+	// $: console.log(data.length);
 
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
 
-	onMount(() => console.log(topicList));
+	// onMount(() => console.log(topicList));
 
 	// let challengeStates = getChallengeInteractionsUserData();
 </script>

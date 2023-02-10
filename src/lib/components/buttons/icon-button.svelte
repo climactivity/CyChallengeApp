@@ -61,7 +61,7 @@
 			{/if}
 		</div>
 	{:else}
-		<button aria-label={label} class="grid place-items-center gap-2  " on:click={(e) => onClick(e)}>
+		<button aria-label={label} class="grid place-items-center gap-2 " on:click={(e) => onClick(e)}>
 			<slot />
 			{#if showLabel}
 				<div class="text-sm text-storm-darkest">
