@@ -147,15 +147,20 @@
 							Super Challenges
 						</div>
 					{:else}
-						<GlowAnimation glow_animation_duration="7s" glow_opacity={0.6}>
+						<GlowAnimation
+							glow_animation_duration="7s"
+							glow_opacity={0.6}
+							glow_corner_radius="full"
+						>
 							<div
 								class="awful-ls-hack transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
-								bg-gray-50 border-storm-light text-storm bg-opacity-85"
+								bg-gray-50 border-storm-light text-storm bg-opacity-85 rounde"
 								title="Super Challenges"
 							>
 								Super Challenges
 							</div>
-						</GlowAnimation>{/if}
+						</GlowAnimation>
+					{/if}
 				</div>
 				{#await tagList}
 					<div
