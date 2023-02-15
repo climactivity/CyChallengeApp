@@ -1,4 +1,7 @@
 <script lang="ts">
+	import type { GlowCornerRadius } from '$lib/types/challenges';
+	import { CapsuleGeometry, NoToneMapping } from 'three';
+
 	export let glow_line_length = '40';
 	export let glow_line_width = '2px';
 	export let glow_line_color = '#A0CF21';
@@ -12,7 +15,54 @@
 	export let glow_path_length = 100;
 	export let glow_path_offset = 100;
 	export let glow_opacity = 1;
-	export let glow_corner_radius = '1.25rem';
+	export let glow_corner_radius: GlowCornerRadius = 'full';
+	let _glow_corer_radius = 0;
+
+	let line: SVGRect;
+
+	$: switch (glow_corner_radius) {
+		case 'sm': {
+			_glow_corer_radius = 2;
+			break;
+		}
+		case 'md': {
+			_glow_corer_radius = 6;
+
+			break;
+		}
+		case 'lg': {
+			_glow_corer_radius = 8;
+
+			break;
+		}
+		case 'xl': {
+			_glow_corer_radius = 12;
+
+			break;
+		}
+		case '2xl': {
+			_glow_corer_radius = 16;
+
+			break;
+		}
+		case '3xl': {
+			_glow_corer_radius = 24;
+
+			break;
+		}
+		case 'full': {
+			_glow_corer_radius = 20;
+
+			break;
+		}
+		case 'none': {
+			_glow_corer_radius = 0;
+			break;
+		}
+		default: {
+			_glow_corer_radius = 4;
+		}
+	}
 </script>
 
 <div
@@ -39,17 +89,18 @@
     "
 >
 	<slot />
-	<svg class="glow-container">
+	<svg class="glow-container rounded">
 		<rect
-			rx={glow_corner_radius}
-			ry={glow_corner_radius}
+			rx={_glow_corer_radius}
+			ry={_glow_corer_radius}
 			class="glow-blur"
 			stroke-linecap="round"
 			pathLength={glow_path_length}
 		/>
 		<rect
-			rx={glow_corner_radius}
-			ry={glow_corner_radius}
+			bind:this={line}
+			rx={_glow_corer_radius}
+			ry={_glow_corer_radius}
 			class="glow-line"
 			stroke-linecap="round"
 			pathLength={glow_path_length}

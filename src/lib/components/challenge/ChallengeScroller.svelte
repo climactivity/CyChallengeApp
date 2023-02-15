@@ -29,7 +29,7 @@
 	<div
 		class="py-2 grid grid-flow-col gap-4 overflow-x-scroll place-items-stretch {pad
 			? 'px-4'
-			: ''} h-scroller snaps-inline"
+			: ''} h-scroller snaps-inline rou"
 		style="
             grid-auto-columns: {sizeW};
             grid-auto-rows: {sizeH};
