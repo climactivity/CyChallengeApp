@@ -42,12 +42,14 @@
 	<svg class="glow-container">
 		<rect
 			rx={glow_corner_radius}
+			ry={glow_corner_radius}
 			class="glow-blur"
 			stroke-linecap="round"
 			pathLength={glow_path_length}
 		/>
 		<rect
 			rx={glow_corner_radius}
+			ry={glow_corner_radius}
 			class="glow-line"
 			stroke-linecap="round"
 			pathLength={glow_path_length}
