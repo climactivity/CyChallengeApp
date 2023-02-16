@@ -26,14 +26,20 @@
 		| ChallengeReject
 		| ChallengeComplete;
 
-	let selectedDifficulty: string;
+	let selectedDifficulty;
+	let selectedDifficultyName;
 
 	let numCompletions, medals;
 	$: {
 		numCompletions = challengeState?.completions?.length ?? 0;
 		medals = challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions;
-		console.log('medals', medals);
-		console.log(!getTopicBigointChallengeState(challenge.topic));
+
+		if (challengeState) {
+			selectedDifficultyName = challengeState.lastDifficulty;
+			selectedDifficulty =
+				challenge.difficulties[currentLevelForChallenge(challenge, challengeState)];
+			console.log(challengeState, selectedDifficulty);
+		}
 	}
 
 	let openDialog;
@@ -209,22 +215,43 @@
 					d="M 1 8 l 0 -3 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 3 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
 				/>
 
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke="currentColor"
-					d="M 4 8 l 0 -5 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 5 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
-				/>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke="currentColor"
-					d="M 7 8 l 0 -7 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 7 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
-				/>
+				{#if selectedDifficultyName === 'medium' || selectedDifficultyName === 'mittel' || selectedDifficultyName === 'hard' || selectedDifficultyName === 'schwer'}
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						fill="currentColor"
+						stroke="currentColor"
+						d="M 4 8 l 0 -5 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 5 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
+					/>
+				{:else}
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke="currentColor"
+						d="M 4 8 l 0 -5 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 5 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
+					/>
+				{/if}
+
+				{#if selectedDifficultyName === 'hard' || selectedDifficultyName === 'schwer'}
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						fill="currentColor"
+						stroke="currentColor"
+						d="M 7 8 l 0 -7 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 7 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
+					/>
+				{:else}
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke="currentColor"
+						d="M 7 8 l 0 -7 c 0 -1 0 -1 1 -1 c 1 0 1 0 1 1 l 0 7 c 0 1 0 1 -1 1 c -1 0 -1 0 -1 -1 Z"
+					/>
+				{/if}
 			</svg>
 		</div>
 		<span class="text-sm font-sans text-center">
-			{challenge.difficulties[currentLevelForChallenge(challenge, challengeState)].name}
+			{selectedDifficultyName || Object.values(challenge.difficulties)[0].name}
 		</span>
 	</div>
 </div>

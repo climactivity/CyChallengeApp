@@ -151,6 +151,7 @@
 							glow_animation_duration="7s"
 							glow_opacity={0.6}
 							glow_corner_radius="full"
+							glow_blur_radius="2.5px"
 						>
 							<div
 								class="awful-ls-hack transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 

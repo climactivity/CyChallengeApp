@@ -54,7 +54,6 @@
 				{instanceOfChallengeAccept(challengeState) ? 'bg-nature shadow-nature' : ''}
 				"
 		style={`--bg-image: url(${imageUrl})`}
-		rel="preload"
 		on:click={() => {
 			goto(`/challenge/${challenge.slug}`);
 		}}

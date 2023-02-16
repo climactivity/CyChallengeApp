@@ -138,6 +138,8 @@
 	}
 
 	onMount(async () => {
+		console.log('CHALLENGE', challenge);
+
 		showBigpointReminder =
 			challenge.impact === 'peanut' && !(await getTopicBigointChallengeState(challenge.topic));
 	});
