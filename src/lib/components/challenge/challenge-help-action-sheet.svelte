@@ -57,18 +57,33 @@
 	</Dialog>
 </Transition> -->
 {#if isOpen}
-	<Dialog open={isOpen} on:close={close} static>
+	<Dialog open={isOpen} on:close={close}>
 		<DialogOverlay
+			on:click={close}
 			style={'position: absolute; inset: 0; background-color: rgb(0 0 0); opacity: 0.3; z-index: 8999'}
 		/>
-		<div transition:fly={{ y: 400 }} class="z-[9000]">
+		<div transition:fly={{ y: 400 }} class="absolute inset-0 z-[9000]" on:click={close}>
 			<div
 				class="absolute left-4 right-4 bottom-0  max-h-[90vh] bg-white rounded-t-lg p-4 space-y-4 shadow-xl z-[9000] overflow-scroll"
 			>
 				<DialogTitle
 					class="text-xl font-bold sticky top-[-1rem] border-b-2 bg-white left-0 right-0 h-14"
 				>
-					<div class="flex flex-row place-content-between pt-4">Über Challenges</div>
+					<div class="flex flex-row place-content-between">
+						<div class="flex flex-row place-content-between pt-4">Über Challenges</div>
+						<div on:click={close} class="w-8 h-full flex  items-center justify-center ">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-8 h-8 mt-3"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+						</div>
+					</div>
 				</DialogTitle>
 				<DialogDescription>
 					<div class="overflow-scroll">
