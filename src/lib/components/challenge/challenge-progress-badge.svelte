@@ -77,22 +77,33 @@
 				<rect
 					rx="32"
 					ry="32"
-					class="clip-path-rect clip-path-rect-completed"
+					class="clip-path-rect"
 					pathLength="144"
 					stroke="black"
 					stroke-dasharray="144"
+					stroke-dashoffset={288 - numCompletions * 24}
 					fill="white"
 				/>
 			</mask>
-
+			<!-- <rect
+				rx="32"
+				ry="32"
+				class="clip-path-rect clip-path-rect-completed"
+				pathLength="144"
+				stroke="black"
+				stroke-dasharray="144"
+				fill="white"
+				stroke-dashoffset={288 - 24}
+			/> -->
 			<mask id="clip-line">
 				<rect
 					rx="32"
 					ry="32"
-					class=" clip-path-rect clip-path-rect-line"
+					class=" clip-path-rect "
 					pathLength="144"
 					stroke="black"
 					stroke-dasharray="144"
+					stroke-dashoffset="144"
 					fill="white"
 				/>
 			</mask>
@@ -161,7 +172,6 @@
 
 	.clip-path-rect {
 		stroke-width: 10px;
-
 		--additional-margin: 5px;
 		width: calc(var(--additional-margin) + 100% - var(--container-overflow));
 		height: calc(var(--additional-margin) + 100% - var(--container-overflow));
@@ -171,7 +181,7 @@
 	}
 
 	.clip-path-rect-completed {
-		stroke-dashoffset: calc(0 - (var(--segments-completed) * 24));
+		// stroke-dashoffset: calc(0 - (var(--segments-completed) * 24));
 	}
 
 	// .ring-effect:hover .clip-path-rect-completed {
@@ -180,7 +190,7 @@
 	// }
 
 	.clip-path-rect-line {
-		stroke-dashoffset: calc(-144 - (var(--segments-completed) * 24));
+		// stroke-dashoffset: calc(-144 - (var(--segments-completed) * 24));
 	}
 
 	// .ring-effect:hover .clip-path-rect-line {
