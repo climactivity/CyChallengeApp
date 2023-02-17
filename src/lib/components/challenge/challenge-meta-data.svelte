@@ -18,6 +18,7 @@
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import MedalIcon from './medal-icon.svelte';
 	import ChallengeHelpActionSheet from './challenge-help-action-sheet.svelte';
+	import ChallengeProgressBadge from './challenge-progress-badge.svelte';
 
 	export let challenge: ChallengeV2;
 	export let challengeState:
@@ -113,6 +114,10 @@
 	</div>
 	<div class="flex flex-col justify-center items-center">
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
+			<ChallengeProgressBadge {challenge} {challengeState} />{:else}{/if}
+	</div>
+	<!-- <div class="flex flex-col justify-center items-center">
+		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
 			<div
 				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
 			>
@@ -131,7 +136,7 @@
 			</div>
 			<span class="text-sm font-sans text-center">.</span>
 		{/if}
-	</div>
+	</div> -->
 	<div class="flex flex-col justify-center items-center">
 		{#if challenge.type === 'one-time'}
 			<div
