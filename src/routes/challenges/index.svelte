@@ -120,14 +120,18 @@
 			<HeroCard />
 		</div>
 		<!-- Filter -->
-		<div class="sticky top-12 z-30">
+		<div
+			class="sticky top-12 z-30 overflow-x-scroll bg-slate-100"
+			style="
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
+				filterShadow});
+		--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
+	"
+		>
 			<div
-				class="awful-ls-hack select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-scroll  bg-slate-100 ring-opacity-100 "
-				style="
-					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
-					filterShadow});
-					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
-				"
+				class="awful-ls-hack select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap   bg-slate-100 ring-opacity-100 
+				overflow-x-scroll
+				overflow-y-clip"
 			>
 				<div
 					class="  rounded-full {filter.length || showSuperChallenges
