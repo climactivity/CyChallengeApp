@@ -75,20 +75,15 @@
 	<div class="flex flex-col justify-center items-center ">
 		{#if challenge.lead}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
 			>
 				{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
-					<SuperChallengeIcon
-						{superChallenge}
-						showBorder={false}
-						size={60}
-						cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
-					/>
+					<SuperChallengeIcon {superChallenge} showBorder={false} size={60} cssClass="badge" />
 				{/await}
 			</div>
 		{:else}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm text-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark text-storm-dark"
 			>
 				{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
 					<svg
@@ -128,9 +123,9 @@
 			<span class="text-sm font-sans text-center">Geschafft</span>
 		{:else}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
 			>
-				<div class="text-storm-dark w-full ">
+				<div class="text-storm-dark-dark w-full ">
 					<MedalIcon />
 				</div>
 			</div>
@@ -140,7 +135,7 @@
 	<div class="flex flex-col justify-center items-center">
 		{#if challenge.type === 'one-time'}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +155,7 @@
 			<span class="text-sm font-sans text-center"> einmal </span>
 		{:else if challenge.type === 'recurring'}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark text-storm-dark"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +175,7 @@
 			<span class="text-sm font-sans text-center"> wöchentlich </span>
 		{:else if challenge.type === 'repeatable'}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -202,7 +197,7 @@
 	</div>
 	<div class="flex flex-col justify-center items-center">
 		<div
-			class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm text-bla"
+			class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark text-storm-dark"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +269,7 @@
 					/>
 				{/await}
 			</div>
-			<div class=" font-bold font-serif text-storm-dark ">Super-Challenge</div>
+			<div class=" font-bold font-serif text-storm-dark-dark ">Super-Challenge</div>
 		</div>
 	{/if} -->
 

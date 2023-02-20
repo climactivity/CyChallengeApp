@@ -59,6 +59,10 @@ const currentAnimDirection = (navigation): AnimationDirection => {
 	const targetPathDepth = targetPath.split('/').length;
 
 	if (originPathBase === screenOrder.challenge && targetPathBase === screenOrder.challenge) {
+		// if (originPath.split('/')[1] !== targetPath.split('/')[1]) {
+		// 	console.log('DIFFERENT CHALLENGE');
+		// }
+
 		if (originPathDepth === 3 || targetPathDepth === 3) {
 			return AnimationDirection.neutral;
 		}

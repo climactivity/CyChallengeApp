@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-	import { availableChallenges, challenges } from '$testData/challenges';
-
 	export async function load({ params, fetch, session, stuff }) {
 		// let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
 		return {
@@ -13,13 +11,7 @@
 </script>
 
 <script lang="ts">
-	import Confetti from '$lib/components/particles/confetti.svelte';
-	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { page } from '$app/stores';
-	import { headerImageUrl, headerState } from '$lib/stores/header-store';
-	import { getImageUrlFromChallenge } from '$lib/util';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
-	import { setContext } from 'svelte';
 	import {
 		getChallengeState,
 		instanceOfChallengeAccept,
@@ -27,6 +19,10 @@
 		instanceOfChallengeComplete,
 		instanceOfChallengeReject
 	} from '$lib/services/challenge-storage';
+	import { headerImageUrl, headerState } from '$lib/stores/header-store';
+	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { getImageUrlFromChallenge } from '$lib/util';
+	import { setContext } from 'svelte';
 	export let data: ChallengeV2;
 
 	let playAt;

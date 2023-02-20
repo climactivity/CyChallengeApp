@@ -132,4 +132,8 @@
 	.reject {
 		@apply text-red-200;
 	}
+
+	.badge {
+		@apply text-storm;
+	}
 </style>

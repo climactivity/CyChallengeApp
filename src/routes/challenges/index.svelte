@@ -230,11 +230,11 @@
 				{:then topicListResolved}
 					{#each topicListResolved as topic}
 						{#await data}
-							<ChallengeScrollerSkeleton title={topic.label} length={3} />
+							<!-- <ChallengeScrollerSkeleton title={topic.label} length={3} /> -->
 						{:then fetchedChallenges}
 							<ChallengeScroller
 								challenges={fetchedChallenges.filter(
-									(challenge) => challenge.topic === topic.topic
+									(challenge) => challenge.topic === topic.topic && challenge.published
 								)}
 								title={topic.label}
 								{tags}

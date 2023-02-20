@@ -57,6 +57,7 @@ export interface ChallengeV2 extends Record<string, any> {
 	Status?: string;
 	lead: boolean;
 	notificationDays: number[];
+	published: boolean;
 }
 
 export interface Difficulties {

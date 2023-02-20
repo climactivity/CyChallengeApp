@@ -132,9 +132,9 @@
 			Math.min(Math.max(0, $scrollPosition - actionsOffsetStart), actionsOffsetEnd) /
 			actionsOffsetEnd;
 
-		if ($scrollPosition > 480) {
-			headerState.update((headerState) => ({ ...headerState, transparent: true }));
-		}
+		// if ($scrollPosition > 480) {
+		// 	headerState.update((headerState) => ({ ...headerState, transparent: true }));
+		// }
 	}
 
 	onMount(async () => {

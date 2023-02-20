@@ -48,7 +48,7 @@
 
 <div class="h-24">
 	<div
-		class="grid grid-flow-col actions gap-2 place-content-evenly place-items-center"
+		class="grid grid-flow-col actions gap-2 place-content-evenly place-items-center text-storm-dark"
 		style="place-items: baseline; grid-template-columns: 1fr 1fr 1fr 1fr ;"
 	>
 		{#if $nkReady}
