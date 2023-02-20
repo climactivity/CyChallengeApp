@@ -51,7 +51,7 @@
 	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
 	import Confetti from '$lib/components/particles/confetti.svelte';
 	export let challenge: ChallengeV2;
-	console.log('Challenge:', challenge);
+	// console.log('Challenge:', challenge);
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
 	let challengeStateType: ChallengeInteractionType;
 	let showMore = false;
@@ -97,7 +97,7 @@
 	nkReady.subscribe(async (val) => {
 		if (val) {
 			challengeState = await getChallengeState(challenge.slug);
-			console.log('challengeState', challengeState);
+			// console.log('challengeState', challengeState);
 		}
 	});
 
@@ -106,7 +106,7 @@
 	const refetch = async () => {
 		if ($nkReady) {
 			challengeState = await getChallengeState(challenge.slug);
-			console.log('challengeState', challengeState);
+			// console.log('challengeState', challengeState);
 		}
 	};
 
@@ -116,8 +116,8 @@
 	$: {
 		numCompletions = challengeState?.completions?.length ?? 0;
 		medals = challenge.type === 'recurring' ? Math.floor(numCompletions / 6) : numCompletions;
-		console.log('medals', medals);
-		console.log(!getTopicBigointChallengeState(challenge.topic));
+		// console.log('medals', medals);
+		// console.log(!getTopicBigointChallengeState(challenge.topic));
 	}
 
 	const scrollPosition: Writable<number> = hasContext('scrollPosition')
@@ -138,7 +138,7 @@
 	}
 
 	onMount(async () => {
-		console.log('CHALLENGE', challenge);
+		// console.log('CHALLENGE', challenge);
 
 		showBigpointReminder =
 			challenge.impact === 'peanut' && !(await getTopicBigointChallengeState(challenge.topic));

@@ -32,7 +32,7 @@
 			selectedDifficultyName = challengeState.lastDifficulty;
 			selectedDifficulty =
 				challenge.difficulties[currentLevelForChallenge(challenge, challengeState)];
-			console.log(challengeState, selectedDifficulty);
+			// console.log(challengeState, selectedDifficulty);
 		}
 	}
 
@@ -117,7 +117,7 @@
 	<div class="flex flex-col justify-center items-center">
 		{#if challenge.type === 'one-time'}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark text-storm-dark"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +157,7 @@
 			<span class="text-sm font-sans text-center"> wöchentlich </span>
 		{:else if challenge.type === 'repeatable'}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark text-storm-dark"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

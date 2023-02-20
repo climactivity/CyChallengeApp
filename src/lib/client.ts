@@ -51,7 +51,7 @@ export const getDeviceID = async () => {
     }
 
     let lsId = await localStorage.getItem('NK_DEVICE_ID');
-    console.log("DEVICE_ID", lsId)
+    // console.log("DEVICE_ID", lsId)
     if (!lsId) {
         lsId = v4();
         await localStorage.setItem('NK_DEVICE_ID', lsId);
@@ -73,7 +73,7 @@ export const init = async () => {
         }
 
         nkReady.set(true);
-        console.log(session.token);
+        // console.log(session.token);
         hasError.set(null);
 
         return session;
@@ -89,7 +89,7 @@ export const createSession = async () => {
     var create = true;
     try {
         let session = await client.authenticateDevice(deviceId, create, deviceId);
-        console.info('Successfully authenticated:', session);
+        console.info(`NK: Successfully authenticated @ ${import.meta.env.VITE_NAKAMA_HOST}:${import.meta.env.VITE_NAKAMA_PORT}`);
         return session;
     
     } catch (error) {
