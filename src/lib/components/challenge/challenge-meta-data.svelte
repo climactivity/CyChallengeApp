@@ -1,24 +1,17 @@
 <script lang="ts">
-	import RewardDisplay2 from './RewardDisplay2.svelte';
-
-	import {
-		getSuperChallengeCssClassForInteracion,
-		getSuperChallengeDataForLeadChallenge
-	} from '$lib/components/impact/super-challenge';
+	import { getSuperChallengeDataForLeadChallenge } from '$lib/components/impact/super-challenge';
 	import SuperChallengeIcon from '$lib/components/impact/super-challenge-icon.svelte';
 	import {
 		currentLevelForChallenge,
-		getLastCompletion,
-		getTopicBigointChallengeState,
 		type ChallengeAccept,
 		type ChallengeBookmark,
 		type ChallengeComplete,
 		type ChallengeReject
 	} from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import MedalIcon from './medal-icon.svelte';
 	import ChallengeHelpActionSheet from './challenge-help-action-sheet.svelte';
 	import ChallengeProgressBadge from './challenge-progress-badge.svelte';
+	import MedalIcon from './medal-icon.svelte';
 
 	export let challenge: ChallengeV2;
 	export let challengeState:
@@ -109,29 +102,18 @@
 	</div>
 	<div class="flex flex-col justify-center items-center">
 		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-			<ChallengeProgressBadge {challenge} {challengeState} />{:else}{/if}
-	</div>
-	<!-- <div class="flex flex-col justify-center items-center">
-		{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-green-600"
-			>
-				<div class="text-green-600 w-full ">
-					<MedalIcon />
-				</div>
-			</div>
-			<span class="text-sm font-sans text-center">Geschafft</span>
+			<ChallengeProgressBadge {challenge} {challengeState} />
 		{:else}
 			<div
-				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark"
+				class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-content-center ring-1 ring-storm-dark text-storm-dark opacity-50"
 			>
-				<div class="text-storm-dark-dark w-full ">
-					<MedalIcon />
-				</div>
+				<MedalIcon />
 			</div>
-			<span class="text-sm font-sans text-center">.</span>
+
+			<span class="text-sm font-sans text-center">Noch nicht geschafft</span>
 		{/if}
-	</div> -->
+	</div>
+
 	<div class="flex flex-col justify-center items-center">
 		{#if challenge.type === 'one-time'}
 			<div

@@ -69,7 +69,7 @@
 {/if} -->
 {#if challenge.type === 'recurring'}
 	<div class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-items-center relative ring-effect">
-		<div class={isFractionalCompletion ? 'text-gray-400' : 'text-green-600'}>
+		<div class={isFractionalCompletion ? 'text-storm-dark opacity-60' : 'text-green-600'}>
 			<MedalIcon />
 		</div>
 		<svg class="ring-container" style="--segments-completed: {numCompletions}">
@@ -129,14 +129,16 @@
 			/>
 		</svg>
 	</div>
-	<span class="text-sm font-sans text-center">{fractionalCompletion} {numCompletions}</span>
+	<span class="text-sm font-sans text-center">{numCompletions} von 6</span>
 {:else}
-	<div class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-items-center relative ring-effect">
-		<div class="text-green-600">
+	<div
+		class="w-16 h-16 rounded-full bg-gray-50 m-1 grid place-items-center relative  ring-effect ring-green-600 ring-1 rounded-full"
+	>
+		<div class="text-green-600 ">
 			<MedalIcon />
 		</div>
 	</div>
-	<div class="text-4xl font-bold">Geschafft</div>
+	<div class="font-bold text-sm font-sans text-center">Geschafft</div>
 {/if}
 
 <style lang="scss">
@@ -144,7 +146,7 @@
 		--container-overflow: 100px;
 		--ring-line-color: #000;
 		--ring-completed-color: rgb(22 163 74);
-		--ring-open-color: #aaa;
+		--ring-open-color: rgb(74 74 73);
 		--ring-line-width: 3px;
 		--path-length: 144;
 
