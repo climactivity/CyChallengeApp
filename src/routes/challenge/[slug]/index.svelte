@@ -10,6 +10,8 @@
 </script>
 
 <script lang="ts">
+	import ChallengeMetaData from '$lib/components/challenge/challenge-meta-data.svelte';
+
 	import RewardDisplay2 from '../../../lib/components/challenge/RewardDisplay2.svelte';
 
 	import { goto, prefetch } from '$app/navigation';
@@ -20,6 +22,7 @@
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 	import DifficultyCard from '$lib/components/difficulty-card.svelte';
 	import {
+		currentLevelForChallenge,
 		getChallengeState,
 		getLastCompletion,
 		getTopicBigointChallengeState,
@@ -129,12 +132,14 @@
 			Math.min(Math.max(0, $scrollPosition - actionsOffsetStart), actionsOffsetEnd) /
 			actionsOffsetEnd;
 
-		if ($scrollPosition > 480) {
-			headerState.update((headerState) => ({ ...headerState, transparent: true }));
-		}
+		// if ($scrollPosition > 480) {
+		// 	headerState.update((headerState) => ({ ...headerState, transparent: true }));
+		// }
 	}
 
 	onMount(async () => {
+		console.log('CHALLENGE', challenge);
+
 		showBigpointReminder =
 			challenge.impact === 'peanut' && !(await getTopicBigointChallengeState(challenge.topic));
 	});
@@ -159,26 +164,7 @@
 			{challenge.title}
 		</div>
 
-		<div>
-			{#if challenge.lead}
-				<div class="mx-4 my-4 display flex flex-row items-center gap-3">
-					<div>
-						{#await getSuperChallengeDataForLeadChallenge(challenge.slug) then superChallenge}
-							<SuperChallengeIcon
-								{superChallenge}
-								cssClass={getSuperChallengeCssClassForInteracion(challengeState)}
-							/>
-						{/await}
-					</div>
-					<div class=" font-bold font-serif text-storm-dark ">Super-Challenge</div>
-				</div>
-			{/if}
-
-			<!-- completions -->
-			{#if challengeState && (challengeState.type === 'complete' || (challengeState.type === 'accept' && challengeState.completions?.length > 0))}
-				<RewardDisplay2 {medals} lastCompleted={getLastCompletion(challengeState).toRelative()} />
-			{/if}
-		</div>
+		<ChallengeMetaData {challenge} {challengeState} />
 
 		<!-- TODO figure out if we want a reminder to do the bigpoint first -->
 		{#if showBigpointReminder}
@@ -206,8 +192,9 @@
 			/>
 		</div>
 
-		<div class="mx-4">
-			{#if !challengeState || challengeState.type !== 'accept'}
+		<!-- selects which difficulty level to show on not accepted challenges-->
+		{#if !challengeState || challengeState.type !== 'accept'}
+			<div class="mx-4">
 				<!-- steps -->
 				{#if challenge.difficulties['easy']}
 					<div class="">
@@ -237,8 +224,8 @@
 						/>
 					</div>
 				{/if}
-			{/if}
-		</div>
+			</div>
+		{/if}
 
 		<!-- todos for currently accepted challenge-->
 		<div class="mx-4">

@@ -9,7 +9,7 @@
 	export let challengeHidden: (ChallengeV2) => boolean;
 	export let tags = {};
 	export let pad = false;
-
+	export let isRecommendation = false;
 	export let sizeW = '11rem';
 	export let sizeH = '8rem';
 	onMount(() => {
@@ -29,7 +29,7 @@
 	<div
 		class="py-2 grid grid-flow-col gap-4 overflow-x-scroll place-items-stretch {pad
 			? 'px-4'
-			: ''} h-scroller snaps-inline"
+			: ''} h-scroller snaps-inline rou"
 		style="
             grid-auto-columns: {sizeW};
             grid-auto-rows: {sizeH};
@@ -37,7 +37,7 @@
 	>
 		{#if _challenges && _challenges.length > 0}
 			{#each _challenges as challenge}
-				<ChallengeCard {challenge} isHidden={challengeHidden} {tags} />
+				<ChallengeCard {challenge} isHidden={challengeHidden} {tags} {isRecommendation} />
 			{/each}
 		{/if}
 	</div>

@@ -24,7 +24,7 @@
 	SafeArea.getSafeAreaInsets().then(({ insets: _insets }) => {
 		insets.set(_insets);
 
-		console.log('insets', JSON.stringify(_insets));
+		// console.log('insets', JSON.stringify(_insets));
 	});
 	//check if user is on safari because we'll have to change the 100vh to something else as safari covers the bottom menu
 	let url = $page.routeId;
@@ -75,7 +75,6 @@
 	}
 
 	onMount(async () => {
-		console.log('hi');
 		if (Capacitor.getPlatform() === 'ios') {
 			let root = document.documentElement;
 			root.style.setProperty('--save-h-max', '95vh');
@@ -89,12 +88,12 @@
 		}
 		await oneSignalInit();
 
-		console.log(
-			'safari check:',
-			!Capacitor.isNativePlatform(), // only apply when not running as an 'app'
-			iOSSafari, // and on an iOS device
-			window.innerWidth < 768
-		);
+		// console.log(
+		// 	'safari check:',
+		// 	!Capacitor.isNativePlatform(), // only apply when not running as an 'app'
+		// 	iOSSafari, // and on an iOS device
+		// 	window.innerWidth < 768
+		// );
 	});
 </script>
 

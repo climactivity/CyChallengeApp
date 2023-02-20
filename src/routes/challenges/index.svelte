@@ -36,6 +36,7 @@
 	import { Capacitor } from '@capacitor/core';
 	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
+	import GlowAnimation from '$lib/animations/glow-animation.svelte';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -73,14 +74,14 @@
 	const isHidden = (challenge: ChallengeV2) =>
 		filter.length > 0 && !filter.every((r) => challenge.tags.includes(r));
 
-	$: console.log(data.length);
+	// $: console.log(data.length);
 
 	let scrollY = 0;
 	let filterShadow = 0,
 		titleShadow = 0;
 	$: filterShadow = Math.min(Math.max(0, scrollY - 180), 25) / 25;
 
-	onMount(() => console.log(topicList));
+	// onMount(() => console.log(topicList));
 
 	// let challengeStates = getChallengeInteractionsUserData();
 </script>
@@ -119,14 +120,18 @@
 			<HeroCard />
 		</div>
 		<!-- Filter -->
-		<div class="sticky top-12 z-30">
+		<div
+			class="sticky top-12 z-30 overflow-x-scroll bg-slate-100"
+			style="
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
+				filterShadow});
+		--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
+	"
+		>
 			<div
-				class="awful-ls-hack select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap overflow-x-scroll  bg-slate-100 ring-opacity-100 "
-				style="
-					box-shadow: 0 4px 6px -1px rgb(0 0 0 / {0.1 * filterShadow}), 0 2px 4px -2px rgb(0 0 0 / {0.1 *
-					filterShadow});
-					--tw-bg-opacity: {Math.min(Math.max(0, scrollY - 100), 25) / 25}
-				"
+				class="awful-ls-hack select-none flex flex-row justify-start gap-4 items-center mt-4 h-12  md:mx-auto md:max-w-3xl px-4 flex-nowrap   bg-slate-100 ring-opacity-100 
+				overflow-x-scroll
+				overflow-y-clip"
 			>
 				<div
 					class="  rounded-full {filter.length || showSuperChallenges
@@ -137,21 +142,30 @@
 					<FilterIcon filled={!!filter.length || showSuperChallenges} />
 				</div>
 				<div class="relative" on:click={toggleFilterSuperChallenges}>
-					{#if !showSuperChallenges}
+					{#if showSuperChallenges}
 						<div
-							transition:scale
-							class="absolute w-full h-full font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none bg-gradient-to-r to-nature-light from-water2-light blur-sm animate-tiltGradient"
-						/>
+							class="awful-ls-hack transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
+								 bg-nature  text-white font-bold"
+							title="Super Challenges"
+						>
+							Super Challenges
+						</div>
+					{:else}
+						<GlowAnimation
+							glow_animation_duration="7s"
+							glow_opacity={0.6}
+							glow_corner_radius="full"
+							glow_blur_radius="2.5px"
+						>
+							<div
+								class="awful-ls-hack transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
+								bg-gray-50 border-storm-light text-storm bg-opacity-85 rounde"
+								title="Super Challenges"
+							>
+								Super Challenges
+							</div>
+						</GlowAnimation>
 					{/if}
-					<div
-						class="awful-ls-hack transition relative font-sans text-sm whitespace-nowrap px-4 py-2 rounded-full cursor-pointer select-none  border 
-					{showSuperChallenges
-							? 'bg-gradient-to-r to-nature from-water2 text-white font-bold'
-							: 'bg-gray-50 border-storm-light text-storm bg-opacity-85'}"
-						title="Super Challenges"
-					>
-						Super Challenges
-					</div>
 				</div>
 				{#await tagList}
 					<div
@@ -216,11 +230,11 @@
 				{:then topicListResolved}
 					{#each topicListResolved as topic}
 						{#await data}
-							<ChallengeScrollerSkeleton title={topic.label} length={3} />
+							<!-- <ChallengeScrollerSkeleton title={topic.label} length={3} /> -->
 						{:then fetchedChallenges}
 							<ChallengeScroller
 								challenges={fetchedChallenges.filter(
-									(challenge) => challenge.topic === topic.topic
+									(challenge) => challenge.topic === topic.topic && challenge.published
 								)}
 								title={topic.label}
 								{tags}
@@ -288,6 +302,7 @@
 		height: 0;
 		overflow: hidden;
 		visibility: hidden;
+		// color: #adc765;
 	}
 
 	// .stuck {

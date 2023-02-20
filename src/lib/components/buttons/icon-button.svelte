@@ -61,7 +61,7 @@
 			{/if}
 		</div>
 	{:else}
-		<button aria-label={label} class="grid place-items-center gap-2  " on:click={(e) => onClick(e)}>
+		<button aria-label={label} class="grid place-items-center gap-2 " on:click={(e) => onClick(e)}>
 			<slot />
 			{#if showLabel}
 				<div class="text-sm text-storm-darkest">
@@ -84,15 +84,17 @@
 			transition-duration: 150ms;
 			transition-timing-function: ease-out;
 
-			@apply -top-3 left-4 right-4 h-1 bg-water2 rounded-full;
+			@apply -top-[20%] left-4 right-4 h-1 bg-heart rounded-full;
 		}
 	}
 	.selected {
 		position: relative;
-		fill: #5689a0;
-		color: #5689a0;
-		// animation: select 150ms ease forwards;
-		--fill: #5689a0;
+		// fill: #5689a0;
+		// color: #5689a0;
+		// // animation: select 150ms ease forwards;
+		// --fill: #5689a0;
+
+		@apply fill-heart text-heart;
 
 		&::after {
 			transform: scaleX(1);

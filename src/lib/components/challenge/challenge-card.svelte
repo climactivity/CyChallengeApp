@@ -26,7 +26,8 @@
 	// }
 	export let isHidden: (ChallengeV2) => boolean = (challenge) => false;
 	export let tags = {};
-	console.log(tags);
+	export let isRecommendation = false;
+	// console.log(tags);
 	const challengeStatusTag = (status: string) => {
 		if (status !== '') {
 			status = status.toLowerCase().trim();
@@ -54,9 +55,14 @@
 				{instanceOfChallengeAccept(challengeState) ? 'bg-nature shadow-nature' : ''}
 				"
 		style={`--bg-image: url(${imageUrl})`}
-		rel="preload"
-		on:click={() => {
-			goto(`/challenge/${challenge.slug}`);
+		on:click={async () => {
+			if (isRecommendation) {
+				//FIXME make this not navigate back
+				await goto(`/challenges`);
+				setTimeout(() => goto(`/challenge/${challenge.slug}`), 200);
+			} else {
+				goto(`/challenge/${challenge.slug}`);
+			}
 		}}
 	>
 		<div class="grid grid-flow-col place-content-between w-full">

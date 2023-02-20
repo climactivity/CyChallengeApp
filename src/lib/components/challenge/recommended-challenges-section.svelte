@@ -44,6 +44,7 @@
 
 	{#await data then challenges}
 		<ChallengeScroller
+			isRecommendation
 			challenges={challenges.filter((ch) => ch.slug !== challenge.slug)}
 			title={rejected
 				? 'Andere Challenges, die dich statt dessen interessieren könnten:'

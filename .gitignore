@@ -14,3 +14,4 @@ node_modules
 .blend1
 Appfile
 android/fastlane/Appfile
+android/.idea/deploymentTargetDropDown.xml

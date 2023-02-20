@@ -182,7 +182,7 @@ export const currentLevelForChallenge = (
 	if (!challengeState) return levelsArr[0].name;
 
 	// challenge is completed, show no more todos
-	if (challengeState.type === 'completed') {
+	if (challengeState.type === 'complete') {
 		return challengeState.currentLevel;
 	}
 

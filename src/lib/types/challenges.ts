@@ -38,6 +38,7 @@ export interface ImageSource {
 		path?: string;
 	};
 }
+export type GlowCornerRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full';
 
 export interface ChallengeV2 extends Record<string, any> {
 	title: string;
@@ -56,6 +57,7 @@ export interface ChallengeV2 extends Record<string, any> {
 	Status?: string;
 	lead: boolean;
 	notificationDays: number[];
+	published: boolean;
 }
 
 export interface Difficulties {

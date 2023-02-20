@@ -3,14 +3,16 @@
 
 	export let superChallenge: SuperChallenge;
 	export let cssClass = 'not-accepted';
+	export let showBorder = true;
+	export let size = 40;
 </script>
 
 <svg
 	aria-hidden
 	class={cssClass}
 	style=""
-	width="40"
-	height="40"
+	width={size}
+	height={size}
 	viewBox="0 0 40 40"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
@@ -93,17 +95,19 @@
 			/>
 		{/if}
 	{/if}
-	<rect
-		x="1"
-		y="1"
-		width="38"
-		height="38"
-		rx="19"
-		stroke="currentColor"
-		stroke-opacity="1"
-		stroke-width="2"
-		fill-opacity="1"
-	/>
+	{#if showBorder}
+		<rect
+			x="1"
+			y="1"
+			width="38"
+			height="38"
+			rx="19"
+			stroke="currentColor"
+			stroke-opacity="1"
+			stroke-width="2"
+			fill-opacity="1"
+		/>
+	{/if}
 </svg>
 
 <style lang="scss">
@@ -127,5 +131,9 @@
 
 	.reject {
 		@apply text-red-200;
+	}
+
+	.badge {
+		@apply text-storm;
 	}
 </style>

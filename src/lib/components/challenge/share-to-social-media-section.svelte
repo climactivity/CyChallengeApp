@@ -26,19 +26,19 @@
 			href={`https://www.instagram.com/?url=${$page.url.href}`}
 			target="_blank"
 			rel="noopener"
-			class="text-5xl z-20 block  text-black "><Fa size="lg" icon={faInstagram} /></a
+			class="text-5xl z-20 block  text-storm-dark "><Fa size="md" icon={faInstagram} /></a
 		>
 		<a
 			href={`href="https://www.facebook.com/sharer/sharer.php?u=${$page.url.href}`}
 			target="_blank"
 			rel="noopener"
-			class="text-5xl  z-20 text-black "><Fa size="lg" icon={faFacebook} /></a
+			class="text-5xl  z-20 text-storm-dark "><Fa size="md" icon={faFacebook} /></a
 		>
 		<a
 			href={`https://twitter.com/intent/tweet?text=${$page.url.href}`}
 			target="_blank"
 			rel="noopener"
-			class="text-5xl  z-20 text-black "><Fa size="lg" icon={faTwitter} /></a
+			class="text-5xl  z-20 text-storm-dark "><Fa size="md" icon={faTwitter} /></a
 		>
 	</div>
 </VSection>
