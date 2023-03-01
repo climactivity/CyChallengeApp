@@ -29,7 +29,7 @@
 	export let challenge: ChallengeV2;
 	export let rejected: boolean = false;
 
-	console.log(challenge);
+	// console.log(challenge);
 
 	export let data = getChallengesByTopic(challenge.topic);
 	// export let topics;

@@ -56,7 +56,7 @@
 			</svg>
 		</div>
 		{#if showLabel}
-			<div class="text-xs mb-1  {$showMenu ? 'text-water2' : 'text-black'}">
+			<div class="text-xs mb-1  {$showMenu ? 'text-heart' : 'text-black'}">
 				<span> Menu </span>
 			</div>
 		{/if}
@@ -84,7 +84,7 @@
 		stroke-dashoffset: 136.9;
 	}
 	.expanded {
-		stroke: #5689a0;
+		stroke: #e40045;
 		stroke-dashoffset: 71.1;
 	}
 </style>
