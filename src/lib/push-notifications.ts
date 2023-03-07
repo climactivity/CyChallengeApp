@@ -34,8 +34,6 @@ export const oneSignalInit: () => Promise<void> = async () => {
 		return;
 	}
 	console.log('initing onesignal...');
-	let { default: OneSignalPlugin } = await import('onesignal-cordova-plugin');
-	OneSignal = OneSignalPlugin;
 	if (!Capacitor.isNativePlatform()) {
 		console.log(
 			'Push notifications are only configured for mobile platforms, skipping on',
@@ -43,6 +41,8 @@ export const oneSignalInit: () => Promise<void> = async () => {
 		);
 		return;
 	}
+	let { default: OneSignalPlugin } = await import('onesignal-cordova-plugin');
+	OneSignal = OneSignalPlugin;
 
 	console.log('onesignal module loaded');
 
