@@ -3,47 +3,11 @@
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import type { ChallengeComplete, ChallengeInteraction } from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
+	import ChallengeProgressBadge from './challenge-progress-badge.svelte';
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeComplete;
 	export let skipped = false;
 	export let index = 0;
-
-	const getNumCompletions = (challengeState: ChallengeComplete): string => {
-		if (!challengeState) {
-			return '0';
-		}
-		if (challengeState.completions) {
-			const compl = challengeState.completions.length;
-			if (compl > 6) {
-				return `${Math.floor(compl / 6)}`;
-			} else {
-				return `${compl}/6`;
-			}
-		} else {
-			if (challengeState.type === 'complete') {
-				return '1';
-			} else {
-				return '0';
-			}
-		}
-	};
-
-	const isFractionalCompletion = (challengeState: ChallengeComplete) => {
-		if (!challengeState) {
-			return false;
-		}
-		if (challengeState.completions) {
-			const compl = challengeState.completions.length;
-			if (compl < 6) {
-				return true;
-			}
-		}
-		return false;
-	};
-	let fractionalCompletion = false;
-	let numCompletions = '0';
-	$: fractionalCompletion = isFractionalCompletion(challengeState);
-	$: numCompletions = getNumCompletions(challengeState);
 </script>
 
 <div
@@ -56,34 +20,7 @@
 			{skipped ? 'Das machst du schon' : 'Du hast es geschafft'}
 		</div>
 	</div>
-	<div
-		class="grid grid-flow-col items-center place-items-center  px-4 py-2 rounded-xl text-reward border"
-	>
-		{#if isFractionalCompletion}
-			{''}
-		{:else}
-			<div class=" w-full 0">
-				<svg
-					class="h-20 w-20 mx-auto"
-					viewBox="0 0 76 76"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M37.9997 69.6663C50.2198 69.6663 60.1663 59.7198 60.1663 47.4997C60.1663 35.2795 50.2198 25.333 37.9997 25.333C25.7763 25.333 15.833 35.2795 15.833 47.4997C15.833 59.7198 25.7763 69.6663 37.9997 69.6663ZM37.9997 31.6663C46.7302 31.6663 53.833 38.7692 53.833 47.4997C53.833 56.2302 46.7302 63.333 37.9997 63.333C29.2692 63.333 22.1663 56.2302 22.1663 47.4997C22.1663 38.7692 29.2692 31.6663 37.9997 31.6663ZM34.833 6.33301H22.1663V23.8067C25.9558 21.2709 30.3008 19.6861 34.833 19.1865V6.33301ZM53.833 6.33301H41.1663V19.1865C45.6985 19.6861 50.0435 21.2709 53.833 23.8067V6.33301Z"
-						fill="currentColor"
-					/>
-					<path
-						d="M31.7265 50.0678L30.2445 58.7002L37.9997 54.6247L45.7549 58.7002L44.2729 50.0678L50.5492 43.9498L41.8789 42.6895L37.9997 34.833L34.1205 42.6895L25.4502 43.9498L31.7265 50.0678Z"
-						fill="currentColor"
-					/>
-				</svg>
-			</div>
-		{/if}
-		{#if challenge.type === 'recurring'}
-			<div class="text-4xl font-bold">{numCompletions}</div>
-		{:else}
-			<div class="text-4xl font-bold">1</div>
-		{/if}
+	<div class="grid grid-flow-row items-center place-items-center  px-4 py-2 rounded-xl text-reward">
+		<ChallengeProgressBadge {challenge} {challengeState} />
 	</div>
 </div>
