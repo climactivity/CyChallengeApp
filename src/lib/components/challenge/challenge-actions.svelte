@@ -137,11 +137,11 @@
 				<InviteFriendButton
 					onClick={async (e) => {
 						console.log('invite friend to challenge');
-						if (Capacitor.isNativePlatform() && (await Share.canShare())) {
+						if (await Share.canShare()) {
 							await Share.share({
 								title: `${challenge.title} bei climactivity`,
 								text: `Möchtest du bei ${challenge.title} mitmachen?`,
-								url: $page.url.href,
+								url: `${import.meta.env.VITE_CHALLENGE_SHARE_TARGET_BASE_URL}/${challenge.slug}`,
 								dialogTitle: `${challenge.title} bei climactivity`
 							});
 						} else {
