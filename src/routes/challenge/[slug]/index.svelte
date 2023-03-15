@@ -146,7 +146,7 @@
 </script>
 
 <div transition:fade={{ duration: 250 }}>
-	<Confetti id="challenge_accept_particles" bind:playAt />
+	<!-- <Confetti id="challenge_accept_particles" bind:playAt /> -->
 
 	<!-- header image-->
 	<!-- <div

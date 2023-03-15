@@ -44,15 +44,15 @@
 			}
 
 			if (s == null || s == undefined) {
-				score += 0;
+				score += 50;
 			} else if (instanceOfChallengeReject(s)) {
 				score += 200;
 			} else if (instanceOfChallengeBookmark(s)) {
-				score += 0;
+				score += 25;
 			} else if (instanceOfChallengeAccept(s)) {
-				score += 50;
+				score += 0;
 			} else if (instanceOfChallengeComplete(s)) {
-				score += 100;
+				score += 150;
 			}
 			return score;
 		};
