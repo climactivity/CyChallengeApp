@@ -228,7 +228,7 @@
 					<ChallengeScrollerSkeleton length={3} />
 					<ChallengeScrollerSkeleton length={3} />
 				{:then topicListResolved}
-					{#each topicListResolved as topic}
+					{#each topicListResolved as topic, index}
 						{#await data}
 							<!-- <ChallengeScrollerSkeleton title={topic.label} length={3} /> -->
 						{:then fetchedChallenges}
@@ -240,6 +240,7 @@
 								{tags}
 								challengeHidden={(_) => false}
 								pad
+								delay={index * 250 + 50}
 							/>
 						{/await}
 					{/each}

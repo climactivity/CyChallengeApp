@@ -9,6 +9,7 @@
 	} from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { onMount } from 'svelte';
+	import { fly, slide } from 'svelte/transition';
 	import ChallengeCard from './challenge-card.svelte';
 
 	export let title = '';
@@ -62,10 +63,12 @@
 
 		return aValue - bValue;
 	};
+
+	export let delay = 0; 
 </script>
 
 {#if _challenges.length > 0}
-	<div class="">
+	<div class="" in:fly={{opacity: 0, y: 50, duration: 750, delay: delay}}>
 		<!-- get the nice, readable topic title-->
 		<div class="text-lg font-light font-serif {pad ? 'px-4' : ''}">{title}</div>
 		<div

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getDeviceID } from '$lib/client';
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import { writeStorage } from '$lib/services/client-storage-engine';
 	import type { ChallengeV2 } from '$lib/types/challenges';
@@ -13,12 +14,13 @@
 	let submitting = false
 	const saveRejectReason = async (challenge, reason, message) => { 
 		submitting = true;
-		const key = `${challenge.slug}-${generateUUID()}`
+		const deviceId = await getDeviceID()
+		const key = `${challenge.slug}-${deviceId}`
 		await writeStorage("challenge-rejects", key, {
 			challenge,
 			reason,
 			message,
-		}, null, 1,0 ).catch(e => console.error(e))
+		}, null, 1,1  ).catch(e => console.error(e))
 		rejectionRecorded = true; 
 		submitting = false; 
 	} 
