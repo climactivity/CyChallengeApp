@@ -225,7 +225,7 @@
 						<ChallengeScrollerSkeleton length={3} />
 						<ChallengeScrollerSkeleton length={3} />
 					{:then topicListResolved}
-						{#each topicListResolved as topic}
+						{#each topicListResolved as topic, index}
 							<ChallengeScroller
 								challenges={challenges.filter(
 									(challenge) => challenge.topic === topic.topic && challenge.published
@@ -234,6 +234,7 @@
 								{tags}
 								challengeHidden={(_) => false}
 								pad
+								delay={index * 250 + 50}
 							/>
 						{/each}
 					{/await}
