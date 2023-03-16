@@ -201,8 +201,8 @@
 		</div>
 		<!-- Challenges -->
 
-		{#if filter.length > 0}
-			{#await data then challenges}
+		{#await data then challenges}
+			{#if filter.length > 0}
 				{#key filter}
 					<div class="container__filter min-h-content ">
 						{#each challenges as challenge}
@@ -210,30 +210,24 @@
 						{/each}
 					</div>
 				{/key}
-			{/await}
-		{:else if showSuperChallenges}
-			{#await data then challenges}
+			{:else if showSuperChallenges}
 				<div class="container__filter min-h-content ">
 					{#each challenges.filter((challenge) => challenge.lead) as challenge}
 						<ChallengeCard {challenge} {tags} {isHidden} />
 					{/each}
 				</div>
-			{/await}
-		{:else}
-			<div class="container min-h-content overflow-visible">
-				{#await topicList}
-					<ChallengeScrollerSkeleton length={3} />
-					<ChallengeScrollerSkeleton length={3} />
-					<ChallengeScrollerSkeleton length={3} />
-					<ChallengeScrollerSkeleton length={3} />
-					<ChallengeScrollerSkeleton length={3} />
-				{:then topicListResolved}
-					{#each topicListResolved as topic}
-						{#await data}
-							<!-- <ChallengeScrollerSkeleton title={topic.label} length={3} /> -->
-						{:then fetchedChallenges}
+			{:else}
+				<div class="container min-h-content overflow-visible">
+					{#await topicList}
+						<ChallengeScrollerSkeleton length={3} />
+						<ChallengeScrollerSkeleton length={3} />
+						<ChallengeScrollerSkeleton length={3} />
+						<ChallengeScrollerSkeleton length={3} />
+						<ChallengeScrollerSkeleton length={3} />
+					{:then topicListResolved}
+						{#each topicListResolved as topic}
 							<ChallengeScroller
-								challenges={fetchedChallenges.filter(
+								challenges={challenges.filter(
 									(challenge) => challenge.topic === topic.topic && challenge.published
 								)}
 								title={topic.label}
@@ -241,11 +235,11 @@
 								challengeHidden={(_) => false}
 								pad
 							/>
-						{/await}
-					{/each}
-				{/await}
-			</div>
-		{/if}
+						{/each}
+					{/await}
+				</div>
+			{/if}
+		{/await}
 
 		{#if Capacitor.getPlatform() === 'ios'}
 			<div class="h-20 findme " />

@@ -15,6 +15,7 @@
 	} from '$lib/services/challenge-storage';
 	import SuperChallengeIcon from '../impact/super-challenge-icon.svelte';
 	import { getSuperChallengeDataForLeadChallenge } from '../impact/super-challenge';
+	import { onMount } from 'svelte';
 
 	export let challenge: ChallengeV2;
 	// let challengeStatePromise = getChallengeState(challenge.slug);
@@ -44,6 +45,12 @@
 	let superChallenge = challenge.lead
 		? getSuperChallengeDataForLeadChallenge(challenge.slug)
 		: undefined;
+
+	onMount(async () => {
+		if (!challengeState) {
+			challengeState = await getChallengeState(challenge.slug);
+		}
+	});
 </script>
 
 <div
