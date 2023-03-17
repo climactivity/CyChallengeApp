@@ -32,9 +32,9 @@
 </script>
 
 <div class="flex flex-col pt-8">
-	<CongratulationSection {challenge} index={0} skipped />
+	<CongratulationSection {challenge} {challengeState} index={0} skipped />
 	<!-- <RewardSection {challenge} {challengeState} index={1} /> -->
 	<RecommendedChallengesSection {challenge} index={1} />
 	<ShareToSocialMediaSection {challenge} index={3} />
-	<BackToChallengesPageSection last={true} index={3} />
+	<BackToChallengesPageSection last={true} index={4} />
 </div>

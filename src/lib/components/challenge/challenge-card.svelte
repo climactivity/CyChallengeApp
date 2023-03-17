@@ -55,7 +55,7 @@
 
 <div
 	class:hidden={isHidden(challenge)}
-	class="ch-card-sharp shadow-storm-light animate-fadeInBlur flex  bg-image  relative
+	class="ch-card-sharp shadow-storm-light animate-fadeInBlur flex  bg-image  relative bg-opacity-30
 				{instanceOfChallengeReject(challengeState) ? 'bg-red-500 shadow-red-500' : ''}
 				{instanceOfChallengeBookmark(challengeState) ? 'bg-yellow-500 shadow-yellow-500' : ''}
 				{instanceOfChallengeComplete(challengeState) ? 'bg-green-500 shadow-green-500' : ''}

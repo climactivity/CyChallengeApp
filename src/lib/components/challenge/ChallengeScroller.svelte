@@ -64,11 +64,11 @@
 		return aValue - bValue;
 	};
 
-	export let delay = 0; 
+	export let delay = 0;
 </script>
 
 {#if _challenges.length > 0}
-	<div class="" in:fly={{opacity: 0, y: 50, duration: 750, delay: delay}}>
+	<div class="" in:fly={{ opacity: 0, y: 25, duration: 500, delay: delay }}>
 		<!-- get the nice, readable topic title-->
 		<div class="text-lg font-light font-serif {pad ? 'px-4' : ''}">{title}</div>
 		<div

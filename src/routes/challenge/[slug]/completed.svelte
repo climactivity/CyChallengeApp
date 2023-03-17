@@ -47,10 +47,7 @@
 				{@html level.upgradeText}
 			</div>
 		{:else}
-			MISSING LEVEL_UP_TEXT
-			<pre>
-				{JSON.stringify(level, null, 2)}
-			</pre>
+			<div class="prose px-4">Generischer Levelup Text</div>
 		{/if}
 	{/if}
 	<ContinueSection {challenge} {challengeState} index={2} />

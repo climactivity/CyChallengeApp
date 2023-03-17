@@ -19,7 +19,7 @@
 
 <script lang="ts">
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { scale } from 'svelte/transition';
+	import { fade, scale } from 'svelte/transition';
 
 	let insets: Writable<any> = getContext('insets');
 
@@ -37,6 +37,7 @@
 	import { getContext, onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
 	import GlowAnimation from '$lib/animations/glow-animation.svelte';
+	import { challenges } from '$testData/challenges';
 	headerState.set({
 		backbutton: false,
 		title: 'Challenges',
@@ -201,7 +202,15 @@
 		</div>
 		<!-- Challenges -->
 
-		{#await data then challenges}
+		{#await data}
+			<div out:fade={{ duration: 150 }}>
+				<ChallengeScrollerSkeleton length={3} />
+				<ChallengeScrollerSkeleton length={3} />
+				<ChallengeScrollerSkeleton length={3} />
+				<ChallengeScrollerSkeleton length={3} />
+				<ChallengeScrollerSkeleton length={3} />
+			</div>
+		{:then challenges}
 			{#if filter.length > 0}
 				{#key filter}
 					<div class="container__filter min-h-content ">
@@ -218,13 +227,7 @@
 				</div>
 			{:else}
 				<div class="container min-h-content overflow-visible">
-					{#await topicList}
-						<ChallengeScrollerSkeleton length={3} />
-						<ChallengeScrollerSkeleton length={3} />
-						<ChallengeScrollerSkeleton length={3} />
-						<ChallengeScrollerSkeleton length={3} />
-						<ChallengeScrollerSkeleton length={3} />
-					{:then topicListResolved}
+					{#await topicList then topicListResolved}
 						{#each topicListResolved as topic, index}
 							<ChallengeScroller
 								challenges={challenges.filter(
@@ -234,7 +237,7 @@
 								{tags}
 								challengeHidden={(_) => false}
 								pad
-								delay={index * 250 + 50}
+								delay={index * 250 + 155}
 							/>
 						{/each}
 					{/await}

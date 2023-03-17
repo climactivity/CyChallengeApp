@@ -47,7 +47,7 @@
 		/>
 	{:then challengeState}
 		<div
-			class=" h-48  w-full header-img  
+			class=" h-48  w-full header-img   bg-opacity-30
 			{instanceOfChallengeReject(challengeState) ? 'bg-red-500 shadow-red-500' : ''}
 			{instanceOfChallengeBookmark(challengeState) ? 'bg-yellow-500 shadow-yellow-500' : ''}
 			{instanceOfChallengeComplete(challengeState) ? 'bg-green-500 shadow-green-500' : ''}
