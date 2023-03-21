@@ -12,18 +12,14 @@
 </script>
 
 <script lang="ts">
-	import VSection from '$lib/components/challenge/v-section.svelte';
-	import ActionHeroSection from '$lib/components/challenge/action-hero-section.svelte';
-	import type { ChallengeV2, Difficulty } from '$lib/types/challenges';
+	import { nkReady } from '$lib/client';
 	import BackToChallengesPageSection from '$lib/components/challenge/back-to-challenges-page-section.svelte';
+	import CongratulationSection from '$lib/components/challenge/congratulation-section.svelte';
+	import ContinueSection from '$lib/components/challenge/continue-section.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
-	import CongratulationSection from '$lib/components/challenge/congratulation-section.svelte';
-	import RewardSection from '$lib/components/challenge/reward-section.svelte';
-	import { nkReady } from '$lib/client';
 	import { currentLevelForChallenge, getChallengeState } from '$lib/services/challenge-storage';
-	import { challenges } from '$testData/challenges';
-	import ContinueSection from '$lib/components/challenge/continue-section.svelte';
+	import type { ChallengeV2, Difficulty } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
 	let challengeState;
 	let level: Difficulty;

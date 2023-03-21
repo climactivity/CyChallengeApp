@@ -1,4 +1,9 @@
-import type { ChallengeV2, Difficulties, Difficulty } from '$lib/types/challenges';
+import { connectGuard, session } from '$lib/client';
+import { armSoftNotificationTrigger } from '$lib/push-notifications';
+import { rewardStore } from '$lib/stores/reward-store';
+import type { ChallengeV2, Difficulty } from '$lib/types/challenges';
+import type { StorageObject, StorageObjects } from '@heroiclabs/nakama-js';
+import { DateTime } from 'luxon';
 import {
 	dropStorage,
 	listStorage,
@@ -6,16 +11,6 @@ import {
 	readStorage,
 	writeStorage
 } from './client-storage-engine';
-import { DateTime } from 'luxon';
-import type { StorageObject, StorageObjects } from '@heroiclabs/nakama-js';
-import { armSoftNotificationTrigger } from '$lib/push-notifications';
-import { notificationSettingsStore } from '$lib/stores/notification-config';
-import { Capacitor } from '@capacitor/core';
-import { client, connectGuard, nkReady, session } from '$lib/client';
-import { update_await_block_branch } from 'svelte/internal';
-import { object } from 'yup';
-import { rewardStore } from '$lib/stores/reward-store';
-import { challenges } from '$testData/challenges';
 
 export type DifficultyName = string;
 

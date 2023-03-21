@@ -3,7 +3,6 @@
 
 	import { headerState } from '$lib/stores/header-store';
 	import { onMount } from 'svelte';
-	import { element } from 'svelte/internal';
 
 	headerState.set({
 		backbutton: true,

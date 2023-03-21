@@ -23,8 +23,6 @@
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import { getChallengesByTopic } from '$lib/services/challenge-content';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { availableChallenges, availableTopics } from '$testData/challenges';
-	import ChallengesButton from '../buttons/challenges-button.svelte';
 	import ChallengeScroller from './ChallengeScroller.svelte';
 	export let challenge: ChallengeV2;
 	export let rejected: boolean = false;

@@ -1,5 +1,5 @@
 import type { Writable } from 'svelte/store';
-import type { ChallengeV2, ImageSource } from './types/challenges';
+import type { ChallengeV2 } from './types/challenges';
 
 export const detectLinks = (text: string): string => {
 	const regex = /((http|https)?:\/\/[^\s]+)/g;

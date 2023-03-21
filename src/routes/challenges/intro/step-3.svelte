@@ -1,18 +1,14 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { slide, fly, blur } from 'svelte/transition';
-	import { customFlyOut } from '$lib/animations/better-animation';
 	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
+	import { blur } from 'svelte/transition';
 
-	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
-
-	import { onMount, onDestroy, getContext } from 'svelte';
-	import { browser } from '$app/env';
 	import LottieAnim from '$lib/animations/lottie-anim.svelte';
+	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
 	import ChallengeScroller from '$lib/components/challenge/ChallengeScroller.svelte';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
-	import ButtonSecondaryCta from '$lib/components/buttons/button-secondary-cta.svelte';
 	import { tutorialStore } from '$lib/stores/onboarding-store';
+	import { getContext } from 'svelte';
 
 	let recommendedChallengesReq = Promise.all([
 		getChallengeBySlug('iss_mehr_pflanzen'),

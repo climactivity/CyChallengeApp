@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { SafeArea } from 'capacitor-plugin-safe-area';
-	import { slide } from 'svelte/transition';
-	import { showMenu } from '$lib/stores/menu-store';
-	import { expoInOut } from 'svelte/easing';
-	import { browser } from '$app/env';
 	import SocialLinks from '$lib/components/social-links.svelte';
+	import { showMenu } from '$lib/stores/menu-store';
 	import { Browser } from '@capacitor/browser';
+	import { expoInOut } from 'svelte/easing';
+	import { slide } from 'svelte/transition';
 
 	const openInappBrowser = async (link) => {
 		await Browser.open({ url: link });

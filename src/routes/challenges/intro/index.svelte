@@ -1,11 +1,7 @@
 <script>
-	import { goto } from '$app/navigation';
-	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
-	import { slide, fly, blur } from 'svelte/transition';
-	import { customFlyOut } from '$lib/animations/better-animation';
-	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
 	import LottieAnim from '$lib/animations/lottie-anim.svelte';
-	import { TorusGeometry } from 'three';
+	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
+	import { blur } from 'svelte/transition';
 </script>
 
 <div

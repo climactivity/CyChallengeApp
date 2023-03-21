@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	import { availableChallenges, challenges } from '$testData/challenges';
+	import { availableChallenges } from '$testData/challenges';
 
 	export async function load({ params, fetch, session, stuff }) {
 		let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
@@ -13,13 +13,11 @@
 </script>
 
 <script lang="ts">
-	import VSection from '$lib/components/challenge/v-section.svelte';
-	import ActionHeroSection from '$lib/components/challenge/action-hero-section.svelte';
-	import type { ChallengeV2 } from '$lib/types/challenges';
+	import ActionHeroSectionNoicon from '$lib/components/challenge/action-hero-section-noicon.svelte';
 	import BackToChallengesPageSection from '$lib/components/challenge/back-to-challenges-page-section.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
-	import ActionHeroSectionNoicon from '$lib/components/challenge/action-hero-section-noicon.svelte';
 	import RejectedReasonFormSection from '$lib/components/challenge/rejected-reason-form-section.svelte';
+	import type { ChallengeV2 } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
 </script>
 

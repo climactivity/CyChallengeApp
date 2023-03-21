@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { browser } from '$app/env';
 	import { goto } from '$app/navigation';
 
 	import { nkReady } from '$lib/client';

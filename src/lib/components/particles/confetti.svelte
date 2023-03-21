@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { particlesConfig } from '$lib/components/particles/config.js';
-	import { loadFull } from 'tsparticles';
 	import { loadConfettiPreset } from 'tsparticles-preset-confetti';
-	let ParticlesComponent;
-	import ParticlesContainer from 'svelte-particles';
 
 	export let quantity = 35,
 		height = 5;

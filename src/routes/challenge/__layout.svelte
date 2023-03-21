@@ -1,17 +1,10 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import { fly, slide } from 'svelte/transition';
 
-	let insets: Writable<any> = getContext('insets');
-	import { headerState } from '$lib/stores/header-store';
-	import { navigating } from '$app/stores';
-
-	import { AnimationRole, mainScreenAnim } from '$lib/animations/page-transition-anim';
-	import { cubicOut } from 'svelte/easing';
-	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
-	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
+	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 
 	let contentScroll;
 </script>

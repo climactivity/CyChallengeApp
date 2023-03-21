@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/env';
-	import { goto, prefetch } from '$app/navigation';
+	import { goto } from '$app/navigation';
 
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
 
 	export let path: string = '#';
 	export let onClick: Function = (e: Event) => {};

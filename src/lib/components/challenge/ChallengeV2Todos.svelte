@@ -14,21 +14,17 @@
 </script>
 
 <script lang="ts">
-	import type { ChallengeV2, CompletedStep, Difficulty } from '$lib/types/challenges';
+	import type { ChallengeV2, Difficulty } from '$lib/types/challenges';
 
-	import { headerState } from '$lib/stores/header-store';
-	import Fa from 'svelte-fa';
-	import { faCircleCheck, faCircleDot } from '@fortawesome/free-solid-svg-icons';
-	import Confetti from '$lib/components/particles/confetti.svelte';
 	import {
 		completeStep,
 		currentLevelForChallenge,
 		stepCompleted,
 		type ChallengeAccept,
-		type ChallengeInteraction,
 		type DifficultyName
 	} from '$lib/services/challenge-storage';
-	import { detectLinks } from '$lib/util';
+	import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+	import Fa from 'svelte-fa';
 
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeAccept;

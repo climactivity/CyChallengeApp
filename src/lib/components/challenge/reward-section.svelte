@@ -2,7 +2,6 @@
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import type { ChallengeAccept, ChallengeComplete } from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { onMount } from 'svelte';
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeComplete | ChallengeAccept;
 

@@ -1,11 +1,8 @@
 <script>
-	import BlobAnim from '$lib/animations/blob-anim.svelte';
 	import { nkReady } from '$lib/client';
 	import { getChallengeUserDataSummary } from '$lib/services/challenge-storage';
 
 	import { rewardStore } from '$lib/stores/reward-store';
-	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
 
 	let medals = '0';
 

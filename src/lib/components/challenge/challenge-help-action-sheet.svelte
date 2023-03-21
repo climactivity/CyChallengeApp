@@ -3,12 +3,10 @@
 		Dialog,
 		DialogDescription,
 		DialogOverlay,
-		DialogTitle,
-		Transition,
-		TransitionChild
+		DialogTitle
 	} from '@rgossiaux/svelte-headlessui';
 
-	import { fly, fade } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import MedalIcon from './medal-icon.svelte';
 
 	let isOpen = false;

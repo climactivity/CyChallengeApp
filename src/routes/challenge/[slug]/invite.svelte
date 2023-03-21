@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-	import { availableChallenges } from '$testData/challenges';
 	import ActionHeroSection from '$lib/components/challenge/action-hero-section.svelte';
+	import { availableChallenges } from '$testData/challenges';
 	export async function load({ params, fetch, session, stuff }) {
 		let challenge = availableChallenges.find((challenge) => challenge.slug === params.slug);
 		return {
@@ -14,9 +14,8 @@
 
 <script lang="ts">
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
-	import type { ChallengeV2 } from '$lib/types/challenges';
-	import FormComponent from '$lib/components/forms/invite-friend-form.svelte';
 	import InviteFriendForm from '$lib/components/forms/invite-friend-form.svelte';
+	import type { ChallengeV2 } from '$lib/types/challenges';
 	export let challenge: ChallengeV2;
 </script>
 

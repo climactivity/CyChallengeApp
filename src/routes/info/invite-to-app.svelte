@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
 	import InviteFriendForm from '$lib/components/forms/invite-friend-form.svelte';
 	import ShareToSocialMedia from '$lib/components/share-to-social-media.svelte';
 

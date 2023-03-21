@@ -5,12 +5,8 @@
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
 	import ChallengeJournalCard from '$lib/components/journal/challenge-journal-card.svelte';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
-	import {
-		getAcceptedChallenges,
-		getBookmarkedChallenges,
-		getCompletedChallenges
-	} from '$lib/services/challenge-storage';
-	import { fade, scale } from 'svelte/transition';
+	import { getCompletedChallenges } from '$lib/services/challenge-storage';
+	import { scale } from 'svelte/transition';
 
 	let activeChallenge = [];
 	let initialFetch = false;

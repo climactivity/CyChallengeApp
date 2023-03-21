@@ -4,11 +4,7 @@
 	import SuperChallengeIcon from '$lib/components/impact/super-challenge-icon.svelte';
 
 	import { goto } from '$app/navigation';
-	import {
-		getChallengeUserData,
-		type ChallengeAccept,
-		type ChallengeInteraction
-	} from '$lib/services/challenge-storage';
+	import { getChallengeUserData, type ChallengeInteraction } from '$lib/services/challenge-storage';
 	import type { StorageObject } from '@heroiclabs/nakama-js';
 	import { getSuperChallengeCssClassForInteracion, type SuperChallenge } from './super-challenge';
 

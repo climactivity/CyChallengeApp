@@ -1,16 +1,15 @@
 <script lang="ts">
 	import VSection from '$lib/components/challenge/v-section.svelte';
+	import { scheduleNotification, unscheduleNotification } from '$lib/push-notifications';
 	import {
 		acceptChallenge,
 		currentLevelForChallenge,
-		getChallengeState,
-		type ChallengeAccept
+		getChallengeState
 	} from '$lib/services/challenge-storage';
-	import { DateTime } from 'luxon';
 	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { DateTime } from 'luxon';
 	import { onMount } from 'svelte';
-	import { scheduleNotification, unscheduleNotification } from '$lib/push-notifications';
-	import { slide, fade, fly, blur } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 
 	export let challenge: ChallengeV2;
 	export let initialCheckpoint = false;

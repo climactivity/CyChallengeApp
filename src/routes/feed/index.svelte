@@ -19,7 +19,6 @@
 	import { goto } from '$app/navigation';
 	import BlogEmbed from '$lib/components/feed/blog-embed.svelte';
 
-	import BlogPost from '$lib/components/feed/blog-post.svelte';
 	import Spenden from '$lib/components/feed/spenden.svelte';
 	import YtEmbed from '$lib/components/feed/yt-embed.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
@@ -27,8 +26,6 @@
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import { headerState } from '$lib/stores/header-store';
-	import { dataset_dev } from 'svelte/internal';
-	import { Background } from 'tsparticles-engine';
 	export let posts;
 	let scrollPosition;
 	headerState.set({

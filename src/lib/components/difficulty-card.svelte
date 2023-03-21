@@ -1,14 +1,5 @@
 <script lang="ts">
-	import { browser } from '$app/env';
-	import ShareButton from '$lib/components/buttons/share-button.svelte';
-	import { fly } from 'svelte/transition';
-
-	import type {
-		AcceptedChallenge,
-		ChallengeV2,
-		CompletedStep,
-		Difficulty
-	} from '$lib/types/challenges';
+	import type { Difficulty } from '$lib/types/challenges';
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';

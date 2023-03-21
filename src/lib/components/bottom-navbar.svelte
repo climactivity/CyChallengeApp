@@ -1,15 +1,11 @@
 <script lang="ts">
-	import StatsButton from './buttons/stats-button.svelte';
-	import MenuButton from './buttons/menu-button.svelte';
-	import HomeButton from './buttons/home-button.svelte';
-	import FriendsButton from './buttons/friends-button.svelte';
-	import JournalButton from './buttons/journal-button.svelte';
-	import { browser } from '$app/env';
 	import { page } from '$app/stores';
+	import { showMenu } from '$lib/stores/menu-store';
 	import ChallengesButton from './buttons/challenges-button.svelte';
 	import FeedButton from './buttons/feed-button.svelte';
-	import { showMenu } from '$lib/stores/menu-store';
 	import ImpactButton from './buttons/impact-button.svelte';
+	import JournalButton from './buttons/journal-button.svelte';
+	import MenuButton from './buttons/menu-button.svelte';
 
 	let xSize;
 	let shadow = true;

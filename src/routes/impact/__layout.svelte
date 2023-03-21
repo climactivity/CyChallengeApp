@@ -1,9 +1,8 @@
 <script lang="ts">
-	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
+	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
 	import { headerState } from '$lib/stores/header-store';
-	import BlobAnim from '$lib/animations/blob-anim.svelte';
 
 	let scrollPosition = 0;
 

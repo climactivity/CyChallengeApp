@@ -6,14 +6,11 @@
 		acceptChallenge,
 		nextLevelForChallenge,
 		type ChallengeAccept,
-		type ChallengeComplete,
-		type ChallengeInteraction
+		type ChallengeComplete
 	} from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import { onMount } from 'svelte';
 	import ButtonPrimaryCta from '../buttons/button-primary-cta.svelte';
-	import RecommendedChallengesSection from './recommended-challenges-section.svelte';
-	import RewardDisplay from './reward-display.svelte';
 	export let challenge: ChallengeV2;
 	export let challengeState: ChallengeComplete | ChallengeAccept;
 

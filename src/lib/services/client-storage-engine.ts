@@ -99,3 +99,4 @@ const dropStorage = async (collection: string, key: string) => {
 	return result;
 };
 export { writeStorage, writeManyStorage, readStorage, readManyStorage, listStorage, dropStorage };
+

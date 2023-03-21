@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { nkReady } from '$lib/client';
-	import { superChallenges, type SuperChallenge } from './super-challenge';
-	import { fade } from 'svelte/transition';
+	import { superChallenges } from './super-challenge';
 	import SuperChallengeMedalsSkeleton from './super-challenge-medals-skeleton.svelte';
 	import SuperChallengeState from './super-challenge-state.svelte';
 </script>

@@ -1,23 +1,20 @@
 <script lang="ts">
 	import '../app.css';
 
-	import { SafeArea } from 'capacitor-plugin-safe-area';
-	import { Capacitor } from '@capacitor/core';
 	import { browser } from '$app/env';
 	import { App as CapacitorApp } from '@capacitor/app';
+	import { Capacitor } from '@capacitor/core';
+	import { SafeArea } from 'capacitor-plugin-safe-area';
 
-	import MdMenu from '$lib/components/MdMenu.svelte';
-	import BottomNavbar from '$lib/components/bottom-navbar.svelte';
-	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	import { page } from '$app/stores';
-	import { root } from 'postcss';
-	import { onMount } from 'svelte';
 	import { init, nkReady } from '$lib/client';
-	import { insets } from '$lib/stores/context';
-	import { oneSignalInit } from '$lib/push-notifications';
-	import { headerState } from '$lib/stores/header-store';
+	import BottomNavbar from '$lib/components/bottom-navbar.svelte';
 	import NetworkError from '$lib/components/dialogs/network-error.svelte';
+	import MdMenu from '$lib/components/MdMenu.svelte';
+	import { oneSignalInit } from '$lib/push-notifications';
+	import { insets } from '$lib/stores/context';
+	import { headerState } from '$lib/stores/header-store';
+	import { onMount, setContext } from 'svelte';
 
 	setContext('insets', insets);
 

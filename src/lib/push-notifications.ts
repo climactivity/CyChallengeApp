@@ -2,10 +2,8 @@ import { browser } from '$app/env';
 import { Capacitor } from '@capacitor/core';
 import type { StorageObject } from '@heroiclabs/nakama-js';
 import type { OneSignalPlugin } from 'onesignal-cordova-plugin';
-import type { ChangeEvent } from 'onesignal-cordova-plugin/dist/Subscription';
-import { client, makeRpc, session } from './client';
+import { makeRpc } from './client';
 import { dropStorage, readStorage, writeStorage } from './services/client-storage-engine';
-import { notificationSettingsStore } from './stores/notification-config';
 
 let OneSignal: OneSignalPlugin;
 

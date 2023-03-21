@@ -1,6 +1,4 @@
 <script lang="ts">
-	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
-
 	import { headerState } from '$lib/stores/header-store';
 	headerState.set({
 		backbutton: true,

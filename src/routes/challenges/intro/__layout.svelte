@@ -1,16 +1,14 @@
 <script lang="ts">
-	import { browser } from '$app/env';
-
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	import ProportionalHeader from '$lib/components/proportional-header.svelte';
 	import MainContentContainer from '$lib/layouts/main-content-container.svelte';
 	import MainScreenLayoutBase from '$lib/layouts/main-screen-layout-base.svelte';
-	import { headerState } from '$lib/stores/header-store';
 	import { insets } from '$lib/stores/context';
-	import { getContext } from 'svelte';
+	import { headerState } from '$lib/stores/header-store';
 	import { Capacitor } from '@capacitor/core';
+	import { getContext } from 'svelte';
 
 	headerState.set({
 		backbutton: true,

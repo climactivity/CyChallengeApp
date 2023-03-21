@@ -6,7 +6,6 @@
 		bookmarkChallenge,
 		completeChallenge,
 		currentLevelForChallenge,
-		nextLevelForChallenge,
 		rejectChallenge,
 		unbookmarkChallenge,
 		unrejectChallenge,
@@ -20,18 +19,15 @@
 	import { buttonAlerts } from '$lib/stores/button-alerts';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 
-	import AcceptButton from '../buttons/accept-button.svelte';
-	import CompleteChallengeButton from '../buttons/complete-challenge-button.svelte';
-	import BookmarkButton from '../buttons/bookmark-button.svelte';
-	import RejectButton from '../buttons/reject-button.svelte';
-	import InviteFriendButton from '../buttons/invite-friend-button.svelte';
-	import EndChallengeButton from '../buttons/end-challenge-button.svelte';
-	import NotificationButton from '../buttons/notification-button.svelte';
 	import { goto } from '$app/navigation';
-	import { Capacitor } from '@capacitor/core';
 	import { Share } from '@capacitor/share';
-	import ShareAppButton from '../buttons/share-app-button.svelte';
-	import { page } from '$app/stores';
+	import AcceptButton from '../buttons/accept-button.svelte';
+	import BookmarkButton from '../buttons/bookmark-button.svelte';
+	import CompleteChallengeButton from '../buttons/complete-challenge-button.svelte';
+	import EndChallengeButton from '../buttons/end-challenge-button.svelte';
+	import InviteFriendButton from '../buttons/invite-friend-button.svelte';
+	import NotificationButton from '../buttons/notification-button.svelte';
+	import RejectButton from '../buttons/reject-button.svelte';
 
 	export let nextState: (string, ...args) => void;
 	export let refetch: () => void;
@@ -114,7 +110,6 @@
 			.catch((err) => {
 				console.error(err);
 				nextState('accept');
-
 			});
 	};
 
@@ -202,8 +197,7 @@
 		style="place-items: baseline; grid-template-columns: 1fr 1fr 1fr 1fr ;"
 	> -->
 	{#if $nkReady}
-
-	<div class="flex flex-row justify-center items-baseline actions z-[9999]">
+		<div class="flex flex-row justify-center items-baseline actions z-[9999]">
 			<!-- challenge accepted -->
 			{#if challengeState?.type === 'accept'}
 				<!-- already doing it button -->
@@ -241,18 +235,15 @@
 					onClick={rejectChallengeListener}
 				/>
 			{/if}
-
-
-	</div>
+		</div>
 	{:else}
-	<div class="flex flex-row justify-center items-baseline actions z-[9999]">
-
-	<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
-	<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
-	<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
-	<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
-	</div>
-{/if}
+		<div class="flex flex-row justify-center items-baseline actions z-[9999]">
+			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
+			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
+			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
+			<div class="animate-pulse rounded-full w-16 h-16 bg-slate-200" />
+		</div>
+	{/if}
 </div>
 
 <style lang="scss">

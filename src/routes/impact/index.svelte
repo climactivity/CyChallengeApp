@@ -5,9 +5,7 @@
 	import { page } from '$app/stores';
 	import ShareAppButton from '$lib/components/buttons/share-app-button.svelte';
 	import HeroCompletedChallenges from '$lib/components/impact/hero-completed-challenges.svelte';
-	import { isAllSuperChallengesCompelted } from '$lib/components/impact/super-challenge';
 	import SuperChallengeMedals from '$lib/components/impact/super-challenge-medals.svelte';
-	import { fade, fly } from 'svelte/transition';
 </script>
 
 <!-- Super Challenge Pokal-->

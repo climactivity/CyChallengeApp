@@ -1,21 +1,17 @@
 <script lang="ts">
-	import type { AcceptedChallenge, ChallengeV2, ImageSource } from '$lib/types/challenges';
-	import type { Writable } from 'svelte/store';
-	import { getImageUrlFromChallenge, randomIntBetween } from '$lib/util';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
 	import {
 		getChallengeState,
-		getChallengeUserData,
 		instanceOfChallengeAccept,
 		instanceOfChallengeBookmark,
 		instanceOfChallengeComplete,
-		instanceOfChallengeReject,
-		type ChallengeInteraction
+		instanceOfChallengeReject
 	} from '$lib/services/challenge-storage';
-	import SuperChallengeIcon from '../impact/super-challenge-icon.svelte';
-	import { getSuperChallengeDataForLeadChallenge } from '../impact/super-challenge';
+	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { getImageUrlFromChallenge } from '$lib/util';
 	import { onMount } from 'svelte';
+	import { getSuperChallengeDataForLeadChallenge } from '../impact/super-challenge';
+	import SuperChallengeIcon from '../impact/super-challenge-icon.svelte';
 
 	export let challenge: ChallengeV2;
 	// let challengeStatePromise = getChallengeState(challenge.slug);

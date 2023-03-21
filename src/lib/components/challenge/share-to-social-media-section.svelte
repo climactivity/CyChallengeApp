@@ -1,15 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import VSection from '$lib/components/challenge/v-section.svelte';
 	import type { ChallengeV2 } from '$lib/types/challenges';
+	import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 	import Fa from 'svelte-fa';
-	import {
-		faInstagram,
-		faFacebook,
-		faYoutube,
-		faLinkedin,
-		faTwitter
-	} from '@fortawesome/free-brands-svg-icons';
-	import { page } from '$app/stores';
 	export let challenge: ChallengeV2;
 </script>
 

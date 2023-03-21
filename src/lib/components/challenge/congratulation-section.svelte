@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { ANIMATION_BASE_SPEED } from '$lib/animations/page-transition-anim';
-	import VSection from '$lib/components/challenge/v-section.svelte';
-	import type { ChallengeComplete, ChallengeInteraction } from '$lib/services/challenge-storage';
+	import type { ChallengeComplete } from '$lib/services/challenge-storage';
 	import type { ChallengeV2 } from '$lib/types/challenges';
 	import ChallengeProgressBadge from './challenge-progress-badge.svelte';
 	export let challenge: ChallengeV2;

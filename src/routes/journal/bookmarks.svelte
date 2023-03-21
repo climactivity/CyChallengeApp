@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { customFly } from '$lib/animations/better-animation';
 
 	import { nkReady } from '$lib/client';
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
 	import ChallengeJournalCard from '$lib/components/journal/challenge-journal-card.svelte';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
-	import { getAcceptedChallenges, getBookmarkedChallenges } from '$lib/services/challenge-storage';
-	import { fade, fly, scale, slide } from 'svelte/transition';
+	import { getBookmarkedChallenges } from '$lib/services/challenge-storage';
+	import { scale } from 'svelte/transition';
 
 	let activeChallenge = [];
 	let initialFetch = false;

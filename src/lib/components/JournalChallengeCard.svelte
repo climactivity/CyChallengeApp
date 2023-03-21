@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { AcceptedChallenge } from '$lib/types/challenges';
+	import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import { faCircleCheck, faCircleDot } from '@fortawesome/free-solid-svg-icons';
 
 	export let acceptedChallenge: AcceptedChallenge;
 

@@ -1,9 +1,6 @@
 import { pb } from '$lib/pb-client';
-import type { ChallengeV2 } from '$lib/types/challenges';
-import { availableChallenges } from '$testData/challenges';
-import { listStorage } from './client-storage-engine';
-import { writable } from 'svelte/store';
 import { challengeListCache, type ChallengeCache } from '$lib/stores/challenge-store';
+import type { ChallengeV2 } from '$lib/types/challenges';
 
 export const USE_LOCAL_CACHE = import.meta.env.VITE_USE_LOCAL_CACHE === 'true';
 

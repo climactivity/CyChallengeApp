@@ -1,13 +1,12 @@
 <script lang="ts">
 	import GdprCheckbox from './gdpr-checkbox.svelte';
 
-	import TextInputStyled from './text-input-styled.svelte';
-	import * as yup from 'yup';
+	import { makeRpc } from '$lib/client';
 	import { yupErrorToErrorObject } from '$lib/util';
-	import { draw, fade, slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import { onMount } from 'svelte';
-	import { client, makeRpc } from '$lib/client';
+	import { draw, fade, slide } from 'svelte/transition';
+	import * as yup from 'yup';
+	import TextInputStyled from './text-input-styled.svelte';
 
 	let formData = {
 		your_name: undefined,

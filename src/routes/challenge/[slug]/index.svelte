@@ -12,19 +12,18 @@
 <script lang="ts">
 	import ChallengeMetaData from '$lib/components/challenge/challenge-meta-data.svelte';
 
-	import RewardDisplay2 from '../../../lib/components/challenge/RewardDisplay2.svelte';
-
 	import { goto, prefetch } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { nkReady } from '$lib/client';
 	import ChallengeActions from '$lib/components/challenge/challenge-actions.svelte';
+	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
 	import RecommendedChallengesSection from '$lib/components/challenge/recommended-challenges-section.svelte';
 	import ShareToSocialMediaSection from '$lib/components/challenge/share-to-social-media-section.svelte';
+	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
 	import DifficultyCard from '$lib/components/difficulty-card.svelte';
+	import { getChallengeBySlug } from '$lib/services/challenge-content';
 	import {
-		currentLevelForChallenge,
 		getChallengeState,
-		getLastCompletion,
 		getTopicBigointChallengeState,
 		type ChallengeAccept,
 		type ChallengeBookmark,
@@ -34,22 +33,10 @@
 	} from '$lib/services/challenge-storage';
 	import { headerImageUrl, headerState } from '$lib/stores/header-store';
 	import type { ChallengeV2 } from '$lib/types/challenges';
-	import { fade, slide } from 'svelte/transition';
-	import { LocalDateTime } from '$lib/services/luxon-proxy';
-	import { DateTime } from 'luxon';
-	import RewardDisplay from '$lib/components/challenge/reward-display.svelte';
-	import ChallengeV2Todos from '$lib/components/challenge/ChallengeV2Todos.svelte';
+	import { getImageUrlFromChallenge } from '$lib/util';
 	import { getContext, hasContext, onMount } from 'svelte';
 	import { writable, type Writable } from 'svelte/store';
-	import SuperChallengeIcon from '$lib/components/impact/super-challenge-icon.svelte';
-	import {
-		getSuperChallengeCssClassForInteracion,
-		getSuperChallengeDataForLeadChallenge
-	} from '$lib/components/impact/super-challenge';
-	import { getChallengeBySlug } from '$lib/services/challenge-content';
-	import { getImageUrlFromChallenge } from '$lib/util';
-	import CollapsableHtmlView from '$lib/components/collapsable-html-view.svelte';
-	import Confetti from '$lib/components/particles/confetti.svelte';
+	import { fade, slide } from 'svelte/transition';
 	export let challenge: ChallengeV2;
 	// console.log('Challenge:', challenge);
 	let challengeState: ChallengeBookmark | ChallengeAccept | ChallengeReject | ChallengeComplete;
