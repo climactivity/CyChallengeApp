@@ -21,10 +21,8 @@
 		ANIMATION_BASE_SPEED}ms;"
 >
 	<div
-		class="image-element z-10 card-container shadow-storm-light"
-		style={imageUrl
-			? `--bg-image: url(${imageUrl})`
-			: `--bg-image: url("/images/not-found.webp")`}
+		class="image-element z-10 card-container shadow-storm-light bg-white"
+		style={imageUrl ? `--bg-image: url(${imageUrl})` : `--bg-image: url("/images/not-found.webp")`}
 	/>
 	<div class="relative">
 		<div class="absolute bottom-1 right-4">
@@ -56,7 +54,7 @@
 	.title-container {
 		border-radius: 0rem 0.375rem 0.375rem 0rem;
 		box-shadow: 0px 5px 0px 0px #ffffff, 0px 8px 6px 0px rgba(0 0 0 /0.1);
-		@apply bg-white h-full  p-1;
+		@apply bg-white h-full py-1 px-2 pr-4;
 	}
 	.card-container {
 		border-radius: 4px 0px 0px 2rem;

@@ -2,9 +2,6 @@
 	import { goto } from '$app/navigation';
 
 	import WirkungAktion from '$lib/components/home/wirkung-aktion.svelte';
-import { onMount } from 'svelte';
-	onMount(async () => {
-	})
 </script>
 
 <div class="p-4">
@@ -19,12 +16,12 @@ import { onMount } from 'svelte';
 
 	<div class="py-8">
 		<h2 class="text-lg py-3 font-bold">Unser Partner</h2>
-		<img class="w-full" src="/images/partner.svg" alt="alt" >
+		<img class="w-full" src="/images/partner.svg" alt="alt" />
 	</div>
 
 	<div class="pb-8 ">
 		<h2 class="text-lg py-3 font-bold">Unser App bewerten!</h2>
-		<img class="w-full" src="/images/app-bewerten.svg" alt="alt" >
+		<img class="w-full" src="/images/app-bewerten.svg" alt="alt" />
 	</div>
 
 	<button

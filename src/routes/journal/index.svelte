@@ -5,7 +5,10 @@
 	import ButtonPrimaryCta from '$lib/components/buttons/button-primary-cta.svelte';
 	import ChallengeJournalCard from '$lib/components/journal/challenge-journal-card.svelte';
 	import { getChallengeBySlug } from '$lib/services/challenge-content';
-	import { getAcceptedChallenges } from '$lib/services/challenge-storage';
+	import {
+		getAcceptedChallenges,
+		getChallengeUserDataSummary
+	} from '$lib/services/challenge-storage';
 	import { scale } from 'svelte/transition';
 
 	let activeChallenge = [];
@@ -31,6 +34,8 @@
 			activeChallenge = values.filter((value) => value !== null);
 			console.log('NK:', activeChallenge, initialFetch);
 			initialFetch = true;
+
+			await getChallengeUserDataSummary();
 		}
 	});
 </script>

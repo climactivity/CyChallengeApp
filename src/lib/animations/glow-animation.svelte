@@ -18,7 +18,7 @@
 	export let glow_corner_radius: GlowCornerRadius = 'full';
 	let _glow_corer_radius = 0;
 
-	let line: SVGRect;
+	let line: SVGRectElement;
 
 	$: switch (glow_corner_radius) {
 		case 'sm': {
